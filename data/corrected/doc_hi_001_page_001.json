@@ -15,7 +15,7 @@
       "context_after": "राष्ट्रीय ग्रामीण आजीविका मिशन के",
       "corrected_text": "संचालित",
       "changed": true,
-      "latency_sec": 0.0004,
+      "latency_sec": 0.001,
       "prompt_tokens": 16,
       "completion_tokens": 1
     },
@@ -119,5 +119,5 @@
   "threshold": 70.0,
   "total_words": 145,
   "corrected_words": 7,
-  "total_latency_sec": 0.0004
+  "total_latency_sec": 0.001
 }

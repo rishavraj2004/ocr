@@ -46,13 +46,13 @@
         "hi_em": 0.8947368421052632,
         "hi_f1": 0.9237516869095816
       },
-      "total_time_sec": 0.14931169990450144
+      "total_time_sec": 0.13643049995880574
     },
     {
       "threshold": 70.0,
       "flagged_words": 94,
       "flagged_ratio": 0.07686017988552739,
-      "correction_latency_sec": 0.0001,
+      "correction_latency_sec": 0.0,
       "correction_tokens": 1539,
       "ocr": {
         "cer": 0.13201000000000002,
@@ -78,8 +78,8 @@
         "hi_em": 0.9473684210526315,
         "hi_f1": 0.9736842105263158
       },
-      "total_time_sec": 0.13976439996622503
+      "total_time_sec": 0.13819820003118366
     }
   ],
-  "total_sweep_latency_sec": 0.28960510005708784
+  "total_sweep_latency_sec": 0.27512119989842176
 }

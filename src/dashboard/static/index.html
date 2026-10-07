@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OCR-Aware Multilingual RAG Research Dashboard</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔬</text></svg>">
+</head>
+<body>
+
+  <!-- Left Sidebar Navigation -->
+  <aside id="sidebar">
+    <div class="brand-section">
+      <div class="brand-title">
+        <span>🔬</span> Multilingual RAG
+      </div>
+      <div class="brand-subtitle">OCR Mitigation Research Platform</div>
+    </div>
+
+    <ul class="nav-links">
+      <li class="nav-item active" data-tab="overview" id="nav-overview">
+        <span class="nav-icon">📊</span> Executive Overview
+      </li>
+      <li class="nav-item" data-tab="inspector" id="nav-inspector">
+        <span class="nav-icon">🔍</span> OCR Heatmap Inspector
+      </li>
+      <li class="nav-item" data-tab="corrections" id="nav-corrections">
+        <span class="nav-icon">⚡</span> Selective Audit Trail
+      </li>
+      <li class="nav-item" data-tab="questions" id="nav-questions">
+        <span class="nav-icon">🎯</span> 3-Variant RAG Explorer
+      </li>
+      <li class="nav-item" data-tab="publications" id="nav-publications">
+        <span class="nav-icon">📈</span> Publication Assets
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <div class="status-indicator">
+        <span class="status-dot"></span> Pipeline Active
+      </div>
+      <div>Python 3.13 | FAISS | PyTorch | BAAI/bge-m3</div>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main id="main-content">
+    <!-- Top Header -->
+    <header>
+      <div class="header-left">
+        <h1 id="page-title">Executive Research Overview</h1>
+      </div>
+      <div class="header-badges">
+        <span class="badge badge-blue">🌐 English (Latin) & Hindi (Devanagari)</span>
+        <span class="badge badge-purple">🎯 Optimal Knee: &tau;* = 50.0</span>
+        <span class="badge badge-emerald">⚡ 68.5% Token Savings</span>
+      </div>
+    </header>
+
+    <!-- Tab 1: Executive Overview -->
+    <section id="tab-overview" class="tab-pane active">
+      <!-- KPI Metrics Grid -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">QA Exact Match (EM)</div>
+          <div class="kpi-val" id="kpi-em">0.8947</div>
+          <div class="kpi-delta delta-positive" id="kpi-em-delta">+20.0% Recovery Rate (C vs B)</div>
+        </div>
+
+        <div class="kpi-card emerald">
+          <div class="kpi-label">Hindi EM Recovery</div>
+          <div class="kpi-val" id="kpi-hi-recov">50.0%</div>
+          <div class="kpi-delta delta-positive">Devanagari Context Advantage</div>
+        </div>
+
+        <div class="kpi-card purple">
+          <div class="kpi-label">Efficiency Advantage</div>
+          <div class="kpi-val" id="kpi-eff">3.2&times;</div>
+          <div class="kpi-delta delta-positive">68.5% Fewer Tokens Than Full-Text</div>
+        </div>
+
+        <div class="kpi-card amber">
+          <div class="kpi-label">Dense Retrieval Recall@5</div>
+          <div class="kpi-val" id="kpi-r5">1.0000</div>
+          <div class="kpi-delta delta-positive">Script-Invariant Robustness</div>
+        </div>
+      </div>
+
+      <!-- 3-Variant Triangulation Summary Table -->
+      <div class="glass-card" style="margin-bottom: 28px;">
+        <div class="card-title">
+          <span>3-Variant Triangulation Performance Summary</span>
+          <span class="badge badge-blue">38 Evaluation Questions</span>
+        </div>
+        <div style="overflow-x: auto;">
+          <table class="triangulation-summary-table" id="triangulationTable">
+            <thead>
+              <tr>
+                <th>Partition</th>
+                <th>Metric</th>
+                <th>Ground Truth (A)</th>
+                <th>Raw OCR (B)</th>
+                <th>Corrected OCR (C)</th>
+                <th>Degradation (B - A)</th>
+                <th>Recovery (C - B)</th>
+                <th>Recovery Rate %</th>
+              </tr>
+            </thead>
+            <tbody id="triangulationTbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Quick Research Insights -->
+      <div class="glass-card">
+        <div class="card-title">
+          <span>Key Research Takeaways</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;">
+          <div style="background: rgba(0,0,0,0.25); padding: 16px; border-radius: var(--radius-md); border-left: 3px solid var(--accent-cyan);">
+            <strong style="color: var(--accent-cyan); display: block; margin-bottom: 4px;">Dense Retrieval Resilience</strong>
+            Dense vector representations achieve 1.0000 Recall@5 across all three variants, confirming that distributed semantic embeddings are resilient to OCR surface perturbations.
+          </div>
+          <div style="background: rgba(0,0,0,0.25); padding: 16px; border-radius: var(--radius-md); border-left: 3px solid var(--accent-emerald);">
+            <strong style="color: var(--accent-emerald); display: block; margin-bottom: 4px;">Devanagari Morphological Constraint</strong>
+            Hindi recovers 50.0% of lost EM performance vs. conservative English recovery, because Devanagari ligature corruptions are tightly constrained by surrounding word roots.
+          </div>
+          <div style="background: rgba(0,0,0,0.25); padding: 16px; border-radius: var(--radius-md); border-left: 3px solid var(--accent-purple);">
+            <strong style="color: var(--accent-purple); display: block; margin-bottom: 4px;">Pareto Knee Operating Point</strong>
+            Operating at &tau;* = 50.0 flags only 3.8% of words and uses 800 tokens, achieving full downstream QA recovery without over-correction risk.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 2: Document & OCR Inspector -->
+    <section id="tab-inspector" class="tab-pane">
+      <div class="inspector-layout">
+        <!-- Page List Column -->
+        <div class="glass-card page-selector-card">
+          <div class="card-title">Document Pages</div>
+          <div class="page-list" id="pageList">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Canvas Viewport Column -->
+        <div class="glass-card canvas-viewport-card">
+          <div class="canvas-toolbar">
+            <div class="canvas-controls">
+              <span id="activePageName" style="font-weight: 700;">Loading...</span>
+              <span class="badge badge-blue" id="activePageLang">en</span>
+            </div>
+
+            <!-- Dynamic Threshold Slider -->
+            <div class="slider-container">
+              <span>Threshold &tau;:</span>
+              <input type="range" id="confidenceSlider" class="custom-slider" min="30" max="90" value="70" step="5">
+              <strong id="sliderValue" class="mono" style="color: var(--accent-cyan);">70.0</strong>
+              <span class="badge badge-rose" id="flaggedCountBadge">0 Flagged</span>
+            </div>
+          </div>
+
+          <div class="canvas-wrapper" id="canvasWrapper">
+            <canvas id="imageCanvas"></canvas>
+            <div id="tokenTooltip" class="token-tooltip"></div>
+          </div>
+        </div>
+
+        <!-- Document Details Column -->
+        <div class="glass-card details-panel-card">
+          <div class="card-title">Page Data Streams</div>
+
+          <div class="details-block">
+            <div class="details-block-title">Ground Truth Text (Oracle)</div>
+            <div class="details-text-scroll mono" id="groundTruthText">Select a page...</div>
+          </div>
+
+          <div class="details-block">
+            <div class="details-block-title">Raw OCR Extracted Text</div>
+            <div class="details-text-scroll mono" id="rawOcrText">Select a page...</div>
+          </div>
+
+          <div class="details-block">
+            <div class="details-block-title">Selectively Corrected Text</div>
+            <div class="details-text-scroll mono" id="correctedText">Select a page...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 3: Selective Correction Audit Trail -->
+    <section id="tab-corrections" class="tab-pane">
+      <div class="glass-card" style="margin-bottom: 24px;">
+        <div class="card-title">
+          <span>Selective Correction Audit Log</span>
+          <span class="badge badge-purple" id="spansTotalCount">0 Flagged Spans Across Corpus</span>
+        </div>
+        <div class="spans-table-container">
+          <table class="spans-table" id="spansTable">
+            <thead>
+              <tr>
+                <th>Page ID</th>
+                <th>Context Before</th>
+                <th>Original Noisy Span</th>
+                <th>&rarr; Proposed Correction</th>
+                <th>Context After</th>
+                <th>Confidence</th>
+                <th>Tokens</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="spansTbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 4: 3-Variant RAG Question Inspector -->
+    <section id="tab-questions" class="tab-pane">
+      <!-- Filter Bar -->
+      <div class="glass-card questions-filter-bar">
+        <div class="filter-group">
+          <label for="filterLanguage">Language:</label>
+          <select id="filterLanguage" class="custom-select">
+            <option value="all">All Languages (38)</option>
+            <option value="en">English (19)</option>
+            <option value="hi">Hindi (19)</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filterType">Question Type:</label>
+          <select id="filterType" class="custom-select">
+            <option value="all">All Types (38)</option>
+            <option value="numerical">Numerical</option>
+            <option value="factual">Factual</option>
+            <option value="entity">Entity</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filterStatus">Outcome:</label>
+          <select id="filterStatus" class="custom-select">
+            <option value="all">All Outcomes</option>
+            <option value="recovered">Recovered in Variant C</option>
+            <option value="resilient">Noise Resilient</option>
+            <option value="degraded">Degraded</option>
+          </select>
+        </div>
+
+        <div style="margin-left: auto;">
+          <span class="badge badge-blue" id="filteredCountBadge">Showing 38 / 38 Questions</span>
+        </div>
+      </div>
+
+      <!-- Question Cards List -->
+      <div class="questions-list" id="questionsList">
+        <!-- Dynamically populated -->
+      </div>
+    </section>
+
+    <!-- Tab 5: Publication Assets & LaTeX Exporter -->
+    <section id="tab-publications" class="tab-pane">
+      <div class="glass-card" style="margin-bottom: 32px;">
+        <div class="card-title">Publication Figures (300 DPI)</div>
+        <div class="figures-grid">
+          <div class="figure-card">
+            <div class="figure-img-wrap">
+              <img src="/figures/figure1_variant_triangulation.png" alt="Figure 1: 3-Variant Triangulation">
+            </div>
+            <div class="figure-caption">Figure 1: Downstream QA Exact Match & Token F1 across Variants A, B, and C</div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap">
+              <img src="/figures/figure2_threshold_pareto.png" alt="Figure 2: Threshold Sensitivity & Pareto Curve">
+            </div>
+            <div class="figure-caption">Figure 2: Pareto Trade-off Curve (&tau; Knee Optimization vs Token Budget)</div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap">
+              <img src="/figures/figure3_question_type_vulnerability.png" alt="Figure 3: Question-Type Vulnerability">
+            </div>
+            <div class="figure-caption">Figure 3: Question-Type Vulnerability Breakdown (Numerical vs Factual vs Entity)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LaTeX & Markdown Tables Exporter -->
+      <div class="glass-card">
+        <div class="card-title">
+          <span>Publication LaTeX & Markdown Tables</span>
+        </div>
+
+        <div class="table-tabs-nav" id="tableTabsNav">
+          <!-- Dynamically populated -->
+        </div>
+
+        <div class="code-container">
+          <button class="copy-btn" id="copyTableBtn">Copy to Clipboard</button>
+          <pre id="tableCodeBlock">Loading table code...</pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toast">Copied to clipboard!</div>
+
+  <!-- Dashboard JavaScript -->
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -500,7 +500,36 @@ def parse_args(args=None):
         action="store_true",
         help="Execute master end-to-end benchmark suite and freeze metadata",
     )
+    parser.add_argument(
+        "--dashboard",
+        action="store_true",
+        help="Launch interactive FastAPI research inspection web dashboard",
+    )
+    parser.add_argument(
+        "--host",
+        type=str,
+        default="127.0.0.1",
+        help="Dashboard server host interface (default: 127.0.0.1)",
+    )
+    parser.add_argument(
+        "--port",
+        type=int,
+        default=8000,
+        help="Dashboard server port (default: 8000)",
+    )
     return parser.parse_args(args)
+
+
+def start_dashboard(host: str = "127.0.0.1", port: int = 8000) -> int:
+    """Launch the FastAPI dashboard application."""
+    from src.dashboard.app import run_dashboard
+
+    print("\n" + "=" * 80)
+    print("STARTING INTERACTIVE RESEARCH INSPECTION DASHBOARD")
+    print(f"URL: http://{host}:{port}")
+    print("=" * 80 + "\n")
+    run_dashboard(host=host, port=port)
+    return 0
 
 
 def export_figures(config_path: str) -> int:
@@ -573,6 +602,7 @@ def main() -> int:
         or args.run_cross_lingual
         or args.export_figures
         or args.run_all
+        or args.dashboard
     )
     if not active_flags:
         logger.info("Running default Phase 0/1/2/3/4 sanity check...")
@@ -610,6 +640,8 @@ def main() -> int:
         status = export_figures(args.config)
     if args.run_all and status == 0:
         status = run_all_master(args.config, threshold=args.threshold)
+    if args.dashboard and status == 0:
+        status = start_dashboard(host=args.host, port=args.port)
     if args.init_run and status == 0:
         status = test_init_run(args.config)
 

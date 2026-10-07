@@ -47,11 +47,13 @@ class OpenAIGenerator(BaseGenerator):
         temperature: float = 0.0,
         prompt_template: str = DEFAULT_PROMPT_TEMPLATE,
         api_key_env: str = "OPENAI_API_KEY",
+        base_url: Optional[str] = None,
     ):
         self.model_name = model_name
         self.temperature = temperature
         self.prompt_template = prompt_template
         self.api_key_env = api_key_env
+        self.base_url = base_url
         self._client = None
 
     def _get_client(self):
@@ -61,7 +63,7 @@ class OpenAIGenerator(BaseGenerator):
                 api_key = os.getenv(self.api_key_env)
                 if not api_key:
                     raise ValueError(f"Environment variable '{self.api_key_env}' is not set.")
-                self._client = openai.OpenAI(api_key=api_key)
+                self._client = openai.OpenAI(api_key=api_key, base_url=self.base_url)
             except Exception as e:
                 logger.error("Failed to initialize OpenAI client: %s", e)
                 raise
@@ -223,12 +225,24 @@ def create_generator(
     api_key_env: str = "OPENAI_API_KEY",
 ) -> BaseGenerator:
     """Factory to instantiate generator."""
-    if generator_type.lower() == "openai":
+    gen_type = generator_type.lower()
+    if gen_type in ["openai", "gemini", "google", "mistral"]:
+        base_url = None
+        if gen_type in ["gemini", "google"]:
+            base_url = "https://generativelanguage.googleapis.com/v1beta/openai/"
+            if api_key_env == "OPENAI_API_KEY":
+                api_key_env = "GEMINI_API_KEY"
+        elif gen_type == "mistral":
+            base_url = "https://api.mistral.ai/v1"
+            if api_key_env == "OPENAI_API_KEY":
+                api_key_env = "MISTRAL_API_KEY"
+
         return OpenAIGenerator(
             model_name=model_name,
             temperature=temperature,
             prompt_template=prompt_template,
             api_key_env=api_key_env,
+            base_url=base_url,
         )
     return MockGenerator(
         questions_path=questions_path,

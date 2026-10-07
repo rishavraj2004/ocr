@@ -72,7 +72,7 @@ class CorrectionRunner:
 
         # Select corrector
         model_type = self.config.correction.model_type.lower()
-        if model_type == "openai":
+        if model_type in ["openai", "gemini", "google", "mistral"]:
             self.corrector: BaseCorrector = OpenAICorrector(self.config.correction)
         else:
             self.corrector = MockCorrector()

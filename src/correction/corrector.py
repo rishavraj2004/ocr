@@ -155,9 +155,16 @@ class OpenAICorrector(BaseCorrector):
         if self.api_key:
             try:
                 from openai import OpenAI
-                self.client = OpenAI(api_key=self.api_key)
+                base_url = None
+                model_type = self.config.model_type.lower()
+                if model_type in ["gemini", "google"]:
+                    base_url = "https://generativelanguage.googleapis.com/v1beta/openai/"
+                elif model_type == "mistral":
+                    base_url = "https://api.mistral.ai/v1"
+
+                self.client = OpenAI(api_key=self.api_key, base_url=base_url)
             except Exception as e:
-                logger.warning(f"Failed to initialize OpenAI client: {e}")
+                logger.warning(f"Failed to initialize OpenAI/Gemini/Mistral client: {e}")
 
     def correct_span(
         self,

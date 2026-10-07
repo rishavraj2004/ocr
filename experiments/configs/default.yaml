@@ -1,0 +1,91 @@
+# ==============================================================================
+# OCR-Aware Multilingual RAG Research Framework - Default Experiment Config
+# ==============================================================================
+
+experiment_name: ocr_multilingual_rag
+seed: 42
+output_dir: results
+runs_dir: experiments/runs
+
+dataset:
+  images_dir: data/images
+  ground_truth_dir: data/ground_truth
+  ocr_dir: data/ocr
+  corrected_dir: data/corrected
+  questions_dir: data/questions
+  metadata_path: data/metadata/documents.json
+  languages:
+    - en
+    - hi
+
+preprocessing:
+  enabled: true
+  grayscale: true
+  denoise: true
+  denoise_h: 10.0
+  threshold: true
+  threshold_method: otsu   # 'otsu' or 'adaptive'
+  deskew: true
+  normalize: true
+
+ocr:
+  engine: tesseract         # 'tesseract', 'paddleocr', or 'mock'
+  tesseract_cmd: null       # Custom path if not in system PATH
+  tessdata_dir: null        # Custom tessdata directory
+  psm: 3                    # Fully automatic page segmentation
+  oem: 3                    # Default OCR Engine Mode (LSTM)
+  lang_map:
+    en: eng
+    hi: hin
+
+correction:
+  threshold: 70.0           # Confidence threshold below which spans are corrected
+  context_window_words: 5   # Local surrounding context words for disambiguation
+  model_type: mock          # 'mock', 'openai', or 'local'
+  model_name: gpt-4o-mini
+  api_key_env: OPENAI_API_KEY
+  temperature: 0.0
+  max_tokens: 150
+  sweep_thresholds:
+    - 30.0
+    - 40.0
+    - 50.0
+    - 60.0
+    - 70.0
+    - 80.0
+    - 90.0
+
+rag:
+  chunk_size: 500           # Units per chunk
+  chunk_overlap: 50         # Overlap between consecutive chunks
+  chunk_unit: words         # 'words' or 'tokens'
+  embedding_model: BAAI/bge-m3
+  embedding_dim: 1024
+  distance_metric: cosine   # 'cosine' or 'l2'
+  top_k: 5
+  generator_type: mock      # 'mock', 'openai', or 'local'
+  generator_model: gpt-4o-mini
+  temperature: 0.0
+  prompt_template: |
+    You are an assistant answering questions based strictly on the provided context.
+    Context:
+    {context}
+
+    Question: {question}
+
+    Answer concisely and accurately:
+
+evaluation:
+  ocr_metrics:
+    - cer
+    - wer
+  retrieval_k_values:
+    - 1
+    - 3
+    - 5
+  answer_metrics:
+    - exact_match
+    - f1
+  normalize_unicode_nfc: true
+  ignore_case: true
+  ignore_punctuation: true

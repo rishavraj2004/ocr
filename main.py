@@ -94,6 +94,39 @@ def generate_dataset() -> int:
     return 0
 
 
+def preprocess_page(page_id: str, config_path: str) -> int:
+    """Run preprocessing on a specific page and export debug before/after comparison."""
+    from src.dataset.manager import DatasetManager
+    from src.preprocessing.image_preprocessor import ImagePreprocessor
+
+    cfg = load_config(config_path)
+    dm = DatasetManager(cfg)
+    meta = dm.get_page_metadata(page_id)
+    if meta is None:
+        logger.error(f"Page ID '{page_id}' not found in metadata.")
+        return 1
+
+    preprocessor = ImagePreprocessor(cfg.preprocessing)
+    img_path = meta.image_path
+    logger.info(f"Preprocessing page '{page_id}' from: {img_path}")
+    result = preprocessor.process(img_path)
+
+    logger.info("=" * 60)
+    logger.info(f"PREPROCESSING COMPLETED: {page_id}")
+    logger.info(f"  Operations Applied : {result.operations_applied}")
+    logger.info(f"  Original Shape     : {result.original_shape}")
+    logger.info(f"  Processed Shape    : {result.processed_shape}")
+    logger.info(f"  Execution Time     : {result.execution_time_sec:.4f}s")
+    for k, v in result.metadata.items():
+        logger.info(f"  Metadata: {k:10s}: {v}")
+    logger.info("=" * 60)
+
+    out_debug = Path("results/figures/preprocessing_debug") / f"{page_id}_comparison.png"
+    preprocessor.save_debug_comparison(img_path, result, out_debug)
+    logger.info(f"Saved side-by-side debug comparison image to: {out_debug}")
+    return 0
+
+
 def parse_args(args=None):
     parser = argparse.ArgumentParser(
         description="OCR-Aware Multilingual RAG Research Framework"
@@ -129,6 +162,12 @@ def parse_args(args=None):
         action="store_true",
         help="Synthesize the 10-page benchmark dataset (5 English, 5 Hindi)",
     )
+    parser.add_argument(
+        "--preprocess-page",
+        type=str,
+        metavar="PAGE_ID",
+        help="Run image preprocessing on a specific page_id and save comparison image",
+    )
     return parser.parse_args(args)
 
 
@@ -137,8 +176,8 @@ def main() -> int:
     args = parse_args()
 
     # If no flags passed, run default validation and environment check
-    if not (args.check_env or args.validate_config or args.init_run or args.validate_dataset or args.generate_dataset):
-        logger.info("Running default Phase 0/1 sanity check...")
+    if not (args.check_env or args.validate_config or args.init_run or args.validate_dataset or args.generate_dataset or args.preprocess_page):
+        logger.info("Running default Phase 0/1/2 sanity check...")
         val_status = validate_configuration(args.config)
         if val_status != 0:
             return val_status
@@ -153,6 +192,8 @@ def main() -> int:
         status = validate_configuration(args.config)
     if args.validate_dataset and status == 0:
         status = validate_dataset(args.config)
+    if args.preprocess_page and status == 0:
+        status = preprocess_page(args.preprocess_page, args.config)
     if args.init_run and status == 0:
         status = test_init_run(args.config)
 

@@ -59,7 +59,7 @@ rag:
   chunk_size: 500           # Units per chunk
   chunk_overlap: 50         # Overlap between consecutive chunks
   chunk_unit: words         # 'words' or 'tokens'
-  embedding_model: BAAI/bge-m3
+  embedding_model: mock     # 'mock' for instant reproducible offline research, or 'BAAI/bge-m3'
   embedding_dim: 1024
   distance_metric: cosine   # 'cosine' or 'l2'
   top_k: 5

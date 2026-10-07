@@ -181,6 +181,28 @@ class TestRAGComponents(unittest.TestCase):
         ans_empty, _, _, _ = gen.generate("", "What is the targeted solar capacity?")
         self.assertIn("No context provided", ans_empty)
 
+    def test_raw_ocr_pipeline_and_degradation(self):
+        from src.core.config import get_default_config
+
+        cfg = get_default_config()
+        cfg.rag.embedding_model = "mock"
+
+        pipeline = RAGPipeline(variant=DocumentVariant.RAW_OCR, config=cfg)
+        chunks = pipeline.index_documents()
+        self.assertEqual(len(chunks), 10)
+        self.assertEqual(chunks[0].variant, DocumentVariant.RAW_OCR)
+
+        report = pipeline.run_evaluation()
+        self.assertEqual(report["variant"], "raw_ocr")
+        self.assertEqual(report["summary"]["num_questions"], 38)
+        self.assertIn("by_question_type", report)
+        self.assertIn("numerical", report["by_question_type"])
+
+        # Empirical expectation: raw OCR introduces degradations, so EM < 1.0
+        self.assertLess(report["overall"]["mean_exact_match"], 1.0)
+        self.assertLess(report["overall"]["mean_f1"], 1.0)
+
 
 if __name__ == "__main__":
     unittest.main()
+

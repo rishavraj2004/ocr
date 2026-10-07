@@ -171,12 +171,21 @@ def run_correction(config_path: str, threshold: Optional[float] = None) -> int:
     return 0
 
 
-def run_rag(config_path: str, variant: str = "ground_truth") -> int:
+def run_rag(
+    config_path: str,
+    variant: str = "ground_truth",
+    embedding_model: Optional[str] = None,
+) -> int:
     """Run end-to-end RAG pipeline and evaluation for a specified document variant."""
+    import json
+    import os
     from src.core.schemas import DocumentVariant
     from src.rag.pipeline import RAGPipeline
 
     cfg = load_config(config_path)
+    if embedding_model:
+        cfg.rag.embedding_model = embedding_model
+
     doc_variant = DocumentVariant(variant)
 
     logger.info(f"Initializing RAG pipeline for variant: {doc_variant.value}")
@@ -185,14 +194,15 @@ def run_rag(config_path: str, variant: str = "ground_truth") -> int:
 
     overall = report["overall"]
     by_lang = report["by_language"]
+    by_type = report.get("by_question_type", {})
 
-    print("\n" + "=" * 70)
+    print("\n" + "=" * 75)
     print(f"RAG EXPERIMENT EVALUATION: VARIANT {doc_variant.value.upper()}")
-    print("=" * 70)
+    print("=" * 75)
     print(f"  Pages Indexed          : {report['summary']['num_pages']}")
     print(f"  Questions Evaluated    : {report['summary']['num_questions']}")
     print(f"  Total Latency          : {overall['total_eval_latency_sec']:.2f} s")
-    print("-" * 70)
+    print("-" * 75)
     print("OVERALL RETRIEVAL & QA PERFORMANCE:")
     print(f"  Recall@1               : {overall['mean_recall_at_1']:.4f}")
     print(f"  Recall@3               : {overall['mean_recall_at_3']:.4f}")
@@ -200,14 +210,46 @@ def run_rag(config_path: str, variant: str = "ground_truth") -> int:
     print(f"  MRR                    : {overall['mean_mrr']:.4f}")
     print(f"  Exact Match (EM)       : {overall['mean_exact_match']:.4f}")
     print(f"  Token F1 Score         : {overall['mean_f1']:.4f}")
-    print("-" * 70)
+    print("-" * 75)
     print("PER-LANGUAGE BREAKDOWN:")
     for lang, metrics in by_lang.items():
         print(f"  [{lang.upper()}] (N={metrics['num_questions']}):")
         print(f"    Recall@1: {metrics['mean_recall_at_1']:.4f} | Recall@5: {metrics['mean_recall_at_5']:.4f} | MRR: {metrics['mean_mrr']:.4f}")
         print(f"    EM: {metrics['mean_exact_match']:.4f}       | F1: {metrics['mean_f1']:.4f}")
-    print("=" * 70 + "\n")
+    if by_type:
+        print("-" * 75)
+        print("PER-QUESTION-TYPE BREAKDOWN:")
+        for qtype, metrics in by_type.items():
+            print(f"  [{qtype.upper()}] (N={metrics['num_questions']}):")
+            print(f"    Recall@1: {metrics['mean_recall_at_1']:.4f} | MRR: {metrics['mean_mrr']:.4f} | EM: {metrics['mean_exact_match']:.4f} | F1: {metrics['mean_f1']:.4f}")
 
+    # If evaluating Raw OCR and Ground Truth results exist, print Comparative Delta Table
+    if doc_variant == DocumentVariant.RAW_OCR:
+        gt_path = os.path.join(cfg.output_dir, "rag", "ground_truth_results.json")
+        if os.path.exists(gt_path):
+            with open(gt_path, "r", encoding="utf-8") as f:
+                gt_report = json.load(f)
+            gt_overall = gt_report["overall"]
+            print("\n" + "=" * 75)
+            print("COMPARATIVE STUDY: GROUND TRUTH (A) vs RAW OCR (B) DEGRADATION")
+            print("=" * 75)
+            print(f"  {'Metric':<22} | {'Ground Truth (A)':<16} | {'Raw OCR (B)':<14} | {'Degradation (Delta)':<18}")
+            print("  " + "-" * 71)
+            for m_key, m_name in [
+                ("mean_recall_at_1", "Recall@1"),
+                ("mean_recall_at_3", "Recall@3"),
+                ("mean_recall_at_5", "Recall@5"),
+                ("mean_mrr", "MRR"),
+                ("mean_exact_match", "Exact Match (EM)"),
+                ("mean_f1", "Token F1 Score"),
+            ]:
+                a_val = gt_overall.get(m_key, 0.0)
+                b_val = overall.get(m_key, 0.0)
+                delta = b_val - a_val
+                print(f"  {m_name:<22} | {a_val:<16.4f} | {b_val:<14.4f} | {delta:+18.4f}")
+            print("=" * 75 + "\n")
+
+    print("=" * 75 + "\n")
     return 0
 
 
@@ -280,6 +322,12 @@ def parse_args(args=None):
         choices=["ground_truth", "raw_ocr", "corrected_ocr"],
         help="Document variant to evaluate: 'ground_truth', 'raw_ocr', or 'corrected_ocr'",
     )
+    parser.add_argument(
+        "--embedding-model",
+        type=str,
+        default=None,
+        help="Override embedding model name (e.g. 'mock' or 'BAAI/bge-m3')",
+    )
     return parser.parse_args(args)
 
 
@@ -311,7 +359,7 @@ def main() -> int:
     if args.run_correction and status == 0:
         status = run_correction(args.config, threshold=args.threshold)
     if args.run_rag and status == 0:
-        status = run_rag(args.config, variant=args.variant)
+        status = run_rag(args.config, variant=args.variant, embedding_model=args.embedding_model)
     if args.init_run and status == 0:
         status = test_init_run(args.config)
 

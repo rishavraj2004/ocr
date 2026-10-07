@@ -18,6 +18,7 @@ from src.core.schemas import (
     Question,
     QuestionAnswerResult,
     QuestionRetrievalResult,
+    QuestionType,
     TextChunk,
 )
 from src.evaluation.answer_metrics import (
@@ -124,7 +125,7 @@ class RAGPipeline:
                     continue
                 with open(ocr_path, "r", encoding="utf-8") as f:
                     ocr_data = json.load(f)
-                    text = ocr_data.get("text", "")
+                    text = ocr_data.get("raw_text") or ocr_data.get("text", "")
                 page_texts[page_id] = (doc_id, text)
 
             elif self.variant == DocumentVariant.CORRECTED_OCR:
@@ -134,7 +135,7 @@ class RAGPipeline:
                     continue
                 with open(corr_path, "r", encoding="utf-8") as f:
                     corr_data = json.load(f)
-                    text = corr_data.get("corrected_text", "")
+                    text = corr_data.get("corrected_text") or corr_data.get("raw_text") or corr_data.get("text", "")
                 page_texts[page_id] = (doc_id, text)
 
         return page_texts
@@ -288,6 +289,15 @@ class RAGPipeline:
                     **aggregate_retrieval_metrics(hi_ret),
                     **aggregate_answer_metrics(hi_qa),
                 },
+            },
+            "by_question_type": {
+                q_type.value: {
+                    "num_questions": len([q for q in questions if q.question_type == q_type]),
+                    **aggregate_retrieval_metrics([r for r, q in zip(retrieval_results, questions) if q.question_type == q_type]),
+                    **aggregate_answer_metrics([a for a, q in zip(qa_results, questions) if q.question_type == q_type]),
+                }
+                for q_type in [QuestionType.FACTUAL, QuestionType.NUMERICAL, QuestionType.ENTITY]
+                if any(q.question_type == q_type for q in questions)
             },
             "retrieval_results": [r.model_dump() for r in retrieval_results],
             "qa_results": [q.model_dump() for q in qa_results],

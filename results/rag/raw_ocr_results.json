@@ -1,7 +1,7 @@
 {
   "variant": "raw_ocr",
   "summary": {
-    "run_id": "rag_raw_ocr_1791378743",
+    "run_id": "rag_raw_ocr_1791379108",
     "variant": "raw_ocr",
     "language": "combined",
     "num_pages": 10,
@@ -14,7 +14,7 @@
     "mrr": 0.9298245614035087,
     "mean_exact_match": 0.868421052631579,
     "mean_f1": 0.9224021592442645,
-    "total_latency_sec": 0.0676188999786973,
+    "total_latency_sec": 0.06617979996372014,
     "total_tokens": 41523
   },
   "overall": {
@@ -25,7 +25,7 @@
     "mean_exact_match": 0.868421052631579,
     "mean_f1": 0.9224021592442645,
     "total_questions": 38,
-    "total_eval_latency_sec": 0.0676188999786973,
+    "total_eval_latency_sec": 0.06617979996372014,
     "total_prompt_tokens": 41359,
     "total_completion_tokens": 164
   },
@@ -133,7 +133,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.0004275999963283539
+      "retrieval_latency_sec": 0.0006381000857800245
     },
     {
       "question_id": "q_en_001_02",
@@ -184,7 +184,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.00036319997161626816
+      "retrieval_latency_sec": 0.0003779999678954482
     },
     {
       "question_id": "q_en_001_03",
@@ -235,7 +235,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.00031420006416738033
+      "retrieval_latency_sec": 0.0003692000173032284
     },
     {
       "question_id": "q_en_001_04",
@@ -286,7 +286,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.0003378000110387802
+      "retrieval_latency_sec": 0.0003306999569758773
     },
     {
       "question_id": "q_en_001_05",
@@ -337,7 +337,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.00028000003658235073
+      "retrieval_latency_sec": 0.00030449999030679464
     },
     {
       "question_id": "q_en_001_06",
@@ -388,7 +388,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.0007419999456033111
+      "retrieval_latency_sec": 0.0003448999486863613
     },
     {
       "question_id": "q_en_001_07",
@@ -439,7 +439,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.0011402000673115253
+      "retrieval_latency_sec": 0.00034099991898983717
     },
     {
       "question_id": "q_en_001_08",
@@ -490,7 +490,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.0005111999344080687
+      "retrieval_latency_sec": 0.0003201999934390187
     },
     {
       "question_id": "q_en_002_01",
@@ -541,7 +541,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.0004618000239133835
+      "retrieval_latency_sec": 0.0014974999940022826
     },
     {
       "question_id": "q_en_002_02",
@@ -592,7 +592,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.0005602999590337276
+      "retrieval_latency_sec": 0.0005406999262049794
     },
     {
       "question_id": "q_en_002_03",
@@ -643,7 +643,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 0.3333333333333333,
-      "retrieval_latency_sec": 0.0004037999315187335
+      "retrieval_latency_sec": 0.0003557999152690172
     },
     {
       "question_id": "q_en_002_04",
@@ -694,7 +694,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.00031749997287988663
+      "retrieval_latency_sec": 0.0003106999211013317
     },
     {
       "question_id": "q_en_002_05",
@@ -745,7 +745,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.00024910003412514925
+      "retrieval_latency_sec": 0.00024809991009533405
     },
     {
       "question_id": "q_en_002_06",
@@ -796,7 +796,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.0003367000026628375
+      "retrieval_latency_sec": 0.00033430010080337524
     },
     {
       "question_id": "q_en_002_07",
@@ -847,7 +847,7 @@
       "recall_at_3": 0.0,
       "recall_at_5": 1.0,
       "mrr": 0.25,
-      "retrieval_latency_sec": 0.00046040001325309277
+      "retrieval_latency_sec": 0.0005033999914303422
     },
     {
       "question_id": "q_en_003_01",
@@ -898,7 +898,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.0003415000392124057
+      "retrieval_latency_sec": 0.00036239996552467346
     },
     {
       "question_id": "q_en_003_02",
@@ -949,7 +949,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.00026659993454813957
+      "retrieval_latency_sec": 0.0002774999011307955
     },
     {
       "question_id": "q_en_003_03",
@@ -1000,7 +1000,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.00031070003751665354
+      "retrieval_latency_sec": 0.00030049995984882116
     },
     {
       "question_id": "q_en_003_04",
@@ -1051,7 +1051,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.00026359991170465946
+      "retrieval_latency_sec": 0.00026050000451505184
     },
     {
       "question_id": "q_hi_001_01",
@@ -1102,7 +1102,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.000345399952493608
+      "retrieval_latency_sec": 0.00033459998667240143
     },
     {
       "question_id": "q_hi_001_02",
@@ -1153,7 +1153,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 0.5,
-      "retrieval_latency_sec": 0.000508400029502809
+      "retrieval_latency_sec": 0.00044570001773536205
     },
     {
       "question_id": "q_hi_001_03",
@@ -1204,7 +1204,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.00028549996204674244
+      "retrieval_latency_sec": 0.00027570000384002924
     },
     {
       "question_id": "q_hi_001_04",
@@ -1255,7 +1255,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.00031349994242191315
+      "retrieval_latency_sec": 0.0003084999043494463
     },
     {
       "question_id": "q_hi_001_05",
@@ -1306,7 +1306,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.0003322999691590667
+      "retrieval_latency_sec": 0.0003307999577373266
     },
     {
       "question_id": "q_hi_001_06",
@@ -1357,7 +1357,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.0003809999907389283
+      "retrieval_latency_sec": 0.0003130999393761158
     },
     {
       "question_id": "q_hi_001_07",
@@ -1408,7 +1408,7 @@
       "recall_at_3": 0.0,
       "recall_at_5": 1.0,
       "mrr": 0.25,
-      "retrieval_latency_sec": 0.0006720999954268336
+      "retrieval_latency_sec": 0.0003784999717026949
     },
     {
       "question_id": "q_hi_001_08",
@@ -1459,7 +1459,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.0003928999649360776
+      "retrieval_latency_sec": 0.0003330999752506614
     },
     {
       "question_id": "q_hi_002_01",
@@ -1510,7 +1510,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.00028520007617771626
+      "retrieval_latency_sec": 0.00025459995958954096
     },
     {
       "question_id": "q_hi_002_02",
@@ -1561,7 +1561,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.000443600001744926
+      "retrieval_latency_sec": 0.00024399999529123306
     },
     {
       "question_id": "q_hi_002_03",
@@ -1612,7 +1612,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.0005040999967604876
+      "retrieval_latency_sec": 0.00027169997338205576
     },
     {
       "question_id": "q_hi_002_04",
@@ -1663,7 +1663,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.0002669000532478094
+      "retrieval_latency_sec": 0.00024179997853934765
     },
     {
       "question_id": "q_hi_002_05",
@@ -1714,7 +1714,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.0003581000491976738
+      "retrieval_latency_sec": 0.00033359997905790806
     },
     {
       "question_id": "q_hi_002_06",
@@ -1765,7 +1765,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.0003369000041857362
+      "retrieval_latency_sec": 0.00047149998135864735
     },
     {
       "question_id": "q_hi_002_07",
@@ -1816,7 +1816,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.0004920000210404396
+      "retrieval_latency_sec": 0.0005163999740034342
     },
     {
       "question_id": "q_hi_003_01",
@@ -1867,7 +1867,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.00033519999124109745
+      "retrieval_latency_sec": 0.0003252999158576131
     },
     {
       "question_id": "q_hi_003_02",
@@ -1918,7 +1918,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.000327400048263371
+      "retrieval_latency_sec": 0.00030449999030679464
     },
     {
       "question_id": "q_hi_003_03",
@@ -1969,7 +1969,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.00029049988370388746
+      "retrieval_latency_sec": 0.0002935999073088169
     },
     {
       "question_id": "q_hi_003_04",
@@ -2020,7 +2020,7 @@
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
       "mrr": 1.0,
-      "retrieval_latency_sec": 0.00027840002439916134
+      "retrieval_latency_sec": 0.0003111000405624509
     }
   ],
   "qa_results": [
@@ -2031,7 +2031,7 @@
       "expected_answer": "300 gigawatts",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 1.6900012269616127e-05,
+      "generation_latency_sec": 1.8700025975704193e-05,
       "prompt_tokens": 1152,
       "completion_tokens": 3
     },
@@ -2042,7 +2042,7 @@
       "expected_answer": "$42.5 billion",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 1.379998866468668e-05,
+      "generation_latency_sec": 1.479999627918005e-05,
       "prompt_tokens": 1144,
       "completion_tokens": 3
     },
@@ -2053,7 +2053,7 @@
       "expected_answer": "Rajasthan and Gujarat",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 9.500072337687016e-06,
+      "generation_latency_sec": 2.859998494386673e-05,
       "prompt_tokens": 1155,
       "completion_tokens": 5
     },
@@ -2064,7 +2064,7 @@
       "expected_answer": "25 gigawatt-hours",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 8.399947546422482e-06,
+      "generation_latency_sec": 8.299946784973145e-06,
       "prompt_tokens": 1157,
       "completion_tokens": 4
     },
@@ -2075,7 +2075,7 @@
       "expected_answer": "12.8 gigawatts",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 6.200047209858894e-06,
+      "generation_latency_sec": 7.3999399319291115e-06,
       "prompt_tokens": 1154,
       "completion_tokens": 3
     },
@@ -2086,7 +2086,7 @@
       "expected_answer": "Siemens Energy and Vestas",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 1.71000137925148e-05,
+      "generation_latency_sec": 2.1699932403862476e-05,
       "prompt_tokens": 1111,
       "completion_tokens": 6
     },
@@ -2097,7 +2097,7 @@
       "expected_answer": "3,400 kilometers",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 1.7600017599761486e-05,
+      "generation_latency_sec": 7.800059393048286e-06,
       "prompt_tokens": 1158,
       "completion_tokens": 4
     },
@@ -2108,7 +2108,7 @@
       "expected_answer": "December 2028",
       "exact_match": 0.0,
       "f1_score": 0.5,
-      "generation_latency_sec": 0.007253400050103664,
+      "generation_latency_sec": 0.007590200053527951,
       "prompt_tokens": 1158,
       "completion_tokens": 3
     },
@@ -2119,7 +2119,7 @@
       "expected_answer": "44 percent",
       "exact_match": 0.0,
       "f1_score": 0.5,
-      "generation_latency_sec": 0.0071576000191271305,
+      "generation_latency_sec": 0.006839600042439997,
       "prompt_tokens": 1156,
       "completion_tokens": 2
     },
@@ -2130,7 +2130,7 @@
       "expected_answer": "55 percent",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 1.550000160932541e-05,
+      "generation_latency_sec": 3.100000321865082e-05,
       "prompt_tokens": 1158,
       "completion_tokens": 2
     },
@@ -2141,7 +2141,7 @@
       "expected_answer": "National Water Mission",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 1.3399985618889332e-05,
+      "generation_latency_sec": 1.1899974197149277e-05,
       "prompt_tokens": 1156,
       "completion_tokens": 5
     },
@@ -2152,7 +2152,7 @@
       "expected_answer": "1.6 million hectares",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 8.499948307871819e-06,
+      "generation_latency_sec": 7.79994297772646e-06,
       "prompt_tokens": 1155,
       "completion_tokens": 5
     },
@@ -2163,7 +2163,7 @@
       "expected_answer": "23 million",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 6.4999330788850784e-06,
+      "generation_latency_sec": 7.100054062902927e-06,
       "prompt_tokens": 1151,
       "completion_tokens": 2
     },
@@ -2174,7 +2174,7 @@
       "expected_answer": "35 percent",
       "exact_match": 0.0,
       "f1_score": 0.5,
-      "generation_latency_sec": 0.006791199906729162,
+      "generation_latency_sec": 0.006715500028803945,
       "prompt_tokens": 1158,
       "completion_tokens": 2
     },
@@ -2185,7 +2185,7 @@
       "expected_answer": "Rs 500,000",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 1.610000617802143e-05,
+      "generation_latency_sec": 1.880002673715353e-05,
       "prompt_tokens": 1156,
       "completion_tokens": 2
     },
@@ -2196,7 +2196,7 @@
       "expected_answer": "GSLV Mk III",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 6.8999361246824265e-06,
+      "generation_latency_sec": 6.900052540004253e-06,
       "prompt_tokens": 1156,
       "completion_tokens": 2
     },
@@ -2207,7 +2207,7 @@
       "expected_answer": "4,150 kilograms",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 7.200054824352264e-06,
+      "generation_latency_sec": 8.00006091594696e-06,
       "prompt_tokens": 1152,
       "completion_tokens": 3
     },
@@ -2218,7 +2218,7 @@
       "expected_answer": "24",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 7.2999391704797745e-06,
+      "generation_latency_sec": 6.700051017105579e-06,
       "prompt_tokens": 1154,
       "completion_tokens": 1
     },
@@ -2229,7 +2229,7 @@
       "expected_answer": "Sriharikota",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 7.200054824352264e-06,
+      "generation_latency_sec": 6.500049494206905e-06,
       "prompt_tokens": 1152,
       "completion_tokens": 2
     },
@@ -2240,7 +2240,7 @@
       "expected_answer": "८८ लाख",
       "exact_match": 0.0,
       "f1_score": 0.05128205128205129,
-      "generation_latency_sec": 0.008292599930427969,
+      "generation_latency_sec": 0.008289300021715462,
       "prompt_tokens": 1026,
       "completion_tokens": 54
     },
@@ -2251,7 +2251,7 @@
       "expected_answer": "ग्रामीण विकास मंत्रालय",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 1.6400008462369442e-05,
+      "generation_latency_sec": 1.5900004655122757e-05,
       "prompt_tokens": 1021,
       "completion_tokens": 5
     },
@@ -2262,7 +2262,7 @@
       "expected_answer": "₹२.४ लाख करोड़",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 9.299954399466515e-06,
+      "generation_latency_sec": 8.200062438845634e-06,
       "prompt_tokens": 1019,
       "completion_tokens": 3
     },
@@ -2273,7 +2273,7 @@
       "expected_answer": "७ प्रतिशत",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 8.200062438845634e-06,
+      "generation_latency_sec": 7.800059393048286e-06,
       "prompt_tokens": 1065,
       "completion_tokens": 2
     },
@@ -2284,7 +2284,7 @@
       "expected_answer": "३५ लाख",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 6.3999323174357414e-06,
+      "generation_latency_sec": 6.100046448409557e-06,
       "prompt_tokens": 1026,
       "completion_tokens": 1
     },
@@ -2295,7 +2295,7 @@
       "expected_answer": "६० प्रतिशत",
       "exact_match": 0.0,
       "f1_score": 0.5,
-      "generation_latency_sec": 0.007572300033643842,
+      "generation_latency_sec": 0.007439499953761697,
       "prompt_tokens": 1024,
       "completion_tokens": 2
     },
@@ -2306,7 +2306,7 @@
       "expected_answer": "नवीन और नवीकरणीय ऊर्जा मंत्रालय",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 2.3400061763823032e-05,
+      "generation_latency_sec": 2.6300083845853806e-05,
       "prompt_tokens": 1020,
       "completion_tokens": 7
     },
@@ -2317,7 +2317,7 @@
       "expected_answer": "३२ लाख टन",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 1.27000967040658e-05,
+      "generation_latency_sec": 9.499955922365189e-06,
       "prompt_tokens": 1023,
       "completion_tokens": 2
     },
@@ -2328,7 +2328,7 @@
       "expected_answer": "२.० प्रतिशत",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 8.00006091594696e-06,
+      "generation_latency_sec": 7.0999376475811005e-06,
       "prompt_tokens": 1019,
       "completion_tokens": 2
     },
@@ -2339,7 +2339,7 @@
       "expected_answer": "१.५ प्रतिशत",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 1.5700003132224083e-05,
+      "generation_latency_sec": 6.100046448409557e-06,
       "prompt_tokens": 1018,
       "completion_tokens": 2
     },
@@ -2350,7 +2350,7 @@
       "expected_answer": "२१ दिन",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 1.3399985618889332e-05,
+      "generation_latency_sec": 6.7999353632330894e-06,
       "prompt_tokens": 1021,
       "completion_tokens": 1
     },
@@ -2361,7 +2361,7 @@
       "expected_answer": "₹१.२५ लाख करोड़",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 7.79994297772646e-06,
+      "generation_latency_sec": 6.8999361246824265e-06,
       "prompt_tokens": 1020,
       "completion_tokens": 3
     },
@@ -2372,7 +2372,7 @@
       "expected_answer": "१.२ लाख",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 7.400056347250938e-06,
+      "generation_latency_sec": 7.0999376475811005e-06,
       "prompt_tokens": 1024,
       "completion_tokens": 1
     },
@@ -2383,7 +2383,7 @@
       "expected_answer": "दीक्षा (DIKSHA)",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 0.008956899982877076,
+      "generation_latency_sec": 0.008796900045126677,
       "prompt_tokens": 1026,
       "completion_tokens": 4
     },
@@ -2394,7 +2394,7 @@
       "expected_answer": "₹४७,००० करोड़",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 1.3199984095990658e-05,
+      "generation_latency_sec": 1.5099998563528061e-05,
       "prompt_tokens": 1026,
       "completion_tokens": 3
     },
@@ -2405,7 +2405,7 @@
       "expected_answer": "३,६८२",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 8.00006091594696e-06,
+      "generation_latency_sec": 8.499948307871819e-06,
       "prompt_tokens": 1023,
       "completion_tokens": 1
     },
@@ -2416,7 +2416,7 @@
       "expected_answer": "५४",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 7.2999391704797745e-06,
+      "generation_latency_sec": 7.1999384090304375e-06,
       "prompt_tokens": 1022,
       "completion_tokens": 1
     },
@@ -2427,7 +2427,7 @@
       "expected_answer": "२४.६२ प्रतिशत",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 7.200054824352264e-06,
+      "generation_latency_sec": 6.900052540004253e-06,
       "prompt_tokens": 1022,
       "completion_tokens": 3
     },
@@ -2438,7 +2438,7 @@
       "expected_answer": "राष्ट्रीय हरित न्यायाधिकरण (NGT)",
       "exact_match": 1.0,
       "f1_score": 1.0,
-      "generation_latency_sec": 7.00005330145359e-06,
+      "generation_latency_sec": 7.4999406933784485e-06,
       "prompt_tokens": 1021,
       "completion_tokens": 8
     }

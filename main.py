@@ -352,6 +352,25 @@ def run_sweep(config_path: str, thresholds_str: Optional[str] = None) -> int:
     return 0
 
 
+def run_full_vs_selective(config_path: str, threshold: Optional[float] = None) -> int:
+    """Run head-to-head empirical comparison between Full-Text and Selective Correction."""
+    from src.experiments.full_vs_selective import FullVsSelectiveRunner
+
+    cfg = load_config(config_path)
+    runner = FullVsSelectiveRunner(cfg)
+    tau = threshold if threshold is not None else cfg.correction.threshold
+
+    logger.info(f"Running Full-Text vs Selective Correction comparison (tau={tau:.1f})...")
+    comparison = runner.compare(selective_threshold=tau)
+
+    print("\n" + "=" * 90)
+    print(f"FULL-TEXT vs SELECTIVE CORRECTION: EFFICIENCY & ACCURACY BENCHMARK (tau={tau:.1f})")
+    print("=" * 90)
+    print(runner.format_comparison_table(comparison))
+    print("=" * 90 + "\n")
+    return 0
+
+
 def parse_args(args=None):
     parser = argparse.ArgumentParser(
         description="OCR-Aware Multilingual RAG Research Framework"
@@ -443,6 +462,11 @@ def parse_args(args=None):
         default=None,
         help="Comma-separated custom sweep thresholds (e.g. '30,50,70,90')",
     )
+    parser.add_argument(
+        "--compare-efficiency",
+        action="store_true",
+        help="Execute head-to-head Full-Text vs Selective Correction comparison (cost, latency, accuracy)",
+    )
     return parser.parse_args(args)
 
 
@@ -451,7 +475,7 @@ def main() -> int:
     args = parse_args()
 
     # If no flags passed, run default validation and environment check
-    if not (args.check_env or args.validate_config or args.init_run or args.validate_dataset or args.generate_dataset or args.preprocess_page or args.run_ocr or args.run_correction or args.run_rag or args.compare_rag or args.run_sweep):
+    if not (args.check_env or args.validate_config or args.init_run or args.validate_dataset or args.generate_dataset or args.preprocess_page or args.run_ocr or args.run_correction or args.run_rag or args.compare_rag or args.run_sweep or args.compare_efficiency):
         logger.info("Running default Phase 0/1/2/3/4 sanity check...")
         val_status = validate_configuration(args.config)
         if val_status != 0:
@@ -479,6 +503,8 @@ def main() -> int:
         status = compare_rag(args.config)
     if args.run_sweep and status == 0:
         status = run_sweep(args.config, thresholds_str=args.sweep_thresholds)
+    if args.compare_efficiency and status == 0:
+        status = run_full_vs_selective(args.config, threshold=args.threshold)
     if args.init_run and status == 0:
         status = test_init_run(args.config)
 

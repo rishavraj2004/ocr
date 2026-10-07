@@ -1,0 +1,46 @@
+{
+  "full_text": {
+    "mode": "full_text",
+    "total_words": 1223,
+    "modified_words": 1223,
+    "flagged_ratio": 1.0,
+    "latency_sec": 0.00855309993494302,
+    "prompt_tokens": 2856,
+    "completion_tokens": 2027,
+    "total_tokens": 4883,
+    "over_corrected_words": 4,
+    "over_correction_rate": 0.003270645952575634,
+    "cer": 0.1353,
+    "wer": 0.20079000000000002,
+    "recall_at_5": 1.0,
+    "mrr": 0.9350877192982455,
+    "exact_match": 0.8421052631578947,
+    "f1_score": 0.9355263157894737
+  },
+  "selective": {
+    "mode": "selective_tau_70",
+    "threshold": 70.0,
+    "total_words": 1223,
+    "modified_words": 94,
+    "flagged_ratio": 0.07686017988552739,
+    "latency_sec": 0.0,
+    "prompt_tokens": 1422,
+    "completion_tokens": 117,
+    "total_tokens": 1539,
+    "over_corrected_words": 0,
+    "over_correction_rate": 0.0,
+    "cer": 0.13201000000000002,
+    "wer": 0.18418,
+    "recall_at_5": 1.0,
+    "mrr": 0.9350877192982455,
+    "exact_match": 0.8947368421052632,
+    "f1_score": 0.9473684210526315
+  },
+  "efficiency": {
+    "token_savings_pct": 68.48249027237354,
+    "token_reduction_factor": 3.1728395061728394,
+    "over_correction_reduction_words": 4,
+    "qa_em_difference": 0.052631578947368474,
+    "qa_f1_difference": 0.011842105263157876
+  }
+}

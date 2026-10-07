@@ -371,6 +371,22 @@ def run_full_vs_selective(config_path: str, threshold: Optional[float] = None) -
     return 0
 
 
+def run_cross_lingual(config_path: str) -> int:
+    """Run English vs Hindi cross-lingual comparative analysis and sensitivity study."""
+    from src.experiments.cross_lingual_analysis import CrossLingualAnalyzer
+
+    cfg = load_config(config_path)
+    analyzer = CrossLingualAnalyzer(cfg)
+    report = analyzer.run_analysis()
+
+    print("\n" + "=" * 94)
+    print("CROSS-LINGUAL COMPARATIVE STUDY: ENGLISH (LATIN) vs HINDI (DEVANAGARI) (Phase 10)")
+    print("=" * 94)
+    print(analyzer.format_cross_lingual_table(report))
+    print("=" * 94 + "\n")
+    return 0
+
+
 def parse_args(args=None):
     parser = argparse.ArgumentParser(
         description="OCR-Aware Multilingual RAG Research Framework"
@@ -467,6 +483,11 @@ def parse_args(args=None):
         action="store_true",
         help="Execute head-to-head Full-Text vs Selective Correction comparison (cost, latency, accuracy)",
     )
+    parser.add_argument(
+        "--run-cross-lingual",
+        action="store_true",
+        help="Execute English vs Hindi cross-lingual comparative analysis (script profiles, vulnerability)",
+    )
     return parser.parse_args(args)
 
 
@@ -475,7 +496,7 @@ def main() -> int:
     args = parse_args()
 
     # If no flags passed, run default validation and environment check
-    if not (args.check_env or args.validate_config or args.init_run or args.validate_dataset or args.generate_dataset or args.preprocess_page or args.run_ocr or args.run_correction or args.run_rag or args.compare_rag or args.run_sweep or args.compare_efficiency):
+    if not (args.check_env or args.validate_config or args.init_run or args.validate_dataset or args.generate_dataset or args.preprocess_page or args.run_ocr or args.run_correction or args.run_rag or args.compare_rag or args.run_sweep or args.compare_efficiency or args.run_cross_lingual):
         logger.info("Running default Phase 0/1/2/3/4 sanity check...")
         val_status = validate_configuration(args.config)
         if val_status != 0:
@@ -505,6 +526,8 @@ def main() -> int:
         status = run_sweep(args.config, thresholds_str=args.sweep_thresholds)
     if args.compare_efficiency and status == 0:
         status = run_full_vs_selective(args.config, threshold=args.threshold)
+    if args.run_cross_lingual and status == 0:
+        status = run_cross_lingual(args.config)
     if args.init_run and status == 0:
         status = test_init_run(args.config)
 

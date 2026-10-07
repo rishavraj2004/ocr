@@ -142,3 +142,8 @@ def save_config(config: AppConfig, path: str | Path) -> None:
     p.parent.mkdir(parents=True, exist_ok=True)
     with open(p, "w", encoding="utf-8") as f:
         yaml.safe_dump(config.model_dump(), f, default_flow_style=False, sort_keys=False)
+
+
+# Backward-compatible alias
+ExperimentConfig = AppConfig
+

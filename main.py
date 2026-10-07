@@ -171,6 +171,46 @@ def run_correction(config_path: str, threshold: Optional[float] = None) -> int:
     return 0
 
 
+def run_rag(config_path: str, variant: str = "ground_truth") -> int:
+    """Run end-to-end RAG pipeline and evaluation for a specified document variant."""
+    from src.core.schemas import DocumentVariant
+    from src.rag.pipeline import RAGPipeline
+
+    cfg = load_config(config_path)
+    doc_variant = DocumentVariant(variant)
+
+    logger.info(f"Initializing RAG pipeline for variant: {doc_variant.value}")
+    pipeline = RAGPipeline(variant=doc_variant, config=cfg)
+    report = pipeline.run_evaluation()
+
+    overall = report["overall"]
+    by_lang = report["by_language"]
+
+    print("\n" + "=" * 70)
+    print(f"RAG EXPERIMENT EVALUATION: VARIANT {doc_variant.value.upper()}")
+    print("=" * 70)
+    print(f"  Pages Indexed          : {report['summary']['num_pages']}")
+    print(f"  Questions Evaluated    : {report['summary']['num_questions']}")
+    print(f"  Total Latency          : {overall['total_eval_latency_sec']:.2f} s")
+    print("-" * 70)
+    print("OVERALL RETRIEVAL & QA PERFORMANCE:")
+    print(f"  Recall@1               : {overall['mean_recall_at_1']:.4f}")
+    print(f"  Recall@3               : {overall['mean_recall_at_3']:.4f}")
+    print(f"  Recall@5               : {overall['mean_recall_at_5']:.4f}")
+    print(f"  MRR                    : {overall['mean_mrr']:.4f}")
+    print(f"  Exact Match (EM)       : {overall['mean_exact_match']:.4f}")
+    print(f"  Token F1 Score         : {overall['mean_f1']:.4f}")
+    print("-" * 70)
+    print("PER-LANGUAGE BREAKDOWN:")
+    for lang, metrics in by_lang.items():
+        print(f"  [{lang.upper()}] (N={metrics['num_questions']}):")
+        print(f"    Recall@1: {metrics['mean_recall_at_1']:.4f} | Recall@5: {metrics['mean_recall_at_5']:.4f} | MRR: {metrics['mean_mrr']:.4f}")
+        print(f"    EM: {metrics['mean_exact_match']:.4f}       | F1: {metrics['mean_f1']:.4f}")
+    print("=" * 70 + "\n")
+
+    return 0
+
+
 def parse_args(args=None):
     parser = argparse.ArgumentParser(
         description="OCR-Aware Multilingual RAG Research Framework"
@@ -228,6 +268,18 @@ def parse_args(args=None):
         default=None,
         help="Override confidence threshold tau (default: 70.0)",
     )
+    parser.add_argument(
+        "--run-rag",
+        action="store_true",
+        help="Execute RAG pipeline and evaluation on specified document variant",
+    )
+    parser.add_argument(
+        "--variant",
+        type=str,
+        default="ground_truth",
+        choices=["ground_truth", "raw_ocr", "corrected_ocr"],
+        help="Document variant to evaluate: 'ground_truth', 'raw_ocr', or 'corrected_ocr'",
+    )
     return parser.parse_args(args)
 
 
@@ -236,7 +288,7 @@ def main() -> int:
     args = parse_args()
 
     # If no flags passed, run default validation and environment check
-    if not (args.check_env or args.validate_config or args.init_run or args.validate_dataset or args.generate_dataset or args.preprocess_page or args.run_ocr or args.run_correction):
+    if not (args.check_env or args.validate_config or args.init_run or args.validate_dataset or args.generate_dataset or args.preprocess_page or args.run_ocr or args.run_correction or args.run_rag):
         logger.info("Running default Phase 0/1/2/3/4 sanity check...")
         val_status = validate_configuration(args.config)
         if val_status != 0:
@@ -258,6 +310,8 @@ def main() -> int:
         status = run_ocr(args.config)
     if args.run_correction and status == 0:
         status = run_correction(args.config, threshold=args.threshold)
+    if args.run_rag and status == 0:
+        status = run_rag(args.config, variant=args.variant)
     if args.init_run and status == 0:
         status = test_init_run(args.config)
 
@@ -266,3 +320,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+

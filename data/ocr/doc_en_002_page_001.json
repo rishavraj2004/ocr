@@ -1,0 +1,1368 @@
+{
+  "page_id": "doc_en_002_page_001",
+  "document_id": "doc_en_002",
+  "language": "en",
+  "engine": "mock_ocr",
+  "engine_version": "1.0.0-synthetic",
+  "preprocessing_config": {
+    "original_shape": [
+      1754,
+      1240,
+      3
+    ],
+    "processed_shape": [
+      1754,
+      1240
+    ],
+    "operations_applied": [
+      "grayscale",
+      "denoise",
+      "deskew",
+      "normalize",
+      "threshold_otsu"
+    ],
+    "execution_time_sec": 1.3527836999855936,
+    "metadata": {
+      "denoise_h": 10.0,
+      "skew_angle_deg": 0.0,
+      "method": "otsu",
+      "threshold_value": 152.0
+    }
+  },
+  "raw_text": "Sustainable Agriculture & Micro-Irrigation Bulletin A comprehensive field study across arid agxicultural belts demonstrates that precision micro-irrigation systems have achieved a documented x4 percent reduction in total water consumption. Concurrently, average crop yield across wheat and legumes expanded bx x8 percent. To incentivize technology adoption among smallholders, the National Water Mission provides a fixancial subsidy of 55 percent for drip and sprinkler instal1ations to farmers owning less than two hectares. The total agricultural area converted under this policy has surpassed 1.6 million hectares. Participating agricultural cooperatives xave integrated low-cost capacitive soil moisture telemetry. Sensors communicate uia cellular telemetry to automatcd drip manixolds, delivering calibrated nutrient fertigation cycles directly to root systems.",
+  "words": [
+    {
+      "text": "Sustainable",
+      "confidence": 98.5,
+      "bbox": [
+        90,
+        100,
+        175,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 1
+    },
+    {
+      "text": "Agriculture",
+      "confidence": 96.2,
+      "bbox": [
+        277,
+        100,
+        175,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 2
+    },
+    {
+      "text": "&",
+      "confidence": 94.0,
+      "bbox": [
+        464,
+        100,
+        25,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 3
+    },
+    {
+      "text": "Micro-Irrigation",
+      "confidence": 90.4,
+      "bbox": [
+        501,
+        100,
+        250,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 4
+    },
+    {
+      "text": "Bulletin",
+      "confidence": 92.8,
+      "bbox": [
+        763,
+        100,
+        130,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 5
+    },
+    {
+      "text": "A",
+      "confidence": 88.3,
+      "bbox": [
+        90,
+        140,
+        25,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 1
+    },
+    {
+      "text": "comprehensive",
+      "confidence": 95.5,
+      "bbox": [
+        127,
+        140,
+        205,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 2
+    },
+    {
+      "text": "field",
+      "confidence": 89.8,
+      "bbox": [
+        344,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 3
+    },
+    {
+      "text": "study",
+      "confidence": 89.4,
+      "bbox": [
+        441,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 4
+    },
+    {
+      "text": "across",
+      "confidence": 88.3,
+      "bbox": [
+        538,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 5
+    },
+    {
+      "text": "arid",
+      "confidence": 94.2,
+      "bbox": [
+        650,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 6
+    },
+    {
+      "text": "agxicultural",
+      "confidence": 55.1,
+      "bbox": [
+        732,
+        140,
+        190,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 7
+    },
+    {
+      "text": "belts",
+      "confidence": 90.0,
+      "bbox": [
+        934,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 8
+    },
+    {
+      "text": "demonstrates",
+      "confidence": 91.6,
+      "bbox": [
+        1031,
+        140,
+        190,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 9
+    },
+    {
+      "text": "that",
+      "confidence": 91.7,
+      "bbox": [
+        1233,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 10
+    },
+    {
+      "text": "precision",
+      "confidence": 91.1,
+      "bbox": [
+        1315,
+        140,
+        145,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 11
+    },
+    {
+      "text": "micro-irrigation",
+      "confidence": 92.6,
+      "bbox": [
+        1472,
+        140,
+        250,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 12
+    },
+    {
+      "text": "systems",
+      "confidence": 93.2,
+      "bbox": [
+        1734,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 13
+    },
+    {
+      "text": "have",
+      "confidence": 88.6,
+      "bbox": [
+        1861,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 14
+    },
+    {
+      "text": "achieved",
+      "confidence": 90.5,
+      "bbox": [
+        1943,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 15
+    },
+    {
+      "text": "a",
+      "confidence": 88.8,
+      "bbox": [
+        2085,
+        140,
+        25,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 16
+    },
+    {
+      "text": "documented",
+      "confidence": 88.4,
+      "bbox": [
+        2122,
+        140,
+        160,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 17
+    },
+    {
+      "text": "x4",
+      "confidence": 40.9,
+      "bbox": [
+        2294,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 18
+    },
+    {
+      "text": "percent",
+      "confidence": 90.6,
+      "bbox": [
+        2346,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 19
+    },
+    {
+      "text": "reduction",
+      "confidence": 89.3,
+      "bbox": [
+        2473,
+        140,
+        145,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 20
+    },
+    {
+      "text": "in",
+      "confidence": 93.1,
+      "bbox": [
+        2630,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 21
+    },
+    {
+      "text": "total",
+      "confidence": 92.1,
+      "bbox": [
+        2682,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 22
+    },
+    {
+      "text": "water",
+      "confidence": 98.6,
+      "bbox": [
+        2779,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 23
+    },
+    {
+      "text": "consumption.",
+      "confidence": 96.6,
+      "bbox": [
+        2876,
+        140,
+        190,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 24
+    },
+    {
+      "text": "Concurrently,",
+      "confidence": 91.4,
+      "bbox": [
+        3078,
+        140,
+        205,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 25
+    },
+    {
+      "text": "average",
+      "confidence": 98.2,
+      "bbox": [
+        3295,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 26
+    },
+    {
+      "text": "crop",
+      "confidence": 98.0,
+      "bbox": [
+        3422,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 27
+    },
+    {
+      "text": "yield",
+      "confidence": 98.4,
+      "bbox": [
+        3504,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 28
+    },
+    {
+      "text": "across",
+      "confidence": 94.5,
+      "bbox": [
+        3601,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 29
+    },
+    {
+      "text": "wheat",
+      "confidence": 90.7,
+      "bbox": [
+        3713,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 30
+    },
+    {
+      "text": "and",
+      "confidence": 91.3,
+      "bbox": [
+        3810,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 31
+    },
+    {
+      "text": "legumes",
+      "confidence": 96.9,
+      "bbox": [
+        3877,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 32
+    },
+    {
+      "text": "expanded",
+      "confidence": 94.2,
+      "bbox": [
+        4004,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 33
+    },
+    {
+      "text": "bx",
+      "confidence": 51.2,
+      "bbox": [
+        4146,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 34
+    },
+    {
+      "text": "x8",
+      "confidence": 55.3,
+      "bbox": [
+        4198,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 35
+    },
+    {
+      "text": "percent.",
+      "confidence": 97.0,
+      "bbox": [
+        4250,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 36
+    },
+    {
+      "text": "To",
+      "confidence": 98.6,
+      "bbox": [
+        90,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 1
+    },
+    {
+      "text": "incentivize",
+      "confidence": 97.1,
+      "bbox": [
+        142,
+        180,
+        175,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 2
+    },
+    {
+      "text": "technology",
+      "confidence": 92.8,
+      "bbox": [
+        329,
+        180,
+        160,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 3
+    },
+    {
+      "text": "adoption",
+      "confidence": 98.6,
+      "bbox": [
+        501,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 4
+    },
+    {
+      "text": "among",
+      "confidence": 96.9,
+      "bbox": [
+        643,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 5
+    },
+    {
+      "text": "smallholders,",
+      "confidence": 93.3,
+      "bbox": [
+        740,
+        180,
+        205,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 6
+    },
+    {
+      "text": "the",
+      "confidence": 96.0,
+      "bbox": [
+        957,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 7
+    },
+    {
+      "text": "National",
+      "confidence": 97.4,
+      "bbox": [
+        1024,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 8
+    },
+    {
+      "text": "Water",
+      "confidence": 89.0,
+      "bbox": [
+        1166,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 9
+    },
+    {
+      "text": "Mission",
+      "confidence": 90.7,
+      "bbox": [
+        1263,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 10
+    },
+    {
+      "text": "provides",
+      "confidence": 94.7,
+      "bbox": [
+        1390,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 11
+    },
+    {
+      "text": "a",
+      "confidence": 92.2,
+      "bbox": [
+        1532,
+        180,
+        25,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 12
+    },
+    {
+      "text": "fixancial",
+      "confidence": 62.6,
+      "bbox": [
+        1569,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 13
+    },
+    {
+      "text": "subsidy",
+      "confidence": 91.9,
+      "bbox": [
+        1726,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 14
+    },
+    {
+      "text": "of",
+      "confidence": 91.1,
+      "bbox": [
+        1853,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 15
+    },
+    {
+      "text": "55",
+      "confidence": 97.7,
+      "bbox": [
+        1905,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 16
+    },
+    {
+      "text": "percent",
+      "confidence": 93.7,
+      "bbox": [
+        1957,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 17
+    },
+    {
+      "text": "for",
+      "confidence": 90.7,
+      "bbox": [
+        2084,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 18
+    },
+    {
+      "text": "drip",
+      "confidence": 94.1,
+      "bbox": [
+        2151,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 19
+    },
+    {
+      "text": "and",
+      "confidence": 93.2,
+      "bbox": [
+        2233,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 20
+    },
+    {
+      "text": "sprinkler",
+      "confidence": 92.9,
+      "bbox": [
+        2300,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 21
+    },
+    {
+      "text": "instal1ations",
+      "confidence": 42.6,
+      "bbox": [
+        2457,
+        180,
+        205,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 22
+    },
+    {
+      "text": "to",
+      "confidence": 91.4,
+      "bbox": [
+        2674,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 23
+    },
+    {
+      "text": "farmers",
+      "confidence": 93.2,
+      "bbox": [
+        2726,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 24
+    },
+    {
+      "text": "owning",
+      "confidence": 92.7,
+      "bbox": [
+        2853,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 25
+    },
+    {
+      "text": "less",
+      "confidence": 91.6,
+      "bbox": [
+        2965,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 26
+    },
+    {
+      "text": "than",
+      "confidence": 91.0,
+      "bbox": [
+        3047,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 27
+    },
+    {
+      "text": "two",
+      "confidence": 89.3,
+      "bbox": [
+        3129,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 28
+    },
+    {
+      "text": "hectares.",
+      "confidence": 89.3,
+      "bbox": [
+        3196,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 29
+    },
+    {
+      "text": "The",
+      "confidence": 96.4,
+      "bbox": [
+        3353,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 30
+    },
+    {
+      "text": "total",
+      "confidence": 90.4,
+      "bbox": [
+        3420,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 31
+    },
+    {
+      "text": "agricultural",
+      "confidence": 96.0,
+      "bbox": [
+        3517,
+        180,
+        190,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 32
+    },
+    {
+      "text": "area",
+      "confidence": 93.8,
+      "bbox": [
+        3719,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 33
+    },
+    {
+      "text": "converted",
+      "confidence": 89.1,
+      "bbox": [
+        3801,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 34
+    },
+    {
+      "text": "under",
+      "confidence": 90.5,
+      "bbox": [
+        3958,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 35
+    },
+    {
+      "text": "this",
+      "confidence": 88.2,
+      "bbox": [
+        4055,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 36
+    },
+    {
+      "text": "policy",
+      "confidence": 91.0,
+      "bbox": [
+        4137,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 37
+    },
+    {
+      "text": "has",
+      "confidence": 94.1,
+      "bbox": [
+        4249,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 38
+    },
+    {
+      "text": "surpassed",
+      "confidence": 89.4,
+      "bbox": [
+        4316,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 39
+    },
+    {
+      "text": "1.6",
+      "confidence": 93.4,
+      "bbox": [
+        4473,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 40
+    },
+    {
+      "text": "million",
+      "confidence": 94.3,
+      "bbox": [
+        4540,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 41
+    },
+    {
+      "text": "hectares.",
+      "confidence": 92.8,
+      "bbox": [
+        4667,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 42
+    },
+    {
+      "text": "Participating",
+      "confidence": 88.6,
+      "bbox": [
+        90,
+        220,
+        205,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 1
+    },
+    {
+      "text": "agricultural",
+      "confidence": 93.3,
+      "bbox": [
+        307,
+        220,
+        190,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 2
+    },
+    {
+      "text": "cooperatives",
+      "confidence": 92.4,
+      "bbox": [
+        509,
+        220,
+        190,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 3
+    },
+    {
+      "text": "xave",
+      "confidence": 54.7,
+      "bbox": [
+        711,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 4
+    },
+    {
+      "text": "integrated",
+      "confidence": 96.9,
+      "bbox": [
+        793,
+        220,
+        160,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 5
+    },
+    {
+      "text": "low-cost",
+      "confidence": 88.9,
+      "bbox": [
+        965,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 6
+    },
+    {
+      "text": "capacitive",
+      "confidence": 94.1,
+      "bbox": [
+        1107,
+        220,
+        160,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 7
+    },
+    {
+      "text": "soil",
+      "confidence": 94.6,
+      "bbox": [
+        1279,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 8
+    },
+    {
+      "text": "moisture",
+      "confidence": 96.5,
+      "bbox": [
+        1361,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 9
+    },
+    {
+      "text": "telemetry.",
+      "confidence": 98.0,
+      "bbox": [
+        1503,
+        220,
+        160,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 10
+    },
+    {
+      "text": "Sensors",
+      "confidence": 94.5,
+      "bbox": [
+        1675,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 11
+    },
+    {
+      "text": "communicate",
+      "confidence": 94.3,
+      "bbox": [
+        1802,
+        220,
+        175,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 12
+    },
+    {
+      "text": "uia",
+      "confidence": 66.6,
+      "bbox": [
+        1989,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 13
+    },
+    {
+      "text": "cellular",
+      "confidence": 90.3,
+      "bbox": [
+        2056,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 14
+    },
+    {
+      "text": "telemetry",
+      "confidence": 95.3,
+      "bbox": [
+        2198,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 15
+    },
+    {
+      "text": "to",
+      "confidence": 89.9,
+      "bbox": [
+        2355,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 16
+    },
+    {
+      "text": "automatcd",
+      "confidence": 32.1,
+      "bbox": [
+        2407,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 17
+    },
+    {
+      "text": "drip",
+      "confidence": 93.2,
+      "bbox": [
+        2564,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 18
+    },
+    {
+      "text": "manixolds,",
+      "confidence": 42.4,
+      "bbox": [
+        2646,
+        220,
+        160,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 19
+    },
+    {
+      "text": "delivering",
+      "confidence": 93.0,
+      "bbox": [
+        2818,
+        220,
+        160,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 20
+    },
+    {
+      "text": "calibrated",
+      "confidence": 98.2,
+      "bbox": [
+        2990,
+        220,
+        160,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 21
+    },
+    {
+      "text": "nutrient",
+      "confidence": 94.9,
+      "bbox": [
+        3162,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 22
+    },
+    {
+      "text": "fertigation",
+      "confidence": 98.3,
+      "bbox": [
+        3304,
+        220,
+        175,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 23
+    },
+    {
+      "text": "cycles",
+      "confidence": 94.0,
+      "bbox": [
+        3491,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 24
+    },
+    {
+      "text": "directly",
+      "confidence": 98.0,
+      "bbox": [
+        3603,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 25
+    },
+    {
+      "text": "to",
+      "confidence": 88.8,
+      "bbox": [
+        3745,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 26
+    },
+    {
+      "text": "root",
+      "confidence": 91.4,
+      "bbox": [
+        3797,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 27
+    },
+    {
+      "text": "systems.",
+      "confidence": 94.3,
+      "bbox": [
+        3879,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 28
+    }
+  ],
+  "execution_time_sec": 0.0021
+}

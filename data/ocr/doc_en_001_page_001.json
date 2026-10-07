@@ -1,0 +1,1500 @@
+{
+  "page_id": "doc_en_001_page_001",
+  "document_id": "doc_en_001",
+  "language": "en",
+  "engine": "mock_ocr",
+  "engine_version": "1.0.0-synthetic",
+  "preprocessing_config": {
+    "original_shape": [
+      1754,
+      1240,
+      3
+    ],
+    "processed_shape": [
+      1754,
+      1240
+    ],
+    "operations_applied": [
+      "grayscale",
+      "denoise",
+      "deskew",
+      "normalize",
+      "threshold_otsu"
+    ],
+    "execution_time_sec": 1.3410338000394404,
+    "metadata": {
+      "denoise_h": 10.0,
+      "skew_angle_deg": 0.0,
+      "method": "otsu",
+      "threshold_value": 151.0
+    }
+  },
+  "raw_text": "National Renewable Energy Transition Report 2025 Thc Federal Ministry for Energy has formalized the National Rcnewable Transition Roadmap, aiming to acxieve a cumulative solar energy generation capacity 0f 300 gigawatts by the year 2030. Rapid infrastructure expansion throughout western corridors has accelerated utility-scale grid modernization. During txe fiscal year 2024, institutional capital investment reached $42.5 billion across utility-scale photovoltaic solar parks and battery storage focilities. The westerx desert states of Rajasthan and Gujarat accounted for over x2 xercent of new generation permits. To mitigate diurnal intermittency, the Energy Commission has mandated the deployment of grid-scale battery energy storage systems with an aggregate capacity of 25 gigawatt-hours by 2027. High-voltage transmisxion lines ore curxently being constructed t0 evacuate power to central industrial zones.",
+  "words": [
+    {
+      "text": "National",
+      "confidence": 88.3,
+      "bbox": [
+        90,
+        100,
+        130,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 1
+    },
+    {
+      "text": "Renewable",
+      "confidence": 90.5,
+      "bbox": [
+        232,
+        100,
+        145,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 2
+    },
+    {
+      "text": "Energy",
+      "confidence": 95.4,
+      "bbox": [
+        389,
+        100,
+        100,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 3
+    },
+    {
+      "text": "Transition",
+      "confidence": 89.0,
+      "bbox": [
+        501,
+        100,
+        160,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 4
+    },
+    {
+      "text": "Report",
+      "confidence": 88.3,
+      "bbox": [
+        673,
+        100,
+        100,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 5
+    },
+    {
+      "text": "2025",
+      "confidence": 93.6,
+      "bbox": [
+        785,
+        100,
+        70,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 6
+    },
+    {
+      "text": "Thc",
+      "confidence": 39.2,
+      "bbox": [
+        90,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 1
+    },
+    {
+      "text": "Federal",
+      "confidence": 92.6,
+      "bbox": [
+        157,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 2
+    },
+    {
+      "text": "Ministry",
+      "confidence": 91.1,
+      "bbox": [
+        284,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 3
+    },
+    {
+      "text": "for",
+      "confidence": 96.3,
+      "bbox": [
+        426,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 4
+    },
+    {
+      "text": "Energy",
+      "confidence": 92.6,
+      "bbox": [
+        493,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 5
+    },
+    {
+      "text": "has",
+      "confidence": 90.4,
+      "bbox": [
+        605,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 6
+    },
+    {
+      "text": "formalized",
+      "confidence": 89.1,
+      "bbox": [
+        672,
+        140,
+        160,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 7
+    },
+    {
+      "text": "the",
+      "confidence": 91.9,
+      "bbox": [
+        844,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 8
+    },
+    {
+      "text": "National",
+      "confidence": 90.9,
+      "bbox": [
+        911,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 9
+    },
+    {
+      "text": "Rcnewable",
+      "confidence": 48.5,
+      "bbox": [
+        1053,
+        140,
+        145,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 10
+    },
+    {
+      "text": "Transition",
+      "confidence": 92.2,
+      "bbox": [
+        1210,
+        140,
+        160,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 11
+    },
+    {
+      "text": "Roadmap,",
+      "confidence": 97.1,
+      "bbox": [
+        1382,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 12
+    },
+    {
+      "text": "aiming",
+      "confidence": 97.5,
+      "bbox": [
+        1524,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 13
+    },
+    {
+      "text": "to",
+      "confidence": 95.8,
+      "bbox": [
+        1636,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 14
+    },
+    {
+      "text": "acxieve",
+      "confidence": 40.2,
+      "bbox": [
+        1688,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 15
+    },
+    {
+      "text": "a",
+      "confidence": 98.8,
+      "bbox": [
+        1815,
+        140,
+        25,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 16
+    },
+    {
+      "text": "cumulative",
+      "confidence": 97.5,
+      "bbox": [
+        1852,
+        140,
+        160,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 17
+    },
+    {
+      "text": "solar",
+      "confidence": 93.0,
+      "bbox": [
+        2024,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 18
+    },
+    {
+      "text": "energy",
+      "confidence": 89.8,
+      "bbox": [
+        2121,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 19
+    },
+    {
+      "text": "generation",
+      "confidence": 95.4,
+      "bbox": [
+        2233,
+        140,
+        160,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 20
+    },
+    {
+      "text": "capacity",
+      "confidence": 95.5,
+      "bbox": [
+        2405,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 21
+    },
+    {
+      "text": "0f",
+      "confidence": 54.9,
+      "bbox": [
+        2547,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 22
+    },
+    {
+      "text": "300",
+      "confidence": 92.2,
+      "bbox": [
+        2599,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 23
+    },
+    {
+      "text": "gigawatts",
+      "confidence": 95.0,
+      "bbox": [
+        2666,
+        140,
+        145,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 24
+    },
+    {
+      "text": "by",
+      "confidence": 95.5,
+      "bbox": [
+        2823,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 25
+    },
+    {
+      "text": "the",
+      "confidence": 96.5,
+      "bbox": [
+        2875,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 26
+    },
+    {
+      "text": "year",
+      "confidence": 88.4,
+      "bbox": [
+        2942,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 27
+    },
+    {
+      "text": "2030.",
+      "confidence": 90.9,
+      "bbox": [
+        3024,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 28
+    },
+    {
+      "text": "Rapid",
+      "confidence": 98.4,
+      "bbox": [
+        3121,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 29
+    },
+    {
+      "text": "infrastructure",
+      "confidence": 91.5,
+      "bbox": [
+        3218,
+        140,
+        220,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 30
+    },
+    {
+      "text": "expansion",
+      "confidence": 92.4,
+      "bbox": [
+        3450,
+        140,
+        145,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 31
+    },
+    {
+      "text": "throughout",
+      "confidence": 93.0,
+      "bbox": [
+        3607,
+        140,
+        160,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 32
+    },
+    {
+      "text": "western",
+      "confidence": 90.7,
+      "bbox": [
+        3779,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 33
+    },
+    {
+      "text": "corridors",
+      "confidence": 90.9,
+      "bbox": [
+        3906,
+        140,
+        145,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 34
+    },
+    {
+      "text": "has",
+      "confidence": 97.9,
+      "bbox": [
+        4063,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 35
+    },
+    {
+      "text": "accelerated",
+      "confidence": 90.4,
+      "bbox": [
+        4130,
+        140,
+        175,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 36
+    },
+    {
+      "text": "utility-scale",
+      "confidence": 93.6,
+      "bbox": [
+        4317,
+        140,
+        205,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 37
+    },
+    {
+      "text": "grid",
+      "confidence": 88.5,
+      "bbox": [
+        4534,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 38
+    },
+    {
+      "text": "modernization.",
+      "confidence": 94.9,
+      "bbox": [
+        4616,
+        140,
+        220,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 39
+    },
+    {
+      "text": "During",
+      "confidence": 92.6,
+      "bbox": [
+        90,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 1
+    },
+    {
+      "text": "txe",
+      "confidence": 45.7,
+      "bbox": [
+        202,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 2
+    },
+    {
+      "text": "fiscal",
+      "confidence": 98.7,
+      "bbox": [
+        269,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 3
+    },
+    {
+      "text": "year",
+      "confidence": 88.1,
+      "bbox": [
+        381,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 4
+    },
+    {
+      "text": "2024,",
+      "confidence": 95.5,
+      "bbox": [
+        463,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 5
+    },
+    {
+      "text": "institutional",
+      "confidence": 90.9,
+      "bbox": [
+        560,
+        180,
+        205,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 6
+    },
+    {
+      "text": "capital",
+      "confidence": 89.2,
+      "bbox": [
+        777,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 7
+    },
+    {
+      "text": "investment",
+      "confidence": 93.0,
+      "bbox": [
+        904,
+        180,
+        160,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 8
+    },
+    {
+      "text": "reached",
+      "confidence": 97.6,
+      "bbox": [
+        1076,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 9
+    },
+    {
+      "text": "$42.5",
+      "confidence": 93.5,
+      "bbox": [
+        1203,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 10
+    },
+    {
+      "text": "billion",
+      "confidence": 98.0,
+      "bbox": [
+        1300,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 11
+    },
+    {
+      "text": "across",
+      "confidence": 91.3,
+      "bbox": [
+        1427,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 12
+    },
+    {
+      "text": "utility-scale",
+      "confidence": 94.7,
+      "bbox": [
+        1539,
+        180,
+        205,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 13
+    },
+    {
+      "text": "photovoltaic",
+      "confidence": 96.4,
+      "bbox": [
+        1756,
+        180,
+        190,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 14
+    },
+    {
+      "text": "solar",
+      "confidence": 96.6,
+      "bbox": [
+        1958,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 15
+    },
+    {
+      "text": "parks",
+      "confidence": 88.0,
+      "bbox": [
+        2055,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 16
+    },
+    {
+      "text": "and",
+      "confidence": 88.2,
+      "bbox": [
+        2152,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 17
+    },
+    {
+      "text": "battery",
+      "confidence": 97.7,
+      "bbox": [
+        2219,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 18
+    },
+    {
+      "text": "storage",
+      "confidence": 91.4,
+      "bbox": [
+        2346,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 19
+    },
+    {
+      "text": "focilities.",
+      "confidence": 63.6,
+      "bbox": [
+        2473,
+        180,
+        175,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 20
+    },
+    {
+      "text": "The",
+      "confidence": 93.3,
+      "bbox": [
+        2660,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 21
+    },
+    {
+      "text": "westerx",
+      "confidence": 59.4,
+      "bbox": [
+        2727,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 22
+    },
+    {
+      "text": "desert",
+      "confidence": 95.3,
+      "bbox": [
+        2854,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 23
+    },
+    {
+      "text": "states",
+      "confidence": 89.8,
+      "bbox": [
+        2966,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 24
+    },
+    {
+      "text": "of",
+      "confidence": 94.7,
+      "bbox": [
+        3078,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 25
+    },
+    {
+      "text": "Rajasthan",
+      "confidence": 98.2,
+      "bbox": [
+        3130,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 26
+    },
+    {
+      "text": "and",
+      "confidence": 95.6,
+      "bbox": [
+        3287,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 27
+    },
+    {
+      "text": "Gujarat",
+      "confidence": 92.4,
+      "bbox": [
+        3354,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 28
+    },
+    {
+      "text": "accounted",
+      "confidence": 92.1,
+      "bbox": [
+        3481,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 29
+    },
+    {
+      "text": "for",
+      "confidence": 93.0,
+      "bbox": [
+        3638,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 30
+    },
+    {
+      "text": "over",
+      "confidence": 88.7,
+      "bbox": [
+        3705,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 31
+    },
+    {
+      "text": "x2",
+      "confidence": 51.9,
+      "bbox": [
+        3787,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 32
+    },
+    {
+      "text": "xercent",
+      "confidence": 57.5,
+      "bbox": [
+        3839,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 33
+    },
+    {
+      "text": "of",
+      "confidence": 98.0,
+      "bbox": [
+        3966,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 34
+    },
+    {
+      "text": "new",
+      "confidence": 88.8,
+      "bbox": [
+        4018,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 35
+    },
+    {
+      "text": "generation",
+      "confidence": 95.4,
+      "bbox": [
+        4085,
+        180,
+        160,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 36
+    },
+    {
+      "text": "permits.",
+      "confidence": 89.5,
+      "bbox": [
+        4257,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 37
+    },
+    {
+      "text": "To",
+      "confidence": 94.3,
+      "bbox": [
+        90,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 1
+    },
+    {
+      "text": "mitigate",
+      "confidence": 96.6,
+      "bbox": [
+        142,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 2
+    },
+    {
+      "text": "diurnal",
+      "confidence": 90.1,
+      "bbox": [
+        284,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 3
+    },
+    {
+      "text": "intermittency,",
+      "confidence": 92.7,
+      "bbox": [
+        411,
+        220,
+        220,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 4
+    },
+    {
+      "text": "the",
+      "confidence": 93.1,
+      "bbox": [
+        643,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 5
+    },
+    {
+      "text": "Energy",
+      "confidence": 95.4,
+      "bbox": [
+        710,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 6
+    },
+    {
+      "text": "Commission",
+      "confidence": 89.1,
+      "bbox": [
+        822,
+        220,
+        160,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 7
+    },
+    {
+      "text": "has",
+      "confidence": 91.7,
+      "bbox": [
+        994,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 8
+    },
+    {
+      "text": "mandated",
+      "confidence": 90.7,
+      "bbox": [
+        1061,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 9
+    },
+    {
+      "text": "the",
+      "confidence": 92.9,
+      "bbox": [
+        1203,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 10
+    },
+    {
+      "text": "deployment",
+      "confidence": 91.1,
+      "bbox": [
+        1270,
+        220,
+        160,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 11
+    },
+    {
+      "text": "of",
+      "confidence": 98.2,
+      "bbox": [
+        1442,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 12
+    },
+    {
+      "text": "grid-scale",
+      "confidence": 97.5,
+      "bbox": [
+        1494,
+        220,
+        160,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 13
+    },
+    {
+      "text": "battery",
+      "confidence": 88.6,
+      "bbox": [
+        1666,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 14
+    },
+    {
+      "text": "energy",
+      "confidence": 97.2,
+      "bbox": [
+        1793,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 15
+    },
+    {
+      "text": "storage",
+      "confidence": 98.2,
+      "bbox": [
+        1905,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 16
+    },
+    {
+      "text": "systems",
+      "confidence": 89.8,
+      "bbox": [
+        2032,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 17
+    },
+    {
+      "text": "with",
+      "confidence": 90.4,
+      "bbox": [
+        2159,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 18
+    },
+    {
+      "text": "an",
+      "confidence": 88.6,
+      "bbox": [
+        2241,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 19
+    },
+    {
+      "text": "aggregate",
+      "confidence": 98.8,
+      "bbox": [
+        2293,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 20
+    },
+    {
+      "text": "capacity",
+      "confidence": 96.6,
+      "bbox": [
+        2450,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 21
+    },
+    {
+      "text": "of",
+      "confidence": 92.7,
+      "bbox": [
+        2592,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 22
+    },
+    {
+      "text": "25",
+      "confidence": 98.9,
+      "bbox": [
+        2644,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 23
+    },
+    {
+      "text": "gigawatt-hours",
+      "confidence": 95.9,
+      "bbox": [
+        2696,
+        220,
+        220,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 24
+    },
+    {
+      "text": "by",
+      "confidence": 91.3,
+      "bbox": [
+        2928,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 25
+    },
+    {
+      "text": "2027.",
+      "confidence": 94.4,
+      "bbox": [
+        2980,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 26
+    },
+    {
+      "text": "High-voltage",
+      "confidence": 96.2,
+      "bbox": [
+        3077,
+        220,
+        190,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 27
+    },
+    {
+      "text": "transmisxion",
+      "confidence": 53.0,
+      "bbox": [
+        3279,
+        220,
+        190,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 28
+    },
+    {
+      "text": "lines",
+      "confidence": 93.8,
+      "bbox": [
+        3481,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 29
+    },
+    {
+      "text": "ore",
+      "confidence": 50.3,
+      "bbox": [
+        3578,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 30
+    },
+    {
+      "text": "curxently",
+      "confidence": 34.4,
+      "bbox": [
+        3645,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 31
+    },
+    {
+      "text": "being",
+      "confidence": 98.4,
+      "bbox": [
+        3802,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 32
+    },
+    {
+      "text": "constructed",
+      "confidence": 94.4,
+      "bbox": [
+        3899,
+        220,
+        175,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 33
+    },
+    {
+      "text": "t0",
+      "confidence": 35.0,
+      "bbox": [
+        4086,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 34
+    },
+    {
+      "text": "evacuate",
+      "confidence": 90.2,
+      "bbox": [
+        4138,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 35
+    },
+    {
+      "text": "power",
+      "confidence": 90.6,
+      "bbox": [
+        4280,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 36
+    },
+    {
+      "text": "to",
+      "confidence": 95.4,
+      "bbox": [
+        4377,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 37
+    },
+    {
+      "text": "central",
+      "confidence": 91.5,
+      "bbox": [
+        4429,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 38
+    },
+    {
+      "text": "industrial",
+      "confidence": 88.8,
+      "bbox": [
+        4556,
+        220,
+        160,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 39
+    },
+    {
+      "text": "zones.",
+      "confidence": 99.0,
+      "bbox": [
+        4728,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 40
+    }
+  ],
+  "execution_time_sec": 0.0016
+}

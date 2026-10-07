@@ -1,0 +1,1728 @@
+{
+  "page_id": "doc_hi_002_page_001",
+  "document_id": "doc_hi_002",
+  "language": "hi",
+  "engine": "mock_ocr",
+  "engine_version": "1.0.0-synthetic",
+  "preprocessing_config": {
+    "original_shape": [
+      1754,
+      1240,
+      3
+    ],
+    "processed_shape": [
+      1754,
+      1240
+    ],
+    "operations_applied": [
+      "grayscale",
+      "denoise",
+      "deskew",
+      "normalize",
+      "threshold_otsu"
+    ],
+    "execution_time_sec": 1.3242508999537677,
+    "metadata": {
+      "denoise_h": 10.0,
+      "skew_angle_deg": 0.0,
+      "method": "otsu",
+      "threshold_value": 149.0
+    }
+  },
+  "raw_text": "प्रधानमंत्री फसल बीमा योजना एवं डिजिटल दावा निपटान कृषि एवं किसान कल्याण मंत्रालय द्वारा संचालित प्टधानमंत्री फसल बीमा योजना में किसानों के लिए न्यूनतम प्रीमियम दरें लागू हैं। खरीफ फसलों के लिए किसानों को २.० प्रतिशत तथा रबी रसलों के लिए केवल १.५ प्रतिशत प्रीमियम देना होता है। वाणिज्यिक व बागवानी फसलों के लिए यह दर ५.० प्रतिशत है। प्राकृतिक आपदाओं अथवा बेमौसम वर्षा रे फसलों को होने वाले नुकसान का सटीक आकरन उपग्रह इमेजरी और रिमोट सेंसिंग द्वारा किया जाता है। सर्वेक्षण पूरा होते के पश्चात अधिकतम २१ दिन के भीतर बीमा दावों का निपटान सीधे किसान के बैंक खाते में किया जाता है। वर्ष २०१६ से अब रक प्राकृतिक रपदाओं से प्रभावित किसानों को कुल ₹१.२५ लाख करोड़ से अधिक मूल्य के बीमा दावों का सफल भुगतान डीबीटी (प्रत्यक्ष लाभ अंतरण) प्रणाली के माध्यम से किया जा चुका है।",
+  "words": [
+    {
+      "text": "प्रधानमंत्री",
+      "confidence": 97.1,
+      "bbox": [
+        90,
+        100,
+        190,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 1
+    },
+    {
+      "text": "फसल",
+      "confidence": 95.8,
+      "bbox": [
+        292,
+        100,
+        55,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 2
+    },
+    {
+      "text": "बीमा",
+      "confidence": 97.0,
+      "bbox": [
+        359,
+        100,
+        70,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 3
+    },
+    {
+      "text": "योजना",
+      "confidence": 95.4,
+      "bbox": [
+        441,
+        100,
+        85,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 4
+    },
+    {
+      "text": "एवं",
+      "confidence": 94.4,
+      "bbox": [
+        538,
+        100,
+        55,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 5
+    },
+    {
+      "text": "डिजिटल",
+      "confidence": 96.0,
+      "bbox": [
+        605,
+        100,
+        100,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 6
+    },
+    {
+      "text": "दावा",
+      "confidence": 88.3,
+      "bbox": [
+        717,
+        100,
+        70,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 7
+    },
+    {
+      "text": "निपटान",
+      "confidence": 98.6,
+      "bbox": [
+        799,
+        100,
+        100,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 8
+    },
+    {
+      "text": "कृषि",
+      "confidence": 96.5,
+      "bbox": [
+        90,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 1
+    },
+    {
+      "text": "एवं",
+      "confidence": 95.9,
+      "bbox": [
+        172,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 2
+    },
+    {
+      "text": "किसान",
+      "confidence": 89.9,
+      "bbox": [
+        239,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 3
+    },
+    {
+      "text": "कल्याण",
+      "confidence": 94.8,
+      "bbox": [
+        336,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 4
+    },
+    {
+      "text": "मंत्रालय",
+      "confidence": 89.6,
+      "bbox": [
+        448,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 5
+    },
+    {
+      "text": "द्वारा",
+      "confidence": 88.3,
+      "bbox": [
+        590,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 6
+    },
+    {
+      "text": "संचालित",
+      "confidence": 89.2,
+      "bbox": [
+        702,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 7
+    },
+    {
+      "text": "प्टधानमंत्री",
+      "confidence": 43.3,
+      "bbox": [
+        829,
+        140,
+        190,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 8
+    },
+    {
+      "text": "फसल",
+      "confidence": 90.2,
+      "bbox": [
+        1031,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 9
+    },
+    {
+      "text": "बीमा",
+      "confidence": 94.7,
+      "bbox": [
+        1098,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 10
+    },
+    {
+      "text": "योजना",
+      "confidence": 97.3,
+      "bbox": [
+        1180,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 11
+    },
+    {
+      "text": "में",
+      "confidence": 95.8,
+      "bbox": [
+        1277,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 12
+    },
+    {
+      "text": "किसानों",
+      "confidence": 94.2,
+      "bbox": [
+        1344,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 13
+    },
+    {
+      "text": "के",
+      "confidence": 93.3,
+      "bbox": [
+        1471,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 14
+    },
+    {
+      "text": "लिए",
+      "confidence": 98.5,
+      "bbox": [
+        1523,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 15
+    },
+    {
+      "text": "न्यूनतम",
+      "confidence": 93.9,
+      "bbox": [
+        1590,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 16
+    },
+    {
+      "text": "प्रीमियम",
+      "confidence": 95.4,
+      "bbox": [
+        1717,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 17
+    },
+    {
+      "text": "दरें",
+      "confidence": 95.5,
+      "bbox": [
+        1859,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 18
+    },
+    {
+      "text": "लागू",
+      "confidence": 90.9,
+      "bbox": [
+        1941,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 19
+    },
+    {
+      "text": "हैं।",
+      "confidence": 98.5,
+      "bbox": [
+        2023,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 20
+    },
+    {
+      "text": "खरीफ",
+      "confidence": 91.3,
+      "bbox": [
+        2105,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 21
+    },
+    {
+      "text": "फसलों",
+      "confidence": 98.8,
+      "bbox": [
+        2187,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 22
+    },
+    {
+      "text": "के",
+      "confidence": 95.8,
+      "bbox": [
+        2284,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 23
+    },
+    {
+      "text": "लिए",
+      "confidence": 93.4,
+      "bbox": [
+        2336,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 24
+    },
+    {
+      "text": "किसानों",
+      "confidence": 94.2,
+      "bbox": [
+        2403,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 25
+    },
+    {
+      "text": "को",
+      "confidence": 95.9,
+      "bbox": [
+        2530,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 26
+    },
+    {
+      "text": "२.०",
+      "confidence": 94.3,
+      "bbox": [
+        2582,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 27
+    },
+    {
+      "text": "प्रतिशत",
+      "confidence": 97.9,
+      "bbox": [
+        2649,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 28
+    },
+    {
+      "text": "तथा",
+      "confidence": 91.8,
+      "bbox": [
+        2776,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 29
+    },
+    {
+      "text": "रबी",
+      "confidence": 89.6,
+      "bbox": [
+        2843,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 30
+    },
+    {
+      "text": "रसलों",
+      "confidence": 66.4,
+      "bbox": [
+        2910,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 31
+    },
+    {
+      "text": "के",
+      "confidence": 92.9,
+      "bbox": [
+        3007,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 32
+    },
+    {
+      "text": "लिए",
+      "confidence": 93.3,
+      "bbox": [
+        3059,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 33
+    },
+    {
+      "text": "केवल",
+      "confidence": 93.9,
+      "bbox": [
+        3126,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 34
+    },
+    {
+      "text": "१.५",
+      "confidence": 95.7,
+      "bbox": [
+        3208,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 35
+    },
+    {
+      "text": "प्रतिशत",
+      "confidence": 94.8,
+      "bbox": [
+        3275,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 36
+    },
+    {
+      "text": "प्रीमियम",
+      "confidence": 90.7,
+      "bbox": [
+        3402,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 37
+    },
+    {
+      "text": "देना",
+      "confidence": 93.8,
+      "bbox": [
+        3544,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 38
+    },
+    {
+      "text": "होता",
+      "confidence": 88.6,
+      "bbox": [
+        3626,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 39
+    },
+    {
+      "text": "है।",
+      "confidence": 95.9,
+      "bbox": [
+        3708,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 40
+    },
+    {
+      "text": "वाणिज्यिक",
+      "confidence": 96.5,
+      "bbox": [
+        3775,
+        140,
+        145,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 41
+    },
+    {
+      "text": "व",
+      "confidence": 88.1,
+      "bbox": [
+        3932,
+        140,
+        25,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 42
+    },
+    {
+      "text": "बागवानी",
+      "confidence": 98.2,
+      "bbox": [
+        3969,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 43
+    },
+    {
+      "text": "फसलों",
+      "confidence": 98.3,
+      "bbox": [
+        4096,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 44
+    },
+    {
+      "text": "के",
+      "confidence": 93.3,
+      "bbox": [
+        4193,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 45
+    },
+    {
+      "text": "लिए",
+      "confidence": 98.6,
+      "bbox": [
+        4245,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 46
+    },
+    {
+      "text": "यह",
+      "confidence": 95.1,
+      "bbox": [
+        4312,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 47
+    },
+    {
+      "text": "दर",
+      "confidence": 89.0,
+      "bbox": [
+        4364,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 48
+    },
+    {
+      "text": "५.०",
+      "confidence": 93.9,
+      "bbox": [
+        4416,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 49
+    },
+    {
+      "text": "प्रतिशत",
+      "confidence": 98.3,
+      "bbox": [
+        4483,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 50
+    },
+    {
+      "text": "है।",
+      "confidence": 89.9,
+      "bbox": [
+        4610,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 51
+    },
+    {
+      "text": "प्राकृतिक",
+      "confidence": 89.9,
+      "bbox": [
+        90,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 1
+    },
+    {
+      "text": "आपदाओं",
+      "confidence": 99.0,
+      "bbox": [
+        247,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 2
+    },
+    {
+      "text": "अथवा",
+      "confidence": 93.4,
+      "bbox": [
+        359,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 3
+    },
+    {
+      "text": "बेमौसम",
+      "confidence": 98.6,
+      "bbox": [
+        441,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 4
+    },
+    {
+      "text": "वर्षा",
+      "confidence": 97.6,
+      "bbox": [
+        553,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 5
+    },
+    {
+      "text": "रे",
+      "confidence": 52.4,
+      "bbox": [
+        650,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 6
+    },
+    {
+      "text": "फसलों",
+      "confidence": 91.7,
+      "bbox": [
+        702,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 7
+    },
+    {
+      "text": "को",
+      "confidence": 95.1,
+      "bbox": [
+        799,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 8
+    },
+    {
+      "text": "होने",
+      "confidence": 97.8,
+      "bbox": [
+        851,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 9
+    },
+    {
+      "text": "वाले",
+      "confidence": 93.5,
+      "bbox": [
+        933,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 10
+    },
+    {
+      "text": "नुकसान",
+      "confidence": 96.9,
+      "bbox": [
+        1015,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 11
+    },
+    {
+      "text": "का",
+      "confidence": 96.0,
+      "bbox": [
+        1127,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 12
+    },
+    {
+      "text": "सटीक",
+      "confidence": 95.9,
+      "bbox": [
+        1179,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 13
+    },
+    {
+      "text": "आकरन",
+      "confidence": 44.1,
+      "bbox": [
+        1261,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 14
+    },
+    {
+      "text": "उपग्रह",
+      "confidence": 96.3,
+      "bbox": [
+        1343,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 15
+    },
+    {
+      "text": "इमेजरी",
+      "confidence": 97.4,
+      "bbox": [
+        1455,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 16
+    },
+    {
+      "text": "और",
+      "confidence": 97.1,
+      "bbox": [
+        1567,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 17
+    },
+    {
+      "text": "रिमोट",
+      "confidence": 89.0,
+      "bbox": [
+        1619,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 18
+    },
+    {
+      "text": "सेंसिंग",
+      "confidence": 90.0,
+      "bbox": [
+        1716,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 19
+    },
+    {
+      "text": "द्वारा",
+      "confidence": 91.6,
+      "bbox": [
+        1843,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 20
+    },
+    {
+      "text": "किया",
+      "confidence": 90.9,
+      "bbox": [
+        1955,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 21
+    },
+    {
+      "text": "जाता",
+      "confidence": 96.3,
+      "bbox": [
+        2037,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 22
+    },
+    {
+      "text": "है।",
+      "confidence": 91.3,
+      "bbox": [
+        2119,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 23
+    },
+    {
+      "text": "सर्वेक्षण",
+      "confidence": 88.1,
+      "bbox": [
+        2186,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 24
+    },
+    {
+      "text": "पूरा",
+      "confidence": 95.6,
+      "bbox": [
+        2343,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 25
+    },
+    {
+      "text": "होते",
+      "confidence": 36.3,
+      "bbox": [
+        2425,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 26
+    },
+    {
+      "text": "के",
+      "confidence": 95.5,
+      "bbox": [
+        2507,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 27
+    },
+    {
+      "text": "पश्चात",
+      "confidence": 97.8,
+      "bbox": [
+        2559,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 28
+    },
+    {
+      "text": "अधिकतम",
+      "confidence": 95.6,
+      "bbox": [
+        2671,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 29
+    },
+    {
+      "text": "२१",
+      "confidence": 98.3,
+      "bbox": [
+        2783,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 30
+    },
+    {
+      "text": "दिन",
+      "confidence": 90.4,
+      "bbox": [
+        2835,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 31
+    },
+    {
+      "text": "के",
+      "confidence": 93.3,
+      "bbox": [
+        2902,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 32
+    },
+    {
+      "text": "भीतर",
+      "confidence": 98.9,
+      "bbox": [
+        2954,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 33
+    },
+    {
+      "text": "बीमा",
+      "confidence": 95.7,
+      "bbox": [
+        3036,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 34
+    },
+    {
+      "text": "दावों",
+      "confidence": 96.3,
+      "bbox": [
+        3118,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 35
+    },
+    {
+      "text": "का",
+      "confidence": 97.1,
+      "bbox": [
+        3215,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 36
+    },
+    {
+      "text": "निपटान",
+      "confidence": 95.5,
+      "bbox": [
+        3267,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 37
+    },
+    {
+      "text": "सीधे",
+      "confidence": 96.7,
+      "bbox": [
+        3379,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 38
+    },
+    {
+      "text": "किसान",
+      "confidence": 93.8,
+      "bbox": [
+        3461,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 39
+    },
+    {
+      "text": "के",
+      "confidence": 98.1,
+      "bbox": [
+        3558,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 40
+    },
+    {
+      "text": "बैंक",
+      "confidence": 97.1,
+      "bbox": [
+        3610,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 41
+    },
+    {
+      "text": "खाते",
+      "confidence": 90.2,
+      "bbox": [
+        3692,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 42
+    },
+    {
+      "text": "में",
+      "confidence": 89.8,
+      "bbox": [
+        3774,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 43
+    },
+    {
+      "text": "किया",
+      "confidence": 92.9,
+      "bbox": [
+        3841,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 44
+    },
+    {
+      "text": "जाता",
+      "confidence": 95.9,
+      "bbox": [
+        3923,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 45
+    },
+    {
+      "text": "है।",
+      "confidence": 97.9,
+      "bbox": [
+        4005,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 46
+    },
+    {
+      "text": "वर्ष",
+      "confidence": 88.6,
+      "bbox": [
+        90,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 1
+    },
+    {
+      "text": "२०१६",
+      "confidence": 92.6,
+      "bbox": [
+        172,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 2
+    },
+    {
+      "text": "से",
+      "confidence": 94.1,
+      "bbox": [
+        254,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 3
+    },
+    {
+      "text": "अब",
+      "confidence": 91.4,
+      "bbox": [
+        306,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 4
+    },
+    {
+      "text": "रक",
+      "confidence": 41.2,
+      "bbox": [
+        358,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 5
+    },
+    {
+      "text": "प्राकृतिक",
+      "confidence": 94.4,
+      "bbox": [
+        410,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 6
+    },
+    {
+      "text": "रपदाओं",
+      "confidence": 44.4,
+      "bbox": [
+        567,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 7
+    },
+    {
+      "text": "से",
+      "confidence": 88.7,
+      "bbox": [
+        679,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 8
+    },
+    {
+      "text": "प्रभावित",
+      "confidence": 98.8,
+      "bbox": [
+        731,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 9
+    },
+    {
+      "text": "किसानों",
+      "confidence": 91.2,
+      "bbox": [
+        873,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 10
+    },
+    {
+      "text": "को",
+      "confidence": 89.5,
+      "bbox": [
+        1000,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 11
+    },
+    {
+      "text": "कुल",
+      "confidence": 96.0,
+      "bbox": [
+        1052,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 12
+    },
+    {
+      "text": "₹१.२५",
+      "confidence": 92.1,
+      "bbox": [
+        1119,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 13
+    },
+    {
+      "text": "लाख",
+      "confidence": 92.9,
+      "bbox": [
+        1216,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 14
+    },
+    {
+      "text": "करोड़",
+      "confidence": 92.2,
+      "bbox": [
+        1283,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 15
+    },
+    {
+      "text": "से",
+      "confidence": 98.6,
+      "bbox": [
+        1380,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 16
+    },
+    {
+      "text": "अधिक",
+      "confidence": 89.5,
+      "bbox": [
+        1432,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 17
+    },
+    {
+      "text": "मूल्य",
+      "confidence": 89.3,
+      "bbox": [
+        1514,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 18
+    },
+    {
+      "text": "के",
+      "confidence": 92.3,
+      "bbox": [
+        1611,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 19
+    },
+    {
+      "text": "बीमा",
+      "confidence": 98.8,
+      "bbox": [
+        1663,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 20
+    },
+    {
+      "text": "दावों",
+      "confidence": 96.3,
+      "bbox": [
+        1745,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 21
+    },
+    {
+      "text": "का",
+      "confidence": 93.1,
+      "bbox": [
+        1842,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 22
+    },
+    {
+      "text": "सफल",
+      "confidence": 92.7,
+      "bbox": [
+        1894,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 23
+    },
+    {
+      "text": "भुगतान",
+      "confidence": 90.5,
+      "bbox": [
+        1961,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 24
+    },
+    {
+      "text": "डीबीटी",
+      "confidence": 89.7,
+      "bbox": [
+        2073,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 25
+    },
+    {
+      "text": "(प्रत्यक्ष",
+      "confidence": 97.6,
+      "bbox": [
+        2185,
+        220,
+        160,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 26
+    },
+    {
+      "text": "लाभ",
+      "confidence": 88.4,
+      "bbox": [
+        2357,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 27
+    },
+    {
+      "text": "अंतरण)",
+      "confidence": 94.8,
+      "bbox": [
+        2424,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 28
+    },
+    {
+      "text": "प्रणाली",
+      "confidence": 97.8,
+      "bbox": [
+        2536,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 29
+    },
+    {
+      "text": "के",
+      "confidence": 88.7,
+      "bbox": [
+        2663,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 30
+    },
+    {
+      "text": "माध्यम",
+      "confidence": 92.9,
+      "bbox": [
+        2715,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 31
+    },
+    {
+      "text": "से",
+      "confidence": 97.6,
+      "bbox": [
+        2827,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 32
+    },
+    {
+      "text": "किया",
+      "confidence": 88.5,
+      "bbox": [
+        2879,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 33
+    },
+    {
+      "text": "जा",
+      "confidence": 93.9,
+      "bbox": [
+        2961,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 34
+    },
+    {
+      "text": "चुका",
+      "confidence": 96.5,
+      "bbox": [
+        3013,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 35
+    },
+    {
+      "text": "है।",
+      "confidence": 98.9,
+      "bbox": [
+        3095,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 36
+    }
+  ],
+  "execution_time_sec": 0.0017
+}

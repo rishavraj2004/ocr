@@ -1,0 +1,1380 @@
+{
+  "page_id": "doc_hi_002_page_002",
+  "document_id": "doc_hi_002",
+  "language": "hi",
+  "engine": "mock_ocr",
+  "engine_version": "1.0.0-synthetic",
+  "preprocessing_config": {
+    "original_shape": [
+      1754,
+      1240,
+      3
+    ],
+    "processed_shape": [
+      1754,
+      1240
+    ],
+    "operations_applied": [
+      "grayscale",
+      "denoise",
+      "deskew",
+      "normalize",
+      "threshold_otsu"
+    ],
+    "execution_time_sec": 1.4636168000288308,
+    "metadata": {
+      "denoise_h": 10.0,
+      "skew_angle_deg": 0.0,
+      "method": "otsu",
+      "threshold_value": 149.0
+    }
+  },
+  "raw_text": "राष्ट्रीय डिजिटल साक्षरता एवं प्राथमिक शिक्षा अभियान स्कूली शिक्षा औट साक्षरता विभाग द्वारा ग्रामीण प्राथमिक विद्यालयों के आधुनिकीकरण हेतु १.२ लाख विद्यालयों में डिजिटल स्मार्ट क्लासरूम स्थापित किए रए हैं। इन कक्षाओं में इंटरएक्टिव डिजिटल बोर्ड और ई-लर्निंग पाठ्यक्रम उपलब्ध हैं। ग्राभीण क्षेत्रों के विद्यालयों को हाई-स्पीड ब्रॉडबैंड से जोड़ने के उद्देश्य से भारतनेर ररियोजना के अंतर्गत ८५,००० ग्राम पंचायतों को ऑप्टिकल फाइबर से जोड़ा गया है। राष्ट्रीय डिजिटल मंच 'दीक्षा' (DIKSHA) पर ३२ विभिन्न भारतीय भाषाओं में उच्र गुणवत्ता की शिक्षण सामग्री निःशुल्क उपलब्ध है। राष्ट्रीय शिक्षा नीति के प्रभावी क्रियान्वयन और शिक्षकों के डिजिटल प्रशिक्षण के लिए वार्रिक केंद्रीय बजट में ₹४७,००० करोड़ का विशेष आवंटन सुनिश्चित किया गया है।",
+  "words": [
+    {
+      "text": "राष्ट्रीय",
+      "confidence": 98.1,
+      "bbox": [
+        90,
+        100,
+        145,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 1
+    },
+    {
+      "text": "डिजिटल",
+      "confidence": 94.4,
+      "bbox": [
+        247,
+        100,
+        100,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 2
+    },
+    {
+      "text": "साक्षरता",
+      "confidence": 97.0,
+      "bbox": [
+        359,
+        100,
+        130,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 3
+    },
+    {
+      "text": "एवं",
+      "confidence": 97.6,
+      "bbox": [
+        501,
+        100,
+        55,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 4
+    },
+    {
+      "text": "प्राथमिक",
+      "confidence": 93.7,
+      "bbox": [
+        568,
+        100,
+        130,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 5
+    },
+    {
+      "text": "शिक्षा",
+      "confidence": 91.0,
+      "bbox": [
+        710,
+        100,
+        100,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 6
+    },
+    {
+      "text": "अभियान",
+      "confidence": 94.5,
+      "bbox": [
+        822,
+        100,
+        100,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 7
+    },
+    {
+      "text": "स्कूली",
+      "confidence": 89.9,
+      "bbox": [
+        90,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 1
+    },
+    {
+      "text": "शिक्षा",
+      "confidence": 94.1,
+      "bbox": [
+        202,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 2
+    },
+    {
+      "text": "औट",
+      "confidence": 44.4,
+      "bbox": [
+        314,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 3
+    },
+    {
+      "text": "साक्षरता",
+      "confidence": 91.5,
+      "bbox": [
+        366,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 4
+    },
+    {
+      "text": "विभाग",
+      "confidence": 89.6,
+      "bbox": [
+        508,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 5
+    },
+    {
+      "text": "द्वारा",
+      "confidence": 96.3,
+      "bbox": [
+        605,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 6
+    },
+    {
+      "text": "ग्रामीण",
+      "confidence": 97.3,
+      "bbox": [
+        717,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 7
+    },
+    {
+      "text": "प्राथमिक",
+      "confidence": 95.8,
+      "bbox": [
+        844,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 8
+    },
+    {
+      "text": "विद्यालयों",
+      "confidence": 98.1,
+      "bbox": [
+        986,
+        140,
+        160,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 9
+    },
+    {
+      "text": "के",
+      "confidence": 98.6,
+      "bbox": [
+        1158,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 10
+    },
+    {
+      "text": "आधुनिकीकरण",
+      "confidence": 89.5,
+      "bbox": [
+        1210,
+        140,
+        160,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 11
+    },
+    {
+      "text": "हेतु",
+      "confidence": 90.2,
+      "bbox": [
+        1382,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 12
+    },
+    {
+      "text": "१.२",
+      "confidence": 98.1,
+      "bbox": [
+        1464,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 13
+    },
+    {
+      "text": "लाख",
+      "confidence": 89.0,
+      "bbox": [
+        1531,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 14
+    },
+    {
+      "text": "विद्यालयों",
+      "confidence": 90.1,
+      "bbox": [
+        1598,
+        140,
+        160,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 15
+    },
+    {
+      "text": "में",
+      "confidence": 95.4,
+      "bbox": [
+        1770,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 16
+    },
+    {
+      "text": "डिजिटल",
+      "confidence": 97.6,
+      "bbox": [
+        1837,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 17
+    },
+    {
+      "text": "स्मार्ट",
+      "confidence": 96.4,
+      "bbox": [
+        1949,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 18
+    },
+    {
+      "text": "क्लासरूम",
+      "confidence": 94.1,
+      "bbox": [
+        2076,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 19
+    },
+    {
+      "text": "स्थापित",
+      "confidence": 97.6,
+      "bbox": [
+        2218,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 20
+    },
+    {
+      "text": "किए",
+      "confidence": 98.5,
+      "bbox": [
+        2345,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 21
+    },
+    {
+      "text": "रए",
+      "confidence": 65.7,
+      "bbox": [
+        2412,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 22
+    },
+    {
+      "text": "हैं।",
+      "confidence": 96.3,
+      "bbox": [
+        2464,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 23
+    },
+    {
+      "text": "इन",
+      "confidence": 95.7,
+      "bbox": [
+        2546,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 24
+    },
+    {
+      "text": "कक्षाओं",
+      "confidence": 92.4,
+      "bbox": [
+        2598,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 25
+    },
+    {
+      "text": "में",
+      "confidence": 91.5,
+      "bbox": [
+        2725,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 26
+    },
+    {
+      "text": "इंटरएक्टिव",
+      "confidence": 93.1,
+      "bbox": [
+        2792,
+        140,
+        160,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 27
+    },
+    {
+      "text": "डिजिटल",
+      "confidence": 91.4,
+      "bbox": [
+        2964,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 28
+    },
+    {
+      "text": "बोर्ड",
+      "confidence": 97.7,
+      "bbox": [
+        3076,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 29
+    },
+    {
+      "text": "और",
+      "confidence": 96.8,
+      "bbox": [
+        3173,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 30
+    },
+    {
+      "text": "ई-लर्निंग",
+      "confidence": 96.4,
+      "bbox": [
+        3225,
+        140,
+        145,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 31
+    },
+    {
+      "text": "पाठ्यक्रम",
+      "confidence": 90.2,
+      "bbox": [
+        3382,
+        140,
+        145,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 32
+    },
+    {
+      "text": "उपलब्ध",
+      "confidence": 88.5,
+      "bbox": [
+        3539,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 33
+    },
+    {
+      "text": "हैं।",
+      "confidence": 96.2,
+      "bbox": [
+        3651,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 34
+    },
+    {
+      "text": "ग्राभीण",
+      "confidence": 51.9,
+      "bbox": [
+        90,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 1
+    },
+    {
+      "text": "क्षेत्रों",
+      "confidence": 92.6,
+      "bbox": [
+        217,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 2
+    },
+    {
+      "text": "के",
+      "confidence": 91.6,
+      "bbox": [
+        374,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 3
+    },
+    {
+      "text": "विद्यालयों",
+      "confidence": 97.2,
+      "bbox": [
+        426,
+        180,
+        160,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 4
+    },
+    {
+      "text": "को",
+      "confidence": 95.2,
+      "bbox": [
+        598,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 5
+    },
+    {
+      "text": "हाई-स्पीड",
+      "confidence": 90.8,
+      "bbox": [
+        650,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 6
+    },
+    {
+      "text": "ब्रॉडबैंड",
+      "confidence": 98.6,
+      "bbox": [
+        807,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 7
+    },
+    {
+      "text": "से",
+      "confidence": 93.4,
+      "bbox": [
+        964,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 8
+    },
+    {
+      "text": "जोड़ने",
+      "confidence": 96.7,
+      "bbox": [
+        1016,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 9
+    },
+    {
+      "text": "के",
+      "confidence": 95.9,
+      "bbox": [
+        1128,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 10
+    },
+    {
+      "text": "उद्देश्य",
+      "confidence": 98.1,
+      "bbox": [
+        1180,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 11
+    },
+    {
+      "text": "से",
+      "confidence": 95.1,
+      "bbox": [
+        1322,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 12
+    },
+    {
+      "text": "भारतनेर",
+      "confidence": 33.2,
+      "bbox": [
+        1374,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 13
+    },
+    {
+      "text": "ररियोजना",
+      "confidence": 61.4,
+      "bbox": [
+        1501,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 14
+    },
+    {
+      "text": "के",
+      "confidence": 92.5,
+      "bbox": [
+        1643,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 15
+    },
+    {
+      "text": "अंतर्गत",
+      "confidence": 90.5,
+      "bbox": [
+        1695,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 16
+    },
+    {
+      "text": "८५,०००",
+      "confidence": 88.1,
+      "bbox": [
+        1822,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 17
+    },
+    {
+      "text": "ग्राम",
+      "confidence": 92.1,
+      "bbox": [
+        1934,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 18
+    },
+    {
+      "text": "पंचायतों",
+      "confidence": 95.3,
+      "bbox": [
+        2031,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 19
+    },
+    {
+      "text": "को",
+      "confidence": 93.3,
+      "bbox": [
+        2173,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 20
+    },
+    {
+      "text": "ऑप्टिकल",
+      "confidence": 88.1,
+      "bbox": [
+        2225,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 21
+    },
+    {
+      "text": "फाइबर",
+      "confidence": 88.1,
+      "bbox": [
+        2352,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 22
+    },
+    {
+      "text": "से",
+      "confidence": 91.0,
+      "bbox": [
+        2449,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 23
+    },
+    {
+      "text": "जोड़ा",
+      "confidence": 88.2,
+      "bbox": [
+        2501,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 24
+    },
+    {
+      "text": "गया",
+      "confidence": 95.4,
+      "bbox": [
+        2598,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 25
+    },
+    {
+      "text": "है।",
+      "confidence": 98.0,
+      "bbox": [
+        2665,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 26
+    },
+    {
+      "text": "राष्ट्रीय",
+      "confidence": 89.1,
+      "bbox": [
+        2732,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 27
+    },
+    {
+      "text": "डिजिटल",
+      "confidence": 90.1,
+      "bbox": [
+        2889,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 28
+    },
+    {
+      "text": "मंच",
+      "confidence": 97.0,
+      "bbox": [
+        3001,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 29
+    },
+    {
+      "text": "'दीक्षा'",
+      "confidence": 92.4,
+      "bbox": [
+        3068,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 30
+    },
+    {
+      "text": "(DIKSHA)",
+      "confidence": 92.5,
+      "bbox": [
+        3210,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 31
+    },
+    {
+      "text": "पर",
+      "confidence": 98.9,
+      "bbox": [
+        3352,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 32
+    },
+    {
+      "text": "३२",
+      "confidence": 95.5,
+      "bbox": [
+        3404,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 33
+    },
+    {
+      "text": "विभिन्न",
+      "confidence": 95.2,
+      "bbox": [
+        3456,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 34
+    },
+    {
+      "text": "भारतीय",
+      "confidence": 96.4,
+      "bbox": [
+        3583,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 35
+    },
+    {
+      "text": "भाषाओं",
+      "confidence": 92.2,
+      "bbox": [
+        3695,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 36
+    },
+    {
+      "text": "में",
+      "confidence": 88.6,
+      "bbox": [
+        3807,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 37
+    },
+    {
+      "text": "उच्र",
+      "confidence": 38.2,
+      "bbox": [
+        3874,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 38
+    },
+    {
+      "text": "गुणवत्ता",
+      "confidence": 95.1,
+      "bbox": [
+        3956,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 39
+    },
+    {
+      "text": "की",
+      "confidence": 98.8,
+      "bbox": [
+        4098,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 40
+    },
+    {
+      "text": "शिक्षण",
+      "confidence": 97.8,
+      "bbox": [
+        4150,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 41
+    },
+    {
+      "text": "सामग्री",
+      "confidence": 90.5,
+      "bbox": [
+        4262,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 42
+    },
+    {
+      "text": "निःशुल्क",
+      "confidence": 95.6,
+      "bbox": [
+        4389,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 43
+    },
+    {
+      "text": "उपलब्ध",
+      "confidence": 91.0,
+      "bbox": [
+        4531,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 44
+    },
+    {
+      "text": "है।",
+      "confidence": 95.5,
+      "bbox": [
+        4643,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 45
+    },
+    {
+      "text": "राष्ट्रीय",
+      "confidence": 94.0,
+      "bbox": [
+        90,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 1
+    },
+    {
+      "text": "शिक्षा",
+      "confidence": 90.0,
+      "bbox": [
+        247,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 2
+    },
+    {
+      "text": "नीति",
+      "confidence": 88.2,
+      "bbox": [
+        359,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 3
+    },
+    {
+      "text": "के",
+      "confidence": 89.6,
+      "bbox": [
+        441,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 4
+    },
+    {
+      "text": "प्रभावी",
+      "confidence": 97.0,
+      "bbox": [
+        493,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 5
+    },
+    {
+      "text": "क्रियान्वयन",
+      "confidence": 91.3,
+      "bbox": [
+        620,
+        220,
+        175,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 6
+    },
+    {
+      "text": "और",
+      "confidence": 94.2,
+      "bbox": [
+        807,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 7
+    },
+    {
+      "text": "शिक्षकों",
+      "confidence": 95.4,
+      "bbox": [
+        859,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 8
+    },
+    {
+      "text": "के",
+      "confidence": 92.2,
+      "bbox": [
+        1001,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 9
+    },
+    {
+      "text": "डिजिटल",
+      "confidence": 96.7,
+      "bbox": [
+        1053,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 10
+    },
+    {
+      "text": "प्रशिक्षण",
+      "confidence": 88.9,
+      "bbox": [
+        1165,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 11
+    },
+    {
+      "text": "के",
+      "confidence": 91.8,
+      "bbox": [
+        1322,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 12
+    },
+    {
+      "text": "लिए",
+      "confidence": 90.6,
+      "bbox": [
+        1374,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 13
+    },
+    {
+      "text": "वार्रिक",
+      "confidence": 53.8,
+      "bbox": [
+        1441,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 14
+    },
+    {
+      "text": "केंद्रीय",
+      "confidence": 92.4,
+      "bbox": [
+        1568,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 15
+    },
+    {
+      "text": "बजट",
+      "confidence": 88.3,
+      "bbox": [
+        1710,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 16
+    },
+    {
+      "text": "में",
+      "confidence": 98.9,
+      "bbox": [
+        1777,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 17
+    },
+    {
+      "text": "₹४७,०००",
+      "confidence": 91.9,
+      "bbox": [
+        1844,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 18
+    },
+    {
+      "text": "करोड़",
+      "confidence": 92.8,
+      "bbox": [
+        1971,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 19
+    },
+    {
+      "text": "का",
+      "confidence": 95.3,
+      "bbox": [
+        2068,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 20
+    },
+    {
+      "text": "विशेष",
+      "confidence": 94.8,
+      "bbox": [
+        2120,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 21
+    },
+    {
+      "text": "आवंटन",
+      "confidence": 95.8,
+      "bbox": [
+        2217,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 22
+    },
+    {
+      "text": "सुनिश्चित",
+      "confidence": 89.7,
+      "bbox": [
+        2314,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 23
+    },
+    {
+      "text": "किया",
+      "confidence": 95.0,
+      "bbox": [
+        2471,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 24
+    },
+    {
+      "text": "गया",
+      "confidence": 91.5,
+      "bbox": [
+        2553,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 25
+    },
+    {
+      "text": "है।",
+      "confidence": 88.1,
+      "bbox": [
+        2620,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 26
+    }
+  ],
+  "execution_time_sec": 0.0016
+}

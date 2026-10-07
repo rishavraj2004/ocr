@@ -127,6 +127,24 @@ def preprocess_page(page_id: str, config_path: str) -> int:
     return 0
 
 
+def run_ocr(config_path: str) -> int:
+    """Execute OCR pipeline across dataset, persist tokens, and report CER/WER."""
+    from src.ocr.runner import OCRRunner
+
+    cfg = load_config(config_path)
+    runner = OCRRunner(cfg)
+    results, aggregates = runner.run_all()
+
+    print("\n" + "=" * 60)
+    print("OCR BASELINE EVALUATION RESULTS")
+    print("=" * 60)
+    for lang_key in ["en", "hi", "combined"]:
+        if lang_key in aggregates:
+            print("\n" + aggregates[lang_key].summary_table_str())
+
+    return 0
+
+
 def parse_args(args=None):
     parser = argparse.ArgumentParser(
         description="OCR-Aware Multilingual RAG Research Framework"
@@ -168,6 +186,11 @@ def parse_args(args=None):
         metavar="PAGE_ID",
         help="Run image preprocessing on a specific page_id and save comparison image",
     )
+    parser.add_argument(
+        "--run-ocr",
+        action="store_true",
+        help="Execute OCR extraction across all pages, save tokens, and evaluate CER/WER",
+    )
     return parser.parse_args(args)
 
 
@@ -176,8 +199,8 @@ def main() -> int:
     args = parse_args()
 
     # If no flags passed, run default validation and environment check
-    if not (args.check_env or args.validate_config or args.init_run or args.validate_dataset or args.generate_dataset or args.preprocess_page):
-        logger.info("Running default Phase 0/1/2 sanity check...")
+    if not (args.check_env or args.validate_config or args.init_run or args.validate_dataset or args.generate_dataset or args.preprocess_page or args.run_ocr):
+        logger.info("Running default Phase 0/1/2/3 sanity check...")
         val_status = validate_configuration(args.config)
         if val_status != 0:
             return val_status
@@ -194,6 +217,8 @@ def main() -> int:
         status = validate_dataset(args.config)
     if args.preprocess_page and status == 0:
         status = preprocess_page(args.preprocess_page, args.config)
+    if args.run_ocr and status == 0:
+        status = run_ocr(args.config)
     if args.init_run and status == 0:
         status = test_init_run(args.config)
 

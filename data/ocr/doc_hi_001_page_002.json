@@ -1,0 +1,1572 @@
+{
+  "page_id": "doc_hi_001_page_002",
+  "document_id": "doc_hi_001",
+  "language": "hi",
+  "engine": "mock_ocr",
+  "engine_version": "1.0.0-synthetic",
+  "preprocessing_config": {
+    "original_shape": [
+      1754,
+      1240,
+      3
+    ],
+    "processed_shape": [
+      1754,
+      1240
+    ],
+    "operations_applied": [
+      "grayscale",
+      "denoise",
+      "deskew",
+      "normalize",
+      "threshold_otsu"
+    ],
+    "execution_time_sec": 1.2565302000148222,
+    "metadata": {
+      "denoise_h": 10.0,
+      "skew_angle_deg": 0.0,
+      "method": "otsu",
+      "threshold_value": 149.0
+    }
+  },
+  "raw_text": "प्रधानमंत्री कुसुम सरर पभ्प एवं ग्रामीण विद्युतीकरण योरना नवीन और नवीकरणीय ऊर्जा मंत्रालय द्वारा शुरू की गई प्रधानमंत्री कुसुम योजना का मुख्य लक्ष्य देश भर के किरानों को सिंचाई हेतु ३५ लाख सौर कृषी पम्प उपलब्ध कराना है। इससे डीजल पम्पों पर किसानों की निर्भरता समाप्त होगी। इस सौर कृरि योजना के तहत केंद्र एवं रार्य सरकारें मिलकर कुर लागत का र० प्रतिशत प्रत्यक्ष अनुदान (सब्सिडी) वहन कटती हैं। बैंक द्वारा ३० प्रतिशत ऋण दिया जाता है और किसान फो केबल १० प्रतिशत प्रारंभिक लागत का भुगतान करनो पड़ता है। कृषि क्षेत्र में सौर ऊर्जा के प्रयरग से प्रति वर्ष लगभग ३२ लाख टन कार्बन डाइऑक्साइड उत्सर्जन में कमी दर्ज की गई हर। इसके अतिरिक्त अतिरिक्त विद्युत ग्रिड को बेचकर किसान नियमित अतिरिक्त आय अर्जित कर रहे हैं।",
+  "words": [
+    {
+      "text": "प्रधानमंत्री",
+      "confidence": 95.6,
+      "bbox": [
+        90,
+        100,
+        190,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 1
+    },
+    {
+      "text": "कुसुम",
+      "confidence": 96.9,
+      "bbox": [
+        292,
+        100,
+        85,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 2
+    },
+    {
+      "text": "सरर",
+      "confidence": 59.9,
+      "bbox": [
+        389,
+        100,
+        55,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 3
+    },
+    {
+      "text": "पभ्प",
+      "confidence": 39.3,
+      "bbox": [
+        456,
+        100,
+        70,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 4
+    },
+    {
+      "text": "एवं",
+      "confidence": 91.5,
+      "bbox": [
+        538,
+        100,
+        55,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 5
+    },
+    {
+      "text": "ग्रामीण",
+      "confidence": 92.4,
+      "bbox": [
+        605,
+        100,
+        115,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 6
+    },
+    {
+      "text": "विद्युतीकरण",
+      "confidence": 93.2,
+      "bbox": [
+        732,
+        100,
+        175,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 7
+    },
+    {
+      "text": "योरना",
+      "confidence": 55.3,
+      "bbox": [
+        919,
+        100,
+        85,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 8
+    },
+    {
+      "text": "नवीन",
+      "confidence": 96.6,
+      "bbox": [
+        90,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 1
+    },
+    {
+      "text": "और",
+      "confidence": 91.7,
+      "bbox": [
+        172,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 2
+    },
+    {
+      "text": "नवीकरणीय",
+      "confidence": 92.0,
+      "bbox": [
+        224,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 3
+    },
+    {
+      "text": "ऊर्जा",
+      "confidence": 96.2,
+      "bbox": [
+        366,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 4
+    },
+    {
+      "text": "मंत्रालय",
+      "confidence": 92.3,
+      "bbox": [
+        463,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 5
+    },
+    {
+      "text": "द्वारा",
+      "confidence": 93.5,
+      "bbox": [
+        605,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 6
+    },
+    {
+      "text": "शुरू",
+      "confidence": 98.2,
+      "bbox": [
+        717,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 7
+    },
+    {
+      "text": "की",
+      "confidence": 96.8,
+      "bbox": [
+        799,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 8
+    },
+    {
+      "text": "गई",
+      "confidence": 88.9,
+      "bbox": [
+        851,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 9
+    },
+    {
+      "text": "प्रधानमंत्री",
+      "confidence": 97.0,
+      "bbox": [
+        903,
+        140,
+        190,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 10
+    },
+    {
+      "text": "कुसुम",
+      "confidence": 91.5,
+      "bbox": [
+        1105,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 11
+    },
+    {
+      "text": "योजना",
+      "confidence": 95.3,
+      "bbox": [
+        1202,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 12
+    },
+    {
+      "text": "का",
+      "confidence": 94.6,
+      "bbox": [
+        1299,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 13
+    },
+    {
+      "text": "मुख्य",
+      "confidence": 95.6,
+      "bbox": [
+        1351,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 14
+    },
+    {
+      "text": "लक्ष्य",
+      "confidence": 88.5,
+      "bbox": [
+        1448,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 15
+    },
+    {
+      "text": "देश",
+      "confidence": 91.9,
+      "bbox": [
+        1560,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 16
+    },
+    {
+      "text": "भर",
+      "confidence": 91.0,
+      "bbox": [
+        1627,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 17
+    },
+    {
+      "text": "के",
+      "confidence": 98.4,
+      "bbox": [
+        1679,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 18
+    },
+    {
+      "text": "किरानों",
+      "confidence": 55.0,
+      "bbox": [
+        1731,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 19
+    },
+    {
+      "text": "को",
+      "confidence": 96.2,
+      "bbox": [
+        1858,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 20
+    },
+    {
+      "text": "सिंचाई",
+      "confidence": 88.3,
+      "bbox": [
+        1910,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 21
+    },
+    {
+      "text": "हेतु",
+      "confidence": 95.5,
+      "bbox": [
+        2022,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 22
+    },
+    {
+      "text": "३५",
+      "confidence": 89.4,
+      "bbox": [
+        2104,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 23
+    },
+    {
+      "text": "लाख",
+      "confidence": 95.1,
+      "bbox": [
+        2156,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 24
+    },
+    {
+      "text": "सौर",
+      "confidence": 98.4,
+      "bbox": [
+        2223,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 25
+    },
+    {
+      "text": "कृषी",
+      "confidence": 37.5,
+      "bbox": [
+        2290,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 26
+    },
+    {
+      "text": "पम्प",
+      "confidence": 92.1,
+      "bbox": [
+        2372,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 27
+    },
+    {
+      "text": "उपलब्ध",
+      "confidence": 94.3,
+      "bbox": [
+        2454,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 28
+    },
+    {
+      "text": "कराना",
+      "confidence": 92.4,
+      "bbox": [
+        2566,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 29
+    },
+    {
+      "text": "है।",
+      "confidence": 90.7,
+      "bbox": [
+        2663,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 30
+    },
+    {
+      "text": "इससे",
+      "confidence": 96.1,
+      "bbox": [
+        2730,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 31
+    },
+    {
+      "text": "डीजल",
+      "confidence": 92.3,
+      "bbox": [
+        2812,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 32
+    },
+    {
+      "text": "पम्पों",
+      "confidence": 90.9,
+      "bbox": [
+        2894,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 33
+    },
+    {
+      "text": "पर",
+      "confidence": 92.9,
+      "bbox": [
+        3006,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 34
+    },
+    {
+      "text": "किसानों",
+      "confidence": 91.1,
+      "bbox": [
+        3058,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 35
+    },
+    {
+      "text": "की",
+      "confidence": 93.4,
+      "bbox": [
+        3185,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 36
+    },
+    {
+      "text": "निर्भरता",
+      "confidence": 97.4,
+      "bbox": [
+        3237,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 37
+    },
+    {
+      "text": "समाप्त",
+      "confidence": 97.9,
+      "bbox": [
+        3379,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 38
+    },
+    {
+      "text": "होगी।",
+      "confidence": 89.0,
+      "bbox": [
+        3491,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 39
+    },
+    {
+      "text": "इस",
+      "confidence": 97.3,
+      "bbox": [
+        90,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 1
+    },
+    {
+      "text": "सौर",
+      "confidence": 91.8,
+      "bbox": [
+        142,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 2
+    },
+    {
+      "text": "कृरि",
+      "confidence": 51.5,
+      "bbox": [
+        209,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 3
+    },
+    {
+      "text": "योजना",
+      "confidence": 95.8,
+      "bbox": [
+        291,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 4
+    },
+    {
+      "text": "के",
+      "confidence": 95.0,
+      "bbox": [
+        388,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 5
+    },
+    {
+      "text": "तहत",
+      "confidence": 93.6,
+      "bbox": [
+        440,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 6
+    },
+    {
+      "text": "केंद्र",
+      "confidence": 90.2,
+      "bbox": [
+        507,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 7
+    },
+    {
+      "text": "एवं",
+      "confidence": 96.7,
+      "bbox": [
+        619,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 8
+    },
+    {
+      "text": "रार्य",
+      "confidence": 51.9,
+      "bbox": [
+        686,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 9
+    },
+    {
+      "text": "सरकारें",
+      "confidence": 98.8,
+      "bbox": [
+        783,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 10
+    },
+    {
+      "text": "मिलकर",
+      "confidence": 97.7,
+      "bbox": [
+        910,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 11
+    },
+    {
+      "text": "कुर",
+      "confidence": 46.3,
+      "bbox": [
+        1007,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 12
+    },
+    {
+      "text": "लागत",
+      "confidence": 93.8,
+      "bbox": [
+        1074,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 13
+    },
+    {
+      "text": "का",
+      "confidence": 97.1,
+      "bbox": [
+        1156,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 14
+    },
+    {
+      "text": "र०",
+      "confidence": 67.0,
+      "bbox": [
+        1208,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 15
+    },
+    {
+      "text": "प्रतिशत",
+      "confidence": 95.5,
+      "bbox": [
+        1260,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 16
+    },
+    {
+      "text": "प्रत्यक्ष",
+      "confidence": 97.7,
+      "bbox": [
+        1387,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 17
+    },
+    {
+      "text": "अनुदान",
+      "confidence": 95.0,
+      "bbox": [
+        1544,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 18
+    },
+    {
+      "text": "(सब्सिडी)",
+      "confidence": 98.6,
+      "bbox": [
+        1656,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 19
+    },
+    {
+      "text": "वहन",
+      "confidence": 98.0,
+      "bbox": [
+        1813,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 20
+    },
+    {
+      "text": "कटती",
+      "confidence": 36.5,
+      "bbox": [
+        1880,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 21
+    },
+    {
+      "text": "हैं।",
+      "confidence": 89.8,
+      "bbox": [
+        1962,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 22
+    },
+    {
+      "text": "बैंक",
+      "confidence": 90.5,
+      "bbox": [
+        2044,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 23
+    },
+    {
+      "text": "द्वारा",
+      "confidence": 93.7,
+      "bbox": [
+        2126,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 24
+    },
+    {
+      "text": "३०",
+      "confidence": 88.9,
+      "bbox": [
+        2238,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 25
+    },
+    {
+      "text": "प्रतिशत",
+      "confidence": 98.5,
+      "bbox": [
+        2290,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 26
+    },
+    {
+      "text": "ऋण",
+      "confidence": 94.9,
+      "bbox": [
+        2417,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 27
+    },
+    {
+      "text": "दिया",
+      "confidence": 89.0,
+      "bbox": [
+        2469,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 28
+    },
+    {
+      "text": "जाता",
+      "confidence": 94.5,
+      "bbox": [
+        2551,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 29
+    },
+    {
+      "text": "है",
+      "confidence": 89.9,
+      "bbox": [
+        2633,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 30
+    },
+    {
+      "text": "और",
+      "confidence": 97.9,
+      "bbox": [
+        2685,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 31
+    },
+    {
+      "text": "किसान",
+      "confidence": 98.2,
+      "bbox": [
+        2737,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 32
+    },
+    {
+      "text": "फो",
+      "confidence": 63.1,
+      "bbox": [
+        2834,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 33
+    },
+    {
+      "text": "केबल",
+      "confidence": 55.1,
+      "bbox": [
+        2886,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 34
+    },
+    {
+      "text": "१०",
+      "confidence": 96.4,
+      "bbox": [
+        2968,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 35
+    },
+    {
+      "text": "प्रतिशत",
+      "confidence": 95.0,
+      "bbox": [
+        3020,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 36
+    },
+    {
+      "text": "प्रारंभिक",
+      "confidence": 94.9,
+      "bbox": [
+        3147,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 37
+    },
+    {
+      "text": "लागत",
+      "confidence": 98.5,
+      "bbox": [
+        3304,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 38
+    },
+    {
+      "text": "का",
+      "confidence": 96.9,
+      "bbox": [
+        3386,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 39
+    },
+    {
+      "text": "भुगतान",
+      "confidence": 91.3,
+      "bbox": [
+        3438,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 40
+    },
+    {
+      "text": "करनो",
+      "confidence": 34.2,
+      "bbox": [
+        3550,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 41
+    },
+    {
+      "text": "पड़ता",
+      "confidence": 93.1,
+      "bbox": [
+        3632,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 42
+    },
+    {
+      "text": "है।",
+      "confidence": 89.6,
+      "bbox": [
+        3729,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 43
+    },
+    {
+      "text": "कृषि",
+      "confidence": 91.5,
+      "bbox": [
+        90,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 1
+    },
+    {
+      "text": "क्षेत्र",
+      "confidence": 91.8,
+      "bbox": [
+        172,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 2
+    },
+    {
+      "text": "में",
+      "confidence": 96.4,
+      "bbox": [
+        299,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 3
+    },
+    {
+      "text": "सौर",
+      "confidence": 89.2,
+      "bbox": [
+        366,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 4
+    },
+    {
+      "text": "ऊर्जा",
+      "confidence": 89.3,
+      "bbox": [
+        433,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 5
+    },
+    {
+      "text": "के",
+      "confidence": 89.5,
+      "bbox": [
+        530,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 6
+    },
+    {
+      "text": "प्रयरग",
+      "confidence": 66.0,
+      "bbox": [
+        582,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 7
+    },
+    {
+      "text": "से",
+      "confidence": 98.6,
+      "bbox": [
+        694,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 8
+    },
+    {
+      "text": "प्रति",
+      "confidence": 96.9,
+      "bbox": [
+        746,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 9
+    },
+    {
+      "text": "वर्ष",
+      "confidence": 95.9,
+      "bbox": [
+        843,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 10
+    },
+    {
+      "text": "लगभग",
+      "confidence": 89.8,
+      "bbox": [
+        925,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 11
+    },
+    {
+      "text": "३२",
+      "confidence": 93.1,
+      "bbox": [
+        1007,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 12
+    },
+    {
+      "text": "लाख",
+      "confidence": 93.5,
+      "bbox": [
+        1059,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 13
+    },
+    {
+      "text": "टन",
+      "confidence": 92.3,
+      "bbox": [
+        1126,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 14
+    },
+    {
+      "text": "कार्बन",
+      "confidence": 90.6,
+      "bbox": [
+        1178,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 15
+    },
+    {
+      "text": "डाइऑक्साइड",
+      "confidence": 88.5,
+      "bbox": [
+        1290,
+        220,
+        160,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 16
+    },
+    {
+      "text": "उत्सर्जन",
+      "confidence": 94.6,
+      "bbox": [
+        1462,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 17
+    },
+    {
+      "text": "में",
+      "confidence": 95.4,
+      "bbox": [
+        1604,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 18
+    },
+    {
+      "text": "कमी",
+      "confidence": 88.1,
+      "bbox": [
+        1671,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 19
+    },
+    {
+      "text": "दर्ज",
+      "confidence": 89.5,
+      "bbox": [
+        1738,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 20
+    },
+    {
+      "text": "की",
+      "confidence": 92.0,
+      "bbox": [
+        1820,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 21
+    },
+    {
+      "text": "गई",
+      "confidence": 88.5,
+      "bbox": [
+        1872,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 22
+    },
+    {
+      "text": "हर।",
+      "confidence": 52.2,
+      "bbox": [
+        1924,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 23
+    },
+    {
+      "text": "इसके",
+      "confidence": 88.8,
+      "bbox": [
+        1991,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 24
+    },
+    {
+      "text": "अतिरिक्त",
+      "confidence": 96.4,
+      "bbox": [
+        2073,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 25
+    },
+    {
+      "text": "अतिरिक्त",
+      "confidence": 98.9,
+      "bbox": [
+        2215,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 26
+    },
+    {
+      "text": "विद्युत",
+      "confidence": 89.3,
+      "bbox": [
+        2357,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 27
+    },
+    {
+      "text": "ग्रिड",
+      "confidence": 92.3,
+      "bbox": [
+        2484,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 28
+    },
+    {
+      "text": "को",
+      "confidence": 91.7,
+      "bbox": [
+        2581,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 29
+    },
+    {
+      "text": "बेचकर",
+      "confidence": 96.3,
+      "bbox": [
+        2633,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 30
+    },
+    {
+      "text": "किसान",
+      "confidence": 93.6,
+      "bbox": [
+        2730,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 31
+    },
+    {
+      "text": "नियमित",
+      "confidence": 88.5,
+      "bbox": [
+        2827,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 32
+    },
+    {
+      "text": "अतिरिक्त",
+      "confidence": 91.7,
+      "bbox": [
+        2939,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 33
+    },
+    {
+      "text": "आय",
+      "confidence": 93.0,
+      "bbox": [
+        3081,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 34
+    },
+    {
+      "text": "अर्जित",
+      "confidence": 93.7,
+      "bbox": [
+        3133,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 35
+    },
+    {
+      "text": "कर",
+      "confidence": 94.7,
+      "bbox": [
+        3245,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 36
+    },
+    {
+      "text": "रहे",
+      "confidence": 98.9,
+      "bbox": [
+        3297,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 37
+    },
+    {
+      "text": "हैं।",
+      "confidence": 91.3,
+      "bbox": [
+        3364,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 38
+    }
+  ],
+  "execution_time_sec": 0.0018
+}

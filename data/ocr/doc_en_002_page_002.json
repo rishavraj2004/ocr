@@ -1,0 +1,1392 @@
+{
+  "page_id": "doc_en_002_page_002",
+  "document_id": "doc_en_002",
+  "language": "en",
+  "engine": "mock_ocr",
+  "engine_version": "1.0.0-synthetic",
+  "preprocessing_config": {
+    "original_shape": [
+      1754,
+      1240,
+      3
+    ],
+    "processed_shape": [
+      1754,
+      1240
+    ],
+    "operations_applied": [
+      "grayscale",
+      "denoise",
+      "deskew",
+      "normalize",
+      "threshold_otsu"
+    ],
+    "execution_time_sec": 1.2859577999915928,
+    "metadata": {
+      "denoise_h": 10.0,
+      "skew_angle_deg": 0.0,
+      "method": "otsu",
+      "threshold_value": 152.0
+    }
+  },
+  "raw_text": "Precision Soil Health and Dr0ne Spraying Standards The Depaxtment of Agricultural Cooperation has distributed over 23 million soil health caxds to farming families. Systematic laboratory soil chemistry testing indicates an average baseline organic carbon content of 0.42 percent in intensively cultivated northern plains. Extensive agronomical trials show that foliar application of nano-urea improves crop nitrogen absorption efficiency by 3x percent compared to traditional granular urea. This technique significantly curtails chemical runofx into municipal groundwater aquifers. Under xhe Agricultural Modernization Scheme, registered farmer cooperatives are eligible f0r a financial subsidy cap of Rs 500,000 for acquiring certified spraying drones. Droxes must comply with civil aviation safety protocols ond operate with calibrated ultra-low volume nozzles.",
+  "words": [
+    {
+      "text": "Precision",
+      "confidence": 89.4,
+      "bbox": [
+        90,
+        100,
+        145,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 1
+    },
+    {
+      "text": "Soil",
+      "confidence": 95.7,
+      "bbox": [
+        247,
+        100,
+        70,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 2
+    },
+    {
+      "text": "Health",
+      "confidence": 93.5,
+      "bbox": [
+        329,
+        100,
+        100,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 3
+    },
+    {
+      "text": "and",
+      "confidence": 88.9,
+      "bbox": [
+        441,
+        100,
+        55,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 4
+    },
+    {
+      "text": "Dr0ne",
+      "confidence": 47.6,
+      "bbox": [
+        508,
+        100,
+        85,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 5
+    },
+    {
+      "text": "Spraying",
+      "confidence": 88.3,
+      "bbox": [
+        605,
+        100,
+        130,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 6
+    },
+    {
+      "text": "Standards",
+      "confidence": 95.4,
+      "bbox": [
+        747,
+        100,
+        145,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 7
+    },
+    {
+      "text": "The",
+      "confidence": 94.5,
+      "bbox": [
+        90,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 1
+    },
+    {
+      "text": "Depaxtment",
+      "confidence": 59.5,
+      "bbox": [
+        157,
+        140,
+        160,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 2
+    },
+    {
+      "text": "of",
+      "confidence": 96.4,
+      "bbox": [
+        329,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 3
+    },
+    {
+      "text": "Agricultural",
+      "confidence": 93.7,
+      "bbox": [
+        381,
+        140,
+        190,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 4
+    },
+    {
+      "text": "Cooperation",
+      "confidence": 91.1,
+      "bbox": [
+        583,
+        140,
+        175,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 5
+    },
+    {
+      "text": "has",
+      "confidence": 92.8,
+      "bbox": [
+        770,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 6
+    },
+    {
+      "text": "distributed",
+      "confidence": 98.7,
+      "bbox": [
+        837,
+        140,
+        175,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 7
+    },
+    {
+      "text": "over",
+      "confidence": 92.5,
+      "bbox": [
+        1024,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 8
+    },
+    {
+      "text": "23",
+      "confidence": 89.2,
+      "bbox": [
+        1106,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 9
+    },
+    {
+      "text": "million",
+      "confidence": 92.5,
+      "bbox": [
+        1158,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 10
+    },
+    {
+      "text": "soil",
+      "confidence": 95.3,
+      "bbox": [
+        1285,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 11
+    },
+    {
+      "text": "health",
+      "confidence": 96.4,
+      "bbox": [
+        1367,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 12
+    },
+    {
+      "text": "caxds",
+      "confidence": 35.2,
+      "bbox": [
+        1479,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 13
+    },
+    {
+      "text": "to",
+      "confidence": 98.7,
+      "bbox": [
+        1576,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 14
+    },
+    {
+      "text": "farming",
+      "confidence": 93.7,
+      "bbox": [
+        1628,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 15
+    },
+    {
+      "text": "families.",
+      "confidence": 95.2,
+      "bbox": [
+        1755,
+        140,
+        145,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 16
+    },
+    {
+      "text": "Systematic",
+      "confidence": 92.5,
+      "bbox": [
+        1912,
+        140,
+        160,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 17
+    },
+    {
+      "text": "laboratory",
+      "confidence": 92.0,
+      "bbox": [
+        2084,
+        140,
+        160,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 18
+    },
+    {
+      "text": "soil",
+      "confidence": 94.9,
+      "bbox": [
+        2256,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 19
+    },
+    {
+      "text": "chemistry",
+      "confidence": 90.2,
+      "bbox": [
+        2338,
+        140,
+        145,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 20
+    },
+    {
+      "text": "testing",
+      "confidence": 98.2,
+      "bbox": [
+        2495,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 21
+    },
+    {
+      "text": "indicates",
+      "confidence": 95.7,
+      "bbox": [
+        2622,
+        140,
+        145,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 22
+    },
+    {
+      "text": "an",
+      "confidence": 98.7,
+      "bbox": [
+        2779,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 23
+    },
+    {
+      "text": "average",
+      "confidence": 90.6,
+      "bbox": [
+        2831,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 24
+    },
+    {
+      "text": "baseline",
+      "confidence": 94.1,
+      "bbox": [
+        2958,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 25
+    },
+    {
+      "text": "organic",
+      "confidence": 89.0,
+      "bbox": [
+        3100,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 26
+    },
+    {
+      "text": "carbon",
+      "confidence": 98.0,
+      "bbox": [
+        3227,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 27
+    },
+    {
+      "text": "content",
+      "confidence": 89.3,
+      "bbox": [
+        3339,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 28
+    },
+    {
+      "text": "of",
+      "confidence": 93.5,
+      "bbox": [
+        3466,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 29
+    },
+    {
+      "text": "0.42",
+      "confidence": 93.6,
+      "bbox": [
+        3518,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 30
+    },
+    {
+      "text": "percent",
+      "confidence": 97.2,
+      "bbox": [
+        3600,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 31
+    },
+    {
+      "text": "in",
+      "confidence": 90.7,
+      "bbox": [
+        3727,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 32
+    },
+    {
+      "text": "intensively",
+      "confidence": 92.2,
+      "bbox": [
+        3779,
+        140,
+        175,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 33
+    },
+    {
+      "text": "cultivated",
+      "confidence": 93.6,
+      "bbox": [
+        3966,
+        140,
+        160,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 34
+    },
+    {
+      "text": "northern",
+      "confidence": 97.5,
+      "bbox": [
+        4138,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 35
+    },
+    {
+      "text": "plains.",
+      "confidence": 96.7,
+      "bbox": [
+        4280,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 36
+    },
+    {
+      "text": "Extensive",
+      "confidence": 98.3,
+      "bbox": [
+        90,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 1
+    },
+    {
+      "text": "agronomical",
+      "confidence": 97.0,
+      "bbox": [
+        247,
+        180,
+        175,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 2
+    },
+    {
+      "text": "trials",
+      "confidence": 91.3,
+      "bbox": [
+        434,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 3
+    },
+    {
+      "text": "show",
+      "confidence": 99.0,
+      "bbox": [
+        546,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 4
+    },
+    {
+      "text": "that",
+      "confidence": 89.6,
+      "bbox": [
+        628,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 5
+    },
+    {
+      "text": "foliar",
+      "confidence": 91.8,
+      "bbox": [
+        710,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 6
+    },
+    {
+      "text": "application",
+      "confidence": 94.0,
+      "bbox": [
+        822,
+        180,
+        175,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 7
+    },
+    {
+      "text": "of",
+      "confidence": 91.5,
+      "bbox": [
+        1009,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 8
+    },
+    {
+      "text": "nano-urea",
+      "confidence": 95.7,
+      "bbox": [
+        1061,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 9
+    },
+    {
+      "text": "improves",
+      "confidence": 90.6,
+      "bbox": [
+        1218,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 10
+    },
+    {
+      "text": "crop",
+      "confidence": 88.5,
+      "bbox": [
+        1360,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 11
+    },
+    {
+      "text": "nitrogen",
+      "confidence": 95.8,
+      "bbox": [
+        1442,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 12
+    },
+    {
+      "text": "absorption",
+      "confidence": 92.2,
+      "bbox": [
+        1584,
+        180,
+        160,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 13
+    },
+    {
+      "text": "efficiency",
+      "confidence": 97.0,
+      "bbox": [
+        1756,
+        180,
+        160,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 14
+    },
+    {
+      "text": "by",
+      "confidence": 93.4,
+      "bbox": [
+        1928,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 15
+    },
+    {
+      "text": "3x",
+      "confidence": 50.1,
+      "bbox": [
+        1980,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 16
+    },
+    {
+      "text": "percent",
+      "confidence": 97.6,
+      "bbox": [
+        2032,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 17
+    },
+    {
+      "text": "compared",
+      "confidence": 93.8,
+      "bbox": [
+        2159,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 18
+    },
+    {
+      "text": "to",
+      "confidence": 95.9,
+      "bbox": [
+        2301,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 19
+    },
+    {
+      "text": "traditional",
+      "confidence": 95.2,
+      "bbox": [
+        2353,
+        180,
+        175,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 20
+    },
+    {
+      "text": "granular",
+      "confidence": 93.2,
+      "bbox": [
+        2540,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 21
+    },
+    {
+      "text": "urea.",
+      "confidence": 91.7,
+      "bbox": [
+        2682,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 22
+    },
+    {
+      "text": "This",
+      "confidence": 95.1,
+      "bbox": [
+        2779,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 23
+    },
+    {
+      "text": "technique",
+      "confidence": 97.4,
+      "bbox": [
+        2861,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 24
+    },
+    {
+      "text": "significantly",
+      "confidence": 92.2,
+      "bbox": [
+        3018,
+        180,
+        205,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 25
+    },
+    {
+      "text": "curtails",
+      "confidence": 95.9,
+      "bbox": [
+        3235,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 26
+    },
+    {
+      "text": "chemical",
+      "confidence": 97.6,
+      "bbox": [
+        3377,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 27
+    },
+    {
+      "text": "runofx",
+      "confidence": 34.5,
+      "bbox": [
+        3519,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 28
+    },
+    {
+      "text": "into",
+      "confidence": 91.2,
+      "bbox": [
+        3631,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 29
+    },
+    {
+      "text": "municipal",
+      "confidence": 89.0,
+      "bbox": [
+        3713,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 30
+    },
+    {
+      "text": "groundwater",
+      "confidence": 96.4,
+      "bbox": [
+        3870,
+        180,
+        175,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 31
+    },
+    {
+      "text": "aquifers.",
+      "confidence": 89.1,
+      "bbox": [
+        4057,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 32
+    },
+    {
+      "text": "Under",
+      "confidence": 91.3,
+      "bbox": [
+        90,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 1
+    },
+    {
+      "text": "xhe",
+      "confidence": 43.7,
+      "bbox": [
+        187,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 2
+    },
+    {
+      "text": "Agricultural",
+      "confidence": 92.1,
+      "bbox": [
+        254,
+        220,
+        190,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 3
+    },
+    {
+      "text": "Modernization",
+      "confidence": 93.8,
+      "bbox": [
+        456,
+        220,
+        205,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 4
+    },
+    {
+      "text": "Scheme,",
+      "confidence": 96.7,
+      "bbox": [
+        673,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 5
+    },
+    {
+      "text": "registered",
+      "confidence": 88.9,
+      "bbox": [
+        800,
+        220,
+        160,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 6
+    },
+    {
+      "text": "farmer",
+      "confidence": 94.8,
+      "bbox": [
+        972,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 7
+    },
+    {
+      "text": "cooperatives",
+      "confidence": 98.0,
+      "bbox": [
+        1084,
+        220,
+        190,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 8
+    },
+    {
+      "text": "are",
+      "confidence": 93.1,
+      "bbox": [
+        1286,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 9
+    },
+    {
+      "text": "eligible",
+      "confidence": 90.8,
+      "bbox": [
+        1353,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 10
+    },
+    {
+      "text": "f0r",
+      "confidence": 61.0,
+      "bbox": [
+        1495,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 11
+    },
+    {
+      "text": "a",
+      "confidence": 95.5,
+      "bbox": [
+        1562,
+        220,
+        25,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 12
+    },
+    {
+      "text": "financial",
+      "confidence": 92.9,
+      "bbox": [
+        1599,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 13
+    },
+    {
+      "text": "subsidy",
+      "confidence": 94.5,
+      "bbox": [
+        1756,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 14
+    },
+    {
+      "text": "cap",
+      "confidence": 92.7,
+      "bbox": [
+        1883,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 15
+    },
+    {
+      "text": "of",
+      "confidence": 97.3,
+      "bbox": [
+        1950,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 16
+    },
+    {
+      "text": "Rs",
+      "confidence": 92.2,
+      "bbox": [
+        2002,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 17
+    },
+    {
+      "text": "500,000",
+      "confidence": 90.6,
+      "bbox": [
+        2054,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 18
+    },
+    {
+      "text": "for",
+      "confidence": 94.3,
+      "bbox": [
+        2181,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 19
+    },
+    {
+      "text": "acquiring",
+      "confidence": 91.2,
+      "bbox": [
+        2248,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 20
+    },
+    {
+      "text": "certified",
+      "confidence": 95.2,
+      "bbox": [
+        2405,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 21
+    },
+    {
+      "text": "spraying",
+      "confidence": 94.2,
+      "bbox": [
+        2562,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 22
+    },
+    {
+      "text": "drones.",
+      "confidence": 96.2,
+      "bbox": [
+        2704,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 23
+    },
+    {
+      "text": "Droxes",
+      "confidence": 53.8,
+      "bbox": [
+        2831,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 24
+    },
+    {
+      "text": "must",
+      "confidence": 97.9,
+      "bbox": [
+        2943,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 25
+    },
+    {
+      "text": "comply",
+      "confidence": 90.5,
+      "bbox": [
+        3025,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 26
+    },
+    {
+      "text": "with",
+      "confidence": 90.4,
+      "bbox": [
+        3137,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 27
+    },
+    {
+      "text": "civil",
+      "confidence": 90.8,
+      "bbox": [
+        3219,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 28
+    },
+    {
+      "text": "aviation",
+      "confidence": 96.4,
+      "bbox": [
+        3316,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 29
+    },
+    {
+      "text": "safety",
+      "confidence": 89.5,
+      "bbox": [
+        3458,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 30
+    },
+    {
+      "text": "protocols",
+      "confidence": 94.9,
+      "bbox": [
+        3570,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 31
+    },
+    {
+      "text": "ond",
+      "confidence": 60.4,
+      "bbox": [
+        3727,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 32
+    },
+    {
+      "text": "operate",
+      "confidence": 96.1,
+      "bbox": [
+        3794,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 33
+    },
+    {
+      "text": "with",
+      "confidence": 91.2,
+      "bbox": [
+        3921,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 34
+    },
+    {
+      "text": "calibrated",
+      "confidence": 89.9,
+      "bbox": [
+        4003,
+        220,
+        160,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 35
+    },
+    {
+      "text": "ultra-low",
+      "confidence": 93.9,
+      "bbox": [
+        4175,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 36
+    },
+    {
+      "text": "volume",
+      "confidence": 93.8,
+      "bbox": [
+        4332,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 37
+    },
+    {
+      "text": "nozzles.",
+      "confidence": 97.1,
+      "bbox": [
+        4444,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 38
+    }
+  ],
+  "execution_time_sec": 0.0015
+}

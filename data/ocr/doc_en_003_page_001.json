@@ -1,0 +1,1236 @@
+{
+  "page_id": "doc_en_003_page_001",
+  "document_id": "doc_en_003",
+  "language": "en",
+  "engine": "mock_ocr",
+  "engine_version": "1.0.0-synthetic",
+  "preprocessing_config": {
+    "original_shape": [
+      1754,
+      1240,
+      3
+    ],
+    "processed_shape": [
+      1754,
+      1240
+    ],
+    "operations_applied": [
+      "grayscale",
+      "denoise",
+      "deskew",
+      "normalize",
+      "threshold_otsu"
+    ],
+    "execution_time_sec": 1.4105845999438316,
+    "metadata": {
+      "denoise_h": 10.0,
+      "skew_angle_deg": 0.0,
+      "method": "otsu",
+      "threshold_value": 152.0
+    }
+  },
+  "raw_text": "Space Research Organization Geosynchronous Telemetry Briefing The Space Research Organization successfully placed the advanced telecommunication satellite inxo geostationary transfex orbit utilizing the heavy-lift GSLV Mk III launch vehicle. The spacecraft payload mass totaled exactly 4,150 kilograms ot launch liftoff. Following circularization maneuvers, the satellite established stable orbital equilibrium at an ap0gee altitude of 35,78x kilometers. The communications bus carries 24 activc Ku-band transponders designed to deliver high-throughput broadband to isolated archipelago communities. Primary flight telemetry and health monitoring are managed from txe Satish Dhawan Space Centre in Sriharikota, supported by internationol deep-space ground tracking stations situated in Brunei and Indonesia.",
+  "words": [
+    {
+      "text": "Space",
+      "confidence": 97.1,
+      "bbox": [
+        90,
+        100,
+        85,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 1
+    },
+    {
+      "text": "Research",
+      "confidence": 96.9,
+      "bbox": [
+        187,
+        100,
+        130,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 2
+    },
+    {
+      "text": "Organization",
+      "confidence": 91.7,
+      "bbox": [
+        329,
+        100,
+        190,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 3
+    },
+    {
+      "text": "Geosynchronous",
+      "confidence": 98.6,
+      "bbox": [
+        531,
+        100,
+        220,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 4
+    },
+    {
+      "text": "Telemetry",
+      "confidence": 98.6,
+      "bbox": [
+        763,
+        100,
+        145,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 5
+    },
+    {
+      "text": "Briefing",
+      "confidence": 96.0,
+      "bbox": [
+        920,
+        100,
+        130,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 6
+    },
+    {
+      "text": "The",
+      "confidence": 98.6,
+      "bbox": [
+        90,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 1
+    },
+    {
+      "text": "Space",
+      "confidence": 92.0,
+      "bbox": [
+        157,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 2
+    },
+    {
+      "text": "Research",
+      "confidence": 88.2,
+      "bbox": [
+        254,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 3
+    },
+    {
+      "text": "Organization",
+      "confidence": 93.0,
+      "bbox": [
+        396,
+        140,
+        190,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 4
+    },
+    {
+      "text": "successfully",
+      "confidence": 95.4,
+      "bbox": [
+        598,
+        140,
+        190,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 5
+    },
+    {
+      "text": "placed",
+      "confidence": 97.0,
+      "bbox": [
+        800,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 6
+    },
+    {
+      "text": "the",
+      "confidence": 89.2,
+      "bbox": [
+        912,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 7
+    },
+    {
+      "text": "advanced",
+      "confidence": 88.3,
+      "bbox": [
+        979,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 8
+    },
+    {
+      "text": "telecommunication",
+      "confidence": 94.2,
+      "bbox": [
+        1121,
+        140,
+        265,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 9
+    },
+    {
+      "text": "satellite",
+      "confidence": 90.4,
+      "bbox": [
+        1398,
+        140,
+        145,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 10
+    },
+    {
+      "text": "inxo",
+      "confidence": 61.7,
+      "bbox": [
+        1555,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 11
+    },
+    {
+      "text": "geostationary",
+      "confidence": 89.3,
+      "bbox": [
+        1637,
+        140,
+        205,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 12
+    },
+    {
+      "text": "transfex",
+      "confidence": 33.3,
+      "bbox": [
+        1854,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 13
+    },
+    {
+      "text": "orbit",
+      "confidence": 90.6,
+      "bbox": [
+        1996,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 14
+    },
+    {
+      "text": "utilizing",
+      "confidence": 92.3,
+      "bbox": [
+        2093,
+        140,
+        145,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 15
+    },
+    {
+      "text": "the",
+      "confidence": 98.4,
+      "bbox": [
+        2250,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 16
+    },
+    {
+      "text": "heavy-lift",
+      "confidence": 93.9,
+      "bbox": [
+        2317,
+        140,
+        160,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 17
+    },
+    {
+      "text": "GSLV",
+      "confidence": 96.0,
+      "bbox": [
+        2489,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 18
+    },
+    {
+      "text": "Mk",
+      "confidence": 95.2,
+      "bbox": [
+        2571,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 19
+    },
+    {
+      "text": "III",
+      "confidence": 94.8,
+      "bbox": [
+        2623,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 20
+    },
+    {
+      "text": "launch",
+      "confidence": 91.1,
+      "bbox": [
+        2690,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 21
+    },
+    {
+      "text": "vehicle.",
+      "confidence": 90.4,
+      "bbox": [
+        2802,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 22
+    },
+    {
+      "text": "The",
+      "confidence": 90.6,
+      "bbox": [
+        2944,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 23
+    },
+    {
+      "text": "spacecraft",
+      "confidence": 98.8,
+      "bbox": [
+        3011,
+        140,
+        160,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 24
+    },
+    {
+      "text": "payload",
+      "confidence": 97.9,
+      "bbox": [
+        3183,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 25
+    },
+    {
+      "text": "mass",
+      "confidence": 88.7,
+      "bbox": [
+        3310,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 26
+    },
+    {
+      "text": "totaled",
+      "confidence": 98.7,
+      "bbox": [
+        3392,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 27
+    },
+    {
+      "text": "exactly",
+      "confidence": 97.1,
+      "bbox": [
+        3519,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 28
+    },
+    {
+      "text": "4,150",
+      "confidence": 90.3,
+      "bbox": [
+        3646,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 29
+    },
+    {
+      "text": "kilograms",
+      "confidence": 98.7,
+      "bbox": [
+        3743,
+        140,
+        145,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 30
+    },
+    {
+      "text": "ot",
+      "confidence": 44.0,
+      "bbox": [
+        3900,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 31
+    },
+    {
+      "text": "launch",
+      "confidence": 90.3,
+      "bbox": [
+        3952,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 32
+    },
+    {
+      "text": "liftoff.",
+      "confidence": 94.1,
+      "bbox": [
+        4064,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 33
+    },
+    {
+      "text": "Following",
+      "confidence": 96.9,
+      "bbox": [
+        90,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 1
+    },
+    {
+      "text": "circularization",
+      "confidence": 96.5,
+      "bbox": [
+        247,
+        180,
+        235,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 2
+    },
+    {
+      "text": "maneuvers,",
+      "confidence": 94.6,
+      "bbox": [
+        494,
+        180,
+        160,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 3
+    },
+    {
+      "text": "the",
+      "confidence": 98.8,
+      "bbox": [
+        666,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 4
+    },
+    {
+      "text": "satellite",
+      "confidence": 93.9,
+      "bbox": [
+        733,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 5
+    },
+    {
+      "text": "established",
+      "confidence": 89.2,
+      "bbox": [
+        890,
+        180,
+        175,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 6
+    },
+    {
+      "text": "stable",
+      "confidence": 89.4,
+      "bbox": [
+        1077,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 7
+    },
+    {
+      "text": "orbital",
+      "confidence": 96.7,
+      "bbox": [
+        1189,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 8
+    },
+    {
+      "text": "equilibrium",
+      "confidence": 88.2,
+      "bbox": [
+        1316,
+        180,
+        175,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 9
+    },
+    {
+      "text": "at",
+      "confidence": 89.4,
+      "bbox": [
+        1503,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 10
+    },
+    {
+      "text": "an",
+      "confidence": 89.3,
+      "bbox": [
+        1555,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 11
+    },
+    {
+      "text": "ap0gee",
+      "confidence": 48.1,
+      "bbox": [
+        1607,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 12
+    },
+    {
+      "text": "altitude",
+      "confidence": 89.2,
+      "bbox": [
+        1719,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 13
+    },
+    {
+      "text": "of",
+      "confidence": 98.4,
+      "bbox": [
+        1861,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 14
+    },
+    {
+      "text": "35,78x",
+      "confidence": 60.2,
+      "bbox": [
+        1913,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 15
+    },
+    {
+      "text": "kilometers.",
+      "confidence": 93.0,
+      "bbox": [
+        2025,
+        180,
+        175,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 16
+    },
+    {
+      "text": "The",
+      "confidence": 88.7,
+      "bbox": [
+        2212,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 17
+    },
+    {
+      "text": "communications",
+      "confidence": 92.4,
+      "bbox": [
+        2279,
+        180,
+        220,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 18
+    },
+    {
+      "text": "bus",
+      "confidence": 93.4,
+      "bbox": [
+        2511,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 19
+    },
+    {
+      "text": "carries",
+      "confidence": 88.8,
+      "bbox": [
+        2578,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 20
+    },
+    {
+      "text": "24",
+      "confidence": 94.7,
+      "bbox": [
+        2705,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 21
+    },
+    {
+      "text": "activc",
+      "confidence": 41.9,
+      "bbox": [
+        2757,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 22
+    },
+    {
+      "text": "Ku-band",
+      "confidence": 95.8,
+      "bbox": [
+        2869,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 23
+    },
+    {
+      "text": "transponders",
+      "confidence": 94.6,
+      "bbox": [
+        2996,
+        180,
+        190,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 24
+    },
+    {
+      "text": "designed",
+      "confidence": 93.6,
+      "bbox": [
+        3198,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 25
+    },
+    {
+      "text": "to",
+      "confidence": 96.7,
+      "bbox": [
+        3340,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 26
+    },
+    {
+      "text": "deliver",
+      "confidence": 95.2,
+      "bbox": [
+        3392,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 27
+    },
+    {
+      "text": "high-throughput",
+      "confidence": 94.1,
+      "bbox": [
+        3519,
+        180,
+        235,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 28
+    },
+    {
+      "text": "broadband",
+      "confidence": 92.7,
+      "bbox": [
+        3766,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 29
+    },
+    {
+      "text": "to",
+      "confidence": 92.6,
+      "bbox": [
+        3923,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 30
+    },
+    {
+      "text": "isolated",
+      "confidence": 92.4,
+      "bbox": [
+        3975,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 31
+    },
+    {
+      "text": "archipelago",
+      "confidence": 91.4,
+      "bbox": [
+        4117,
+        180,
+        175,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 32
+    },
+    {
+      "text": "communities.",
+      "confidence": 90.8,
+      "bbox": [
+        4304,
+        180,
+        190,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 33
+    },
+    {
+      "text": "Primary",
+      "confidence": 95.6,
+      "bbox": [
+        90,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 1
+    },
+    {
+      "text": "flight",
+      "confidence": 89.0,
+      "bbox": [
+        217,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 2
+    },
+    {
+      "text": "telemetry",
+      "confidence": 92.8,
+      "bbox": [
+        329,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 3
+    },
+    {
+      "text": "and",
+      "confidence": 92.1,
+      "bbox": [
+        486,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 4
+    },
+    {
+      "text": "health",
+      "confidence": 88.7,
+      "bbox": [
+        553,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 5
+    },
+    {
+      "text": "monitoring",
+      "confidence": 94.2,
+      "bbox": [
+        665,
+        220,
+        160,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 6
+    },
+    {
+      "text": "are",
+      "confidence": 92.5,
+      "bbox": [
+        837,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 7
+    },
+    {
+      "text": "managed",
+      "confidence": 98.4,
+      "bbox": [
+        904,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 8
+    },
+    {
+      "text": "from",
+      "confidence": 98.1,
+      "bbox": [
+        1031,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 9
+    },
+    {
+      "text": "txe",
+      "confidence": 42.4,
+      "bbox": [
+        1113,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 10
+    },
+    {
+      "text": "Satish",
+      "confidence": 94.4,
+      "bbox": [
+        1180,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 11
+    },
+    {
+      "text": "Dhawan",
+      "confidence": 95.2,
+      "bbox": [
+        1292,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 12
+    },
+    {
+      "text": "Space",
+      "confidence": 89.2,
+      "bbox": [
+        1404,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 13
+    },
+    {
+      "text": "Centre",
+      "confidence": 92.0,
+      "bbox": [
+        1501,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 14
+    },
+    {
+      "text": "in",
+      "confidence": 94.3,
+      "bbox": [
+        1613,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 15
+    },
+    {
+      "text": "Sriharikota,",
+      "confidence": 97.3,
+      "bbox": [
+        1665,
+        220,
+        190,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 16
+    },
+    {
+      "text": "supported",
+      "confidence": 97.0,
+      "bbox": [
+        1867,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 17
+    },
+    {
+      "text": "by",
+      "confidence": 95.1,
+      "bbox": [
+        2024,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 18
+    },
+    {
+      "text": "internationol",
+      "confidence": 65.4,
+      "bbox": [
+        2076,
+        220,
+        205,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 19
+    },
+    {
+      "text": "deep-space",
+      "confidence": 90.0,
+      "bbox": [
+        2293,
+        220,
+        160,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 20
+    },
+    {
+      "text": "ground",
+      "confidence": 91.4,
+      "bbox": [
+        2465,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 21
+    },
+    {
+      "text": "tracking",
+      "confidence": 88.1,
+      "bbox": [
+        2577,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 22
+    },
+    {
+      "text": "stations",
+      "confidence": 94.2,
+      "bbox": [
+        2719,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 23
+    },
+    {
+      "text": "situated",
+      "confidence": 89.6,
+      "bbox": [
+        2861,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 24
+    },
+    {
+      "text": "in",
+      "confidence": 88.3,
+      "bbox": [
+        3003,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 25
+    },
+    {
+      "text": "Brunei",
+      "confidence": 90.4,
+      "bbox": [
+        3055,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 26
+    },
+    {
+      "text": "and",
+      "confidence": 91.7,
+      "bbox": [
+        3167,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 27
+    },
+    {
+      "text": "Indonesia.",
+      "confidence": 95.9,
+      "bbox": [
+        3234,
+        220,
+        160,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 28
+    }
+  ],
+  "execution_time_sec": 0.0027
+}

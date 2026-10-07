@@ -1,0 +1,1380 @@
+{
+  "page_id": "doc_en_001_page_002",
+  "document_id": "doc_en_001",
+  "language": "en",
+  "engine": "mock_ocr",
+  "engine_version": "1.0.0-synthetic",
+  "preprocessing_config": {
+    "original_shape": [
+      1754,
+      1240,
+      3
+    ],
+    "processed_shape": [
+      1754,
+      1240
+    ],
+    "operations_applied": [
+      "grayscale",
+      "denoise",
+      "deskew",
+      "normalize",
+      "threshold_otsu"
+    ],
+    "execution_time_sec": 1.2383129999507219,
+    "metadata": {
+      "denoise_h": 10.0,
+      "skew_angle_deg": 0.0,
+      "method": "otsu",
+      "threshold_value": 152.0
+    }
+  },
+  "raw_text": "Offshore Wind and Grid Modernization Initiatives Complementing terrcstrial solar infrastructure, the Maritime Energy Directorate has approved an ixitial tranche of offshore wxnd turbines targeting a total capacity of 12.8 gigawatts. The coastal waters off Tarnil Nadu and Gujarat have bcen prioritized for bathymetric seabed mapping. Major original equipment manufacturers Siemens Energy and Vestas have secured engineering contracts to manufacture 14-mexawatt marine wind turbines. The project specifications require corrosion-resistant nacelles designed to withstand severe cyclonic weather systems. Power generated from oxfshore platforms will be synchronized via undersea cables to coastal converter substations. The National Power Corporation will construct a 3,400 kilometers high-voltage direct current transmission corridor scheduled for finol commissioning by December 202x.",
+  "words": [
+    {
+      "text": "Offshore",
+      "confidence": 88.8,
+      "bbox": [
+        90,
+        100,
+        130,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 1
+    },
+    {
+      "text": "Wind",
+      "confidence": 90.9,
+      "bbox": [
+        232,
+        100,
+        70,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 2
+    },
+    {
+      "text": "and",
+      "confidence": 97.7,
+      "bbox": [
+        314,
+        100,
+        55,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 3
+    },
+    {
+      "text": "Grid",
+      "confidence": 92.1,
+      "bbox": [
+        381,
+        100,
+        70,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 4
+    },
+    {
+      "text": "Modernization",
+      "confidence": 97.2,
+      "bbox": [
+        463,
+        100,
+        205,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 5
+    },
+    {
+      "text": "Initiatives",
+      "confidence": 94.7,
+      "bbox": [
+        680,
+        100,
+        175,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 6
+    },
+    {
+      "text": "Complementing",
+      "confidence": 95.2,
+      "bbox": [
+        90,
+        140,
+        205,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 1
+    },
+    {
+      "text": "terrcstrial",
+      "confidence": 61.4,
+      "bbox": [
+        307,
+        140,
+        175,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 2
+    },
+    {
+      "text": "solar",
+      "confidence": 89.1,
+      "bbox": [
+        494,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 3
+    },
+    {
+      "text": "infrastructure,",
+      "confidence": 90.9,
+      "bbox": [
+        591,
+        140,
+        235,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 4
+    },
+    {
+      "text": "the",
+      "confidence": 96.2,
+      "bbox": [
+        838,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 5
+    },
+    {
+      "text": "Maritime",
+      "confidence": 91.1,
+      "bbox": [
+        905,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 6
+    },
+    {
+      "text": "Energy",
+      "confidence": 91.8,
+      "bbox": [
+        1047,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 7
+    },
+    {
+      "text": "Directorate",
+      "confidence": 97.4,
+      "bbox": [
+        1159,
+        140,
+        175,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 8
+    },
+    {
+      "text": "has",
+      "confidence": 90.8,
+      "bbox": [
+        1346,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 9
+    },
+    {
+      "text": "approved",
+      "confidence": 88.6,
+      "bbox": [
+        1413,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 10
+    },
+    {
+      "text": "an",
+      "confidence": 97.1,
+      "bbox": [
+        1555,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 11
+    },
+    {
+      "text": "ixitial",
+      "confidence": 44.0,
+      "bbox": [
+        1607,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 12
+    },
+    {
+      "text": "tranche",
+      "confidence": 90.9,
+      "bbox": [
+        1734,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 13
+    },
+    {
+      "text": "of",
+      "confidence": 94.1,
+      "bbox": [
+        1861,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 14
+    },
+    {
+      "text": "offshore",
+      "confidence": 88.1,
+      "bbox": [
+        1913,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 15
+    },
+    {
+      "text": "wxnd",
+      "confidence": 63.8,
+      "bbox": [
+        2055,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 16
+    },
+    {
+      "text": "turbines",
+      "confidence": 97.2,
+      "bbox": [
+        2137,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 17
+    },
+    {
+      "text": "targeting",
+      "confidence": 89.6,
+      "bbox": [
+        2279,
+        140,
+        145,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 18
+    },
+    {
+      "text": "a",
+      "confidence": 89.4,
+      "bbox": [
+        2436,
+        140,
+        25,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 19
+    },
+    {
+      "text": "total",
+      "confidence": 97.9,
+      "bbox": [
+        2473,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 20
+    },
+    {
+      "text": "capacity",
+      "confidence": 97.5,
+      "bbox": [
+        2570,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 21
+    },
+    {
+      "text": "of",
+      "confidence": 90.3,
+      "bbox": [
+        2712,
+        140,
+        40,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 22
+    },
+    {
+      "text": "12.8",
+      "confidence": 89.1,
+      "bbox": [
+        2764,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 23
+    },
+    {
+      "text": "gigawatts.",
+      "confidence": 97.7,
+      "bbox": [
+        2846,
+        140,
+        160,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 24
+    },
+    {
+      "text": "The",
+      "confidence": 94.8,
+      "bbox": [
+        3018,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 25
+    },
+    {
+      "text": "coastal",
+      "confidence": 98.2,
+      "bbox": [
+        3085,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 26
+    },
+    {
+      "text": "waters",
+      "confidence": 98.7,
+      "bbox": [
+        3212,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 27
+    },
+    {
+      "text": "off",
+      "confidence": 97.7,
+      "bbox": [
+        3324,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 28
+    },
+    {
+      "text": "Tarnil",
+      "confidence": 58.5,
+      "bbox": [
+        3391,
+        140,
+        85,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 29
+    },
+    {
+      "text": "Nadu",
+      "confidence": 92.5,
+      "bbox": [
+        3488,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 30
+    },
+    {
+      "text": "and",
+      "confidence": 96.1,
+      "bbox": [
+        3570,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 31
+    },
+    {
+      "text": "Gujarat",
+      "confidence": 89.8,
+      "bbox": [
+        3637,
+        140,
+        115,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 32
+    },
+    {
+      "text": "have",
+      "confidence": 92.2,
+      "bbox": [
+        3764,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 33
+    },
+    {
+      "text": "bcen",
+      "confidence": 48.9,
+      "bbox": [
+        3846,
+        140,
+        70,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 34
+    },
+    {
+      "text": "prioritized",
+      "confidence": 93.1,
+      "bbox": [
+        3928,
+        140,
+        175,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 35
+    },
+    {
+      "text": "for",
+      "confidence": 96.7,
+      "bbox": [
+        4115,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 36
+    },
+    {
+      "text": "bathymetric",
+      "confidence": 88.3,
+      "bbox": [
+        4182,
+        140,
+        175,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 37
+    },
+    {
+      "text": "seabed",
+      "confidence": 91.6,
+      "bbox": [
+        4369,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 38
+    },
+    {
+      "text": "mapping.",
+      "confidence": 98.6,
+      "bbox": [
+        4481,
+        140,
+        130,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 39
+    },
+    {
+      "text": "Major",
+      "confidence": 95.1,
+      "bbox": [
+        90,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 1
+    },
+    {
+      "text": "original",
+      "confidence": 98.8,
+      "bbox": [
+        187,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 2
+    },
+    {
+      "text": "equipment",
+      "confidence": 98.3,
+      "bbox": [
+        329,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 3
+    },
+    {
+      "text": "manufacturers",
+      "confidence": 98.7,
+      "bbox": [
+        486,
+        180,
+        205,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 4
+    },
+    {
+      "text": "Siemens",
+      "confidence": 98.6,
+      "bbox": [
+        703,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 5
+    },
+    {
+      "text": "Energy",
+      "confidence": 89.2,
+      "bbox": [
+        830,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 6
+    },
+    {
+      "text": "and",
+      "confidence": 96.0,
+      "bbox": [
+        942,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 7
+    },
+    {
+      "text": "Vestas",
+      "confidence": 94.7,
+      "bbox": [
+        1009,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 8
+    },
+    {
+      "text": "have",
+      "confidence": 92.2,
+      "bbox": [
+        1121,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 9
+    },
+    {
+      "text": "secured",
+      "confidence": 90.8,
+      "bbox": [
+        1203,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 10
+    },
+    {
+      "text": "engineering",
+      "confidence": 88.0,
+      "bbox": [
+        1330,
+        180,
+        175,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 11
+    },
+    {
+      "text": "contracts",
+      "confidence": 93.9,
+      "bbox": [
+        1517,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 12
+    },
+    {
+      "text": "to",
+      "confidence": 96.2,
+      "bbox": [
+        1674,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 13
+    },
+    {
+      "text": "manufacture",
+      "confidence": 92.0,
+      "bbox": [
+        1726,
+        180,
+        175,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 14
+    },
+    {
+      "text": "14-mexawatt",
+      "confidence": 55.9,
+      "bbox": [
+        1913,
+        180,
+        175,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 15
+    },
+    {
+      "text": "marine",
+      "confidence": 95.3,
+      "bbox": [
+        2100,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 16
+    },
+    {
+      "text": "wind",
+      "confidence": 97.9,
+      "bbox": [
+        2212,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 17
+    },
+    {
+      "text": "turbines.",
+      "confidence": 95.3,
+      "bbox": [
+        2294,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 18
+    },
+    {
+      "text": "The",
+      "confidence": 95.7,
+      "bbox": [
+        2451,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 19
+    },
+    {
+      "text": "project",
+      "confidence": 90.1,
+      "bbox": [
+        2518,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 20
+    },
+    {
+      "text": "specifications",
+      "confidence": 92.2,
+      "bbox": [
+        2645,
+        180,
+        220,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 21
+    },
+    {
+      "text": "require",
+      "confidence": 89.9,
+      "bbox": [
+        2877,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 22
+    },
+    {
+      "text": "corrosion-resistant",
+      "confidence": 92.5,
+      "bbox": [
+        3004,
+        180,
+        295,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 23
+    },
+    {
+      "text": "nacelles",
+      "confidence": 91.3,
+      "bbox": [
+        3311,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 24
+    },
+    {
+      "text": "designed",
+      "confidence": 96.6,
+      "bbox": [
+        3453,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 25
+    },
+    {
+      "text": "to",
+      "confidence": 91.5,
+      "bbox": [
+        3595,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 26
+    },
+    {
+      "text": "withstand",
+      "confidence": 95.4,
+      "bbox": [
+        3647,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 27
+    },
+    {
+      "text": "severe",
+      "confidence": 96.7,
+      "bbox": [
+        3804,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 28
+    },
+    {
+      "text": "cyclonic",
+      "confidence": 96.1,
+      "bbox": [
+        3916,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 29
+    },
+    {
+      "text": "weather",
+      "confidence": 91.1,
+      "bbox": [
+        4058,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 30
+    },
+    {
+      "text": "systems.",
+      "confidence": 94.8,
+      "bbox": [
+        4185,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 31
+    },
+    {
+      "text": "Power",
+      "confidence": 98.5,
+      "bbox": [
+        90,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 1
+    },
+    {
+      "text": "generated",
+      "confidence": 91.4,
+      "bbox": [
+        187,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 2
+    },
+    {
+      "text": "from",
+      "confidence": 89.6,
+      "bbox": [
+        344,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 3
+    },
+    {
+      "text": "oxfshore",
+      "confidence": 67.4,
+      "bbox": [
+        426,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 4
+    },
+    {
+      "text": "platforms",
+      "confidence": 97.7,
+      "bbox": [
+        568,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 5
+    },
+    {
+      "text": "will",
+      "confidence": 95.9,
+      "bbox": [
+        725,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 6
+    },
+    {
+      "text": "be",
+      "confidence": 92.4,
+      "bbox": [
+        807,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 7
+    },
+    {
+      "text": "synchronized",
+      "confidence": 95.6,
+      "bbox": [
+        859,
+        220,
+        190,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 8
+    },
+    {
+      "text": "via",
+      "confidence": 97.5,
+      "bbox": [
+        1061,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 9
+    },
+    {
+      "text": "undersea",
+      "confidence": 96.6,
+      "bbox": [
+        1128,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 10
+    },
+    {
+      "text": "cables",
+      "confidence": 96.8,
+      "bbox": [
+        1270,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 11
+    },
+    {
+      "text": "to",
+      "confidence": 93.1,
+      "bbox": [
+        1382,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 12
+    },
+    {
+      "text": "coastal",
+      "confidence": 98.1,
+      "bbox": [
+        1434,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 13
+    },
+    {
+      "text": "converter",
+      "confidence": 89.5,
+      "bbox": [
+        1561,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 14
+    },
+    {
+      "text": "substations.",
+      "confidence": 93.8,
+      "bbox": [
+        1718,
+        220,
+        190,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 15
+    },
+    {
+      "text": "The",
+      "confidence": 91.5,
+      "bbox": [
+        1920,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 16
+    },
+    {
+      "text": "National",
+      "confidence": 92.9,
+      "bbox": [
+        1987,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 17
+    },
+    {
+      "text": "Power",
+      "confidence": 97.8,
+      "bbox": [
+        2129,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 18
+    },
+    {
+      "text": "Corporation",
+      "confidence": 98.0,
+      "bbox": [
+        2226,
+        220,
+        175,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 19
+    },
+    {
+      "text": "will",
+      "confidence": 89.8,
+      "bbox": [
+        2413,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 20
+    },
+    {
+      "text": "construct",
+      "confidence": 93.0,
+      "bbox": [
+        2495,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 21
+    },
+    {
+      "text": "a",
+      "confidence": 96.3,
+      "bbox": [
+        2652,
+        220,
+        25,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 22
+    },
+    {
+      "text": "3,400",
+      "confidence": 91.1,
+      "bbox": [
+        2689,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 23
+    },
+    {
+      "text": "kilometers",
+      "confidence": 93.3,
+      "bbox": [
+        2786,
+        220,
+        160,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 24
+    },
+    {
+      "text": "high-voltage",
+      "confidence": 92.8,
+      "bbox": [
+        2958,
+        220,
+        190,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 25
+    },
+    {
+      "text": "direct",
+      "confidence": 90.6,
+      "bbox": [
+        3160,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 26
+    },
+    {
+      "text": "current",
+      "confidence": 97.8,
+      "bbox": [
+        3272,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 27
+    },
+    {
+      "text": "transmission",
+      "confidence": 89.7,
+      "bbox": [
+        3399,
+        220,
+        190,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 28
+    },
+    {
+      "text": "corridor",
+      "confidence": 89.7,
+      "bbox": [
+        3601,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 29
+    },
+    {
+      "text": "scheduled",
+      "confidence": 92.6,
+      "bbox": [
+        3743,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 30
+    },
+    {
+      "text": "for",
+      "confidence": 93.1,
+      "bbox": [
+        3900,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 31
+    },
+    {
+      "text": "finol",
+      "confidence": 62.0,
+      "bbox": [
+        3967,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 32
+    },
+    {
+      "text": "commissioning",
+      "confidence": 94.4,
+      "bbox": [
+        4064,
+        220,
+        205,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 33
+    },
+    {
+      "text": "by",
+      "confidence": 97.4,
+      "bbox": [
+        4281,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 34
+    },
+    {
+      "text": "December",
+      "confidence": 92.2,
+      "bbox": [
+        4333,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 35
+    },
+    {
+      "text": "202x.",
+      "confidence": 44.7,
+      "bbox": [
+        4475,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 36
+    }
+  ],
+  "execution_time_sec": 0.0029
+}

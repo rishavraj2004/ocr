@@ -1,0 +1,112 @@
+[
+  {
+    "document_id": "doc_en_001",
+    "page_id": "doc_en_001_page_001",
+    "language": "en",
+    "page_number": 1,
+    "doc_type": "government_report",
+    "layout_type": "single_column",
+    "image_quality": "clean",
+    "image_path": "data/images/doc_en_001_page_001.png",
+    "ground_truth_path": "data/ground_truth/doc_en_001_page_001.txt"
+  },
+  {
+    "document_id": "doc_en_001",
+    "page_id": "doc_en_001_page_002",
+    "language": "en",
+    "page_number": 2,
+    "doc_type": "government_report",
+    "layout_type": "single_column",
+    "image_quality": "clean",
+    "image_path": "data/images/doc_en_001_page_002.png",
+    "ground_truth_path": "data/ground_truth/doc_en_001_page_002.txt"
+  },
+  {
+    "document_id": "doc_en_002",
+    "page_id": "doc_en_002_page_001",
+    "language": "en",
+    "page_number": 1,
+    "doc_type": "agricultural_bulletin",
+    "layout_type": "single_column",
+    "image_quality": "clean",
+    "image_path": "data/images/doc_en_002_page_001.png",
+    "ground_truth_path": "data/ground_truth/doc_en_002_page_001.txt"
+  },
+  {
+    "document_id": "doc_en_002",
+    "page_id": "doc_en_002_page_002",
+    "language": "en",
+    "page_number": 2,
+    "doc_type": "agricultural_bulletin",
+    "layout_type": "single_column",
+    "image_quality": "clean",
+    "image_path": "data/images/doc_en_002_page_002.png",
+    "ground_truth_path": "data/ground_truth/doc_en_002_page_002.txt"
+  },
+  {
+    "document_id": "doc_en_003",
+    "page_id": "doc_en_003_page_001",
+    "language": "en",
+    "page_number": 1,
+    "doc_type": "scientific_report",
+    "layout_type": "single_column",
+    "image_quality": "clean",
+    "image_path": "data/images/doc_en_003_page_001.png",
+    "ground_truth_path": "data/ground_truth/doc_en_003_page_001.txt"
+  },
+  {
+    "document_id": "doc_hi_001",
+    "page_id": "doc_hi_001_page_001",
+    "language": "hi",
+    "page_number": 1,
+    "doc_type": "government_report",
+    "layout_type": "single_column",
+    "image_quality": "clean",
+    "image_path": "data/images/doc_hi_001_page_001.png",
+    "ground_truth_path": "data/ground_truth/doc_hi_001_page_001.txt"
+  },
+  {
+    "document_id": "doc_hi_001",
+    "page_id": "doc_hi_001_page_002",
+    "language": "hi",
+    "page_number": 2,
+    "doc_type": "government_report",
+    "layout_type": "single_column",
+    "image_quality": "clean",
+    "image_path": "data/images/doc_hi_001_page_002.png",
+    "ground_truth_path": "data/ground_truth/doc_hi_001_page_002.txt"
+  },
+  {
+    "document_id": "doc_hi_002",
+    "page_id": "doc_hi_002_page_001",
+    "language": "hi",
+    "page_number": 1,
+    "doc_type": "agricultural_bulletin",
+    "layout_type": "single_column",
+    "image_quality": "clean",
+    "image_path": "data/images/doc_hi_002_page_001.png",
+    "ground_truth_path": "data/ground_truth/doc_hi_002_page_001.txt"
+  },
+  {
+    "document_id": "doc_hi_002",
+    "page_id": "doc_hi_002_page_002",
+    "language": "hi",
+    "page_number": 2,
+    "doc_type": "education_report",
+    "layout_type": "single_column",
+    "image_quality": "clean",
+    "image_path": "data/images/doc_hi_002_page_002.png",
+    "ground_truth_path": "data/ground_truth/doc_hi_002_page_002.txt"
+  },
+  {
+    "document_id": "doc_hi_003",
+    "page_id": "doc_hi_003_page_001",
+    "language": "hi",
+    "page_number": 1,
+    "doc_type": "environmental_policy",
+    "layout_type": "single_column",
+    "image_quality": "clean",
+    "image_path": "data/images/doc_hi_003_page_001.png",
+    "ground_truth_path": "data/ground_truth/doc_hi_003_page_001.txt"
+  }
+]

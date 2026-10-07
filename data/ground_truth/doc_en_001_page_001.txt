@@ -1,0 +1,13 @@
+National Renewable Energy Transition Report 2025
+
+## 1. Executive Summary and Strategic Targets
+
+The Federal Ministry for Energy has formalized the National Renewable Transition Roadmap, aiming to achieve a cumulative solar energy generation capacity of 300 gigawatts by the year 2030. Rapid infrastructure expansion throughout western corridors has accelerated utility-scale grid modernization.
+
+## 2. Capital Expenditure and Regional Deployment
+
+During the fiscal year 2024, institutional capital investment reached $42.5 billion across utility-scale photovoltaic solar parks and battery storage facilities. The western desert states of Rajasthan and Gujarat accounted for over 62 percent of new generation permits.
+
+## 3. Storage Infrastructure & Transmission
+
+To mitigate diurnal intermittency, the Energy Commission has mandated the deployment of grid-scale battery energy storage systems with an aggregate capacity of 25 gigawatt-hours by 2027. High-voltage transmission lines are currently being constructed to evacuate power to central industrial zones.

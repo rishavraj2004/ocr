@@ -73,6 +73,27 @@ def test_init_run(config_path: str) -> int:
     return 0
 
 
+def validate_dataset(config_path: str) -> int:
+    """Validate consistency of dataset images, ground truth, metadata, and questions."""
+    from src.dataset.manager import DatasetManager
+
+    cfg = load_config(config_path)
+    dm = DatasetManager(cfg)
+    report = dm.validate()
+    print(report.summary_str())
+    return 0 if report.is_valid else 1
+
+
+def generate_dataset() -> int:
+    """Generate or re-synthesize the sample benchmark dataset."""
+    from src.dataset.generator import generate_benchmark_dataset
+
+    logger.info("Generating standard benchmark dataset (5 English + 5 Hindi pages)...")
+    pages, questions = generate_benchmark_dataset()
+    logger.info(f"Successfully generated {pages} pages and {questions} evaluation questions.")
+    return 0
+
+
 def parse_args(args=None):
     parser = argparse.ArgumentParser(
         description="OCR-Aware Multilingual RAG Research Framework"
@@ -98,6 +119,16 @@ def parse_args(args=None):
         action="store_true",
         help="Test initialize an experiment run directory and metadata freeze",
     )
+    parser.add_argument(
+        "--validate-dataset",
+        action="store_true",
+        help="Validate consistency of dataset images, ground truth, metadata, and questions",
+    )
+    parser.add_argument(
+        "--generate-dataset",
+        action="store_true",
+        help="Synthesize the 10-page benchmark dataset (5 English, 5 Hindi)",
+    )
     return parser.parse_args(args)
 
 
@@ -106,18 +137,22 @@ def main() -> int:
     args = parse_args()
 
     # If no flags passed, run default validation and environment check
-    if not (args.check_env or args.validate_config or args.init_run):
-        logger.info("Running default Phase 0 sanity check...")
+    if not (args.check_env or args.validate_config or args.init_run or args.validate_dataset or args.generate_dataset):
+        logger.info("Running default Phase 0/1 sanity check...")
         val_status = validate_configuration(args.config)
         if val_status != 0:
             return val_status
         return check_environment()
 
     status = 0
-    if args.check_env:
+    if args.generate_dataset:
+        status = generate_dataset()
+    if args.check_env and status == 0:
         status = check_environment()
     if args.validate_config and status == 0:
         status = validate_configuration(args.config)
+    if args.validate_dataset and status == 0:
+        status = validate_dataset(args.config)
     if args.init_run and status == 0:
         status = test_init_run(args.config)
 

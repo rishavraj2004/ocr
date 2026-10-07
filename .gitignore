@@ -74,6 +74,7 @@ results/processed/*
 !results/processed/.gitkeep
 results/figures/*
 !results/figures/.gitkeep
+!results/figures/*.png
 results/reports/*
 !results/reports/.gitkeep
 

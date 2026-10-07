@@ -1,0 +1,19 @@
+\begin{table}[htbp]
+\centering
+\caption{Efficiency and Accuracy Comparison: Unconstrained Full-Text Correction vs. Confidence-Guided Selective Correction.}
+\label{tab:efficiency}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Evaluation Dimension} & \textbf{Full-Text (Naive)} & \textbf{Selective ($\tau=70$)} & \textbf{Advantage / Efficiency} \\
+\midrule
+Total Tokens Consumed & 4,883 & 1,539 & +68.5\% (3.2$\times$ cheaper) \\
+Completion Tokens Generated & 2,027 & 117 & +94.2\% decoding savings \\
+Flagged Words Ratio & 100.0\% & 7.7\% & +92.3\% focused \\
+Over-Corrected Words & 4 & 0 & +4 fewer corruptions \\
+Character Error Rate (CER) & 0.1353 & 0.1320 & -0.0033 (lower is better) \\
+Word Error Rate (WER) & 0.2008 & 0.1842 & -0.0166 (lower is better) \\
+QA Exact Match (EM) & 0.8421 & 0.8947 & +0.0526 (+5.26\%) \\
+QA Token F1 Score & 0.9355 & 0.9474 & +0.0118 (+1.18\%) \\
+\bottomrule
+\end{tabular}
+\end{table}

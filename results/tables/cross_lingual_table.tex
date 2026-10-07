@@ -1,0 +1,21 @@
+\begin{table}[htbp]
+\centering
+\caption{Cross-Lingual Asymmetry: Latin Script (English) vs. Devanagari Script (Hindi) Under OCR Degradation and Selective Correction.}
+\label{tab:cross_lingual}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Metric \& Partition} & \textbf{English (Latin)} & \textbf{Hindi (Devanagari)} & \textbf{Cross-Lingual Gap} & \textbf{Significance} \\
+\midrule
+\multicolumn{5}{l}{\textbf{Retrieval Metrics (Dense Invariance)}} \\
+Recall@1 (GT $\rightarrow$ Raw) & 0.7895 $\rightarrow$ 0.8947 & 0.8947 $\rightarrow$ 0.8947 & +0.0000 & High Semantic Invariance \\
+Recall@5 (All Variants) & 1.0000 & 1.0000 & 0.0000 & 100\% Top-5 Pass \\
+MRR (Raw OCR) & 0.9254 & 0.9342 & +0.0088 & Robust \\
+\midrule
+\multicolumn{5}{l}{\textbf{Downstream QA Metrics (Correction Asymmetry)}} \\
+Raw Degradation (EM) & -0.1579 & -0.1053 & +0.0526 & Numerical Vulnerability \\
+Corrected Recovery (EM) & +0.0000 & +0.0526 & +0.0526 & Devanagari Constraint \\
+EM Recovery Rate (\%) & 0.0\% & 50.0\% & +50.0\% & 50.0\% Hindi Recovery \\
+F1 Recovery Rate (\%) & 0.0\% & 65.5\% & +65.5\% & 65.5\% Hindi Recovery \\
+\bottomrule
+\end{tabular}
+\end{table}

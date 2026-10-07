@@ -7,8 +7,10 @@ and initialize reproducible experiment runs.
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from pathlib import Path
+from typing import Optional
 
 from src.core.config import load_config, AppConfig
 from src.core.logging import setup_logging, get_logger
@@ -488,7 +490,66 @@ def parse_args(args=None):
         action="store_true",
         help="Execute English vs Hindi cross-lingual comparative analysis (script profiles, vulnerability)",
     )
+    parser.add_argument(
+        "--export-figures",
+        action="store_true",
+        help="Export high-resolution publication PNG charts and LaTeX/Markdown tables",
+    )
+    parser.add_argument(
+        "--run-all",
+        action="store_true",
+        help="Execute master end-to-end benchmark suite and freeze metadata",
+    )
     return parser.parse_args(args)
+
+
+def export_figures(config_path: str) -> int:
+    """Generate high-resolution publication figures and LaTeX/Markdown tables."""
+    from src.experiments.export_figures import (
+        generate_publication_figures,
+        export_latex_and_markdown_tables,
+    )
+
+    cfg = load_config(config_path)
+    fig_dir = os.path.join(cfg.output_dir, "figures")
+    tab_dir = os.path.join(cfg.output_dir, "tables")
+
+    logger.info("Exporting publication figures (300 DPI PNG)...")
+    figs = generate_publication_figures(results_dir=cfg.output_dir, figures_dir=fig_dir)
+    logger.info("Exporting LaTeX booktabs and Markdown tables...")
+    tabs = export_latex_and_markdown_tables(results_dir=cfg.output_dir, tables_dir=tab_dir)
+
+    print("\n" + "=" * 80)
+    print("PUBLICATION ASSETS EXPORT COMPLETED (Phase 11)")
+    print("=" * 80)
+    print(f"  Figures exported to: {fig_dir} ({len(figs)} figures)")
+    for f in figs:
+        print(f"    - {f}")
+    print(f"  Tables exported to : {tab_dir} ({len(tabs)} files)")
+    for t in tabs:
+        print(f"    - {t}")
+    print("=" * 80 + "\n")
+    return 0
+
+
+def run_all_master(config_path: str, threshold: Optional[float] = None) -> int:
+    """Execute complete master benchmark via MasterExperimentRunner."""
+    from run_experiment import MasterExperimentRunner
+
+    runner = MasterExperimentRunner(config_path=config_path)
+    summary = runner.run_full_benchmark(threshold=threshold)
+    print("\n" + "=" * 90)
+    print("MASTER BENCHMARK EXECUTION SUMMARY")
+    print("=" * 90)
+    print(f"  Run ID            : {summary['run_id']}")
+    print(f"  Directory         : {summary['run_dir']}")
+    print(f"  Duration          : {summary['total_duration_sec']:.2f} seconds")
+    if "optimal_threshold" in summary:
+        print(f"  Optimal Knee tau* : {summary['optimal_threshold']:.1f}")
+    print(f"  Generated Figures : {len(summary['figures'])}")
+    print(f"  Generated Tables  : {len(summary['tables'])}")
+    print("=" * 90 + "\n")
+    return 0
 
 
 def main() -> int:
@@ -496,7 +557,24 @@ def main() -> int:
     args = parse_args()
 
     # If no flags passed, run default validation and environment check
-    if not (args.check_env or args.validate_config or args.init_run or args.validate_dataset or args.generate_dataset or args.preprocess_page or args.run_ocr or args.run_correction or args.run_rag or args.compare_rag or args.run_sweep or args.compare_efficiency or args.run_cross_lingual):
+    active_flags = (
+        args.check_env
+        or args.validate_config
+        or args.init_run
+        or args.validate_dataset
+        or args.generate_dataset
+        or args.preprocess_page
+        or args.run_ocr
+        or args.run_correction
+        or args.run_rag
+        or args.compare_rag
+        or args.run_sweep
+        or args.compare_efficiency
+        or args.run_cross_lingual
+        or args.export_figures
+        or args.run_all
+    )
+    if not active_flags:
         logger.info("Running default Phase 0/1/2/3/4 sanity check...")
         val_status = validate_configuration(args.config)
         if val_status != 0:
@@ -528,10 +606,12 @@ def main() -> int:
         status = run_full_vs_selective(args.config, threshold=args.threshold)
     if args.run_cross_lingual and status == 0:
         status = run_cross_lingual(args.config)
+    if args.export_figures and status == 0:
+        status = export_figures(args.config)
+    if args.run_all and status == 0:
+        status = run_all_master(args.config, threshold=args.threshold)
     if args.init_run and status == 0:
         status = test_init_run(args.config)
-
-    return status
 
     return status
 

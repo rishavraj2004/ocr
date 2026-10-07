@@ -47,7 +47,7 @@
       "context_after": "हिस्से को आवास प्रदान करते",
       "corrected_text": "प्रतिरत",
       "changed": false,
-      "latency_sec": 0.0001,
+      "latency_sec": 0.0,
       "prompt_tokens": 16,
       "completion_tokens": 1
     },
@@ -135,5 +135,5 @@
   "threshold": 70.0,
   "total_words": 139,
   "corrected_words": 9,
-  "total_latency_sec": 0.0001
+  "total_latency_sec": 0.0
 }

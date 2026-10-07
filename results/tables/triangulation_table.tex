@@ -1,0 +1,28 @@
+\begin{table}[htbp]
+\centering
+\caption{Triangulation Performance Across Document Variants: Ground Truth ($A$), Raw OCR ($B$), and Confidence-Guided Selective Corrected OCR ($C$).}
+\label{tab:triangulation}
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Partition \& Metric} & \textbf{GT ($A$)} & \textbf{Raw ($B$)} & \textbf{Corr ($C$)} & \textbf{Degradation} & \textbf{Recovery} & \textbf{Recov \%} \\
+\midrule
+\multicolumn{7}{l}{\textbf{Overall ($N=38$)}} \\
+Exact Match (EM) & 1.0000 & 0.8684 & 0.8947 & -0.1316 & +0.0263 & +20.0\% \\
+Token F1 Score & 1.0000 & 0.9224 & 0.9474 & -0.0776 & +0.0250 & +32.2\% \\
+Recall@5 & 1.0000 & 1.0000 & 1.0000 & +0.0000 & +0.0000 & +0.0\% \\
+MRR & 0.9145 & 0.9298 & 0.9351 & +0.0154 & +0.0053 & -34.3\% \\
+\midrule
+\multicolumn{7}{l}{\textbf{English Partition ($N=19$)}} \\
+Exact Match (EM) & 1.0000 & 0.8421 & 0.8421 & -0.1579 & +0.0000 & +0.0\% \\
+Token F1 Score & 1.0000 & 0.9211 & 0.9211 & -0.0789 & +0.0000 & +0.0\% \\
+Recall@5 & 1.0000 & 1.0000 & 1.0000 & +0.0000 & +0.0000 & +0.0\% \\
+MRR & 0.8947 & 0.9254 & 0.9386 & +0.0307 & +0.0132 & -42.9\% \\
+\midrule
+\multicolumn{7}{l}{\textbf{Hindi Partition ($N=19$)}} \\
+Exact Match (EM) & 1.0000 & 0.8947 & 0.9474 & -0.1053 & +0.0526 & +50.0\% \\
+Token F1 Score & 1.0000 & 0.9238 & 0.9737 & -0.0762 & +0.0499 & +65.5\% \\
+Recall@5 & 1.0000 & 1.0000 & 1.0000 & +0.0000 & +0.0000 & +0.0\% \\
+MRR & 0.9342 & 0.9342 & 0.9316 & +0.0000 & -0.0026 & +100.0\% \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -15,7 +15,7 @@
       "context_after": "belts demonstrates that precision micro-irrigation",
       "corrected_text": "agxicultural",
       "changed": false,
-      "latency_sec": 0.0001,
+      "latency_sec": 0.0,
       "prompt_tokens": 18,
       "completion_tokens": 3
     },
@@ -151,5 +151,5 @@
   "threshold": 70.0,
   "total_words": 111,
   "corrected_words": 10,
-  "total_latency_sec": 0.0004
+  "total_latency_sec": 0.0003
 }

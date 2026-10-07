@@ -1,0 +1,13 @@
+\begin{table}[htbp]
+\centering
+\caption{Confidence Threshold ($\tau$) Sensitivity: Trade-off Between Token Budget, Correction Volume, and Downstream QA Recovery.}
+\label{tab:threshold_sweep}
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Threshold ($\tau$)} & \textbf{Flagged Words} & \textbf{Flagged \%} & \textbf{Tokens} & \textbf{CER} & \textbf{QA EM} & \textbf{F1 Recovery \%} \\
+\midrule
+30 & 0 & 0.0\% & 0 & 0.1331 & 0.8684 & +0.0\% \\
+70 \textbf{($\tau^*$)} & 94 & 7.7\% & 1539 & 0.1320 & 0.8947 & +32.2\% \\
+\bottomrule
+\end{tabular}
+\end{table}

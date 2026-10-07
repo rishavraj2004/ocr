@@ -15,7 +15,7 @@
       "context_after": "Spraying Standards The Depaxtment of",
       "corrected_text": "Drone",
       "changed": true,
-      "latency_sec": 0.0004,
+      "latency_sec": 0.0003,
       "prompt_tokens": 16,
       "completion_tokens": 1
     },
@@ -151,5 +151,5 @@
   "threshold": 70.0,
   "total_words": 113,
   "corrected_words": 9,
-  "total_latency_sec": 0.0004
+  "total_latency_sec": 0.0003
 }

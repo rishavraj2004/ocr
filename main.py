@@ -327,6 +327,31 @@ def compare_rag(config_path: str) -> int:
     return 0
 
 
+def run_sweep(config_path: str, thresholds_str: Optional[str] = None) -> int:
+    """Run confidence threshold sensitivity sweep across selective correction and RAG."""
+    from src.experiments.threshold_sweep import ThresholdSweepRunner
+
+    cfg = load_config(config_path)
+    runner = ThresholdSweepRunner(cfg)
+
+    thresholds = None
+    if thresholds_str:
+        try:
+            thresholds = [float(x.strip()) for x in thresholds_str.split(",")]
+        except ValueError:
+            logger.error("Invalid thresholds format. Must be comma-separated numbers (e.g. '40,60,80')")
+            return 1
+
+    report = runner.run_sweep(thresholds=thresholds)
+
+    print("\n" + "=" * 90)
+    print("CONFIDENCE THRESHOLD SENSITIVITY SWEEP RESULTS (Phase 8)")
+    print("=" * 90)
+    print(runner.format_sweep_table(report))
+    print("=" * 90 + "\n")
+    return 0
+
+
 def parse_args(args=None):
     parser = argparse.ArgumentParser(
         description="OCR-Aware Multilingual RAG Research Framework"
@@ -407,6 +432,17 @@ def parse_args(args=None):
         action="store_true",
         help="Display 3-variant comparison (A vs B vs C) from existing evaluation artifacts",
     )
+    parser.add_argument(
+        "--run-sweep",
+        action="store_true",
+        help="Execute Confidence Threshold Sensitivity Sweep across tau in [30, 40, 50, 60, 70, 80, 90]",
+    )
+    parser.add_argument(
+        "--sweep-thresholds",
+        type=str,
+        default=None,
+        help="Comma-separated custom sweep thresholds (e.g. '30,50,70,90')",
+    )
     return parser.parse_args(args)
 
 
@@ -415,7 +451,7 @@ def main() -> int:
     args = parse_args()
 
     # If no flags passed, run default validation and environment check
-    if not (args.check_env or args.validate_config or args.init_run or args.validate_dataset or args.generate_dataset or args.preprocess_page or args.run_ocr or args.run_correction or args.run_rag or args.compare_rag):
+    if not (args.check_env or args.validate_config or args.init_run or args.validate_dataset or args.generate_dataset or args.preprocess_page or args.run_ocr or args.run_correction or args.run_rag or args.compare_rag or args.run_sweep):
         logger.info("Running default Phase 0/1/2/3/4 sanity check...")
         val_status = validate_configuration(args.config)
         if val_status != 0:
@@ -441,8 +477,12 @@ def main() -> int:
         status = run_rag(args.config, variant=args.variant, embedding_model=args.embedding_model)
     if args.compare_rag and status == 0:
         status = compare_rag(args.config)
+    if args.run_sweep and status == 0:
+        status = run_sweep(args.config, thresholds_str=args.sweep_thresholds)
     if args.init_run and status == 0:
         status = test_init_run(args.config)
+
+    return status
 
     return status
 

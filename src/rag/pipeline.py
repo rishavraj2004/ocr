@@ -140,9 +140,13 @@ class RAGPipeline:
 
         return page_texts
 
-    def index_documents(self) -> List[TextChunk]:
+    def index_documents(
+        self,
+        page_texts: Optional[Dict[str, Tuple[str, str]]] = None,
+    ) -> List[TextChunk]:
         """Load, chunk, and index all documents for this variant."""
-        page_texts = self.load_variant_documents()
+        if page_texts is None:
+            page_texts = self.load_variant_documents()
         all_chunks: List[TextChunk] = []
 
         for page_id, (doc_id, text) in page_texts.items():

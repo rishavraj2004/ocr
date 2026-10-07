@@ -1,0 +1,85 @@
+{
+  "experiment_name": "ocr_multilingual_rag",
+  "thresholds": [
+    30.0,
+    70.0
+  ],
+  "optimal_threshold": 70.0,
+  "baselines": {
+    "ground_truth": {
+      "exact_match": 1.0,
+      "f1_score": 1.0
+    },
+    "raw_ocr": {
+      "exact_match": 0.868421052631579,
+      "f1_score": 0.9224021592442645
+    }
+  },
+  "points": [
+    {
+      "threshold": 30.0,
+      "flagged_words": 0,
+      "flagged_ratio": 0.0,
+      "correction_latency_sec": 0.0,
+      "correction_tokens": 0,
+      "ocr": {
+        "cer": 0.13308,
+        "wer": 0.19236999999999999,
+        "en_cer": 0.13308,
+        "en_wer": 0.19236999999999999,
+        "hi_cer": 0.13308,
+        "hi_wer": 0.19236999999999999
+      },
+      "retrieval": {
+        "recall_at_1": 0.8947368421052632,
+        "recall_at_3": 0.9473684210526315,
+        "recall_at_5": 1.0,
+        "mrr": 0.9298245614035087
+      },
+      "qa": {
+        "exact_match": 0.868421052631579,
+        "f1_score": 0.9224021592442645,
+        "em_recovery_rate_pct": 0.0,
+        "f1_recovery_rate_pct": 0.0,
+        "en_em": 0.8421052631578947,
+        "en_f1": 0.9210526315789473,
+        "hi_em": 0.8947368421052632,
+        "hi_f1": 0.9237516869095816
+      },
+      "total_time_sec": 0.13722809997852892
+    },
+    {
+      "threshold": 70.0,
+      "flagged_words": 94,
+      "flagged_ratio": 0.07686017988552739,
+      "correction_latency_sec": 0.0006,
+      "correction_tokens": 1539,
+      "ocr": {
+        "cer": 0.13201000000000002,
+        "wer": 0.18418,
+        "en_cer": 0.13201000000000002,
+        "en_wer": 0.18418,
+        "hi_cer": 0.13201000000000002,
+        "hi_wer": 0.18418
+      },
+      "retrieval": {
+        "recall_at_1": 0.8947368421052632,
+        "recall_at_3": 0.9736842105263158,
+        "recall_at_5": 1.0,
+        "mrr": 0.9350877192982455
+      },
+      "qa": {
+        "exact_match": 0.8947368421052632,
+        "f1_score": 0.9473684210526315,
+        "em_recovery_rate_pct": 19.999999999999986,
+        "f1_recovery_rate_pct": 32.1739130434782,
+        "en_em": 0.8421052631578947,
+        "en_f1": 0.9210526315789473,
+        "hi_em": 0.9473684210526315,
+        "hi_f1": 0.9736842105263158
+      },
+      "total_time_sec": 0.14085339999292046
+    }
+  ],
+  "total_sweep_latency_sec": 0.2784100000280887
+}

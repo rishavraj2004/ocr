@@ -145,6 +145,32 @@ def run_ocr(config_path: str) -> int:
     return 0
 
 
+def run_correction(config_path: str, threshold: Optional[float] = None) -> int:
+    """Execute confidence-guided selective correction and evaluate recovery."""
+    from src.correction.runner import CorrectionRunner
+
+    cfg = load_config(config_path)
+    runner = CorrectionRunner(cfg)
+    results, aggregates = runner.run_all(threshold=threshold)
+
+    thresh_val = threshold or cfg.correction.threshold
+    print("\n" + "=" * 65)
+    print(f"CONFIDENCE-GUIDED SELECTIVE CORRECTION RESULTS (tau={thresh_val})")
+    print("=" * 65)
+
+    for lang in ["en", "hi", "combined"]:
+        raw_agg = aggregates.get(f"{lang}_raw")
+        corr_agg = aggregates.get(f"{lang}_corrected")
+        if raw_agg and corr_agg:
+            cer_rec = raw_agg.mean_cer - corr_agg.mean_cer
+            wer_rec = raw_agg.mean_wer - corr_agg.mean_wer
+            print(f"\n--- {lang.upper()} EVALUATION SUMMARY ---")
+            print(f"  Raw OCR Mean CER       : {raw_agg.mean_cer:.4f}  ->  Corrected CER : {corr_agg.mean_cer:.4f}  (Recovery: {cer_rec:+.4f})")
+            print(f"  Raw OCR Mean WER       : {raw_agg.mean_wer:.4f}  ->  Corrected WER : {corr_agg.mean_wer:.4f}  (Recovery: {wer_rec:+.4f})")
+
+    return 0
+
+
 def parse_args(args=None):
     parser = argparse.ArgumentParser(
         description="OCR-Aware Multilingual RAG Research Framework"
@@ -191,6 +217,17 @@ def parse_args(args=None):
         action="store_true",
         help="Execute OCR extraction across all pages, save tokens, and evaluate CER/WER",
     )
+    parser.add_argument(
+        "--run-correction",
+        action="store_true",
+        help="Execute confidence-guided selective correction and evaluate CER/WER delta",
+    )
+    parser.add_argument(
+        "--threshold",
+        type=float,
+        default=None,
+        help="Override confidence threshold tau (default: 70.0)",
+    )
     return parser.parse_args(args)
 
 
@@ -199,8 +236,8 @@ def main() -> int:
     args = parse_args()
 
     # If no flags passed, run default validation and environment check
-    if not (args.check_env or args.validate_config or args.init_run or args.validate_dataset or args.generate_dataset or args.preprocess_page or args.run_ocr):
-        logger.info("Running default Phase 0/1/2/3 sanity check...")
+    if not (args.check_env or args.validate_config or args.init_run or args.validate_dataset or args.generate_dataset or args.preprocess_page or args.run_ocr or args.run_correction):
+        logger.info("Running default Phase 0/1/2/3/4 sanity check...")
         val_status = validate_configuration(args.config)
         if val_status != 0:
             return val_status
@@ -219,6 +256,8 @@ def main() -> int:
         status = preprocess_page(args.preprocess_page, args.config)
     if args.run_ocr and status == 0:
         status = run_ocr(args.config)
+    if args.run_correction and status == 0:
+        status = run_correction(args.config, threshold=args.threshold)
     if args.init_run and status == 0:
         status = test_init_run(args.config)
 

@@ -1,0 +1,306 @@
+{
+  "overall": {
+    "Recall@1": {
+      "ground_truth": 0.8421052631578947,
+      "raw_ocr": 0.8947368421052632,
+      "corrected_ocr": 0.8947368421052632,
+      "degradation": 0.052631578947368474,
+      "recovery": 0.0,
+      "recovery_rate_pct": -0.0
+    },
+    "Recall@3": {
+      "ground_truth": 0.9736842105263158,
+      "raw_ocr": 0.9473684210526315,
+      "corrected_ocr": 0.9736842105263158,
+      "degradation": -0.026315789473684292,
+      "recovery": 0.026315789473684292,
+      "recovery_rate_pct": 100.0
+    },
+    "Recall@5": {
+      "ground_truth": 1.0,
+      "raw_ocr": 1.0,
+      "corrected_ocr": 1.0,
+      "degradation": 0.0,
+      "recovery": 0.0,
+      "recovery_rate_pct": 0.0
+    },
+    "MRR": {
+      "ground_truth": 0.9144736842105263,
+      "raw_ocr": 0.9298245614035087,
+      "corrected_ocr": 0.9350877192982455,
+      "degradation": 0.015350877192982337,
+      "recovery": 0.0052631578947368585,
+      "recovery_rate_pct": -34.28571428571466
+    },
+    "Exact Match (EM)": {
+      "ground_truth": 1.0,
+      "raw_ocr": 0.868421052631579,
+      "corrected_ocr": 0.8947368421052632,
+      "degradation": -0.13157894736842102,
+      "recovery": 0.02631578947368418,
+      "recovery_rate_pct": 19.999999999999986
+    },
+    "Token F1 Score": {
+      "ground_truth": 1.0,
+      "raw_ocr": 0.9224021592442645,
+      "corrected_ocr": 0.9473684210526315,
+      "degradation": -0.0775978407557355,
+      "recovery": 0.02496626180836703,
+      "recovery_rate_pct": 32.1739130434782
+    }
+  },
+  "by_language": {
+    "en": {
+      "Recall@1": {
+        "ground_truth": 0.7894736842105263,
+        "raw_ocr": 0.8947368421052632,
+        "corrected_ocr": 0.8947368421052632,
+        "degradation": 0.10526315789473684,
+        "recovery": 0.0,
+        "recovery_rate_pct": -0.0
+      },
+      "Recall@3": {
+        "ground_truth": 1.0,
+        "raw_ocr": 0.9473684210526315,
+        "corrected_ocr": 1.0,
+        "degradation": -0.052631578947368474,
+        "recovery": 0.052631578947368474,
+        "recovery_rate_pct": 100.0
+      },
+      "Recall@5": {
+        "ground_truth": 1.0,
+        "raw_ocr": 1.0,
+        "corrected_ocr": 1.0,
+        "degradation": 0.0,
+        "recovery": 0.0,
+        "recovery_rate_pct": 0.0
+      },
+      "MRR": {
+        "ground_truth": 0.8947368421052632,
+        "raw_ocr": 0.9254385964912281,
+        "corrected_ocr": 0.9385964912280701,
+        "degradation": 0.030701754385964897,
+        "recovery": 0.013157894736842035,
+        "recovery_rate_pct": -42.85714285714265
+      },
+      "Exact Match (EM)": {
+        "ground_truth": 1.0,
+        "raw_ocr": 0.8421052631578947,
+        "corrected_ocr": 0.8421052631578947,
+        "degradation": -0.1578947368421053,
+        "recovery": 0.0,
+        "recovery_rate_pct": 0.0
+      },
+      "Token F1 Score": {
+        "ground_truth": 1.0,
+        "raw_ocr": 0.9210526315789473,
+        "corrected_ocr": 0.9210526315789473,
+        "degradation": -0.07894736842105265,
+        "recovery": 0.0,
+        "recovery_rate_pct": 0.0
+      }
+    },
+    "hi": {
+      "Recall@1": {
+        "ground_truth": 0.8947368421052632,
+        "raw_ocr": 0.8947368421052632,
+        "corrected_ocr": 0.8947368421052632,
+        "degradation": 0.0,
+        "recovery": 0.0,
+        "recovery_rate_pct": 0.0
+      },
+      "Recall@3": {
+        "ground_truth": 0.9473684210526315,
+        "raw_ocr": 0.9473684210526315,
+        "corrected_ocr": 0.9473684210526315,
+        "degradation": 0.0,
+        "recovery": 0.0,
+        "recovery_rate_pct": 0.0
+      },
+      "Recall@5": {
+        "ground_truth": 1.0,
+        "raw_ocr": 1.0,
+        "corrected_ocr": 1.0,
+        "degradation": 0.0,
+        "recovery": 0.0,
+        "recovery_rate_pct": 0.0
+      },
+      "MRR": {
+        "ground_truth": 0.9342105263157895,
+        "raw_ocr": 0.9342105263157895,
+        "corrected_ocr": 0.9315789473684211,
+        "degradation": 0.0,
+        "recovery": -0.0026315789473684292,
+        "recovery_rate_pct": 100.0
+      },
+      "Exact Match (EM)": {
+        "ground_truth": 1.0,
+        "raw_ocr": 0.8947368421052632,
+        "corrected_ocr": 0.9473684210526315,
+        "degradation": -0.10526315789473684,
+        "recovery": 0.05263157894736836,
+        "recovery_rate_pct": 49.99999999999994
+      },
+      "Token F1 Score": {
+        "ground_truth": 1.0,
+        "raw_ocr": 0.9237516869095816,
+        "corrected_ocr": 0.9736842105263158,
+        "degradation": -0.07624831309041835,
+        "recovery": 0.04993252361673417,
+        "recovery_rate_pct": 65.48672566371685
+      }
+    }
+  },
+  "by_question_type": {
+    "entity": {
+      "Recall@1": {
+        "ground_truth": 0.6666666666666666,
+        "raw_ocr": 0.6666666666666666,
+        "corrected_ocr": 0.6666666666666666,
+        "degradation": 0.0,
+        "recovery": 0.0,
+        "recovery_rate_pct": 0.0
+      },
+      "Recall@3": {
+        "ground_truth": 0.8888888888888888,
+        "raw_ocr": 0.8888888888888888,
+        "corrected_ocr": 0.8888888888888888,
+        "degradation": 0.0,
+        "recovery": 0.0,
+        "recovery_rate_pct": 0.0
+      },
+      "Recall@5": {
+        "ground_truth": 1.0,
+        "raw_ocr": 1.0,
+        "corrected_ocr": 1.0,
+        "degradation": 0.0,
+        "recovery": 0.0,
+        "recovery_rate_pct": 0.0
+      },
+      "MRR": {
+        "ground_truth": 0.8055555555555556,
+        "raw_ocr": 0.787037037037037,
+        "corrected_ocr": 0.7814814814814814,
+        "degradation": -0.0185185185185186,
+        "recovery": -0.005555555555555536,
+        "recovery_rate_pct": -29.99999999999976
+      },
+      "Exact Match (EM)": {
+        "ground_truth": 1.0,
+        "raw_ocr": 1.0,
+        "corrected_ocr": 1.0,
+        "degradation": 0.0,
+        "recovery": 0.0,
+        "recovery_rate_pct": 0.0
+      },
+      "Token F1 Score": {
+        "ground_truth": 1.0,
+        "raw_ocr": 1.0,
+        "corrected_ocr": 1.0,
+        "degradation": 0.0,
+        "recovery": 0.0,
+        "recovery_rate_pct": 0.0
+      }
+    },
+    "factual": {
+      "Recall@1": {
+        "ground_truth": 0.6666666666666666,
+        "raw_ocr": 0.8333333333333334,
+        "corrected_ocr": 0.8333333333333334,
+        "degradation": 0.16666666666666674,
+        "recovery": 0.0,
+        "recovery_rate_pct": -0.0
+      },
+      "Recall@3": {
+        "ground_truth": 1.0,
+        "raw_ocr": 0.8333333333333334,
+        "corrected_ocr": 1.0,
+        "degradation": -0.16666666666666663,
+        "recovery": 0.16666666666666663,
+        "recovery_rate_pct": 100.0
+      },
+      "Recall@5": {
+        "ground_truth": 1.0,
+        "raw_ocr": 1.0,
+        "corrected_ocr": 1.0,
+        "degradation": 0.0,
+        "recovery": 0.0,
+        "recovery_rate_pct": 0.0
+      },
+      "MRR": {
+        "ground_truth": 0.8333333333333334,
+        "raw_ocr": 0.875,
+        "corrected_ocr": 0.9166666666666666,
+        "degradation": 0.04166666666666663,
+        "recovery": 0.04166666666666663,
+        "recovery_rate_pct": -100.0
+      },
+      "Exact Match (EM)": {
+        "ground_truth": 1.0,
+        "raw_ocr": 0.8333333333333334,
+        "corrected_ocr": 0.8333333333333334,
+        "degradation": -0.16666666666666663,
+        "recovery": 0.0,
+        "recovery_rate_pct": 0.0
+      },
+      "Token F1 Score": {
+        "ground_truth": 1.0,
+        "raw_ocr": 0.9166666666666666,
+        "corrected_ocr": 0.9166666666666666,
+        "degradation": -0.08333333333333337,
+        "recovery": 0.0,
+        "recovery_rate_pct": 0.0
+      }
+    },
+    "numerical": {
+      "Recall@1": {
+        "ground_truth": 0.9565217391304348,
+        "raw_ocr": 1.0,
+        "corrected_ocr": 1.0,
+        "degradation": 0.04347826086956519,
+        "recovery": 0.0,
+        "recovery_rate_pct": -0.0
+      },
+      "Recall@3": {
+        "ground_truth": 1.0,
+        "raw_ocr": 1.0,
+        "corrected_ocr": 1.0,
+        "degradation": 0.0,
+        "recovery": 0.0,
+        "recovery_rate_pct": 0.0
+      },
+      "Recall@5": {
+        "ground_truth": 1.0,
+        "raw_ocr": 1.0,
+        "corrected_ocr": 1.0,
+        "degradation": 0.0,
+        "recovery": 0.0,
+        "recovery_rate_pct": 0.0
+      },
+      "MRR": {
+        "ground_truth": 0.9782608695652174,
+        "raw_ocr": 1.0,
+        "corrected_ocr": 1.0,
+        "degradation": 0.021739130434782594,
+        "recovery": 0.0,
+        "recovery_rate_pct": -0.0
+      },
+      "Exact Match (EM)": {
+        "ground_truth": 1.0,
+        "raw_ocr": 0.8260869565217391,
+        "corrected_ocr": 0.8695652173913043,
+        "degradation": -0.17391304347826086,
+        "recovery": 0.04347826086956519,
+        "recovery_rate_pct": 24.999999999999982
+      },
+      "Token F1 Score": {
+        "ground_truth": 1.0,
+        "raw_ocr": 0.8935340022296544,
+        "corrected_ocr": 0.9347826086956522,
+        "degradation": -0.1064659977703456,
+        "recovery": 0.04124860646599782,
+        "recovery_rate_pct": 38.74345549738224
+      }
+    }
+  }
+}

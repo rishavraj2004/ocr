@@ -249,7 +249,81 @@ def run_rag(
                 print(f"  {m_name:<22} | {a_val:<16.4f} | {b_val:<14.4f} | {delta:+18.4f}")
             print("=" * 75 + "\n")
 
+    # If evaluating Corrected OCR, produce full 3-variant Triangulation Table
+    elif doc_variant == DocumentVariant.CORRECTED_OCR:
+        from src.evaluation.rag_comparison import (
+            compute_rag_triangulation,
+            export_triangulation_summary,
+            format_triangulation_table,
+        )
+
+        gt_path = os.path.join(cfg.output_dir, "rag", "ground_truth_results.json")
+        raw_path = os.path.join(cfg.output_dir, "rag", "raw_ocr_results.json")
+
+        if os.path.exists(gt_path) and os.path.exists(raw_path):
+            with open(gt_path, "r", encoding="utf-8") as f:
+                gt_report = json.load(f)
+            with open(raw_path, "r", encoding="utf-8") as f:
+                raw_report = json.load(f)
+
+            triangulation = compute_rag_triangulation(gt_report, raw_report, report)
+            summary_path = os.path.join(cfg.output_dir, "rag", "comparison_summary.json")
+            export_triangulation_summary(triangulation, output_path=summary_path)
+
+            print("\n" + "=" * 90)
+            print("3-VARIANT TRIANGULATION: A (Ground Truth) vs B (Raw OCR) vs C (Corrected OCR)")
+            print("=" * 90)
+            print(format_triangulation_table(triangulation))
+            print("=" * 90 + "\n")
+
     print("=" * 75 + "\n")
+    return 0
+
+
+def compare_rag(config_path: str) -> int:
+    """Load existing RAG evaluation results for A, B, C and display 3-variant triangulation table."""
+    import json
+    import os
+    from src.evaluation.rag_comparison import (
+        compute_rag_triangulation,
+        export_triangulation_summary,
+        format_triangulation_table,
+    )
+
+    cfg = load_config(config_path)
+    rag_dir = os.path.join(cfg.output_dir, "rag")
+    gt_path = os.path.join(rag_dir, "ground_truth_results.json")
+    raw_path = os.path.join(rag_dir, "raw_ocr_results.json")
+    corr_path = os.path.join(rag_dir, "corrected_ocr_results.json")
+
+    missing = []
+    if not os.path.exists(gt_path):
+        missing.append("ground_truth (run: --run-rag --variant ground_truth)")
+    if not os.path.exists(raw_path):
+        missing.append("raw_ocr (run: --run-rag --variant raw_ocr)")
+    if not os.path.exists(corr_path):
+        missing.append("corrected_ocr (run: --run-rag --variant corrected_ocr)")
+
+    if missing:
+        logger.error(f"Cannot compare RAG variants. Missing artifacts:\n  - " + "\n  - ".join(missing))
+        return 1
+
+    with open(gt_path, "r", encoding="utf-8") as f:
+        gt_report = json.load(f)
+    with open(raw_path, "r", encoding="utf-8") as f:
+        raw_report = json.load(f)
+    with open(corr_path, "r", encoding="utf-8") as f:
+        corr_report = json.load(f)
+
+    triangulation = compute_rag_triangulation(gt_report, raw_report, corr_report)
+    summary_path = os.path.join(rag_dir, "comparison_summary.json")
+    export_triangulation_summary(triangulation, output_path=summary_path)
+
+    print("\n" + "=" * 90)
+    print("3-VARIANT TRIANGULATION: A (Ground Truth) vs B (Raw OCR) vs C (Corrected OCR)")
+    print("=" * 90)
+    print(format_triangulation_table(triangulation))
+    print("=" * 90 + "\n")
     return 0
 
 
@@ -328,6 +402,11 @@ def parse_args(args=None):
         default=None,
         help="Override embedding model name (e.g. 'mock' or 'BAAI/bge-m3')",
     )
+    parser.add_argument(
+        "--compare-rag",
+        action="store_true",
+        help="Display 3-variant comparison (A vs B vs C) from existing evaluation artifacts",
+    )
     return parser.parse_args(args)
 
 
@@ -336,7 +415,7 @@ def main() -> int:
     args = parse_args()
 
     # If no flags passed, run default validation and environment check
-    if not (args.check_env or args.validate_config or args.init_run or args.validate_dataset or args.generate_dataset or args.preprocess_page or args.run_ocr or args.run_correction or args.run_rag):
+    if not (args.check_env or args.validate_config or args.init_run or args.validate_dataset or args.generate_dataset or args.preprocess_page or args.run_ocr or args.run_correction or args.run_rag or args.compare_rag):
         logger.info("Running default Phase 0/1/2/3/4 sanity check...")
         val_status = validate_configuration(args.config)
         if val_status != 0:
@@ -360,6 +439,8 @@ def main() -> int:
         status = run_correction(args.config, threshold=args.threshold)
     if args.run_rag and status == 0:
         status = run_rag(args.config, variant=args.variant, embedding_model=args.embedding_model)
+    if args.compare_rag and status == 0:
+        status = compare_rag(args.config)
     if args.init_run and status == 0:
         status = test_init_run(args.config)
 

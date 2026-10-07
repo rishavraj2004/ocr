@@ -202,7 +202,45 @@ class TestRAGComponents(unittest.TestCase):
         self.assertLess(report["overall"]["mean_exact_match"], 1.0)
         self.assertLess(report["overall"]["mean_f1"], 1.0)
 
+    def test_triangulation_and_recovery_computation(self):
+        from src.evaluation.rag_comparison import (
+            compute_rag_triangulation,
+            format_triangulation_table,
+        )
+
+        gt = {
+            "overall": {"mean_exact_match": 1.0, "mean_f1": 1.0, "mean_recall_at_5": 1.0},
+            "by_language": {"en": {"mean_exact_match": 1.0}, "hi": {"mean_exact_match": 1.0}},
+            "by_question_type": {"numerical": {"mean_exact_match": 1.0}},
+        }
+        raw = {
+            "overall": {"mean_exact_match": 0.80, "mean_f1": 0.85, "mean_recall_at_5": 1.0},
+            "by_language": {"en": {"mean_exact_match": 0.80}, "hi": {"mean_exact_match": 0.80}},
+            "by_question_type": {"numerical": {"mean_exact_match": 0.75}},
+        }
+        corr = {
+            "overall": {"mean_exact_match": 0.90, "mean_f1": 0.92, "mean_recall_at_5": 1.0},
+            "by_language": {"en": {"mean_exact_match": 0.85}, "hi": {"mean_exact_match": 0.95}},
+            "by_question_type": {"numerical": {"mean_exact_match": 0.85}},
+        }
+
+        tri = compute_rag_triangulation(gt, raw, corr)
+        em_stats = tri["overall"]["Exact Match (EM)"]
+
+        self.assertAlmostEqual(em_stats["ground_truth"], 1.0)
+        self.assertAlmostEqual(em_stats["raw_ocr"], 0.80)
+        self.assertAlmostEqual(em_stats["corrected_ocr"], 0.90)
+        self.assertAlmostEqual(em_stats["degradation"], -0.20)
+        self.assertAlmostEqual(em_stats["recovery"], +0.10)
+        # 0.10 / 0.20 = 50% recovery rate
+        self.assertAlmostEqual(em_stats["recovery_rate_pct"], 50.0)
+
+        table_str = format_triangulation_table(tri)
+        self.assertIn("Exact Match (EM)", table_str)
+        self.assertIn("+50.0%", table_str)
+
 
 if __name__ == "__main__":
     unittest.main()
+
 

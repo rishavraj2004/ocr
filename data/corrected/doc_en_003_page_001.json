@@ -1,26 +1,10 @@
 {
   "page_id": "doc_en_003_page_001",
   "original_text": "Space Research Organization Geosynchronous Telemetry Briefing The Space Research Organization successfully placed the advanced telecommunication satellite inxo geostationary transfex orbit utilizing the heavy-lift GSLV Mk III launch vehicle. The spacecraft payload mass totaled exactly 4,150 kilograms ot launch liftoff. Following circularization maneuvers, the satellite established stable orbital equilibrium at an ap0gee altitude of 35,78x kilometers. The communications bus carries 24 activc Ku-band transponders designed to deliver high-throughput broadband to isolated archipelago communities. Primary flight telemetry and health monitoring are managed from txe Satish Dhawan Space Centre in Sriharikota, supported by internationol deep-space ground tracking stations situated in Brunei and Indonesia.",
-  "corrected_text": "Space Research Organization Geosynchronous Telemetry Briefing The Space Research Organization successfully placed the advanced telecommunication satellite inxo geostationary transfex orbit utilizing the heavy-lift GSLV Mk III launch vehicle. The spacecraft payload mass totaled exactly 4,150 kilograms ot launch liftoff. Following circularization maneuvers, the satellite established stable orbital equilibrium at an apogee altitude of 35,78x kilometers. The communications bus carries 24 activc Ku-band transponders designed to deliver high-throughput broadband to isolated archipelago communities. Primary flight telemetry and health monitoring are managed from txe Satish Dhawan Space Centre in Sriharikota, supported by intemationol deep-space ground tracking stations situated in Brunei and Indonesia.",
+  "corrected_text": "Space Research Organization Geosynchronous Telemetry Briefing The Space Research Organization successfully placed the advanced telecommunication satellite inxo geostationary transgeostationary orbit utilizing the heavy-lift GSLV Mk III launch vehicle. The spacecraft payload mass totaled exactly 4,150 kilograms of launch liftoff. Following circularization maneuvers, the satellite established stable orbital equilibrium at an apogee altitude of 35,78x kilometers. The communications bus carries 24 active Ku-band transponders designed to deliver high-throughput broadband to isolated archipelago communities. Primary flight telemetry and health monitoring are managed from the Satish Dhawan Space Centre in Sriharikota, supported by internationol deep-space ground tracking stations situated in Brunei and Indonesia.",
   "spans": [
     {
       "span_id": "doc_en_003_page_001_span_001",
-      "page_id": "doc_en_003_page_001",
-      "start_word_idx": 16,
-      "end_word_idx": 17,
-      "original_text": "inxo",
-      "avg_confidence": 61.7,
-      "min_confidence": 61.7,
-      "context_before": "placed the advanced telecommunication satellite",
-      "context_after": "geostationary transfex orbit utilizing the",
-      "corrected_text": "inxo",
-      "changed": false,
-      "latency_sec": 0.0,
-      "prompt_tokens": 16,
-      "completion_tokens": 1
-    },
-    {
-      "span_id": "doc_en_003_page_001_span_002",
       "page_id": "doc_en_003_page_001",
       "start_word_idx": 18,
       "end_word_idx": 19,
@@ -29,14 +13,14 @@
       "min_confidence": 33.3,
       "context_before": "advanced telecommunication satellite inxo geostationary",
       "context_after": "orbit utilizing the heavy-lift GSLV",
-      "corrected_text": "transfex",
-      "changed": false,
-      "latency_sec": 0.0,
-      "prompt_tokens": 17,
-      "completion_tokens": 2
+      "corrected_text": "transgeostationary",
+      "changed": true,
+      "latency_sec": 0.4914,
+      "prompt_tokens": 149,
+      "completion_tokens": 6
     },
     {
-      "span_id": "doc_en_003_page_001_span_003",
+      "span_id": "doc_en_003_page_001_span_002",
       "page_id": "doc_en_003_page_001",
       "start_word_idx": 36,
       "end_word_idx": 37,
@@ -45,14 +29,14 @@
       "min_confidence": 44.0,
       "context_before": "mass totaled exactly 4,150 kilograms",
       "context_after": "launch liftoff. Following circularization maneuvers,",
-      "corrected_text": "ot",
-      "changed": false,
-      "latency_sec": 0.0,
-      "prompt_tokens": 16,
-      "completion_tokens": 1
+      "corrected_text": "of",
+      "changed": true,
+      "latency_sec": 0.4106,
+      "prompt_tokens": 151,
+      "completion_tokens": 2
     },
     {
-      "span_id": "doc_en_003_page_001_span_004",
+      "span_id": "doc_en_003_page_001_span_003",
       "page_id": "doc_en_003_page_001",
       "start_word_idx": 50,
       "end_word_idx": 51,
@@ -63,28 +47,12 @@
       "context_after": "altitude of 35,78x kilometers. The",
       "corrected_text": "apogee",
       "changed": true,
-      "latency_sec": 0.0,
-      "prompt_tokens": 16,
-      "completion_tokens": 1
+      "latency_sec": 0.4693,
+      "prompt_tokens": 151,
+      "completion_tokens": 4
     },
     {
-      "span_id": "doc_en_003_page_001_span_005",
-      "page_id": "doc_en_003_page_001",
-      "start_word_idx": 53,
-      "end_word_idx": 54,
-      "original_text": "35,78x",
-      "avg_confidence": 60.2,
-      "min_confidence": 60.2,
-      "context_before": "at an ap0gee altitude of",
-      "context_after": "kilometers. The communications bus carries",
-      "corrected_text": "35,78x",
-      "changed": false,
-      "latency_sec": 0.0,
-      "prompt_tokens": 16,
-      "completion_tokens": 1
-    },
-    {
-      "span_id": "doc_en_003_page_001_span_006",
+      "span_id": "doc_en_003_page_001_span_004",
       "page_id": "doc_en_003_page_001",
       "start_word_idx": 60,
       "end_word_idx": 61,
@@ -93,14 +61,14 @@
       "min_confidence": 41.9,
       "context_before": "The communications bus carries 24",
       "context_after": "Ku-band transponders designed to deliver",
-      "corrected_text": "activc",
-      "changed": false,
-      "latency_sec": 0.0,
-      "prompt_tokens": 16,
-      "completion_tokens": 1
+      "corrected_text": "active",
+      "changed": true,
+      "latency_sec": 0.4273,
+      "prompt_tokens": 145,
+      "completion_tokens": 2
     },
     {
-      "span_id": "doc_en_003_page_001_span_007",
+      "span_id": "doc_en_003_page_001_span_005",
       "page_id": "doc_en_003_page_001",
       "start_word_idx": 81,
       "end_word_idx": 82,
@@ -109,31 +77,15 @@
       "min_confidence": 42.4,
       "context_before": "health monitoring are managed from",
       "context_after": "Satish Dhawan Space Centre in",
-      "corrected_text": "txe",
-      "changed": false,
-      "latency_sec": 0.0,
-      "prompt_tokens": 16,
-      "completion_tokens": 1
-    },
-    {
-      "span_id": "doc_en_003_page_001_span_008",
-      "page_id": "doc_en_003_page_001",
-      "start_word_idx": 90,
-      "end_word_idx": 91,
-      "original_text": "internationol",
-      "avg_confidence": 65.4,
-      "min_confidence": 65.4,
-      "context_before": "Centre in Sriharikota, supported by",
-      "context_after": "deep-space ground tracking stations situated",
-      "corrected_text": "intemationol",
+      "corrected_text": "the",
       "changed": true,
-      "latency_sec": 0.0,
-      "prompt_tokens": 18,
-      "completion_tokens": 3
+      "latency_sec": 0.4479,
+      "prompt_tokens": 142,
+      "completion_tokens": 2
     }
   ],
-  "threshold": 70.0,
+  "threshold": 50.0,
   "total_words": 100,
-  "corrected_words": 8,
-  "total_latency_sec": 0.0
+  "corrected_words": 5,
+  "total_latency_sec": 2.2465
 }

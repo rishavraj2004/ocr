@@ -39,13 +39,16 @@ ocr:
     hi: hin
 
 correction:
-  threshold: 70.0           # Confidence threshold below which spans are corrected
-  context_window_words: 5   # Local surrounding context words for disambiguation
-  model_type: mock          # 'mock', 'openai', or 'local'
-  model_name: gpt-4o-mini
-  api_key_env: OPENAI_API_KEY
+  threshold: 50.0
+  context_window_words: 5
+
+  model_type: mistral
+  model_name: open-mistral-7b
+  api_key_env: MISTRAL_API_KEY
+
   temperature: 0.0
   max_tokens: 150
+
   sweep_thresholds:
     - 30.0
     - 40.0
@@ -63,8 +66,9 @@ rag:
   embedding_dim: 1024
   distance_metric: cosine   # 'cosine' or 'l2'
   top_k: 5
-  generator_type: mock      # 'mock', 'openai', or 'local'
-  generator_model: gpt-4o-mini
+  generator_type: mistral      # 'mock', 'openai', 'mistral', or 'local'
+  generator_model: open-mistral-7b
+  api_key_env: MISTRAL_API_KEY
   temperature: 0.0
   prompt_template: |
     You are an assistant answering questions based strictly on the provided context.
@@ -72,8 +76,7 @@ rag:
     {context}
 
     Question: {question}
-
-    Answer concisely and accurately:
+    Answer with ONLY the exact entity, number, or short phrase from the context without introductory words or full sentences. Output only the answer:
 
 evaluation:
   ocr_metrics:

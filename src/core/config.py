@@ -12,6 +12,12 @@ from typing import Any, Dict, List, Optional
 import yaml
 from pydantic import BaseModel, Field, field_validator
 
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 
 class DatasetConfig(BaseModel):
     """File paths and dataset subset parameters."""

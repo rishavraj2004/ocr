@@ -194,14 +194,17 @@ class OpenAICorrector(BaseCorrector):
             response = self.client.chat.completions.create(
                 model=self.config.model_name,
                 messages=[
-                    {"role": "system", "content": "You are a precise OCR span correction engine."},
+                    {
+                        "role": "system",
+                        "content": "You are a precise OCR span correction engine. You must output ONLY the replacement word/phrase without quotes, asterisks, markdown, or explanation.",
+                    },
                     {"role": "user", "content": prompt},
                 ],
                 temperature=self.config.temperature,
                 max_tokens=self.config.max_tokens,
             )
             raw_output = response.choices[0].message.content or ""
-            corrected = raw_output.strip().strip('"').strip("'")
+            corrected = raw_output.strip().strip('"').strip("'").strip("`").replace("**", "").strip()
             latency = time.perf_counter() - start_t
             changed = (corrected != span.original_text)
 

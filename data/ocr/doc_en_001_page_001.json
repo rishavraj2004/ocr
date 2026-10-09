@@ -21,7 +21,7 @@
       "normalize",
       "threshold_otsu"
     ],
-    "execution_time_sec": 1.3790532000130042,
+    "execution_time_sec": 1.5262309000827372,
     "metadata": {
       "denoise_h": 10.0,
       "skew_angle_deg": 0.0,
@@ -1496,5 +1496,5 @@
       "word_num": 40
     }
   ],
-  "execution_time_sec": 0.002
+  "execution_time_sec": 0.0021
 }

@@ -4,7 +4,7 @@
     "total_words": 1223,
     "modified_words": 1223,
     "flagged_ratio": 1.0,
-    "latency_sec": 0.008045899798162282,
+    "latency_sec": 0.009935600217431784,
     "prompt_tokens": 2856,
     "completion_tokens": 2027,
     "total_tokens": 4883,

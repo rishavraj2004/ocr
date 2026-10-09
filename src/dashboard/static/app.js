@@ -1,7 +1,7 @@
 /**
- * OCR-Aware Multilingual RAG Research Dashboard - Frontend Controller
+ * Multilingual RAG: OCR Mitigation - Research Dashboard Controller
  * Implements interactive canvas bounding box overlays, live threshold simulation,
- * question triangulation inspector, and LaTeX publication exports.
+ * 3-variant question triangulation explorer, and LaTeX publication exports.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -128,14 +128,17 @@ document.addEventListener('DOMContentLoaded', () => {
           const rec = item.recovery ?? (corr - raw);
           const pct = item.recovery_rate_pct ?? 0.0;
 
+          const degClass = deg < 0 ? 'color: var(--error);' : '';
+          const recClass = rec > 0 ? 'color: var(--accent-mitigation); font-weight: 600;' : '';
+
           tr.innerHTML = `
             <td><strong>${part.label}</strong></td>
             <td>${m.name}</td>
-            <td class="mono">${Number(gt).toFixed(4)}</td>
-            <td class="mono" style="color: var(--accent-rose);">${Number(raw).toFixed(4)}</td>
-            <td class="mono" style="color: var(--accent-emerald);">${Number(corr).toFixed(4)}</td>
-            <td class="mono" style="color: var(--accent-rose);">${deg > 0 ? '+' : ''}${Number(deg).toFixed(4)}</td>
-            <td class="mono" style="color: var(--accent-emerald);">${rec > 0 ? '+' : ''}${Number(rec).toFixed(4)}</td>
+            <td class="mono tabular-nums">${Number(gt).toFixed(4)}</td>
+            <td class="mono tabular-nums" style="${degClass}">${Number(raw).toFixed(4)}</td>
+            <td class="mono tabular-nums" style="${recClass}">${Number(corr).toFixed(4)}</td>
+            <td class="mono tabular-nums" style="${degClass}">${deg > 0 ? '+' : ''}${Number(deg).toFixed(4)}</td>
+            <td class="mono tabular-nums" style="${recClass}">${rec > 0 ? '+' : ''}${Number(rec).toFixed(4)}</td>
             <td><span class="badge ${pct > 0 ? 'badge-emerald' : 'badge-purple'}">${pct > 0 ? '+' : ''}${Number(pct).toFixed(1)}%</span></td>
           `;
           tbody.appendChild(tr);
@@ -168,8 +171,8 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="page-btn-title">${doc.page_id}</div>
           <div class="page-btn-meta">
             <span class="badge ${langBadge}">${doc.language.toUpperCase()}</span>
-            <span>${doc.word_count} words</span>
-            <span>${doc.flagged_spans_count} flagged</span>
+            <span class="tabular-nums">${doc.word_count} words</span>
+            <span class="tabular-nums">${doc.flagged_spans_count} flagged</span>
           </div>
         `;
 
@@ -233,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Draw base page image
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-    // Draw word bounding boxes
+    // Draw word bounding boxes with clean Swiss-modern hairline strokes
     const words = state.activeDocData.words || [];
     let flaggedCount = 0;
 
@@ -250,21 +253,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (isBelowThreshold) {
         flaggedCount++;
-        // Flagged box: glowing rose/crimson highlight
-        ctx.strokeStyle = '#f43f5e';
-        ctx.lineWidth = 2.5;
-        ctx.fillStyle = 'rgba(244, 63, 94, 0.22)';
+        // Flagged box: clean crisp crimson stroke & subtle tint fill
+        ctx.strokeStyle = '#ba1a1a';
+        ctx.lineWidth = 1.5;
+        ctx.fillStyle = 'rgba(186, 26, 26, 0.12)';
         ctx.fillRect(x, y, width, height);
         ctx.strokeRect(x, y, width, height);
       } else if (conf >= 80) {
-        // High confidence: subtle emerald
-        ctx.strokeStyle = 'rgba(16, 185, 129, 0.45)';
+        // High confidence: subtle hairline
+        ctx.strokeStyle = 'rgba(13, 148, 136, 0.4)';
         ctx.lineWidth = 1;
         ctx.strokeRect(x, y, width, height);
       } else {
         // Medium confidence: amber
-        ctx.strokeStyle = 'rgba(245, 158, 11, 0.55)';
-        ctx.lineWidth = 1.2;
+        ctx.strokeStyle = 'rgba(180, 83, 9, 0.45)';
+        ctx.lineWidth = 1;
         ctx.strokeRect(x, y, width, height);
       }
     });
@@ -291,15 +294,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (hovered) {
       const isFlagged = hovered.confidence < state.currentThreshold;
-      const confColor = hovered.confidence >= 80 ? 'var(--accent-emerald)' : (hovered.confidence >= 50 ? 'var(--accent-amber)' : 'var(--accent-rose)');
+      const confColor = hovered.confidence >= 80 ? 'var(--accent-mitigation)' : (hovered.confidence >= 50 ? '#b45309' : 'var(--error)');
 
       tooltip.innerHTML = `
-        <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; color: #fff;">"${hovered.text}"</div>
-        <div style="color: var(--text-muted); display: flex; gap: 8px;">
-          <span>Confidence: <strong style="color: ${confColor}">${hovered.confidence.toFixed(1)}%</strong></span>
+        <div style="font-weight: 600; font-size: 13px; margin-bottom: 4px; color: var(--slate-contrast); font-family: 'JetBrains Mono', monospace;">"${hovered.text}"</div>
+        <div style="color: var(--slate-muted); display: flex; gap: 8px; font-size: 11px;">
+          <span>Confidence: <strong style="color: ${confColor}" class="tabular-nums">${hovered.confidence.toFixed(1)}%</strong></span>
           <span>Line ${hovered.line_num}, Word ${hovered.word_num}</span>
         </div>
-        <div style="margin-top: 4px;">
+        <div style="margin-top: 6px;">
           <span class="badge ${isFlagged ? 'badge-rose' : 'badge-blue'}">${isFlagged ? 'FLAGGED FOR CORRECTION' : 'PASSED CONFIDENCE CHECK'}</span>
         </div>
       `;
@@ -355,13 +358,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const isChanged = s.changed || (s.original_text !== s.corrected_text);
 
         tr.innerHTML = `
-          <td><strong>${s.page_id}</strong></td>
-          <td style="color: var(--text-dim); max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">...${s.context_before}</td>
+          <td class="mono" style="font-size: 12px;"><strong>${s.page_id}</strong></td>
+          <td style="color: var(--slate-muted); max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">...${s.context_before}</td>
           <td><span class="span-pill span-noisy">${s.original_text}</span></td>
           <td><span class="span-pill ${isChanged ? 'span-corrected' : 'span-unchanged'}">${s.corrected_text}</span></td>
-          <td style="color: var(--text-dim); max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${s.context_after}...</td>
-          <td><span class="badge ${s.avg_confidence < 50 ? 'badge-rose' : 'badge-amber'}">${s.avg_confidence.toFixed(1)}%</span></td>
-          <td class="mono">${s.prompt_tokens + s.completion_tokens}</td>
+          <td style="color: var(--slate-muted); max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${s.context_after}...</td>
+          <td><span class="badge ${s.avg_confidence < 50 ? 'badge-rose' : 'badge-amber'} tabular-nums">${s.avg_confidence.toFixed(1)}%</span></td>
+          <td class="mono tabular-nums">${(s.prompt_tokens || 0) + (s.completion_tokens || 0)}</td>
           <td><span class="badge ${isChanged ? 'badge-emerald' : 'badge-purple'}">${isChanged ? 'Corrected' : 'Preserved'}</span></td>
         `;
         tbody.appendChild(tr);
@@ -422,10 +425,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="display: flex; gap: 8px; margin-bottom: 6px;">
               <span class="badge ${q.language === 'en' ? 'badge-blue' : 'badge-emerald'}">${q.language.toUpperCase()}</span>
               <span class="badge badge-purple">${q.question_type.toUpperCase()}</span>
-              <span class="mono" style="font-size: 0.78rem; color: var(--text-dim); align-self: center;">${q.question_id}</span>
+              <span class="mono" style="font-size: 11px; color: var(--slate-muted); align-self: center;">${q.question_id}</span>
             </div>
             <div class="q-title">${q.question}</div>
-            <div class="q-expected">Ground Truth Target: <strong style="color: var(--accent-cyan);">${q.expected_answer}</strong></div>
+            <div class="q-expected">Ground Truth Target: <strong>${q.expected_answer}</strong></div>
           </div>
           <div>${statusBadges[q.status] || ''}</div>
         </div>
@@ -433,43 +436,43 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="tri-variant-grid">
           <!-- Variant A: Ground Truth -->
           <div class="variant-box variant-a">
-            <div class="variant-box-title" style="color: var(--accent-cyan);">
+            <div class="variant-box-title" style="color: var(--secondary);">
               <span>Variant A (Ground Truth)</span>
               <span class="badge badge-blue">Oracle</span>
             </div>
             <div class="variant-answer">"${va.generated_answer}"</div>
             <div class="variant-metrics">
-              <span>EM: <strong style="color: ${va.exact_match === 1.0 ? 'var(--accent-emerald)' : 'var(--accent-rose)'}">${va.exact_match.toFixed(1)}</strong></span>
-              <span>F1: <strong>${va.f1_score.toFixed(3)}</strong></span>
-              <span>Rank #1 Chunk</span>
+              <span>EM: <strong class="tabular-nums" style="color: ${va.exact_match === 1.0 ? 'var(--accent-mitigation)' : 'var(--error)'}">${va.exact_match.toFixed(1)}</strong></span>
+              <span>F1: <strong class="tabular-nums">${va.f1_score.toFixed(3)}</strong></span>
+              <span>Rank #1</span>
             </div>
           </div>
 
           <!-- Variant B: Raw OCR -->
           <div class="variant-box variant-b">
-            <div class="variant-box-title" style="color: var(--accent-rose);">
+            <div class="variant-box-title" style="color: var(--error);">
               <span>Variant B (Raw OCR)</span>
               <span class="badge ${vb.exact_match === 1.0 ? 'badge-emerald' : 'badge-rose'}">${vb.exact_match === 1.0 ? 'EM 1.0' : 'Degraded'}</span>
             </div>
             <div class="variant-answer">"${vb.generated_answer}"</div>
             <div class="variant-metrics">
-              <span>EM: <strong style="color: ${vb.exact_match === 1.0 ? 'var(--accent-emerald)' : 'var(--accent-rose)'}">${vb.exact_match.toFixed(1)}</strong></span>
-              <span>F1: <strong>${vb.f1_score.toFixed(3)}</strong></span>
-              <span>Noise Impacted</span>
+              <span>EM: <strong class="tabular-nums" style="color: ${vb.exact_match === 1.0 ? 'var(--accent-mitigation)' : 'var(--error)'}">${vb.exact_match.toFixed(1)}</strong></span>
+              <span>F1: <strong class="tabular-nums">${vb.f1_score.toFixed(3)}</strong></span>
+              <span>Noise Impact</span>
             </div>
           </div>
 
           <!-- Variant C: Corrected OCR -->
           <div class="variant-box variant-c">
-            <div class="variant-box-title" style="color: var(--accent-emerald);">
+            <div class="variant-box-title" style="color: var(--accent-mitigation-text);">
               <span>Variant C (Selective Corrected)</span>
               <span class="badge ${vc.exact_match === 1.0 ? 'badge-emerald' : 'badge-rose'}">${vc.exact_match === 1.0 ? 'EM 1.0' : 'Failed'}</span>
             </div>
             <div class="variant-answer">"${vc.generated_answer}"</div>
             <div class="variant-metrics">
-              <span>EM: <strong style="color: ${vc.exact_match === 1.0 ? 'var(--accent-emerald)' : 'var(--accent-rose)'}">${vc.exact_match.toFixed(1)}</strong></span>
-              <span>F1: <strong>${vc.f1_score.toFixed(3)}</strong></span>
-              <span>Selective &tau;=70</span>
+              <span>EM: <strong class="tabular-nums" style="color: ${vc.exact_match === 1.0 ? 'var(--accent-mitigation)' : 'var(--error)'}">${vc.exact_match.toFixed(1)}</strong></span>
+              <span>F1: <strong class="tabular-nums">${vc.f1_score.toFixed(3)}</strong></span>
+              <span>Selective &tau;=50</span>
             </div>
           </div>
         </div>

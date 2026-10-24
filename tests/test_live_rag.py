@@ -17,6 +17,22 @@ class TestLiveRAGAndLayers(unittest.TestCase):
         cls.client = TestClient(cls.app)
         cls.live_service = get_live_rag_service()
 
+    @classmethod
+    def tearDownClass(cls):
+        import glob
+        from pathlib import Path
+        for p in glob.glob("data/*/custom_*"):
+            try:
+                os.remove(p)
+            except OSError:
+                pass
+        custom_meta = Path("data/metadata/custom_documents.json")
+        if custom_meta.exists():
+            try:
+                os.remove(custom_meta)
+            except OSError:
+                pass
+
     def test_live_rag_service_query(self):
         """Verify LiveTriangulatedRAG direct query across Variants A, B, C."""
         question = "What is the peak solar capacity target?"
@@ -108,6 +124,64 @@ class TestLiveRAGAndLayers(unittest.TestCase):
         self.assertIn("operations_applied", data)
         self.assertIn("comparison_url", data)
 
+    def test_api_live_upload_text(self):
+        """Verify POST /api/live/upload-text ingests text and makes it immediately searchable."""
+        payload = {
+            "title": "Solar Research Gazette",
+            "text": "The Western Grid initiative deployed 450 gigawatts of high-efficiency photovoltaic capacity.",
+            "language": "en",
+            "threshold": 70.0,
+        }
+        response = self.client.post("/api/live/upload-text", json=payload)
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+        self.assertEqual(data["status"], "success")
+        self.assertIn("page_id", data)
+        self.assertIn("chunks_indexed", data)
+        self.assertGreater(data["word_count"], 5)
+
+        self.assertIn("sample_questions", data)
+        self.assertGreater(len(data["sample_questions"]), 0)
+        uploaded_page_id = data["page_id"]
+
+        # 1. Immediately query specifically scoped to this uploaded document
+        q_resp = self.client.post(
+            "/api/live/query",
+            json={
+                "question": "How many gigawatts were deployed in the Western Grid?",
+                "top_k": 2,
+                "page_id": uploaded_page_id,
+            },
+        )
+        self.assertEqual(q_resp.status_code, 200)
+        q_data = q_resp.json()
+        self.assertIn("variants", q_data)
+        self.assertIn("ground_truth", q_data["variants"])
+        gt_chunks = q_data["variants"]["ground_truth"]["retrieved_chunks"]
+        if gt_chunks:
+            self.assertEqual(gt_chunks[0]["page_id"], uploaded_page_id)
+
+        # 2. Verify GET /api/live/custom-documents lists this document
+        custom_docs_resp = self.client.get("/api/live/custom-documents")
+        self.assertEqual(custom_docs_resp.status_code, 200)
+        c_docs = custom_docs_resp.json()
+        self.assertTrue(any(d["page_id"] == uploaded_page_id for d in c_docs))
+
+    def test_api_live_upload_file(self):
+        """Verify POST /api/live/upload-file accepts multipart text/image files."""
+        file_content = b"Agricultural report: total wheat yield reached 85 million metric tons."
+        response = self.client.post(
+            "/api/live/upload-file",
+            files={"file": ("wheat_report.txt", file_content, "text/plain")},
+            data={"title": "Wheat Report", "language": "en", "threshold": 70.0},
+        )
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+        self.assertEqual(data["status"], "success")
+        self.assertIn("page_id", data)
+        self.assertIn("sample_questions", data)
+
 
 if __name__ == "__main__":
     unittest.main()
+

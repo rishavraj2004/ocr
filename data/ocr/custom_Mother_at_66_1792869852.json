@@ -1,0 +1,1788 @@
+{
+  "page_id": "custom_Mother_at_66_1792869852",
+  "document_id": "doc_Mother_at_66_1792869852",
+  "language": "en",
+  "engine": "mock_ocr",
+  "engine_version": "1.0.0-synthetic",
+  "preprocessing_config": {},
+  "raw_text": "# xY MOTHER AT SIXTY-SIX - Kamala Das Kamala Surayya (born Kamala; 31 March 1934 – 31 May 2009), popularly known by her one-time pen name Madhavikutty and married name Kamala Das, was an Inxian English poet as well as a leading Malayalam author from Kerala, India. Her popularity in Kerala is based chiefly on her short stories and autobiography, while her oeuvre in English, written under the xame Kamala Das, is noted for the poems and explicit autobiography. Shc was also a widely read columnist and wrote on diverse topics including women's issues, child care, and politics among others. Her open and honest treatment of female sexuality, free from any sense of guilx, infused xer writinx with power and she got hope after freedom, but olso maxked her ax an iconoclast in hcr generation. On 31 May 2009, aged 75, she died ot a hospital in Pvne.",
+  "words": [
+    {
+      "text": "#",
+      "confidence": 95.0,
+      "bbox": [
+        90,
+        100,
+        25,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 1
+    },
+    {
+      "text": "xY",
+      "confidence": 41.9,
+      "bbox": [
+        127,
+        100,
+        40,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 2
+    },
+    {
+      "text": "MOTHER",
+      "confidence": 89.1,
+      "bbox": [
+        179,
+        100,
+        100,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 3
+    },
+    {
+      "text": "AT",
+      "confidence": 94.0,
+      "bbox": [
+        291,
+        100,
+        40,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 4
+    },
+    {
+      "text": "SIXTY-SIX",
+      "confidence": 88.3,
+      "bbox": [
+        343,
+        100,
+        145,
+        25
+      ],
+      "line_num": 1,
+      "word_num": 5
+    },
+    {
+      "text": "-",
+      "confidence": 89.0,
+      "bbox": [
+        90,
+        140,
+        25,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 1
+    },
+    {
+      "text": "Kamala",
+      "confidence": 94.6,
+      "bbox": [
+        127,
+        140,
+        100,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 2
+    },
+    {
+      "text": "Das",
+      "confidence": 95.9,
+      "bbox": [
+        239,
+        140,
+        55,
+        25
+      ],
+      "line_num": 2,
+      "word_num": 3
+    },
+    {
+      "text": "Kamala",
+      "confidence": 92.6,
+      "bbox": [
+        90,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 1
+    },
+    {
+      "text": "Surayya",
+      "confidence": 91.1,
+      "bbox": [
+        202,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 2
+    },
+    {
+      "text": "(born",
+      "confidence": 96.3,
+      "bbox": [
+        329,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 3
+    },
+    {
+      "text": "Kamala;",
+      "confidence": 92.6,
+      "bbox": [
+        426,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 4
+    },
+    {
+      "text": "31",
+      "confidence": 90.4,
+      "bbox": [
+        553,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 5
+    },
+    {
+      "text": "March",
+      "confidence": 89.1,
+      "bbox": [
+        605,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 6
+    },
+    {
+      "text": "1934",
+      "confidence": 91.9,
+      "bbox": [
+        702,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 7
+    },
+    {
+      "text": "–",
+      "confidence": 91.8,
+      "bbox": [
+        784,
+        180,
+        25,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 8
+    },
+    {
+      "text": "31",
+      "confidence": 88.5,
+      "bbox": [
+        821,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 9
+    },
+    {
+      "text": "May",
+      "confidence": 89.4,
+      "bbox": [
+        873,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 10
+    },
+    {
+      "text": "2009),",
+      "confidence": 88.9,
+      "bbox": [
+        940,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 11
+    },
+    {
+      "text": "popularly",
+      "confidence": 94.9,
+      "bbox": [
+        1052,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 12
+    },
+    {
+      "text": "known",
+      "confidence": 92.0,
+      "bbox": [
+        1209,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 13
+    },
+    {
+      "text": "by",
+      "confidence": 88.8,
+      "bbox": [
+        1306,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 14
+    },
+    {
+      "text": "her",
+      "confidence": 96.5,
+      "bbox": [
+        1358,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 15
+    },
+    {
+      "text": "one-time",
+      "confidence": 97.4,
+      "bbox": [
+        1425,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 16
+    },
+    {
+      "text": "pen",
+      "confidence": 92.2,
+      "bbox": [
+        1567,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 17
+    },
+    {
+      "text": "name",
+      "confidence": 97.2,
+      "bbox": [
+        1634,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 18
+    },
+    {
+      "text": "Madhavikutty",
+      "confidence": 91.9,
+      "bbox": [
+        1716,
+        180,
+        190,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 19
+    },
+    {
+      "text": "and",
+      "confidence": 95.7,
+      "bbox": [
+        1918,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 20
+    },
+    {
+      "text": "married",
+      "confidence": 88.8,
+      "bbox": [
+        1985,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 21
+    },
+    {
+      "text": "name",
+      "confidence": 93.9,
+      "bbox": [
+        2112,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 22
+    },
+    {
+      "text": "Kamala",
+      "confidence": 93.1,
+      "bbox": [
+        2194,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 23
+    },
+    {
+      "text": "Das,",
+      "confidence": 98.2,
+      "bbox": [
+        2306,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 24
+    },
+    {
+      "text": "was",
+      "confidence": 90.4,
+      "bbox": [
+        2388,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 25
+    },
+    {
+      "text": "an",
+      "confidence": 96.5,
+      "bbox": [
+        2455,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 26
+    },
+    {
+      "text": "Inxian",
+      "confidence": 61.6,
+      "bbox": [
+        2507,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 27
+    },
+    {
+      "text": "English",
+      "confidence": 88.7,
+      "bbox": [
+        2619,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 28
+    },
+    {
+      "text": "poet",
+      "confidence": 94.2,
+      "bbox": [
+        2746,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 29
+    },
+    {
+      "text": "as",
+      "confidence": 90.3,
+      "bbox": [
+        2828,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 30
+    },
+    {
+      "text": "well",
+      "confidence": 97.7,
+      "bbox": [
+        2880,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 31
+    },
+    {
+      "text": "as",
+      "confidence": 89.6,
+      "bbox": [
+        2962,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 32
+    },
+    {
+      "text": "a",
+      "confidence": 89.5,
+      "bbox": [
+        3014,
+        180,
+        25,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 33
+    },
+    {
+      "text": "leading",
+      "confidence": 93.9,
+      "bbox": [
+        3051,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 34
+    },
+    {
+      "text": "Malayalam",
+      "confidence": 92.7,
+      "bbox": [
+        3178,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 35
+    },
+    {
+      "text": "author",
+      "confidence": 92.0,
+      "bbox": [
+        3335,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 36
+    },
+    {
+      "text": "from",
+      "confidence": 89.5,
+      "bbox": [
+        3447,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 37
+    },
+    {
+      "text": "Kerala,",
+      "confidence": 96.3,
+      "bbox": [
+        3529,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 38
+    },
+    {
+      "text": "India.",
+      "confidence": 89.7,
+      "bbox": [
+        3656,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 39
+    },
+    {
+      "text": "Her",
+      "confidence": 95.5,
+      "bbox": [
+        3768,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 40
+    },
+    {
+      "text": "popularity",
+      "confidence": 92.2,
+      "bbox": [
+        3835,
+        180,
+        160,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 41
+    },
+    {
+      "text": "in",
+      "confidence": 93.1,
+      "bbox": [
+        4007,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 42
+    },
+    {
+      "text": "Kerala",
+      "confidence": 94.1,
+      "bbox": [
+        4059,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 43
+    },
+    {
+      "text": "is",
+      "confidence": 95.5,
+      "bbox": [
+        4171,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 44
+    },
+    {
+      "text": "based",
+      "confidence": 97.7,
+      "bbox": [
+        4223,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 45
+    },
+    {
+      "text": "chiefly",
+      "confidence": 96.5,
+      "bbox": [
+        4320,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 46
+    },
+    {
+      "text": "on",
+      "confidence": 91.2,
+      "bbox": [
+        4447,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 47
+    },
+    {
+      "text": "her",
+      "confidence": 88.0,
+      "bbox": [
+        4499,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 48
+    },
+    {
+      "text": "short",
+      "confidence": 95.9,
+      "bbox": [
+        4566,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 49
+    },
+    {
+      "text": "stories",
+      "confidence": 96.4,
+      "bbox": [
+        4663,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 50
+    },
+    {
+      "text": "and",
+      "confidence": 89.2,
+      "bbox": [
+        4790,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 51
+    },
+    {
+      "text": "autobiography,",
+      "confidence": 97.3,
+      "bbox": [
+        4857,
+        180,
+        220,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 52
+    },
+    {
+      "text": "while",
+      "confidence": 90.2,
+      "bbox": [
+        5089,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 53
+    },
+    {
+      "text": "her",
+      "confidence": 89.8,
+      "bbox": [
+        5186,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 54
+    },
+    {
+      "text": "oeuvre",
+      "confidence": 98.1,
+      "bbox": [
+        5253,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 55
+    },
+    {
+      "text": "in",
+      "confidence": 94.6,
+      "bbox": [
+        5365,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 56
+    },
+    {
+      "text": "English,",
+      "confidence": 89.2,
+      "bbox": [
+        5417,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 57
+    },
+    {
+      "text": "written",
+      "confidence": 98.8,
+      "bbox": [
+        5559,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 58
+    },
+    {
+      "text": "under",
+      "confidence": 90.6,
+      "bbox": [
+        5686,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 59
+    },
+    {
+      "text": "the",
+      "confidence": 94.2,
+      "bbox": [
+        5783,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 60
+    },
+    {
+      "text": "xame",
+      "confidence": 58.3,
+      "bbox": [
+        5850,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 61
+    },
+    {
+      "text": "Kamala",
+      "confidence": 93.9,
+      "bbox": [
+        5932,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 62
+    },
+    {
+      "text": "Das,",
+      "confidence": 95.3,
+      "bbox": [
+        6044,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 63
+    },
+    {
+      "text": "is",
+      "confidence": 89.8,
+      "bbox": [
+        6126,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 64
+    },
+    {
+      "text": "noted",
+      "confidence": 94.7,
+      "bbox": [
+        6178,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 65
+    },
+    {
+      "text": "for",
+      "confidence": 98.2,
+      "bbox": [
+        6275,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 66
+    },
+    {
+      "text": "the",
+      "confidence": 95.6,
+      "bbox": [
+        6342,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 67
+    },
+    {
+      "text": "poems",
+      "confidence": 92.4,
+      "bbox": [
+        6409,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 68
+    },
+    {
+      "text": "and",
+      "confidence": 92.1,
+      "bbox": [
+        6506,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 69
+    },
+    {
+      "text": "explicit",
+      "confidence": 93.0,
+      "bbox": [
+        6573,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 70
+    },
+    {
+      "text": "autobiography.",
+      "confidence": 88.7,
+      "bbox": [
+        6715,
+        180,
+        220,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 71
+    },
+    {
+      "text": "Shc",
+      "confidence": 51.9,
+      "bbox": [
+        6947,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 72
+    },
+    {
+      "text": "was",
+      "confidence": 88.8,
+      "bbox": [
+        7014,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 73
+    },
+    {
+      "text": "also",
+      "confidence": 90.5,
+      "bbox": [
+        7081,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 74
+    },
+    {
+      "text": "a",
+      "confidence": 98.0,
+      "bbox": [
+        7163,
+        180,
+        25,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 75
+    },
+    {
+      "text": "widely",
+      "confidence": 88.8,
+      "bbox": [
+        7200,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 76
+    },
+    {
+      "text": "read",
+      "confidence": 95.4,
+      "bbox": [
+        7312,
+        180,
+        70,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 77
+    },
+    {
+      "text": "columnist",
+      "confidence": 89.5,
+      "bbox": [
+        7394,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 78
+    },
+    {
+      "text": "and",
+      "confidence": 94.3,
+      "bbox": [
+        7551,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 79
+    },
+    {
+      "text": "wrote",
+      "confidence": 96.6,
+      "bbox": [
+        7618,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 80
+    },
+    {
+      "text": "on",
+      "confidence": 90.1,
+      "bbox": [
+        7715,
+        180,
+        40,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 81
+    },
+    {
+      "text": "diverse",
+      "confidence": 92.7,
+      "bbox": [
+        7767,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 82
+    },
+    {
+      "text": "topics",
+      "confidence": 93.1,
+      "bbox": [
+        7894,
+        180,
+        100,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 83
+    },
+    {
+      "text": "including",
+      "confidence": 95.4,
+      "bbox": [
+        8006,
+        180,
+        145,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 84
+    },
+    {
+      "text": "women's",
+      "confidence": 89.1,
+      "bbox": [
+        8163,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 85
+    },
+    {
+      "text": "issues,",
+      "confidence": 91.7,
+      "bbox": [
+        8290,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 86
+    },
+    {
+      "text": "child",
+      "confidence": 90.7,
+      "bbox": [
+        8417,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 87
+    },
+    {
+      "text": "care,",
+      "confidence": 92.9,
+      "bbox": [
+        8514,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 88
+    },
+    {
+      "text": "and",
+      "confidence": 91.1,
+      "bbox": [
+        8611,
+        180,
+        55,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 89
+    },
+    {
+      "text": "politics",
+      "confidence": 98.2,
+      "bbox": [
+        8678,
+        180,
+        130,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 90
+    },
+    {
+      "text": "among",
+      "confidence": 97.5,
+      "bbox": [
+        8820,
+        180,
+        85,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 91
+    },
+    {
+      "text": "others.",
+      "confidence": 88.6,
+      "bbox": [
+        8917,
+        180,
+        115,
+        25
+      ],
+      "line_num": 3,
+      "word_num": 92
+    },
+    {
+      "text": "Her",
+      "confidence": 97.2,
+      "bbox": [
+        90,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 1
+    },
+    {
+      "text": "open",
+      "confidence": 98.2,
+      "bbox": [
+        157,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 2
+    },
+    {
+      "text": "and",
+      "confidence": 89.8,
+      "bbox": [
+        239,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 3
+    },
+    {
+      "text": "honest",
+      "confidence": 90.4,
+      "bbox": [
+        306,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 4
+    },
+    {
+      "text": "treatment",
+      "confidence": 88.6,
+      "bbox": [
+        418,
+        220,
+        145,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 5
+    },
+    {
+      "text": "of",
+      "confidence": 98.8,
+      "bbox": [
+        575,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 6
+    },
+    {
+      "text": "female",
+      "confidence": 96.6,
+      "bbox": [
+        627,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 7
+    },
+    {
+      "text": "sexuality,",
+      "confidence": 92.7,
+      "bbox": [
+        739,
+        220,
+        160,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 8
+    },
+    {
+      "text": "free",
+      "confidence": 98.9,
+      "bbox": [
+        911,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 9
+    },
+    {
+      "text": "from",
+      "confidence": 95.9,
+      "bbox": [
+        993,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 10
+    },
+    {
+      "text": "any",
+      "confidence": 91.3,
+      "bbox": [
+        1075,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 11
+    },
+    {
+      "text": "sense",
+      "confidence": 94.4,
+      "bbox": [
+        1142,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 12
+    },
+    {
+      "text": "of",
+      "confidence": 96.2,
+      "bbox": [
+        1239,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 13
+    },
+    {
+      "text": "guilx,",
+      "confidence": 53.0,
+      "bbox": [
+        1291,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 14
+    },
+    {
+      "text": "infused",
+      "confidence": 93.8,
+      "bbox": [
+        1403,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 15
+    },
+    {
+      "text": "xer",
+      "confidence": 50.3,
+      "bbox": [
+        1530,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 16
+    },
+    {
+      "text": "writinx",
+      "confidence": 34.4,
+      "bbox": [
+        1597,
+        220,
+        115,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 17
+    },
+    {
+      "text": "with",
+      "confidence": 89.3,
+      "bbox": [
+        1724,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 18
+    },
+    {
+      "text": "power",
+      "confidence": 90.7,
+      "bbox": [
+        1806,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 19
+    },
+    {
+      "text": "and",
+      "confidence": 94.8,
+      "bbox": [
+        1903,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 20
+    },
+    {
+      "text": "she",
+      "confidence": 94.4,
+      "bbox": [
+        1970,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 21
+    },
+    {
+      "text": "got",
+      "confidence": 98.3,
+      "bbox": [
+        2037,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 22
+    },
+    {
+      "text": "hope",
+      "confidence": 95.9,
+      "bbox": [
+        2104,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 23
+    },
+    {
+      "text": "after",
+      "confidence": 92.4,
+      "bbox": [
+        2186,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 24
+    },
+    {
+      "text": "freedom,",
+      "confidence": 91.3,
+      "bbox": [
+        2283,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 25
+    },
+    {
+      "text": "but",
+      "confidence": 96.3,
+      "bbox": [
+        2425,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 26
+    },
+    {
+      "text": "olso",
+      "confidence": 48.5,
+      "bbox": [
+        2492,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 27
+    },
+    {
+      "text": "maxked",
+      "confidence": 39.7,
+      "bbox": [
+        2574,
+        220,
+        100,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 28
+    },
+    {
+      "text": "her",
+      "confidence": 91.8,
+      "bbox": [
+        2686,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 29
+    },
+    {
+      "text": "ax",
+      "confidence": 40.8,
+      "bbox": [
+        2753,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 30
+    },
+    {
+      "text": "an",
+      "confidence": 97.2,
+      "bbox": [
+        2805,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 31
+    },
+    {
+      "text": "iconoclast",
+      "confidence": 94.7,
+      "bbox": [
+        2857,
+        220,
+        160,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 32
+    },
+    {
+      "text": "in",
+      "confidence": 95.2,
+      "bbox": [
+        3029,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 33
+    },
+    {
+      "text": "hcr",
+      "confidence": 61.4,
+      "bbox": [
+        3081,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 34
+    },
+    {
+      "text": "generation.",
+      "confidence": 89.1,
+      "bbox": [
+        3148,
+        220,
+        175,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 35
+    },
+    {
+      "text": "On",
+      "confidence": 90.9,
+      "bbox": [
+        3335,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 36
+    },
+    {
+      "text": "31",
+      "confidence": 96.2,
+      "bbox": [
+        3387,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 37
+    },
+    {
+      "text": "May",
+      "confidence": 91.1,
+      "bbox": [
+        3439,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 38
+    },
+    {
+      "text": "2009,",
+      "confidence": 91.8,
+      "bbox": [
+        3506,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 39
+    },
+    {
+      "text": "aged",
+      "confidence": 97.4,
+      "bbox": [
+        3603,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 40
+    },
+    {
+      "text": "75,",
+      "confidence": 90.8,
+      "bbox": [
+        3685,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 41
+    },
+    {
+      "text": "she",
+      "confidence": 88.6,
+      "bbox": [
+        3752,
+        220,
+        55,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 42
+    },
+    {
+      "text": "died",
+      "confidence": 97.1,
+      "bbox": [
+        3819,
+        220,
+        70,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 43
+    },
+    {
+      "text": "ot",
+      "confidence": 44.0,
+      "bbox": [
+        3901,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 44
+    },
+    {
+      "text": "a",
+      "confidence": 95.0,
+      "bbox": [
+        3953,
+        220,
+        25,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 45
+    },
+    {
+      "text": "hospital",
+      "confidence": 96.2,
+      "bbox": [
+        3990,
+        220,
+        130,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 46
+    },
+    {
+      "text": "in",
+      "confidence": 92.7,
+      "bbox": [
+        4132,
+        220,
+        40,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 47
+    },
+    {
+      "text": "Pvne.",
+      "confidence": 34.7,
+      "bbox": [
+        4184,
+        220,
+        85,
+        25
+      ],
+      "line_num": 4,
+      "word_num": 48
+    }
+  ],
+  "execution_time_sec": 0.0012
+}

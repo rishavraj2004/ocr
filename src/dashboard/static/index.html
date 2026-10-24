@@ -331,6 +331,9 @@
           <button class="custom-select lab-mode-btn" id="btnModeLayerLab" style="font-weight: 600; cursor: pointer; padding: 8px 16px;">
             2. Pipeline Layer Testing Lab
           </button>
+          <button class="custom-select lab-mode-btn" id="btnModeUploadDoc" style="font-weight: 600; cursor: pointer; padding: 8px 16px;">
+            3. Upload &amp; Ingest Own Document
+          </button>
         </div>
         <div class="header-badges">
           <span class="badge badge-emerald" id="liveServiceBadge">Live RAG Engine Ready</span>
@@ -575,6 +578,347 @@
             <div id="liveSpansContainer" style="max-height: 220px; overflow-y: auto; font-size: 12px;">
               <div style="color: var(--slate-muted); font-style: italic; text-align: center; padding: 16px;">
                 Run simulation to inspect flagged low-confidence spans and selective corrections.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mode 3: Upload & Ingest Own Document -->
+      <div id="panelUploadDoc" style="display: none;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px;">
+          <!-- Ingestion Form Card -->
+          <div class="glass-card">
+            <div class="card-title">
+              <span>Upload Custom Document or Scan</span>
+              <span class="badge badge-blue">Full Multi-Variant Pipeline</span>
+            </div>
+
+            <!-- Upload Type Tabs -->
+            <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+              <button id="tabUploadFile" class="custom-select lab-mode-btn active" style="padding: 6px 12px; font-size: 12px; cursor: pointer;">
+                File Upload (Image / Text)
+              </button>
+              <button id="tabUploadPaste" class="custom-select lab-mode-btn" style="padding: 6px 12px; font-size: 12px; cursor: pointer;">
+                Direct Text Paste
+              </button>
+            </div>
+
+            <!-- File Upload Section -->
+            <div id="sectionUploadFile">
+              <div id="dropzoneArea" style="border: 2px dashed var(--outline-variant); border-radius: var(--radius-sm); padding: 24px 16px; text-align: center; cursor: pointer; transition: all 0.2s ease; background: var(--surface-container-low); margin-bottom: 16px;">
+                <input type="file" id="fileUploadInput" accept=".png,.jpg,.jpeg,.tiff,.bmp,.webp,.txt,.md,.pdf" style="display: none;" />
+                <div style="font-size: 28px; margin-bottom: 8px;">📄</div>
+                <div style="font-size: 13px; font-weight: 600; color: var(--on-surface);">
+                  Drag &amp; Drop Page Scan, PDF, or Text File
+                </div>
+                <div style="font-size: 11px; color: var(--slate-muted); margin-top: 4px;">
+                  Supports PDF, PNG, JPG, TIFF, TXT, MD (or Click to Browse)
+                </div>
+                <div id="selectedFileName" style="display: none; margin-top: 10px; font-size: 12px; font-weight: 600; color: var(--secondary);"></div>
+              </div>
+            </div>
+
+            <!-- Paste Text Section -->
+            <div id="sectionUploadPaste" style="display: none; margin-bottom: 16px;">
+              <label for="pasteTextInput" style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">
+                Document Text Content:
+              </label>
+              <textarea
+                id="pasteTextInput"
+                class="custom-select"
+                rows="6"
+                style="width: 100%; font-size: 13px; padding: 10px; resize: vertical;"
+                placeholder="Paste any article, circular, gazette excerpt, or report text here..."
+              ></textarea>
+            </div>
+
+            <!-- Document Details Options -->
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px;">
+              <div>
+                <label for="uploadTitleInput" style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px;">
+                  Document Title (Optional):
+                </label>
+                <input
+                  type="text"
+                  id="uploadTitleInput"
+                  class="custom-select"
+                  style="width: 100%; padding: 8px 12px;"
+                  placeholder="e.g., Renewable Energy Gazette 2026"
+                />
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div>
+                  <label for="uploadLanguageSelect" style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px;">
+                    Language:
+                  </label>
+                  <select id="uploadLanguageSelect" class="custom-select" style="width: 100%; padding: 8px 10px;">
+                    <option value="auto">Auto-Detect</option>
+                    <option value="en">English (Latin)</option>
+                    <option value="hi">Hindi (Devanagari)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="uploadThresholdInput" style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px;">
+                    Confidence Threshold &tau;: <strong id="uploadTauLabel">70.0</strong>
+                  </label>
+                  <input type="range" id="uploadThresholdInput" min="30" max="90" step="5" value="70" style="width: 100%; cursor: pointer; margin-top: 6px;" />
+                </div>
+              </div>
+
+              <button id="btnSubmitUpload" class="btn-primary" style="width: 100%; padding: 10px; font-size: 14px; margin-top: 4px;">
+                Run Pipeline &amp; Ingest into RAG
+              </button>
+            </div>
+          </div>
+
+          <!-- Ingestion Pipeline Stepper & Result Card -->
+          <div class="glass-card">
+            <div class="card-title">
+              <span>Live Ingestion Pipeline Stepper</span>
+              <span class="badge badge-emerald" id="uploadStepperBadge">Idle</span>
+            </div>
+
+            <!-- Pipeline Steps List -->
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px;">
+              <div id="stepPreprocess" class="stepper-item" style="display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--slate-muted);">
+                <span class="stepper-icon">&bull;</span>
+                <span>1. OpenCV Preprocessing &amp; Page Ingestion</span>
+              </div>
+              <div id="stepOCR" class="stepper-item" style="display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--slate-muted);">
+                <span class="stepper-icon">&bull;</span>
+                <span>2. OCR Token &amp; Calibrated Confidence Extraction (Variant B)</span>
+              </div>
+              <div id="stepCorrection" class="stepper-item" style="display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--slate-muted);">
+                <span class="stepper-icon">&bull;</span>
+                <span>3. Confidence-Guided Selective Correction (Variant C)</span>
+              </div>
+              <div id="stepFAISS" class="stepper-item" style="display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--slate-muted);">
+                <span class="stepper-icon">&bull;</span>
+                <span>4. Dense Vector Embedding &amp; FAISS Live Ingestion</span>
+              </div>
+            </div>
+
+            <!-- Ingestion Result Summary Container (Hidden until upload completes) -->
+            <div id="uploadResultContainer" style="display: none; background: var(--surface-container-low); border: 1px solid var(--border-hairline); border-radius: var(--radius-sm); padding: 14px; font-size: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid var(--border-hairline); padding-bottom: 8px;">
+                <strong id="uploadResultTitle" style="font-size: 14px; color: var(--slate-contrast);">Document Title</strong>
+                <span id="uploadResultLang" class="badge badge-blue">EN</span>
+              </div>
+
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 8px; margin-bottom: 12px;">
+                <div>
+                  <div style="color: var(--slate-muted);">Total Words</div>
+                  <strong id="uploadWordCount" style="font-size: 14px; color: var(--secondary);">0</strong>
+                </div>
+                <div>
+                  <div style="color: var(--slate-muted);">Flagged Spans</div>
+                  <strong id="uploadFlaggedSpans" style="font-size: 14px; color: var(--accent-mitigation-text);">0</strong>
+                </div>
+                <div>
+                  <div style="color: var(--slate-muted);">FAISS Chunks</div>
+                  <strong id="uploadChunksCount" style="font-size: 14px; color: var(--slate-contrast);">0</strong>
+                </div>
+              </div>
+
+              <div style="margin-bottom: 12px;">
+                <div style="font-size: 11px; font-weight: 600; color: var(--slate-muted); margin-bottom: 4px;">RAW OCR NOISY SNIPPET (VARIANT B):</div>
+                <div id="uploadRawSnippet" style="font-size: 11px; line-height: 1.4; color: var(--error); background: #fef2f2; padding: 6px 8px; border-radius: 4px; font-family: monospace;"></div>
+              </div>
+
+              <div style="margin-bottom: 14px;">
+                <div style="font-size: 11px; font-weight: 600; color: var(--slate-muted); margin-bottom: 4px;">CORRECTED SNIPPET (VARIANT C):</div>
+                <div id="uploadCorrSnippet" style="font-size: 11px; line-height: 1.4; color: var(--accent-mitigation-text); background: #f0fdfa; padding: 6px 8px; border-radius: 4px; font-family: monospace;"></div>
+              </div>
+
+              <button id="btnAskOnUploadedDoc" class="btn-primary" style="width: 100%;">
+                Ask Live Questions on this Document &darr;
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dedicated Document Q&A & Triangulation Section -->
+        <div id="dedicatedDocQnASection" class="glass-card" style="margin-top: 24px;">
+          <div class="card-title" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span>Document-Specific 3-Variant Q&amp;A Console</span>
+              <span class="badge badge-emerald" id="docQnACountBadge">0 Documents Ingested</span>
+            </div>
+            <div style="font-size: 12px; color: var(--slate-muted);">
+              Scoped Retrieval &amp; Triangulation for Each Upload
+            </div>
+          </div>
+
+          <!-- Document Selector Tabs -->
+          <div id="docSelectorTabsWrap" style="margin-bottom: 20px;">
+            <div style="font-size: 11px; font-weight: 600; color: var(--slate-muted); text-transform: uppercase; margin-bottom: 8px;">
+              Select Uploaded Document:
+            </div>
+            <div id="docSelectorTabs" style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <div style="color: var(--slate-muted); font-size: 13px; font-style: italic;">
+                No custom documents uploaded yet. Ingest a document above to unlock its dedicated Q&amp;A console.
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Document Q&A Console (Hidden until a document is chosen) -->
+          <div id="activeDocConsole" style="display: none; border-top: 1px solid var(--border-hairline); padding-top: 20px;">
+            <!-- Document Meta Header Banner -->
+            <div style="background: var(--surface-container-low); border-radius: var(--radius-sm); padding: 14px 18px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+              <div>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
+                  <strong id="activeDocTitle" style="font-size: 16px; color: var(--slate-contrast);">Document Title</strong>
+                  <span id="activeDocLangBadge" class="badge badge-blue">EN</span>
+                  <span id="activeDocIdBadge" class="badge" style="background: var(--surface-container); font-family: monospace;">custom_doc</span>
+                </div>
+                <div style="font-size: 12px; color: var(--slate-muted);" id="activeDocSubtitle">
+                  Single-column &bull; Words: 0 &bull; Flagged Spans: 0
+                </div>
+              </div>
+
+              <!-- Quick Document Text Snippet Preview Toggle -->
+              <button id="btnToggleDocPreview" class="custom-select" style="padding: 6px 14px; font-size: 12px; cursor: pointer;">
+                Toggle Text Preview
+              </button>
+            </div>
+
+            <!-- Collapsible Document Preview -->
+            <div id="activeDocPreviewWrap" style="display: none; margin-bottom: 20px;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                <div style="background: var(--surface-container-low); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-hairline);">
+                  <div style="font-size: 11px; font-weight: 600; color: #0284c7; margin-bottom: 6px;">CLEAN / GROUND TRUTH TEXT (VARIANT A):</div>
+                  <div id="activeDocGtText" style="font-size: 12px; max-height: 160px; overflow-y: auto; white-space: pre-wrap; font-family: monospace; line-height: 1.4;"></div>
+                </div>
+                <div style="background: #fef2f2; padding: 12px; border-radius: var(--radius-sm); border: 1px solid #fecaca;">
+                  <div style="font-size: 11px; font-weight: 600; color: var(--error); margin-bottom: 6px;">RAW OCR WITH NOISE (VARIANT B):</div>
+                  <div id="activeDocRawText" style="font-size: 12px; max-height: 160px; overflow-y: auto; white-space: pre-wrap; font-family: monospace; line-height: 1.4; color: #991b1b;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Document-Specific Suggested Questions (Clickable) -->
+            <div style="margin-bottom: 18px;">
+              <div style="font-size: 12px; font-weight: 600; color: var(--slate-muted); margin-bottom: 8px;">
+                SUGGESTED QUESTIONS FOR THIS DOCUMENT (Click to Ask):
+              </div>
+              <div id="activeDocSuggestedChips" style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+
+            <!-- Query Input Bar Scoped to This Document -->
+            <div style="display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 20px;">
+              <div style="flex: 1; min-width: 280px;">
+                <label for="activeDocQueryInput" style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">
+                  Ask a Question specifically on this Document:
+                </label>
+                <input
+                  type="text"
+                  id="activeDocQueryInput"
+                  class="custom-select"
+                  style="width: 100%; font-size: 14px; padding: 10px 14px;"
+                  placeholder="Type any question regarding this document's facts, figures, or text..."
+                />
+              </div>
+
+              <div style="width: 120px;">
+                <label for="activeDocTopKSelect" style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">
+                  Top-K Passages
+                </label>
+                <select id="activeDocTopKSelect" class="custom-select" style="width: 100%; padding: 9px 12px;">
+                  <option value="1">Top 1</option>
+                  <option value="2" selected>Top 2</option>
+                  <option value="3">Top 3</option>
+                </select>
+              </div>
+
+              <button id="btnExecuteDocQuery" class="btn-primary" style="height: 38px; padding: 0 22px; font-weight: 600;">
+                Ask Document &rarr;
+              </button>
+            </div>
+
+            <!-- Document Diagnostics Banner -->
+            <div id="activeDocDiagnosticsBanner" style="display: none; background: var(--surface-container-low); border-left: 4px solid var(--accent-mitigation-text); border-radius: var(--radius-sm); padding: 12px 18px; margin-bottom: 20px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                <div>
+                  <span style="font-size: 11px; font-weight: 600; color: var(--slate-muted); text-transform: uppercase;">
+                    Triangulation Outcome:
+                  </span>
+                  <span id="activeDocStatusBadge" class="badge badge-emerald" style="margin-left: 8px; font-size: 13px;">
+                    RECOVERED
+                  </span>
+                </div>
+                <div style="display: flex; gap: 16px; font-family: 'JetBrains Mono', monospace; font-size: 12px;">
+                  <div>Raw OCR F1: <strong id="activeDocRawF1" style="color: var(--error);">0.00</strong></div>
+                  <div>Corrected F1: <strong id="activeDocCorrF1" style="color: var(--accent-mitigation-text);">1.00</strong></div>
+                  <div>Latency: <strong id="activeDocLatency">0.00s</strong></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3-Variant Triangulation Grid Scoped to Document -->
+            <div id="activeDocTriangulationGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px;">
+              <!-- Variant A: Ground Truth Oracle -->
+              <div class="glass-card" style="border-top: 3px solid #0284c7; background: #ffffff;">
+                <div class="card-title" style="display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+                  <span>Variant A: Clean Oracle</span>
+                  <span class="badge badge-blue">Theoretical Optimum</span>
+                </div>
+                <div style="margin-bottom: 12px;">
+                  <div style="font-size: 11px; font-weight: 600; color: var(--slate-muted); margin-bottom: 4px;">ANSWER DERIVED:</div>
+                  <div id="activeDocAnsA" class="code-container" style="padding: 10px; font-size: 13px; font-weight: 600; min-height: 44px; background: var(--surface-container-low);">
+                    (Click Ask Document or select a suggested question)
+                  </div>
+                </div>
+                <div>
+                  <div style="font-size: 11px; font-weight: 600; color: var(--slate-muted); margin-bottom: 4px;">RETRIEVED PASSAGE:</div>
+                  <div id="activeDocChunksA" style="font-size: 11px; max-height: 200px; overflow-y: auto;">
+                    <div style="color: var(--slate-muted); font-style: italic;">No passages retrieved yet.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Variant B: Raw OCR Baseline -->
+              <div class="glass-card" style="border-top: 3px solid var(--error); background: #ffffff;">
+                <div class="card-title" style="display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+                  <span>Variant B: Raw OCR Baseline</span>
+                  <span class="badge badge-purple" style="color: var(--error); background: #fee2e2;">Noisy OCR</span>
+                </div>
+                <div style="margin-bottom: 12px;">
+                  <div style="font-size: 11px; font-weight: 600; color: var(--slate-muted); margin-bottom: 4px;">ANSWER DERIVED:</div>
+                  <div id="activeDocAnsB" class="code-container" style="padding: 10px; font-size: 13px; font-weight: 600; min-height: 44px; background: var(--surface-container-low); color: var(--error);">
+                    (Click Ask Document or select a suggested question)
+                  </div>
+                </div>
+                <div>
+                  <div style="font-size: 11px; font-weight: 600; color: var(--slate-muted); margin-bottom: 4px;">RETRIEVED PASSAGE:</div>
+                  <div id="activeDocChunksB" style="font-size: 11px; max-height: 200px; overflow-y: auto;">
+                    <div style="color: var(--slate-muted); font-style: italic;">No passages retrieved yet.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Variant C: Selective Correction -->
+              <div class="glass-card" style="border-top: 3px solid var(--accent-mitigation-text); background: #ffffff;">
+                <div class="card-title" style="display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+                  <span>Variant C: Selective Correction</span>
+                  <span class="badge badge-emerald">&tau;=70 Restored</span>
+                </div>
+                <div style="margin-bottom: 12px;">
+                  <div style="font-size: 11px; font-weight: 600; color: var(--slate-muted); margin-bottom: 4px;">ANSWER DERIVED:</div>
+                  <div id="activeDocAnsC" class="code-container" style="padding: 10px; font-size: 13px; font-weight: 600; min-height: 44px; background: var(--surface-container-low); color: var(--accent-mitigation-text);">
+                    (Click Ask Document or select a suggested question)
+                  </div>
+                </div>
+                <div>
+                  <div style="font-size: 11px; font-weight: 600; color: var(--slate-muted); margin-bottom: 4px;">RETRIEVED PASSAGE:</div>
+                  <div id="activeDocChunksC" style="font-size: 11px; max-height: 200px; overflow-y: auto;">
+                    <div style="color: var(--slate-muted); font-style: italic;">No passages retrieved yet.</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

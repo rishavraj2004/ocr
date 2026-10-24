@@ -16,7 +16,7 @@ import os
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
@@ -45,6 +45,51 @@ class LiveQueryRequest(BaseModel):
     top_k: int = Field(default=3, ge=1, le=10)
     expected_answer: Optional[str] = None
     language: str = "auto"
+    page_id: Optional[str] = None
+
+
+def generate_sample_questions_from_text(text: str, language: str = "en") -> List[Dict[str, str]]:
+    """Derive 2-3 instant test questions from document text."""
+    import re
+    questions = []
+    sentences = [s.strip() for s in re.split(r'[.!?।\n]+', text) if len(s.strip()) > 15]
+
+    if language == "hi":
+        for sent in sentences[:3]:
+            words = sent.split()
+            if len(words) >= 4:
+                topic = " ".join(words[:4])
+                questions.append({
+                    "question": f"{topic} के संबंध में क्या जानकारी है?",
+                    "expected_answer": sent[:100],
+                })
+        if not questions:
+            questions.append({
+                "question": "इस दस्तावेज़ का मुख्य सारांश क्या है?",
+                "expected_answer": text[:100],
+            })
+    else:
+        for sent in sentences[:3]:
+            words = sent.split()
+            nums = re.findall(r'\b\d+(?:[\.,]\d+)?\b', sent)
+            if nums:
+                prefix = f"{words[0]} {words[1]}" if len(words) > 1 else words[0]
+                questions.append({
+                    "question": f"What numerical value is reported for {prefix}?",
+                    "expected_answer": nums[0],
+                })
+            else:
+                topic = " ".join(words[:min(5, len(words))])
+                questions.append({
+                    "question": f"What is mentioned regarding {topic}?",
+                    "expected_answer": sent[:100],
+                })
+        if not questions:
+            questions.append({
+                "question": "What is the primary topic of this document?",
+                "expected_answer": text[:100],
+            })
+    return questions[:3]
 
 
 class LiveCorrectionRequest(BaseModel):
@@ -60,6 +105,221 @@ class LivePreprocessRequest(BaseModel):
     denoise_h: float = 10.0
     deskew: bool = True
     threshold_method: str = "otsu"
+
+
+class TextUploadRequest(BaseModel):
+    title: str = Field(default="Uploaded Document")
+    text: str = Field(..., min_length=5)
+    language: str = Field(default="auto")
+    threshold: float = Field(default=70.0, ge=0.0, le=100.0)
+
+
+def handle_document_ingestion(
+    title: str,
+    text: Optional[str],
+    image_bytes: Optional[bytes],
+    filename: Optional[str],
+    language: str = "auto",
+    threshold: float = 70.0,
+) -> Dict[str, Any]:
+    """Process an uploaded document image or text file across the entire pipeline."""
+    import time
+    import re
+    from PIL import Image, ImageDraw
+
+    timestamp = int(time.time())
+    clean_title = re.sub(r'[^a-zA-Z0-9_\u0900-\u097F-]', '_', title or "document")[:20]
+    page_id = f"custom_{clean_title}_{timestamp}"
+    doc_id = f"doc_{clean_title}_{timestamp}"
+
+    # Determine language
+    if language == "auto":
+        probe_text = (text or "") + (filename or "")
+        is_hindi = bool(re.search(r"[\u0900-\u097F]", probe_text))
+        lang_str = "hi" if is_hindi else "en"
+    else:
+        lang_str = language
+    lang_enum = Language.HINDI if lang_str == "hi" else Language.ENGLISH
+
+    img_path = DATA_DIR / "images" / f"{page_id}.png"
+    DATA_DIR.joinpath("images").mkdir(parents=True, exist_ok=True)
+    DATA_DIR.joinpath("ground_truth").mkdir(parents=True, exist_ok=True)
+    DATA_DIR.joinpath("ocr").mkdir(parents=True, exist_ok=True)
+    DATA_DIR.joinpath("corrected").mkdir(parents=True, exist_ok=True)
+
+    # 1. Image & Document handling
+    is_pdf = (filename and filename.lower().endswith(".pdf")) or (image_bytes and image_bytes[:4] == b"%PDF")
+
+    if is_pdf and image_bytes:
+        import io
+        from pypdf import PdfReader
+        try:
+            reader = PdfReader(io.BytesIO(image_bytes))
+            pdf_texts = [p.extract_text() for p in reader.pages if p.extract_text()]
+            if pdf_texts:
+                text = "\n\n".join(pdf_texts).strip()
+        except Exception as e:
+            logger.warning("PDF text extraction failed: %s", e)
+
+        canvas = Image.new("RGB", (800, 1000), color=(255, 255, 255))
+        draw = ImageDraw.Draw(canvas)
+        draw.text((40, 40), f"PDF DOCUMENT: {title}", fill=(0, 0, 0))
+        y = 80
+        for line in (text or "").splitlines()[:35]:
+            draw.text((40, y), line[:80], fill=(30, 30, 30))
+            y += 24
+        canvas.save(img_path)
+    elif image_bytes:
+        img_path.write_bytes(image_bytes)
+    else:
+        canvas = Image.new("RGB", (800, 1000), color=(255, 255, 255))
+        draw = ImageDraw.Draw(canvas)
+        draw.text((40, 40), f"DOCUMENT: {title}", fill=(0, 0, 0))
+        y = 80
+        for line in (text or "").splitlines()[:35]:
+            draw.text((40, y), line[:80], fill=(30, 30, 30))
+            y += 24
+        canvas.save(img_path)
+
+    # 2. Text & OCR extraction
+    gt_text = text or ""
+    if not gt_text:
+        from src.ocr.tesseract_ocr import TesseractOCREngine
+        from src.core.config import OCRConfig
+        tess = TesseractOCREngine(OCRConfig())
+        if tess.is_available:
+            ocr_res = tess.extract_page(img_path, page_id=page_id, document_id=doc_id, language=lang_enum)
+            gt_text = ocr_res.raw_text
+        else:
+            mistral_key = os.getenv("MISTRAL_API_KEY")
+            if mistral_key:
+                try:
+                    import base64
+                    import openai
+                    b64 = base64.b64encode(img_path.read_bytes()).decode("utf-8")
+                    v_client = openai.OpenAI(api_key=mistral_key, base_url="https://api.mistral.ai/v1")
+                    v_resp = v_client.chat.completions.create(
+                        model="pixtral-12b-2409",
+                        messages=[{
+                            "role": "user",
+                            "content": [
+                                {"type": "text", "text": "Transcribe all text from this document image exactly. Output only the extracted text."},
+                                {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{b64}"}}
+                            ]
+                        }],
+                        temperature=0.0,
+                    )
+                    gt_text = v_resp.choices[0].message.content.strip()
+                    logger.info("Transcribed %d chars from image using Pixtral Vision OCR", len(gt_text))
+                except Exception as ve:
+                    logger.warning("Pixtral vision transcription failed: %s", ve)
+
+        if not gt_text:
+            gt_text = f"Digitized document content for {title}."
+
+    # Always generate realistic OCR degradation for Variant B and bounding boxes
+    from src.ocr.mock_ocr import MockOCREngine
+    mock_engine = MockOCREngine(error_rate=0.08)
+    ocr_res = mock_engine.extract_page(
+        image_input=img_path,
+        page_id=page_id,
+        document_id=doc_id,
+        language=lang_enum,
+        reference_text=gt_text,
+    )
+    raw_words = ocr_res.words
+    raw_text = ocr_res.raw_text
+
+    # Save Ground Truth and Raw OCR
+    gt_file = DATA_DIR / "ground_truth" / f"{page_id}.txt"
+    gt_file.write_text(gt_text, encoding="utf-8")
+
+    ocr_file = DATA_DIR / "ocr" / f"{page_id}.json"
+    ocr_file.write_text(ocr_res.model_dump_json(indent=2), encoding="utf-8")
+
+    # 3. Confidence-Guided Selective Correction (Variant C)
+    detector = ConfidenceDetector(threshold=threshold)
+    candidates = detector.detect_low_confidence_spans(raw_words)
+    extractor = SpanExtractor(context_window_words=5)
+    spans = extractor.extract_contextual_spans(page_id, raw_words, candidates)
+
+    corrector = MockCorrector()
+    corrected_words = [w.text for w in raw_words]
+    for s in spans:
+        corr_text, changed, lat, p_toks, c_toks = corrector.correct_span(s, lang_enum)
+        s.corrected_text = corr_text
+        s.changed = changed
+        s.latency_sec = lat
+        s.prompt_tokens = p_toks
+        s.completion_tokens = c_toks
+        for idx in range(s.start_word_idx, min(s.end_word_idx, len(corrected_words))):
+            corrected_words[idx] = corr_text
+
+    corrected_text = " ".join(corrected_words)
+
+    from src.core.schemas import PageCorrectionResult
+    corr_res = PageCorrectionResult(
+        page_id=page_id,
+        original_text=raw_text,
+        corrected_text=corrected_text,
+        spans=spans,
+        threshold=threshold,
+        total_words=len(raw_words),
+        corrected_words=sum(len(c.words) for c in candidates),
+        total_latency_sec=sum(s.latency_sec for s in spans),
+    )
+    corr_file = DATA_DIR / "corrected" / f"{page_id}.json"
+    corr_file.write_text(corr_res.model_dump_json(indent=2), encoding="utf-8")
+
+    # 4. Generate document-specific sample questions and update custom_documents.json
+    sample_questions = generate_sample_questions_from_text(gt_text or raw_text, lang_str)
+    meta_file = DATA_DIR / "metadata" / "custom_documents.json"
+    meta_list = load_json_safe(meta_file) or []
+    new_meta = {
+        "document_id": doc_id,
+        "page_id": page_id,
+        "language": lang_str,
+        "page_number": 1,
+        "doc_type": "user_uploaded",
+        "layout_type": "single_column",
+        "image_quality": "clean",
+        "image_path": f"data/images/{page_id}.png",
+        "ground_truth_path": f"data/ground_truth/{page_id}.txt",
+        "title": title or page_id,
+        "created_at": timestamp,
+        "word_count": len(raw_words),
+        "flagged_spans_count": len(spans),
+        "sample_questions": sample_questions,
+    }
+    meta_list.append(new_meta)
+    meta_file.write_text(json.dumps(meta_list, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    # 5. Index into FAISS vector store for live Q&A!
+    service = get_live_rag_service()
+    chunk_counts = service.index_custom_page(
+        document_id=doc_id,
+        page_id=page_id,
+        text_gt=gt_text,
+        text_raw=raw_text,
+        text_corr=corrected_text,
+    )
+
+    return {
+        "status": "success",
+        "page_id": page_id,
+        "document_id": doc_id,
+        "title": title,
+        "language": lang_str,
+        "word_count": len(raw_words),
+        "flagged_spans_count": len(spans),
+        "flagged_words_count": sum(len(c.words) for c in candidates),
+        "chunks_indexed": chunk_counts,
+        "image_url": f"/images/{page_id}.png",
+        "ground_truth_snippet": gt_text[:200] + ("..." if len(gt_text) > 200 else ""),
+        "raw_ocr_snippet": raw_text[:200] + ("..." if len(raw_text) > 200 else ""),
+        "corrected_snippet": corrected_text[:200] + ("..." if len(corrected_text) > 200 else ""),
+        "sample_questions": sample_questions,
+    }
 
 
 def load_json_safe(path: Path) -> Optional[Any]:
@@ -117,10 +377,15 @@ def get_kpis_data() -> Dict[str, Any]:
     }
 
 
-def get_documents_list() -> List[Dict[str, Any]]:
-    """List all available benchmark pages with metadata and error metrics."""
+def get_documents_list(include_custom: bool = False) -> List[Dict[str, Any]]:
+    """List all available benchmark pages (and optionally custom uploads) with metadata and error metrics."""
     meta_file = DATA_DIR / "metadata" / "documents.json"
-    meta_list = load_json_safe(meta_file) or []
+    meta_list = list(load_json_safe(meta_file) or [])
+
+    if include_custom:
+        custom_meta = DATA_DIR / "metadata" / "custom_documents.json"
+        custom_list = load_json_safe(custom_meta) or []
+        meta_list.extend(custom_list)
 
     docs = []
     for item in meta_list:
@@ -143,6 +408,7 @@ def get_documents_list() -> List[Dict[str, Any]]:
             "word_count": len(words),
             "flagged_spans_count": len(spans),
             "image_url": f"/images/{pid}.png",
+            "is_custom": item.get("doc_type") == "user_uploaded",
         })
     return docs
 
@@ -152,6 +418,10 @@ def get_document_details(page_id: str) -> Dict[str, Any]:
     meta_file = DATA_DIR / "metadata" / "documents.json"
     meta_list = load_json_safe(meta_file) or []
     page_meta = next((item for item in meta_list if item["page_id"] == page_id), None)
+    if not page_meta:
+        custom_meta = DATA_DIR / "metadata" / "custom_documents.json"
+        custom_list = load_json_safe(custom_meta) or []
+        page_meta = next((item for item in custom_list if item["page_id"] == page_id), None)
     if not page_meta:
         raise HTTPException(status_code=404, detail=f"Page ID '{page_id}' not found.")
 
@@ -359,9 +629,16 @@ def create_app() -> FastAPI:
             })
         return samples
 
+    @app.get("/api/live/custom-documents")
+    def api_get_custom_documents():
+        """Retrieve all user-uploaded custom documents with metadata and sample questions."""
+        custom_meta = DATA_DIR / "metadata" / "custom_documents.json"
+        docs = load_json_safe(custom_meta) or []
+        return docs
+
     @app.post("/api/live/query")
     async def api_live_query(req: LiveQueryRequest):
-        """Execute a live ad-hoc query across all three document variants."""
+        """Execute a live ad-hoc query across all three document variants (optionally scoped to page_id)."""
         try:
             service = get_live_rag_service()
             result = service.query(
@@ -369,6 +646,7 @@ def create_app() -> FastAPI:
                 top_k=req.top_k,
                 expected_answer=req.expected_answer,
                 language=req.language,
+                page_id=req.page_id,
             )
             return result
         except Exception as e:
@@ -474,15 +752,70 @@ def create_app() -> FastAPI:
             "comparison_url": f"/figures/preprocessing_debug/{out_name}",
         }
 
+    @app.post("/api/live/upload-file")
+    async def api_live_upload_file(
+        file: UploadFile = File(...),
+        title: Optional[str] = Form(None),
+        language: str = Form("auto"),
+        threshold: float = Form(70.0),
+    ):
+        """Upload a scanned page image or text file, run full pipeline, and index into FAISS."""
+        try:
+            content = await file.read()
+            doc_title = title or Path(file.filename).stem
+            is_text = file.filename.lower().endswith((".txt", ".md", ".json"))
+
+            if is_text:
+                text_str = content.decode("utf-8", errors="replace")
+                return handle_document_ingestion(
+                    title=doc_title,
+                    text=text_str,
+                    image_bytes=None,
+                    filename=file.filename,
+                    language=language,
+                    threshold=threshold,
+                )
+            else:
+                return handle_document_ingestion(
+                    title=doc_title,
+                    text=None,
+                    image_bytes=content,
+                    filename=file.filename,
+                    language=language,
+                    threshold=threshold,
+                )
+        except Exception as e:
+            logger.error("Upload failed: %s", e, exc_info=True)
+            raise HTTPException(status_code=500, detail=str(e))
+
+    @app.post("/api/live/upload-text")
+    async def api_live_upload_text(req: TextUploadRequest):
+        """Directly ingest pasted text, synthesize OCR tokens, selectively correct, and index into FAISS."""
+        try:
+            return handle_document_ingestion(
+                title=req.title,
+                text=req.text,
+                image_bytes=None,
+                filename="pasted_text.txt",
+                language=req.language,
+                threshold=req.threshold,
+            )
+        except Exception as e:
+            logger.error("Text ingestion failed: %s", e, exc_info=True)
+            raise HTTPException(status_code=500, detail=str(e))
+
     return app
 
 
 def run_dashboard(host: str = "127.0.0.1", port: int = 8000, reload: bool = False):
     """Launch the dashboard web server via uvicorn."""
     import uvicorn
-    app = create_app()
     logger.info(f"Starting Research Inspection Dashboard on http://{host}:{port}")
-    uvicorn.run(app, host=host, port=port, reload=reload)
+    if reload:
+        uvicorn.run("src.dashboard.app:create_app", host=host, port=port, reload=True, factory=True)
+    else:
+        app = create_app()
+        uvicorn.run(app, host=host, port=port, reload=False)
 
 
 if __name__ == "__main__":

@@ -103,6 +103,26 @@ class RAGPipeline:
         with open(meta_path, "r", encoding="utf-8") as f:
             metadata_list = [DocumentMetadata(**item) for item in json.load(f)]
 
+        custom_meta_path = os.path.join(os.path.dirname(meta_path), "custom_documents.json")
+        if os.path.exists(custom_meta_path):
+            try:
+                with open(custom_meta_path, "r", encoding="utf-8") as f:
+                    custom_items = json.load(f)
+                    for item in custom_items:
+                        metadata_list.append(DocumentMetadata(
+                            document_id=item.get("document_id", "doc_custom"),
+                            page_id=item.get("page_id", "custom_page"),
+                            language=item.get("language", "en"),
+                            page_number=item.get("page_number", 1),
+                            doc_type=item.get("doc_type", "user_uploaded"),
+                            layout_type=item.get("layout_type", "single_column"),
+                            image_quality=item.get("image_quality", "clean"),
+                            image_path=item.get("image_path", ""),
+                            ground_truth_path=item.get("ground_truth_path", ""),
+                        ))
+            except Exception as e:
+                logger.warning("Could not load custom documents: %s", e)
+
         page_texts: Dict[str, Tuple[str, str]] = {}
 
         for meta in metadata_list:
@@ -321,8 +341,9 @@ class RAGPipeline:
         self,
         question_text: str,
         top_k: Optional[int] = None,
+        page_id: Optional[str] = None,
     ) -> Dict[str, Any]:
-        """Perform ad-hoc live question retrieval and answer generation."""
+        """Perform ad-hoc live question retrieval and answer generation, optionally scoped to page_id."""
         if self.retriever.vector_store.count() == 0:
             self.index_documents()
 
@@ -333,6 +354,7 @@ class RAGPipeline:
         retrieved_items, retrieval_latency = self.retriever.retrieve(
             query=question_text,
             top_k=effective_top_k,
+            page_id=page_id,
         )
 
         # 2. Context assembly
@@ -418,14 +440,15 @@ class LiveTriangulatedRAG:
         top_k: int = 3,
         expected_answer: Optional[str] = None,
         language: str = "auto",
+        page_id: Optional[str] = None,
     ) -> Dict[str, Any]:
-        """Execute a live question against all three variants and compare results."""
+        """Execute a live question against all three variants and compare results, optionally scoped to page_id."""
         if not self._initialized:
             self.initialize()
 
-        res_a = self._pipelines[DocumentVariant.GROUND_TRUTH].query(question, top_k=top_k)
-        res_b = self._pipelines[DocumentVariant.RAW_OCR].query(question, top_k=top_k)
-        res_c = self._pipelines[DocumentVariant.CORRECTED_OCR].query(question, top_k=top_k)
+        res_a = self._pipelines[DocumentVariant.GROUND_TRUTH].query(question, top_k=top_k, page_id=page_id)
+        res_b = self._pipelines[DocumentVariant.RAW_OCR].query(question, top_k=top_k, page_id=page_id)
+        res_c = self._pipelines[DocumentVariant.CORRECTED_OCR].query(question, top_k=top_k, page_id=page_id)
 
         ans_a = res_a["answer"]
         ans_b = res_b["answer"]
@@ -486,6 +509,48 @@ class LiveTriangulatedRAG:
                 "corrected_ocr": res_c,
             },
         }
+
+    def index_custom_page(
+        self,
+        document_id: str,
+        page_id: str,
+        text_gt: str,
+        text_raw: str,
+        text_corr: str,
+    ) -> Dict[str, int]:
+        """Index an uploaded custom document page across all three pipeline variants."""
+        if not self._initialized:
+            self.initialize()
+
+        chunk_counts: Dict[str, int] = {}
+        for variant, text in [
+            (DocumentVariant.GROUND_TRUTH, text_gt),
+            (DocumentVariant.RAW_OCR, text_raw),
+            (DocumentVariant.CORRECTED_OCR, text_corr),
+        ]:
+            pipe = self._pipelines[variant]
+            new_chunks = pipe.chunker.chunk_document(
+                text=text,
+                document_id=document_id,
+                page_id=page_id,
+                variant=variant,
+            )
+            if new_chunks:
+                texts = [c.text for c in new_chunks]
+                embeddings = pipe.embedding_model.encode_documents(texts)
+                pipe.retriever.vector_store.add_chunks(new_chunks, embeddings)
+                pipe.indexed_chunks.extend(new_chunks)
+            chunk_counts[variant.value] = len(new_chunks)
+
+        logger.info(
+            "Indexed custom page '%s' into FAISS (chunks: GT=%d, Raw=%d, Corr=%d)",
+            page_id,
+            chunk_counts.get("ground_truth", 0),
+            chunk_counts.get("raw_ocr", 0),
+            chunk_counts.get("corrected_ocr", 0),
+        )
+        return chunk_counts
+
 
 
 _live_rag_instance: Optional[LiveTriangulatedRAG] = None

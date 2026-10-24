@@ -52,12 +52,18 @@ class FAISSVectorStore:
         self.chunks.extend(chunks)
         logger.debug("Added %d chunks to FAISS index. Total count: %d", len(chunks), len(self.chunks))
 
-    def search(self, query_embedding: np.ndarray, top_k: int = 5) -> List[RetrievalItem]:
+    def search(
+        self,
+        query_embedding: np.ndarray,
+        top_k: int = 5,
+        page_id: Optional[str] = None,
+    ) -> List[RetrievalItem]:
         """Retrieve top_k most similar chunks for a given query embedding.
 
         Args:
             query_embedding: 1D array of shape (dimension,) or 2D of shape (1, dimension).
             top_k: Number of candidates to return.
+            page_id: Optional page_id or document_id to scope retrieval specifically to that document.
 
         Returns:
             List of RetrievalItem ranked from highest to lowest similarity.
@@ -70,6 +76,31 @@ class FAISSVectorStore:
         q_norm = np.linalg.norm(q_vec)
         if q_norm > 0:
             q_vec = q_vec / q_norm
+
+        if page_id:
+            search_k = self.index.ntotal
+            scores, indices = self.index.search(q_vec, search_k)
+            items: List[RetrievalItem] = []
+            rank_idx = 1
+            for score, chunk_idx in zip(scores[0], indices[0]):
+                if chunk_idx < 0 or chunk_idx >= len(self.chunks):
+                    continue
+                chunk = self.chunks[chunk_idx]
+                if chunk.page_id == page_id or chunk.document_id == page_id:
+                    items.append(
+                        RetrievalItem(
+                            chunk_id=chunk.chunk_id,
+                            document_id=chunk.document_id,
+                            page_id=chunk.page_id,
+                            score=float(score),
+                            rank=rank_idx,
+                            text=chunk.text,
+                        )
+                    )
+                    rank_idx += 1
+                    if len(items) >= top_k:
+                        break
+            return items
 
         actual_k = min(top_k, self.index.ntotal)
         scores, indices = self.index.search(q_vec, actual_k)

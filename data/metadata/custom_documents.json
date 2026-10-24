@@ -1,0 +1,31 @@
+[
+  {
+    "document_id": "doc_Mother_at_66_1792869852",
+    "page_id": "custom_Mother_at_66_1792869852",
+    "language": "en",
+    "page_number": 1,
+    "doc_type": "user_uploaded",
+    "layout_type": "single_column",
+    "image_quality": "clean",
+    "image_path": "data/images/custom_Mother_at_66_1792869852.png",
+    "ground_truth_path": "data/ground_truth/custom_Mother_at_66_1792869852.txt",
+    "title": "Mother at 66",
+    "created_at": 1792869852,
+    "word_count": 148,
+    "flagged_spans_count": 11,
+    "sample_questions": [
+      {
+        "question": "What is mentioned regarding # MY MOTHER AT SIXTY-SIX?",
+        "expected_answer": "# MY MOTHER AT SIXTY-SIX"
+      },
+      {
+        "question": "What is mentioned regarding ## ABOUT THE AUTHOR?",
+        "expected_answer": "## ABOUT THE AUTHOR"
+      },
+      {
+        "question": "What numerical value is reported for Kamala Surayya?",
+        "expected_answer": "31"
+      }
+    ]
+  }
+]

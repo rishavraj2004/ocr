@@ -554,10 +554,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // ============================================================================
 
   function initLiveLab() {
-    const btnModeLiveQnA = document.getElementById('btnModeLiveQnA');
-    const btnModeLayerLab = document.getElementById('btnModeLayerLab');
+    const btnModeUploadDoc = document.getElementById('btnModeUploadDoc');
     const panelLiveQnA = document.getElementById('panelLiveQnA');
     const panelLayerLab = document.getElementById('panelLayerLab');
+    const panelUploadDoc = document.getElementById('panelUploadDoc');
 
     if (!btnModeLiveQnA || !btnModeLayerLab) return;
 
@@ -565,20 +565,36 @@ document.addEventListener('DOMContentLoaded', () => {
     btnModeLiveQnA.addEventListener('click', () => {
       btnModeLiveQnA.classList.add('active');
       btnModeLayerLab.classList.remove('active');
+      if (btnModeUploadDoc) btnModeUploadDoc.classList.remove('active');
       panelLiveQnA.style.display = 'block';
       panelLayerLab.style.display = 'none';
+      if (panelUploadDoc) panelUploadDoc.style.display = 'none';
     });
 
     btnModeLayerLab.addEventListener('click', () => {
       btnModeLayerLab.classList.add('active');
       btnModeLiveQnA.classList.remove('active');
+      if (btnModeUploadDoc) btnModeUploadDoc.classList.remove('active');
       panelLiveQnA.style.display = 'none';
       panelLayerLab.style.display = 'block';
+      if (panelUploadDoc) panelUploadDoc.style.display = 'none';
       populateLayerDocSelect();
     });
 
+    if (btnModeUploadDoc && panelUploadDoc) {
+      btnModeUploadDoc.addEventListener('click', () => {
+        btnModeUploadDoc.classList.add('active');
+        btnModeLiveQnA.classList.remove('active');
+        btnModeLayerLab.classList.remove('active');
+        panelLiveQnA.style.display = 'none';
+        panelLayerLab.style.display = 'none';
+        panelUploadDoc.style.display = 'block';
+      });
+    }
+
     // Populate Sample Question Chips
     loadLiveSamplePresets();
+    initUploadModule();
 
     // Query Execution
     const btnExecuteLiveQuery = document.getElementById('btnExecuteLiveQuery');
@@ -862,6 +878,473 @@ document.addEventListener('DOMContentLoaded', () => {
       showToast(`Simulation complete: ${data.flagged_spans_count} spans flagged!`);
     } catch (e) {
       spansContainer.innerHTML = `<div style="color: var(--error); font-size: 12px;">Simulation failed: ${e.message}</div>`;
+    }
+  }
+
+  // ============================================================================
+  // Mode 3: Upload & Ingest Own Document Logic
+  // ============================================================================
+
+  let selectedUploadFile = null;
+
+  function initUploadModule() {
+    const tabUploadFile = document.getElementById('tabUploadFile');
+    const tabUploadPaste = document.getElementById('tabUploadPaste');
+    const sectionUploadFile = document.getElementById('sectionUploadFile');
+    const sectionUploadPaste = document.getElementById('sectionUploadPaste');
+
+    if (!tabUploadFile || !tabUploadPaste) return;
+
+    tabUploadFile.addEventListener('click', () => {
+      tabUploadFile.classList.add('active');
+      tabUploadPaste.classList.remove('active');
+      sectionUploadFile.style.display = 'block';
+      sectionUploadPaste.style.display = 'none';
+    });
+
+    tabUploadPaste.addEventListener('click', () => {
+      tabUploadPaste.classList.add('active');
+      tabUploadFile.classList.remove('active');
+      sectionUploadFile.style.display = 'none';
+      sectionUploadPaste.style.display = 'block';
+    });
+
+    const dropzoneArea = document.getElementById('dropzoneArea');
+    const fileUploadInput = document.getElementById('fileUploadInput');
+    const selectedFileName = document.getElementById('selectedFileName');
+
+    if (dropzoneArea && fileUploadInput) {
+      dropzoneArea.addEventListener('click', () => fileUploadInput.click());
+
+      dropzoneArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropzoneArea.style.borderColor = 'var(--secondary)';
+        dropzoneArea.style.background = 'var(--surface-container)';
+      });
+
+      ['dragleave', 'dragend'].forEach(type => {
+        dropzoneArea.addEventListener(type, () => {
+          dropzoneArea.style.borderColor = 'var(--outline-variant)';
+          dropzoneArea.style.background = 'var(--surface-container-low)';
+        });
+      });
+
+      dropzoneArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzoneArea.style.borderColor = 'var(--outline-variant)';
+        dropzoneArea.style.background = 'var(--surface-container-low)';
+        if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+          selectedUploadFile = e.dataTransfer.files[0];
+          showSelectedFile(selectedUploadFile.name);
+        }
+      });
+
+      fileUploadInput.addEventListener('change', () => {
+        if (fileUploadInput.files && fileUploadInput.files.length > 0) {
+          selectedUploadFile = fileUploadInput.files[0];
+          showSelectedFile(selectedUploadFile.name);
+        }
+      });
+    }
+
+    function showSelectedFile(name) {
+      if (selectedFileName) {
+        selectedFileName.textContent = `Selected: ${name}`;
+        selectedFileName.style.display = 'block';
+      }
+    }
+
+    const uploadThresholdInput = document.getElementById('uploadThresholdInput');
+    const uploadTauLabel = document.getElementById('uploadTauLabel');
+    if (uploadThresholdInput && uploadTauLabel) {
+      uploadThresholdInput.addEventListener('input', () => {
+        uploadTauLabel.textContent = Number(uploadThresholdInput.value).toFixed(1);
+      });
+    }
+
+    const btnSubmitUpload = document.getElementById('btnSubmitUpload');
+    if (btnSubmitUpload) {
+      btnSubmitUpload.addEventListener('click', executeDocumentUpload);
+    }
+
+    const btnAskOnUploadedDoc = document.getElementById('btnAskOnUploadedDoc');
+    if (btnAskOnUploadedDoc) {
+      btnAskOnUploadedDoc.addEventListener('click', () => {
+        const sec = document.getElementById('dedicatedDocQnASection');
+        if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+        const input = document.getElementById('activeDocQueryInput');
+        if (input) input.focus();
+        showToast('Dedicated Q&A console for this document ready below!');
+      });
+    }
+
+    const btnToggleDocPreview = document.getElementById('btnToggleDocPreview');
+    const activeDocPreviewWrap = document.getElementById('activeDocPreviewWrap');
+    if (btnToggleDocPreview && activeDocPreviewWrap) {
+      btnToggleDocPreview.addEventListener('click', () => {
+        const isHidden = activeDocPreviewWrap.style.display === 'none';
+        activeDocPreviewWrap.style.display = isHidden ? 'block' : 'none';
+        btnToggleDocPreview.textContent = isHidden ? 'Hide Text Preview' : 'Toggle Text Preview';
+      });
+    }
+
+    const btnExecuteDocQuery = document.getElementById('btnExecuteDocQuery');
+    if (btnExecuteDocQuery) {
+      btnExecuteDocQuery.addEventListener('click', () => {
+        if (!activeCustomDoc) return;
+        const input = document.getElementById('activeDocQueryInput');
+        const q = input.value.trim();
+        if (!q) {
+          showToast('Please type a question for this document.');
+          return;
+        }
+        executeActiveDocQuery(activeCustomDoc.page_id, q);
+      });
+    }
+
+    const activeDocQueryInput = document.getElementById('activeDocQueryInput');
+    if (activeDocQueryInput) {
+      activeDocQueryInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const btn = document.getElementById('btnExecuteDocQuery');
+          if (btn) btn.click();
+        }
+      });
+    }
+
+    loadCustomDocumentsList();
+  }
+
+  let customDocumentsList = [];
+  let activeCustomDoc = null;
+
+  async function loadCustomDocumentsList(selectPageId = null) {
+    try {
+      const res = await fetch('/api/live/custom-documents');
+      if (!res.ok) return;
+      customDocumentsList = await res.json();
+
+      const countBadge = document.getElementById('docQnACountBadge');
+      if (countBadge) {
+        countBadge.textContent = `${customDocumentsList.length} Document${customDocumentsList.length === 1 ? '' : 's'} Ingested`;
+      }
+
+      const tabsContainer = document.getElementById('docSelectorTabs');
+      if (!tabsContainer) return;
+
+      tabsContainer.innerHTML = '';
+
+      if (customDocumentsList.length === 0) {
+        tabsContainer.innerHTML = `
+          <div style="color: var(--slate-muted); font-size: 13px; font-style: italic;">
+            No custom documents uploaded yet. Ingest a document above to unlock its dedicated Q&amp;A console.
+          </div>
+        `;
+        const consoleEl = document.getElementById('activeDocConsole');
+        if (consoleEl) consoleEl.style.display = 'none';
+        activeCustomDoc = null;
+        return;
+      }
+
+      // Determine active document
+      if (selectPageId) {
+        activeCustomDoc = customDocumentsList.find(d => d.page_id === selectPageId) || customDocumentsList[customDocumentsList.length - 1];
+      } else if (!activeCustomDoc || !customDocumentsList.some(d => d.page_id === activeCustomDoc.page_id)) {
+        activeCustomDoc = customDocumentsList[customDocumentsList.length - 1];
+      }
+
+      customDocumentsList.forEach(doc => {
+        const btn = document.createElement('button');
+        const isActive = activeCustomDoc && doc.page_id === activeCustomDoc.page_id;
+        btn.className = `custom-select lab-mode-btn ${isActive ? 'active' : ''}`;
+        btn.style.cssText = 'padding: 6px 14px; font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px;';
+        btn.innerHTML = `📄 ${escapeHtml(doc.title || doc.page_id)} <span class="badge ${doc.language === 'hi' ? 'badge-purple' : 'badge-blue'}" style="font-size: 10px;">${(doc.language || 'en').toUpperCase()}</span>`;
+        btn.addEventListener('click', () => {
+          activeCustomDoc = doc;
+          document.querySelectorAll('#docSelectorTabs .lab-mode-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderActiveDocConsole(doc);
+        });
+        tabsContainer.appendChild(btn);
+      });
+
+      if (activeCustomDoc) {
+        renderActiveDocConsole(activeCustomDoc);
+      }
+    } catch (e) {
+      console.error('Failed to load custom documents:', e);
+    }
+  }
+
+  async function renderActiveDocConsole(doc) {
+    const consoleEl = document.getElementById('activeDocConsole');
+    if (!consoleEl) return;
+    consoleEl.style.display = 'block';
+
+    document.getElementById('activeDocTitle').textContent = doc.title || doc.page_id;
+    document.getElementById('activeDocLangBadge').textContent = (doc.language || 'en').toUpperCase();
+    document.getElementById('activeDocIdBadge').textContent = doc.page_id;
+    document.getElementById('activeDocSubtitle').textContent =
+      `Single-column • Total Words: ${doc.word_count || 0} • Flagged Low-Confidence Spans: ${doc.flagged_spans_count || 0}`;
+
+    const queryInput = document.getElementById('activeDocQueryInput');
+    queryInput.value = '';
+    queryInput.placeholder = `Ask a question specifically about "${doc.title || doc.page_id}"...`;
+
+    // Reset results grid
+    document.getElementById('activeDocDiagnosticsBanner').style.display = 'none';
+    document.getElementById('activeDocAnsA').textContent = '(Click Ask Document or select a suggested question)';
+    document.getElementById('activeDocAnsB').textContent = '(Click Ask Document or select a suggested question)';
+    document.getElementById('activeDocAnsC').textContent = '(Click Ask Document or select a suggested question)';
+    document.getElementById('activeDocChunksA').innerHTML = '<div style="color: var(--slate-muted); font-style: italic;">No passages retrieved yet.</div>';
+    document.getElementById('activeDocChunksB').innerHTML = '<div style="color: var(--slate-muted); font-style: italic;">No passages retrieved yet.</div>';
+    document.getElementById('activeDocChunksC').innerHTML = '<div style="color: var(--slate-muted); font-style: italic;">No passages retrieved yet.</div>';
+
+    // Populate suggested questions
+    const chipsContainer = document.getElementById('activeDocSuggestedChips');
+    chipsContainer.innerHTML = '';
+    const sampleQuestions = doc.sample_questions || [];
+
+    if (sampleQuestions.length === 0) {
+      chipsContainer.innerHTML = '<div style="color: var(--slate-muted); font-size: 12px; font-style: italic;">Type any question below to test live triangulation on this document.</div>';
+    } else {
+      sampleQuestions.forEach(qItem => {
+        const chip = document.createElement('div');
+        chip.className = 'preset-chip';
+        chip.textContent = qItem.question;
+        chip.title = 'Click to query this question';
+        chip.addEventListener('click', () => {
+          queryInput.value = qItem.question;
+          executeActiveDocQuery(doc.page_id, qItem.question, qItem.expected_answer);
+        });
+        chipsContainer.appendChild(chip);
+      });
+    }
+
+    // Load document preview text in background
+    try {
+      const res = await fetch(`/api/document/${doc.page_id}`);
+      if (res.ok) {
+        const dData = await res.json();
+        document.getElementById('activeDocGtText').textContent = dData.ground_truth_text || '(No ground truth recorded)';
+        document.getElementById('activeDocRawText').textContent = dData.raw_ocr_text || '(No OCR text recorded)';
+      }
+    } catch (e) {
+      console.warn('Could not load text preview:', e);
+    }
+  }
+
+  async function executeActiveDocQuery(pageId, questionText, expectedAnswer = null) {
+    const btn = document.getElementById('btnExecuteDocQuery');
+    const topK = parseInt(document.getElementById('activeDocTopKSelect').value) || 2;
+
+    btn.disabled = true;
+    btn.textContent = 'Querying Document...';
+
+    try {
+      const res = await fetch('/api/live/query', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          question: questionText,
+          top_k: topK,
+          page_id: pageId,
+          expected_answer: expectedAnswer,
+        }),
+      });
+
+      if (!res.ok) throw new Error(`Query failed with status ${res.status}`);
+      const data = await res.json();
+
+      // Render Diagnostic Banner
+      const diagBanner = document.getElementById('activeDocDiagnosticsBanner');
+      diagBanner.style.display = 'block';
+
+      const statusBadge = document.getElementById('activeDocStatusBadge');
+      const st = data.analysis.status;
+      if (st === 'recovered') {
+        statusBadge.textContent = 'RECOVERED BY VARIANT C';
+        statusBadge.className = 'badge badge-emerald';
+      } else if (st === 'resilient') {
+        statusBadge.textContent = 'NOISE RESILIENT';
+        statusBadge.className = 'badge badge-blue';
+      } else {
+        statusBadge.textContent = 'UNRECOVERED NOISE';
+        statusBadge.className = 'badge badge-red';
+      }
+
+      document.getElementById('activeDocRawF1').textContent = data.analysis.raw_ocr_token_f1_vs_gt;
+      document.getElementById('activeDocCorrF1').textContent = data.analysis.corrected_ocr_token_f1_vs_gt;
+      document.getElementById('activeDocLatency').textContent = `${data.variants.corrected_ocr.total_latency_sec}s`;
+
+      // Render Answers
+      document.getElementById('activeDocAnsA').textContent = data.variants.ground_truth.answer;
+      document.getElementById('activeDocAnsB').textContent = data.variants.raw_ocr.answer;
+      document.getElementById('activeDocAnsC').textContent = data.variants.corrected_ocr.answer;
+
+      // Render Retrieved Chunks
+      const renderDocChunks = (containerId, chunks) => {
+        const c = document.getElementById(containerId);
+        c.innerHTML = '';
+        if (!chunks || chunks.length === 0) {
+          c.innerHTML = '<div style="color: var(--slate-muted); font-style: italic;">No passages retrieved.</div>';
+          return;
+        }
+        chunks.forEach(item => {
+          const div = document.createElement('div');
+          div.style.cssText = 'background: var(--surface-container-low); padding: 8px; border-radius: 4px; margin-bottom: 6px; border-left: 2px solid var(--secondary); font-size: 11px;';
+          div.innerHTML = `
+            <div style="display: flex; justify-content: space-between; font-size: 10px; color: var(--slate-muted); margin-bottom: 2px;">
+              <span>Score: <strong>${item.score}</strong></span>
+              <span>Passage #${item.rank}</span>
+            </div>
+            <div style="line-height: 1.35; color: var(--on-surface);">${escapeHtml(item.text)}</div>
+          `;
+          c.appendChild(div);
+        });
+      };
+
+      renderDocChunks('activeDocChunksA', data.variants.ground_truth.retrieved_chunks);
+      renderDocChunks('activeDocChunksB', data.variants.raw_ocr.retrieved_chunks);
+      renderDocChunks('activeDocChunksC', data.variants.corrected_ocr.retrieved_chunks);
+
+      showToast('Document-specific 3-variant triangulation complete!');
+    } catch (e) {
+      console.error('Doc query error:', e);
+      showToast(`Query failed: ${e.message}`);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Ask Document \u2192';
+    }
+  }
+
+  async function executeDocumentUpload() {
+    const isFileMode = document.getElementById('tabUploadFile').classList.contains('active');
+    const titleInput = document.getElementById('uploadTitleInput').value.trim();
+    const langSelect = document.getElementById('uploadLanguageSelect').value;
+    const tau = parseFloat(document.getElementById('uploadThresholdInput').value) || 70.0;
+    const btn = document.getElementById('btnSubmitUpload');
+
+    const steps = [
+      document.getElementById('stepPreprocess'),
+      document.getElementById('stepOCR'),
+      document.getElementById('stepCorrection'),
+      document.getElementById('stepFAISS'),
+    ];
+    const stepperBadge = document.getElementById('uploadStepperBadge');
+    const resultContainer = document.getElementById('uploadResultContainer');
+
+    steps.forEach(s => {
+      s.style.color = 'var(--slate-muted)';
+      s.querySelector('.stepper-icon').textContent = '\u2022';
+    });
+    stepperBadge.textContent = 'Processing...';
+    stepperBadge.className = 'badge badge-purple';
+    resultContainer.style.display = 'none';
+    btn.disabled = true;
+    btn.textContent = 'Ingesting Document...';
+
+    const setStepActive = (idx) => {
+      if (idx > 0) {
+        steps[idx - 1].style.color = 'var(--accent-mitigation-text)';
+        steps[idx - 1].querySelector('.stepper-icon').textContent = '\u2713';
+      }
+      if (idx < steps.length) {
+        steps[idx].style.color = 'var(--secondary)';
+        steps[idx].querySelector('.stepper-icon').textContent = '\u2192';
+      }
+    };
+
+    setStepActive(0);
+
+    try {
+      let res;
+      if (isFileMode) {
+        if (!selectedUploadFile) {
+          showToast('Please select or drop a file first.');
+          btn.disabled = false;
+          btn.textContent = 'Run Pipeline & Ingest into RAG';
+          stepperBadge.textContent = 'Idle';
+          stepperBadge.className = 'badge badge-emerald';
+          return;
+        }
+
+        setTimeout(() => setStepActive(1), 300);
+        setTimeout(() => setStepActive(2), 600);
+
+        const formData = new FormData();
+        formData.append('file', selectedUploadFile);
+        if (titleInput) formData.append('title', titleInput);
+        formData.append('language', langSelect);
+        formData.append('threshold', tau);
+
+        res = await fetch('/api/live/upload-file', {
+          method: 'POST',
+          body: formData,
+        });
+      } else {
+        const textContent = document.getElementById('pasteTextInput').value.trim();
+        if (!textContent) {
+          showToast('Please paste document text content.');
+          btn.disabled = false;
+          btn.textContent = 'Run Pipeline & Ingest into RAG';
+          stepperBadge.textContent = 'Idle';
+          stepperBadge.className = 'badge badge-emerald';
+          return;
+        }
+
+        setTimeout(() => setStepActive(1), 300);
+        setTimeout(() => setStepActive(2), 600);
+
+        res = await fetch('/api/live/upload-text', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: titleInput || 'Pasted Document',
+            text: textContent,
+            language: langSelect,
+            threshold: tau,
+          }),
+        });
+      }
+
+      if (!res.ok) throw new Error(`Upload server error: ${res.status}`);
+      const data = await res.json();
+
+      setStepActive(3);
+      setTimeout(() => {
+        steps[3].style.color = 'var(--accent-mitigation-text)';
+        steps[3].querySelector('.stepper-icon').textContent = '\u2713';
+      }, 300);
+
+      stepperBadge.textContent = 'Indexed in FAISS';
+      stepperBadge.className = 'badge badge-emerald';
+
+      resultContainer.style.display = 'block';
+      document.getElementById('uploadResultTitle').textContent = data.title || data.page_id;
+      document.getElementById('uploadResultLang').textContent = (data.language || 'en').toUpperCase();
+      document.getElementById('uploadWordCount').textContent = data.word_count;
+      document.getElementById('uploadFlaggedSpans').textContent = data.flagged_spans_count;
+      document.getElementById('uploadChunksCount').textContent = data.chunks_indexed?.ground_truth || data.chunks_indexed?.raw_ocr || 1;
+      document.getElementById('uploadRawSnippet').textContent = data.raw_ocr_snippet || '(None)';
+      document.getElementById('uploadCorrSnippet').textContent = data.corrected_snippet || '(None)';
+
+      loadDocumentsList();
+      populateLayerDocSelect();
+      await loadCustomDocumentsList(data.page_id);
+
+      const sec = document.getElementById('dedicatedDocQnASection');
+      if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+
+      showToast('Document successfully indexed! Dedicated Q&A section ready below.');
+    } catch (e) {
+      console.error('Upload error:', e);
+      showToast(`Upload failed: ${e.message}`);
+      stepperBadge.textContent = 'Error';
+      stepperBadge.className = 'badge badge-red';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Run Pipeline & Ingest into RAG';
     }
   }
 

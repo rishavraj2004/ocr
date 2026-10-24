@@ -43,8 +43,13 @@ class DenseRetriever:
         self.vector_store.add_chunks(chunks, embeddings)
         logger.info("Indexed %d chunks successfully.", len(chunks))
 
-    def retrieve(self, query: str, top_k: Optional[int] = None) -> Tuple[List[RetrievalItem], float]:
-        """Retrieve top_k chunks for a query string.
+    def retrieve(
+        self,
+        query: str,
+        top_k: Optional[int] = None,
+        page_id: Optional[str] = None,
+    ) -> Tuple[List[RetrievalItem], float]:
+        """Retrieve top_k chunks for a query string, optionally filtered by page_id.
 
         Returns:
             Tuple of (retrieved_items, latency_seconds)
@@ -52,7 +57,7 @@ class DenseRetriever:
         k = top_k or self.top_k
         t0 = time.perf_counter()
         q_vec = self.embedding_model.encode_queries([query])[0]
-        items = self.vector_store.search(q_vec, top_k=k)
+        items = self.vector_store.search(q_vec, top_k=k, page_id=page_id)
         latency = time.perf_counter() - t0
         return items, latency
 

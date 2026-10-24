@@ -316,3 +316,184 @@ class RAGPipeline:
         logger.info("Saved RAG evaluation report to %s", out_file)
 
         return report
+
+    def query(
+        self,
+        question_text: str,
+        top_k: Optional[int] = None,
+    ) -> Dict[str, Any]:
+        """Perform ad-hoc live question retrieval and answer generation."""
+        if self.retriever.vector_store.count() == 0:
+            self.index_documents()
+
+        effective_top_k = top_k or self.config.rag.top_k
+        t_start = time.perf_counter()
+
+        # 1. Dense retrieval
+        retrieved_items, retrieval_latency = self.retriever.retrieve(
+            query=question_text,
+            top_k=effective_top_k,
+        )
+
+        # 2. Context assembly
+        context_parts = [
+            f"[Passage {item.rank} (Doc: {item.document_id}, Page: {item.page_id}, Score: {item.score:.4f})]:\n{item.text}"
+            for item in retrieved_items
+        ]
+        context_str = "\n\n".join(context_parts)
+
+        # 3. Answer Generation
+        gen_answer, gen_latency, p_tokens, c_tokens = self.generator.generate(
+            context=context_str,
+            question=question_text,
+        )
+
+        total_latency = time.perf_counter() - t_start
+
+        return {
+            "variant": self.variant.value,
+            "question": question_text,
+            "answer": gen_answer,
+            "retrieval_latency_sec": round(retrieval_latency, 4),
+            "generation_latency_sec": round(gen_latency, 4),
+            "total_latency_sec": round(total_latency, 4),
+            "prompt_tokens": p_tokens,
+            "completion_tokens": c_tokens,
+            "retrieved_chunks": [
+                {
+                    "rank": item.rank,
+                    "chunk_id": item.chunk_id,
+                    "document_id": item.document_id,
+                    "page_id": item.page_id,
+                    "score": round(float(item.score), 4),
+                    "text": item.text,
+                }
+                for item in retrieved_items
+            ],
+        }
+
+
+class LiveTriangulatedRAG:
+    """Manages concurrent pipelines for live 3-variant triangulation testing."""
+
+    def __init__(self, config: Optional[ExperimentConfig] = None):
+        if config is None:
+            from src.core.config import load_config
+            config_path = os.path.join(os.path.dirname(__file__), "..", "..", "experiments", "configs", "default.yaml")
+            self.config = load_config(config_path) if os.path.exists(config_path) else ExperimentConfig()
+        else:
+            self.config = config
+
+        self._pipelines: Dict[DocumentVariant, RAGPipeline] = {}
+        self._initialized = False
+
+    def initialize(self):
+        """Pre-index all three variants for instant zero-latency query response."""
+        if self._initialized:
+            return
+
+        logger.info("Initializing LiveTriangulatedRAG service (Variants A, B, C)...")
+        use_mock = self.config.rag.generator_type.lower() == "mock" and self.config.rag.embedding_model.lower().startswith("mock")
+        shared_embeddings = create_embedding_model(
+            model_name=self.config.rag.embedding_model,
+            dimension=self.config.rag.embedding_dim,
+            use_mock=use_mock,
+        )
+
+        for variant in [DocumentVariant.GROUND_TRUTH, DocumentVariant.RAW_OCR, DocumentVariant.CORRECTED_OCR]:
+            pipe = RAGPipeline(
+                variant=variant,
+                config=self.config,
+                embedding_model=shared_embeddings,
+            )
+            pipe.index_documents()
+            self._pipelines[variant] = pipe
+
+        self._initialized = True
+        logger.info("LiveTriangulatedRAG service initialized successfully.")
+
+    def query(
+        self,
+        question: str,
+        top_k: int = 3,
+        expected_answer: Optional[str] = None,
+        language: str = "auto",
+    ) -> Dict[str, Any]:
+        """Execute a live question against all three variants and compare results."""
+        if not self._initialized:
+            self.initialize()
+
+        res_a = self._pipelines[DocumentVariant.GROUND_TRUTH].query(question, top_k=top_k)
+        res_b = self._pipelines[DocumentVariant.RAW_OCR].query(question, top_k=top_k)
+        res_c = self._pipelines[DocumentVariant.CORRECTED_OCR].query(question, top_k=top_k)
+
+        ans_a = res_a["answer"]
+        ans_b = res_b["answer"]
+        ans_c = res_c["answer"]
+
+        # Detect Hindi if auto
+        import re
+        if language == "auto":
+            is_hindi = bool(re.search(r"[\u0900-\u097F]", question))
+            lang_code = "hi" if is_hindi else "en"
+        else:
+            lang_code = language
+
+        # Comparative analytics
+        em_b_vs_a = 1.0 if ans_b.strip().lower() == ans_a.strip().lower() else 0.0
+        em_c_vs_a = 1.0 if ans_c.strip().lower() == ans_a.strip().lower() else 0.0
+
+        from src.evaluation.answer_metrics import compute_answer_metrics
+        _, f1_b_vs_a = compute_answer_metrics(ans_b, ans_a, language=lang_code)
+        _, f1_c_vs_a = compute_answer_metrics(ans_c, ans_a, language=lang_code)
+
+        if ans_b.strip().lower() == ans_a.strip().lower():
+            status = "resilient"
+        elif ans_c.strip().lower() == ans_a.strip().lower():
+            status = "recovered"
+        else:
+            status = "degraded"
+
+        analysis = {
+            "language": lang_code,
+            "status": status,
+            "ground_truth_oracle_answer": ans_a,
+            "raw_ocr_exact_match_vs_gt": em_b_vs_a,
+            "raw_ocr_token_f1_vs_gt": round(f1_b_vs_a, 4),
+            "corrected_ocr_exact_match_vs_gt": em_c_vs_a,
+            "corrected_ocr_token_f1_vs_gt": round(f1_c_vs_a, 4),
+            "recovery_achieved": (status == "recovered"),
+            "noise_degradation_detected": (ans_b.strip().lower() != ans_a.strip().lower()),
+        }
+
+        if expected_answer:
+            em_a_exp, f1_a_exp = compute_answer_metrics(ans_a, expected_answer, language=lang_code)
+            em_b_exp, f1_b_exp = compute_answer_metrics(ans_b, expected_answer, language=lang_code)
+            em_c_exp, f1_c_exp = compute_answer_metrics(ans_c, expected_answer, language=lang_code)
+            analysis["vs_expected"] = {
+                "variant_a_em": em_a_exp,
+                "variant_b_em": em_b_exp,
+                "variant_c_em": em_c_exp,
+            }
+
+        return {
+            "question": question,
+            "timestamp": time.time(),
+            "analysis": analysis,
+            "variants": {
+                "ground_truth": res_a,
+                "raw_ocr": res_b,
+                "corrected_ocr": res_c,
+            },
+        }
+
+
+_live_rag_instance: Optional[LiveTriangulatedRAG] = None
+
+
+def get_live_rag_service(config: Optional[ExperimentConfig] = None) -> LiveTriangulatedRAG:
+    global _live_rag_instance
+    if _live_rag_instance is None:
+        _live_rag_instance = LiveTriangulatedRAG(config=config)
+    return _live_rag_instance
+

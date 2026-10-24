@@ -20,8 +20,16 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel, Field
 
-from src.core.config import AppConfig, load_config
+from src.core.config import AppConfig, PreprocessingConfig, load_config
+from src.core.schemas import Language, WordOCR
+from src.correction.confidence_detector import ConfidenceDetector
+from src.correction.span_extractor import SpanExtractor
+from src.correction.corrector import MockCorrector, OpenAICorrector
+from src.preprocessing.image_preprocessor import ImagePreprocessor
+from src.preprocessing.utils import load_image_as_cv2, save_cv2_image
+from src.rag.pipeline import get_live_rag_service
 
 logger = logging.getLogger("dashboard")
 
@@ -30,6 +38,28 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 STATIC_DIR = Path(__file__).resolve().parent / "static"
 DATA_DIR = BASE_DIR / "data"
 RESULTS_DIR = BASE_DIR / "results"
+
+
+class LiveQueryRequest(BaseModel):
+    question: str
+    top_k: int = Field(default=3, ge=1, le=10)
+    expected_answer: Optional[str] = None
+    language: str = "auto"
+
+
+class LiveCorrectionRequest(BaseModel):
+    page_id: str
+    threshold: float = Field(default=70.0, ge=0.0, le=100.0)
+    context_window: int = Field(default=5, ge=1, le=15)
+    model_type: str = "mock"
+
+
+class LivePreprocessRequest(BaseModel):
+    page_id: str
+    denoise: bool = True
+    denoise_h: float = 10.0
+    deskew: bool = True
+    threshold_method: str = "otsu"
 
 
 def load_json_safe(path: Path) -> Optional[Any]:
@@ -311,6 +341,138 @@ def create_app() -> FastAPI:
     @app.get("/api/tables")
     async def api_tables():
         return get_tables_data()
+
+    @app.get("/api/live/samples")
+    async def api_live_samples():
+        """Retrieve curated sample questions for one-click live testing."""
+        q_file = DATA_DIR / "questions" / "questions.json"
+        questions = load_json_safe(q_file) or []
+        samples = []
+        for q in questions[:12]:
+            samples.append({
+                "question_id": q.get("question_id"),
+                "language": q.get("language"),
+                "question_type": q.get("question_type"),
+                "question": q.get("question"),
+                "expected_answer": q.get("expected_answer"),
+                "document_id": q.get("document_id"),
+            })
+        return samples
+
+    @app.post("/api/live/query")
+    async def api_live_query(req: LiveQueryRequest):
+        """Execute a live ad-hoc query across all three document variants."""
+        try:
+            service = get_live_rag_service()
+            result = service.query(
+                question=req.question,
+                top_k=req.top_k,
+                expected_answer=req.expected_answer,
+                language=req.language,
+            )
+            return result
+        except Exception as e:
+            logger.error("Live query failed: %s", e, exc_info=True)
+            raise HTTPException(status_code=500, detail=str(e))
+
+    @app.post("/api/live/test-correction")
+    async def api_live_test_correction(req: LiveCorrectionRequest):
+        """Simulate confidence-guided selective correction for a given page and threshold."""
+        ocr_file = DATA_DIR / "ocr" / f"{req.page_id}.json"
+        ocr_data = load_json_safe(ocr_file)
+        if not ocr_data:
+            raise HTTPException(status_code=404, detail=f"OCR data for {req.page_id} not found.")
+
+        raw_words = [WordOCR(**w) for w in ocr_data.get("words", [])]
+        raw_text = ocr_data.get("raw_text", "")
+        lang_str = ocr_data.get("language", "en")
+        language = Language.HINDI if lang_str == "hi" else Language.ENGLISH
+
+        detector = ConfidenceDetector(threshold=req.threshold)
+        candidates = detector.detect_low_confidence_spans(raw_words)
+
+        extractor = SpanExtractor(context_window_words=req.context_window)
+        spans = extractor.extract_contextual_spans(req.page_id, raw_words, candidates)
+
+        corrector = MockCorrector()
+        corrected_spans_list = []
+        total_span_tokens = 0
+        total_correction_tokens = 0
+
+        for s in spans:
+            corr_text, changed, lat, p_toks, c_toks = corrector.correct_span(s, language)
+            s.corrected_text = corr_text
+            s.changed = changed
+            s.latency_sec = lat
+            s.prompt_tokens = p_toks
+            s.completion_tokens = c_toks
+            total_span_tokens += (p_toks or 0)
+            total_correction_tokens += (c_toks or 0)
+            corrected_spans_list.append(s.model_dump())
+
+        total_words = len(raw_words)
+        flagged_words = sum(len(c.words) for c in candidates)
+        flagged_pct = round((flagged_words / total_words * 100.0), 2) if total_words > 0 else 0.0
+
+        full_text_prompt_tokens = max(1, len(raw_text) // 4 + 40)
+        full_text_comp_tokens = max(1, len(raw_text) // 4)
+        full_text_total_tokens = full_text_prompt_tokens + full_text_comp_tokens
+        selective_total_tokens = total_span_tokens + total_correction_tokens
+
+        token_savings_pct = round(
+            max(0.0, (1.0 - selective_total_tokens / max(1, full_text_total_tokens)) * 100.0), 1
+        ) if full_text_total_tokens > 0 else 0.0
+
+        return {
+            "page_id": req.page_id,
+            "threshold": req.threshold,
+            "context_window": req.context_window,
+            "total_words": total_words,
+            "flagged_words": flagged_words,
+            "flagged_percentage": flagged_pct,
+            "flagged_spans_count": len(spans),
+            "spans": corrected_spans_list,
+            "efficiency": {
+                "selective_tokens": selective_total_tokens,
+                "full_text_tokens": full_text_total_tokens,
+                "token_savings_pct": token_savings_pct,
+                "reduction_factor": round(full_text_total_tokens / max(1, selective_total_tokens), 2),
+            },
+        }
+
+    @app.post("/api/live/test-preprocessing")
+    async def api_live_test_preprocessing(req: LivePreprocessRequest):
+        """Run OpenCV preprocessing on an image and generate a comparison artifact."""
+        img_path = DATA_DIR / "images" / f"{req.page_id}.png"
+        if not img_path.exists():
+            raise HTTPException(status_code=404, detail=f"Image {req.page_id}.png not found.")
+
+        cfg = PreprocessingConfig(
+            enabled=True,
+            denoise=req.denoise,
+            denoise_h=req.denoise_h,
+            deskew=req.deskew,
+            threshold=True,
+            threshold_method=req.threshold_method,
+        )
+        preprocessor = ImagePreprocessor(config=cfg)
+        cv2_img = load_image_as_cv2(img_path)
+        result = preprocessor.process(cv2_img)
+
+        # Save comparison image
+        debug_dir = RESULTS_DIR / "figures" / "preprocessing_debug"
+        debug_dir.mkdir(parents=True, exist_ok=True)
+        comparison_img = preprocessor.create_comparison_image(cv2_img, result)
+        out_name = f"{req.page_id}_live_comp.png"
+        save_cv2_image(comparison_img, debug_dir / out_name)
+
+        return {
+            "page_id": req.page_id,
+            "operations_applied": result.operations_applied,
+            "execution_time_sec": round(result.execution_time_sec, 4),
+            "metadata": result.metadata,
+            "comparison_url": f"/figures/preprocessing_debug/{out_name}",
+        }
 
     return app
 

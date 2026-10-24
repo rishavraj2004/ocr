@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
       inspector: 'Document & OCR Heatmap Inspector',
       corrections: 'Selective Correction Audit Log',
       questions: '3-Variant RAG Question Inspector',
+      'live-lab': 'Live Q&A & Pipeline Testing Lab',
       publications: 'Publication Figures & LaTeX Exporter',
     };
     if (pageTitle) pageTitle.textContent = titles[tabId] || 'Research Dashboard';
@@ -68,6 +69,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (tabId === 'inspector' && state.activeDocData) {
       setTimeout(() => renderCanvas(), 50);
     }
+  }
+
+  function escapeHtml(str) {
+    if (str === null || str === undefined) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
   }
 
   function showToast(message) {
@@ -539,6 +550,322 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ============================================================================
+  // Tab 6: Live Q&A & Pipeline Testing Lab Controller
+  // ============================================================================
+
+  function initLiveLab() {
+    const btnModeLiveQnA = document.getElementById('btnModeLiveQnA');
+    const btnModeLayerLab = document.getElementById('btnModeLayerLab');
+    const panelLiveQnA = document.getElementById('panelLiveQnA');
+    const panelLayerLab = document.getElementById('panelLayerLab');
+
+    if (!btnModeLiveQnA || !btnModeLayerLab) return;
+
+    // Mode Switcher
+    btnModeLiveQnA.addEventListener('click', () => {
+      btnModeLiveQnA.classList.add('active');
+      btnModeLayerLab.classList.remove('active');
+      panelLiveQnA.style.display = 'block';
+      panelLayerLab.style.display = 'none';
+    });
+
+    btnModeLayerLab.addEventListener('click', () => {
+      btnModeLayerLab.classList.add('active');
+      btnModeLiveQnA.classList.remove('active');
+      panelLiveQnA.style.display = 'none';
+      panelLayerLab.style.display = 'block';
+      populateLayerDocSelect();
+    });
+
+    // Populate Sample Question Chips
+    loadLiveSamplePresets();
+
+    // Query Execution
+    const btnExecuteLiveQuery = document.getElementById('btnExecuteLiveQuery');
+    const liveQuestionInput = document.getElementById('liveQuestionInput');
+    btnExecuteLiveQuery.addEventListener('click', () => executeLiveRAGQuery());
+    liveQuestionInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') executeLiveRAGQuery();
+    });
+
+    // Layer Lab Interactivity
+    const liveTauSlider = document.getElementById('liveTauSlider');
+    const liveTauLabel = document.getElementById('liveTauLabel');
+    if (liveTauSlider && liveTauLabel) {
+      liveTauSlider.addEventListener('input', () => {
+        liveTauLabel.textContent = Number(liveTauSlider.value).toFixed(1);
+      });
+    }
+
+    const liveCtxSlider = document.getElementById('liveCtxSlider');
+    const liveCtxLabel = document.getElementById('liveCtxLabel');
+    if (liveCtxSlider && liveCtxLabel) {
+      liveCtxSlider.addEventListener('input', () => {
+        liveCtxLabel.textContent = `\u00B1${liveCtxSlider.value} words`;
+      });
+    }
+
+    const btnRunPreprocess = document.getElementById('btnRunPreprocess');
+    if (btnRunPreprocess) {
+      btnRunPreprocess.addEventListener('click', executeLivePreprocessingTest);
+    }
+
+    const btnRunLiveCorrection = document.getElementById('btnRunLiveCorrection');
+    if (btnRunLiveCorrection) {
+      btnRunLiveCorrection.addEventListener('click', executeLiveCorrectionSimulation);
+    }
+  }
+
+  async function loadLiveSamplePresets() {
+    const chipsContainer = document.getElementById('livePresetChips');
+    if (!chipsContainer) return;
+    try {
+      const res = await fetch('/api/live/samples');
+      const samples = await res.json();
+      chipsContainer.innerHTML = '';
+
+      samples.forEach(s => {
+        const chip = document.createElement('button');
+        chip.className = 'preset-chip';
+        
+        const langBadge = s.language === 'hi' ? '\u0939\u093F' : 'EN';
+        chip.innerHTML = `<span class="badge ${s.language === 'hi' ? 'badge-purple' : 'badge-blue'}" style="font-size: 9px; padding: 1px 4px;">${langBadge}</span> <span>${escapeHtml(s.question)}</span>`;
+        
+        chip.addEventListener('click', () => {
+          document.getElementById('liveQuestionInput').value = s.question;
+          document.getElementById('liveLanguageSelect').value = s.language;
+          executeLiveRAGQuery(s.expected_answer);
+        });
+        chipsContainer.appendChild(chip);
+      });
+    } catch (e) {
+      console.error('Failed to load sample presets:', e);
+    }
+  }
+
+  async function executeLiveRAGQuery(expectedAnswer = null) {
+    const input = document.getElementById('liveQuestionInput');
+    const question = input.value.trim();
+    if (!question) {
+      showToast('Please enter a research question.');
+      return;
+    }
+
+    const lang = document.getElementById('liveLanguageSelect').value;
+    const topK = parseInt(document.getElementById('liveTopKSelect').value, 10) || 3;
+    const btn = document.getElementById('btnExecuteLiveQuery');
+
+    btn.disabled = true;
+    btn.textContent = 'Querying FAISS & LLM...';
+
+    // Show loading state in answer blocks
+    ['liveAnsA', 'liveAnsB', 'liveAnsC'].forEach(id => {
+      document.getElementById(id).textContent = 'Generating answer...';
+    });
+
+    try {
+      const res = await fetch('/api/live/query', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          question: question,
+          top_k: topK,
+          language: lang,
+          expected_answer: expectedAnswer,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error(`Server returned ${res.status}`);
+      }
+
+      const data = await res.json();
+      renderLiveRAGResults(data);
+      showToast('Live 3-variant query completed!');
+    } catch (e) {
+      console.error('Live RAG query error:', e);
+      showToast('Query failed. Check server logs.');
+      ['liveAnsA', 'liveAnsB', 'liveAnsC'].forEach(id => {
+        document.getElementById(id).textContent = `Error: ${e.message}`;
+      });
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Run Live RAG';
+    }
+  }
+
+  function renderLiveRAGResults(data) {
+    const analysis = data.analysis || {};
+    const variants = data.variants || {};
+
+    // Diagnostics Banner
+    const banner = document.getElementById('liveDiagnosticsBanner');
+    banner.style.display = 'block';
+
+    const statusBadge = document.getElementById('liveStatusBadge');
+    statusBadge.textContent = (analysis.status || 'unknown').toUpperCase();
+    if (analysis.status === 'recovered') {
+      statusBadge.className = 'badge badge-emerald';
+    } else if (analysis.status === 'resilient') {
+      statusBadge.className = 'badge badge-blue';
+    } else {
+      statusBadge.className = 'badge';
+      statusBadge.style.cssText = 'background: var(--accent-error-bg); color: var(--accent-error-text); border: 1px solid var(--accent-error-border);';
+    }
+
+    document.getElementById('liveRawF1').textContent = Number(analysis.raw_ocr_token_f1_vs_gt || 0).toFixed(2);
+    document.getElementById('liveCorrF1').textContent = Number(analysis.corrected_ocr_token_f1_vs_gt || 0).toFixed(2);
+    
+    const retLat = variants.ground_truth?.retrieval_latency_sec ?? 0;
+    const genLat = variants.ground_truth?.generation_latency_sec ?? 0;
+    document.getElementById('liveRetLat').textContent = `${Number(retLat).toFixed(3)}s`;
+    document.getElementById('liveGenLat').textContent = `${Number(genLat).toFixed(3)}s`;
+
+    // Render Variant A (Ground Truth)
+    const varA = variants.ground_truth || {};
+    document.getElementById('liveAnsA').textContent = varA.answer || '(No answer produced)';
+    renderChunksList(document.getElementById('liveChunksA'), varA.retrieved_chunks || []);
+
+    // Render Variant B (Raw OCR)
+    const varB = variants.raw_ocr || {};
+    document.getElementById('liveAnsB').textContent = varB.answer || '(No answer produced)';
+    renderChunksList(document.getElementById('liveChunksB'), varB.retrieved_chunks || []);
+
+    // Render Variant C (Corrected OCR)
+    const varC = variants.corrected_ocr || {};
+    document.getElementById('liveAnsC').textContent = varC.answer || '(No answer produced)';
+    renderChunksList(document.getElementById('liveChunksC'), varC.retrieved_chunks || []);
+  }
+
+  function renderChunksList(container, chunks) {
+    container.innerHTML = '';
+    if (!chunks || chunks.length === 0) {
+      container.innerHTML = '<div style="color: var(--slate-muted); font-style: italic;">No passages retrieved.</div>';
+      return;
+    }
+
+    chunks.forEach(c => {
+      const item = document.createElement('div');
+      item.style.cssText = 'background: var(--surface-container-low); border: 1px solid var(--border-hairline); border-radius: var(--radius-sm); padding: 8px 10px; margin-bottom: 8px;';
+      item.innerHTML = `
+        <div style="display: flex; justify-content: space-between; font-size: 10px; color: var(--slate-muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 4px;">
+          <span>Passage #${c.rank} &bull; ${c.page_id}</span>
+          <span style="color: var(--secondary); font-weight: 600;">Cosine: ${Number(c.score).toFixed(4)}</span>
+        </div>
+        <div style="font-size: 11px; line-height: 1.4; color: var(--on-surface);">${escapeHtml(c.text)}</div>
+      `;
+      container.appendChild(item);
+    });
+  }
+
+  function populateLayerDocSelect() {
+    const select = document.getElementById('layerDocSelect');
+    if (!select || select.options.length > 0) return;
+    state.documents.forEach(doc => {
+      const opt = document.createElement('option');
+      opt.value = doc.page_id;
+      opt.textContent = `${doc.page_id} (${doc.language.toUpperCase()} &bull; ${doc.word_count} words)`;
+      select.appendChild(opt);
+    });
+  }
+
+  async function executeLivePreprocessingTest() {
+    const pageId = document.getElementById('layerDocSelect').value;
+    if (!pageId) return;
+
+    const denoise = document.getElementById('prepDenoise').checked;
+    const deskew = document.getElementById('prepDeskew').checked;
+    const threshMethod = document.getElementById('prepMethod').value;
+    const container = document.getElementById('preprocessResultContainer');
+
+    container.innerHTML = '<div style="color: var(--secondary); font-size: 12px;">Running OpenCV transforms...</div>';
+
+    try {
+      const res = await fetch('/api/live/test-preprocessing', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          page_id: pageId,
+          denoise: denoise,
+          deskew: deskew,
+          threshold_method: threshMethod,
+        }),
+      });
+
+      if (!res.ok) throw new Error('Preprocessing failed');
+      const data = await res.json();
+
+      container.innerHTML = `
+        <div style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 8px; width: 100%;">
+          <span>Ops: <strong>${data.operations_applied.join(' &rarr; ')}</strong></span>
+          <span>Time: <strong>${data.execution_time_sec}s</strong></span>
+        </div>
+        <img src="${data.comparison_url}?t=${Date.now()}" style="max-width: 100%; max-height: 240px; border-radius: var(--radius-sm); border: 1px solid var(--border-hairline);" alt="Comparison" />
+      `;
+      showToast('OpenCV Preprocessing updated!');
+    } catch (e) {
+      container.innerHTML = `<div style="color: var(--error); font-size: 12px;">Preprocessing failed: ${e.message}</div>`;
+    }
+  }
+
+  async function executeLiveCorrectionSimulation() {
+    const pageId = document.getElementById('layerDocSelect').value;
+    if (!pageId) return;
+
+    const tau = parseFloat(document.getElementById('liveTauSlider').value) || 70.0;
+    const ctxWin = parseInt(document.getElementById('liveCtxSlider').value, 10) || 5;
+    const statsContainer = document.getElementById('liveCorrectionStats');
+    const spansContainer = document.getElementById('liveSpansContainer');
+
+    statsContainer.style.display = 'block';
+    spansContainer.innerHTML = '<div style="color: var(--secondary); font-size: 12px; text-align: center; padding: 12px;">Simulating selective correction...</div>';
+
+    try {
+      const res = await fetch('/api/live/test-correction', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          page_id: pageId,
+          threshold: tau,
+          context_window: ctxWin,
+        }),
+      });
+
+      if (!res.ok) throw new Error('Correction simulation failed');
+      const data = await res.json();
+
+      document.getElementById('liveFlaggedSpans').textContent = data.flagged_spans_count;
+      document.getElementById('liveFlaggedPct').textContent = `${data.flagged_percentage}%`;
+      document.getElementById('liveTokenSavings').textContent = `${data.efficiency.token_savings_pct}%`;
+
+      spansContainer.innerHTML = '';
+      if (!data.spans || data.spans.length === 0) {
+        spansContainer.innerHTML = `<div style="color: var(--slate-muted); font-style: italic; text-align: center; padding: 12px;">No words fell below &tau; = ${tau}. Corpus is clean.</div>`;
+        return;
+      }
+
+      data.spans.forEach(s => {
+        const item = document.createElement('div');
+        item.style.cssText = 'background: var(--surface-container-low); border: 1px solid var(--border-hairline); border-radius: var(--radius-sm); padding: 8px 10px; margin-bottom: 6px;';
+        item.innerHTML = `
+          <div style="display: flex; justify-content: space-between; font-size: 10px; color: var(--slate-muted); margin-bottom: 4px;">
+            <span>Span: <code style="color: var(--error); font-weight: 600;">${escapeHtml(s.original_text)}</code> &rarr; <code style="color: var(--accent-mitigation-text); font-weight: 600;">${escapeHtml(s.corrected_text)}</code></span>
+            <span>Avg Conf: <strong>${s.avg_confidence}</strong></span>
+          </div>
+          <div style="font-size: 11px; color: var(--slate-muted); font-style: italic;">
+            ... ${escapeHtml(s.context_before)} <mark style="background: #fef08a; padding: 1px 3px; border-radius: 2px;">${escapeHtml(s.original_text)}</mark> ${escapeHtml(s.context_after)} ...
+          </div>
+        `;
+        spansContainer.appendChild(item);
+      });
+
+      showToast(`Simulation complete: ${data.flagged_spans_count} spans flagged!`);
+    } catch (e) {
+      spansContainer.innerHTML = `<div style="color: var(--error); font-size: 12px;">Simulation failed: ${e.message}</div>`;
+    }
+  }
+
+  // ============================================================================
   // Initial Boot
   // ============================================================================
 
@@ -546,5 +873,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadDocumentsList();
   loadCorrectionsAuditTrail();
   loadQuestions();
+  initLiveLab();
   loadPublicationTables();
 });
+

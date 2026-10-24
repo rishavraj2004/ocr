@@ -32,6 +32,9 @@
       <li class="nav-item" data-tab="questions" id="nav-questions">
         <span class="nav-icon">&bull;</span> 3-Variant RAG Explorer
       </li>
+      <li class="nav-item" data-tab="live-lab" id="nav-live-lab">
+        <span class="nav-icon">&bull;</span> Live Q&amp;A &amp; Testing Lab
+      </li>
       <li class="nav-item" data-tab="publications" id="nav-publications">
         <span class="nav-icon">&bull;</span> Publication Assets
       </li>
@@ -313,6 +316,268 @@
         <div class="code-container">
           <button class="copy-btn" id="copyTableBtn">Copy to Clipboard</button>
           <pre id="tableCodeBlock">Loading table code...</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 6: Live Q&A & Pipeline Testing Lab -->
+    <section id="tab-live-lab" class="tab-pane">
+      <!-- Mode Switcher -->
+      <div class="glass-card" style="margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+        <div style="display: flex; gap: 8px;">
+          <button class="custom-select lab-mode-btn active" id="btnModeLiveQnA" style="font-weight: 600; cursor: pointer; padding: 8px 16px;">
+            1. Live 3-Variant RAG Q&amp;A
+          </button>
+          <button class="custom-select lab-mode-btn" id="btnModeLayerLab" style="font-weight: 600; cursor: pointer; padding: 8px 16px;">
+            2. Pipeline Layer Testing Lab
+          </button>
+        </div>
+        <div class="header-badges">
+          <span class="badge badge-emerald" id="liveServiceBadge">Live RAG Engine Ready</span>
+          <span class="badge badge-blue">FAISS Cosine &bull; Triangulation A/B/C</span>
+        </div>
+      </div>
+
+      <!-- Mode 1: Live RAG Q&A Engine -->
+      <div id="panelLiveQnA">
+        <!-- Live Query Input Box -->
+        <div class="glass-card" style="margin-bottom: 24px;">
+          <div class="card-title">
+            <span>Live Multilingual Triangulation Query</span>
+            <span class="badge badge-blue">Ask Anything in English or Hindi</span>
+          </div>
+
+          <!-- Preset Question Chips -->
+          <div style="margin-bottom: 16px;">
+            <div style="font-size: 12px; color: var(--slate-muted); margin-bottom: 8px; font-weight: 500;">
+              QUICK TEST PRESETS (Click to Load):
+            </div>
+            <div id="livePresetChips" style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <!-- Dynamically populated sample chips -->
+            </div>
+          </div>
+
+          <!-- Main Input Controls -->
+          <div style="display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;">
+              <label for="liveQuestionInput" style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">
+                Your Question:
+              </label>
+              <input
+                type="text"
+                id="liveQuestionInput"
+                class="custom-select"
+                style="width: 100%; font-size: 14px; padding: 10px 14px;"
+                placeholder="e.g., What is the solar capacity target in western states? or सूक्ष्म-सिंचाई परियोजना..."
+              />
+            </div>
+
+            <div style="width: 140px;">
+              <label for="liveLanguageSelect" style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">
+                Language
+              </label>
+              <select id="liveLanguageSelect" class="custom-select" style="width: 100%; padding: 9px 12px;">
+                <option value="auto">Auto-Detect</option>
+                <option value="en">English (Latin)</option>
+                <option value="hi">Hindi (Devanagari)</option>
+              </select>
+            </div>
+
+            <div style="width: 120px;">
+              <label for="liveTopKSelect" style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">
+                Top-K Passages
+              </label>
+              <select id="liveTopKSelect" class="custom-select" style="width: 100%; padding: 9px 12px;">
+                <option value="1">Top 1</option>
+                <option value="3" selected>Top 3</option>
+                <option value="5">Top 5</option>
+              </select>
+            </div>
+
+            <button id="btnExecuteLiveQuery" class="btn-primary" style="height: 38px; padding: 0 20px;">
+              Run Live RAG
+            </button>
+          </div>
+        </div>
+
+        <!-- Live Diagnostics Banner (Appears after query) -->
+        <div id="liveDiagnosticsBanner" class="glass-card" style="margin-bottom: 24px; display: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <span style="font-size: 12px; font-weight: 600; color: var(--slate-muted); text-transform: uppercase;">
+                Triangulation Verdict:
+              </span>
+              <span id="liveStatusBadge" class="badge badge-emerald" style="margin-left: 8px; font-size: 13px;">
+                RECOVERED
+              </span>
+            </div>
+
+            <div style="display: flex; gap: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px;">
+              <div>Raw OCR F1: <strong id="liveRawF1" style="color: var(--error);">0.00</strong></div>
+              <div>Corrected OCR F1: <strong id="liveCorrF1" style="color: var(--accent-mitigation-text);">1.00</strong></div>
+              <div>Retrieval Latency: <strong id="liveRetLat">0.00s</strong></div>
+              <div>Generation Latency: <strong id="liveGenLat">0.00s</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3-Variant Side-by-Side Results Grid -->
+        <div id="liveTriangulationGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; margin-bottom: 24px;">
+          <!-- Variant A: Ground Truth Oracle -->
+          <div class="glass-card" style="border-top: 3px solid #0284c7;">
+            <div class="card-title" style="display: flex; justify-content: space-between; align-items: center;">
+              <span>Variant A: Ground Truth Oracle</span>
+              <span class="badge badge-blue">Theoretical Upper Bound</span>
+            </div>
+            <div style="margin-bottom: 12px;">
+              <div style="font-size: 11px; font-weight: 600; color: var(--slate-muted); margin-bottom: 4px;">GENERATED ANSWER:</div>
+              <div id="liveAnsA" class="code-container" style="padding: 12px; font-size: 14px; font-weight: 600; min-height: 48px; background: var(--surface-container-low);">
+                (Execute query to view)
+              </div>
+            </div>
+            <div>
+              <div style="font-size: 11px; font-weight: 600; color: var(--slate-muted); margin-bottom: 6px;">TOP RETRIEVED PASSAGES:</div>
+              <div id="liveChunksA" style="font-size: 12px; max-height: 280px; overflow-y: auto;">
+                <div style="color: var(--slate-muted); font-style: italic;">No passages retrieved yet.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Variant B: Raw OCR Baseline -->
+          <div class="glass-card" style="border-top: 3px solid var(--error);">
+            <div class="card-title" style="display: flex; justify-content: space-between; align-items: center;">
+              <span>Variant B: Raw OCR Baseline</span>
+              <span class="badge" style="background: var(--accent-error-bg); color: var(--accent-error-text); border: 1px solid var(--accent-error-border);">Noise Propagation</span>
+            </div>
+            <div style="margin-bottom: 12px;">
+              <div style="font-size: 11px; font-weight: 600; color: var(--slate-muted); margin-bottom: 4px;">GENERATED ANSWER:</div>
+              <div id="liveAnsB" class="code-container" style="padding: 12px; font-size: 14px; font-weight: 600; min-height: 48px; background: var(--surface-container-low);">
+                (Execute query to view)
+              </div>
+            </div>
+            <div>
+              <div style="font-size: 11px; font-weight: 600; color: var(--slate-muted); margin-bottom: 6px;">TOP RETRIEVED PASSAGES (RAW NOISE):</div>
+              <div id="liveChunksB" style="font-size: 12px; max-height: 280px; overflow-y: auto;">
+                <div style="color: var(--slate-muted); font-style: italic;">No passages retrieved yet.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Variant C: Corrected OCR Mitigated -->
+          <div class="glass-card" style="border-top: 3px solid var(--accent-mitigation);">
+            <div class="card-title" style="display: flex; justify-content: space-between; align-items: center;">
+              <span>Variant C: Corrected OCR</span>
+              <span class="badge badge-emerald">Selective Recovery (&tau;=70)</span>
+            </div>
+            <div style="margin-bottom: 12px;">
+              <div style="font-size: 11px; font-weight: 600; color: var(--slate-muted); margin-bottom: 4px;">GENERATED ANSWER:</div>
+              <div id="liveAnsC" class="code-container" style="padding: 12px; font-size: 14px; font-weight: 600; min-height: 48px; background: var(--surface-container-low);">
+                (Execute query to view)
+              </div>
+            </div>
+            <div>
+              <div style="font-size: 11px; font-weight: 600; color: var(--slate-muted); margin-bottom: 6px;">TOP RETRIEVED PASSAGES (RECOVERED):</div>
+              <div id="liveChunksC" style="font-size: 12px; max-height: 280px; overflow-y: auto;">
+                <div style="color: var(--slate-muted); font-style: italic;">No passages retrieved yet.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mode 2: Pipeline Layer Testing Lab -->
+      <div id="panelLayerLab" style="display: none;">
+        <!-- Page Selector Header -->
+        <div class="glass-card" style="margin-bottom: 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+          <div style="font-weight: 600; font-size: 13px;">Target Benchmark Document Page:</div>
+          <select id="layerDocSelect" class="custom-select" style="min-width: 280px;">
+            <!-- Dynamically populated -->
+          </select>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px;">
+          <!-- Layer 1: Image Preprocessing Tester -->
+          <div class="glass-card">
+            <div class="card-title">
+              <span>Layer 1: OpenCV Preprocessing</span>
+              <span class="badge badge-blue">Enhancement &amp; Binarization</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px;">
+              <label style="display: flex; align-items: center; gap: 8px; font-size: 13px;">
+                <input type="checkbox" id="prepDenoise" checked /> Fast NLM Denoising (h=10)
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px; font-size: 13px;">
+                <input type="checkbox" id="prepDeskew" checked /> Contour Min-Bounding-Box Deskewing
+              </label>
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-size: 13px;">Threshold Method:</span>
+                <select id="prepMethod" class="custom-select" style="padding: 4px 8px;">
+                  <option value="otsu" selected>Otsu Global Adaptive</option>
+                  <option value="adaptive">Local Adaptive Gaussian</option>
+                </select>
+              </div>
+              <button id="btnRunPreprocess" class="btn-primary" style="width: 100%; margin-top: 4px;">
+                Test Preprocessing Transformation
+              </button>
+            </div>
+            <div id="preprocessResultContainer" style="border: 1px dashed var(--outline-variant); border-radius: var(--radius-sm); padding: 12px; text-align: center; min-height: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <div style="color: var(--slate-muted); font-size: 12px;">Click above to run OpenCV transforms.</div>
+            </div>
+          </div>
+
+          <!-- Layer 2 & 3: Selective Correction & Token Economy -->
+          <div class="glass-card">
+            <div class="card-title">
+              <span>Layer 2 &amp; 3: Selective Correction Tuner</span>
+              <span class="badge badge-purple">&tau; Knee Optimization</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 16px;">
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px;">
+                  <span>Confidence Threshold (&tau;):</span>
+                  <strong id="liveTauLabel">70.0</strong>
+                </div>
+                <input type="range" id="liveTauSlider" min="30" max="90" step="5" value="70" style="width: 100%; cursor: pointer;" />
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px;">
+                  <span>Context Window:</span>
+                  <strong id="liveCtxLabel">&plusmn;5 words</strong>
+                </div>
+                <input type="range" id="liveCtxSlider" min="1" max="10" step="1" value="5" style="width: 100%; cursor: pointer;" />
+              </div>
+
+              <button id="btnRunLiveCorrection" class="btn-primary" style="width: 100%;">
+                Simulate Selective Correction &amp; Economics
+              </button>
+            </div>
+
+            <!-- Token Economics Counter -->
+            <div id="liveCorrectionStats" style="display: none; background: var(--surface-container-low); padding: 12px; border-radius: var(--radius-sm); margin-bottom: 12px; font-size: 12px;">
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 8px;">
+                <div>
+                  <div style="color: var(--slate-muted);">Flagged Spans</div>
+                  <strong id="liveFlaggedSpans" style="font-size: 15px; color: var(--secondary);">0</strong>
+                </div>
+                <div>
+                  <div style="color: var(--slate-muted);">Flagged %</div>
+                  <strong id="liveFlaggedPct" style="font-size: 15px; color: var(--accent-mitigation-text);">0%</strong>
+                </div>
+                <div>
+                  <div style="color: var(--slate-muted);">Token Savings</div>
+                  <strong id="liveTokenSavings" style="font-size: 15px; color: var(--accent-mitigation-text);">0%</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Flagged Spans Preview List -->
+            <div id="liveSpansContainer" style="max-height: 220px; overflow-y: auto; font-size: 12px;">
+              <div style="color: var(--slate-muted); font-style: italic; text-align: center; padding: 16px;">
+                Run simulation to inspect flagged low-confidence spans and selective corrections.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

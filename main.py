@@ -506,6 +506,17 @@ def parse_args(args=None):
         help="Launch interactive FastAPI research inspection web dashboard",
     )
     parser.add_argument(
+        "--live-qna",
+        type=str,
+        default=None,
+        help="Execute an ad-hoc live question across Variants A, B, and C in the CLI",
+    )
+    parser.add_argument(
+        "--interactive-rag",
+        action="store_true",
+        help="Start an interactive terminal prompt loop for live RAG querying",
+    )
+    parser.add_argument(
         "--host",
         type=str,
         default="127.0.0.1",
@@ -581,6 +592,61 @@ def run_all_master(config_path: str, threshold: Optional[float] = None) -> int:
     return 0
 
 
+def run_live_qna(config_path: str, question: str, top_k: int = 3) -> int:
+    """Execute live 3-variant triangulated query from CLI."""
+    from src.rag.pipeline import get_live_rag_service
+    cfg = load_config(config_path)
+    service = get_live_rag_service(config=cfg)
+
+    print("\n" + "=" * 80)
+    print("LIVE 3-VARIANT RAG TRIANGULATION QUERY")
+    print(f"Question : {question}")
+    print(f"Top-K    : {top_k}")
+    print("=" * 80)
+
+    res = service.query(question=question, top_k=top_k)
+    analysis = res["analysis"]
+    variants = res["variants"]
+
+    print(f"\nTriangulation Status: {analysis['status'].upper()}")
+    print(f"  Raw OCR Exact Match vs GT      : {analysis['raw_ocr_exact_match_vs_gt']}")
+    print(f"  Raw OCR Token F1 vs GT         : {analysis['raw_ocr_token_f1_vs_gt']}")
+    print(f"  Corrected OCR Token F1 vs GT   : {analysis['corrected_ocr_token_f1_vs_gt']}")
+    print("-" * 80)
+    print(f"[*] Variant A (Ground Truth Oracle) Answer : {variants['ground_truth']['answer']}")
+    print(f"[*] Variant B (Raw OCR Baseline) Answer    : {variants['raw_ocr']['answer']}")
+    print(f"[*] Variant C (Corrected OCR) Answer       : {variants['corrected_ocr']['answer']}")
+    print("=" * 80 + "\n")
+    return 0
+
+
+def run_interactive_rag(config_path: str) -> int:
+    """Start an interactive terminal prompt loop for live RAG querying."""
+    from src.rag.pipeline import get_live_rag_service
+    cfg = load_config(config_path)
+    print("\n" + "=" * 80)
+    print("MULTILINGUAL RAG LIVE INTERACTIVE SESSION (English & Hindi)")
+    print("Type your question and press Enter. Type 'exit' or 'quit' to stop.")
+    print("=" * 80 + "\n")
+    service = get_live_rag_service(config=cfg)
+    service.initialize()
+    print("[+] Ready for live questions!\n")
+
+    while True:
+        try:
+            q = input("Question > ").strip()
+            if not q:
+                continue
+            if q.lower() in ["exit", "quit", "q"]:
+                print("Exiting interactive session.")
+                break
+            run_live_qna(config_path, question=q)
+        except (KeyboardInterrupt, EOFError):
+            print("\nExiting interactive session.")
+            break
+    return 0
+
+
 def main() -> int:
     setup_logging(log_level="INFO")
     args = parse_args()
@@ -603,6 +669,8 @@ def main() -> int:
         or args.export_figures
         or args.run_all
         or args.dashboard
+        or args.live_qna
+        or args.interactive_rag
     )
     if not active_flags:
         logger.info("Running default Phase 0/1/2/3/4 sanity check...")
@@ -642,6 +710,10 @@ def main() -> int:
         status = run_all_master(args.config, threshold=args.threshold)
     if args.dashboard and status == 0:
         status = start_dashboard(host=args.host, port=args.port)
+    if args.live_qna and status == 0:
+        status = run_live_qna(args.config, question=args.live_qna)
+    if args.interactive_rag and status == 0:
+        status = run_interactive_rag(args.config)
     if args.init_run and status == 0:
         status = test_init_run(args.config)
 

@@ -161,10 +161,23 @@ class OpenAICorrector(BaseCorrector):
                     base_url = "https://generativelanguage.googleapis.com/v1beta/openai/"
                 elif model_type == "mistral":
                     base_url = "https://api.mistral.ai/v1"
+                elif model_type == "openrouter":
+                    base_url = "https://openrouter.ai/api/v1"
 
                 self.client = OpenAI(api_key=self.api_key, base_url=base_url)
             except Exception as e:
-                logger.warning(f"Failed to initialize OpenAI/Gemini/Mistral client: {e}")
+                logger.warning(f"Failed to initialize OpenAI/Gemini/Mistral/OpenRouter client: {e}")
+
+        # Initialize optional OpenRouter fallback client
+        self.fallback_client = None
+        self.fallback_model = os.getenv("OPENROUTER_FALLBACK_MODEL", "nvidia/nemotron-3.5-lightning:free")
+        fallback_key = os.getenv("OPENROUTER_API_KEY", None)
+        if fallback_key and self.config.model_type.lower() != "openrouter":
+            try:
+                from openai import OpenAI
+                self.fallback_client = OpenAI(api_key=fallback_key, base_url="https://openrouter.ai/api/v1")
+            except Exception as e:
+                logger.debug(f"Could not initialize OpenRouter fallback client: {e}")
 
     def correct_span(
         self,
@@ -172,8 +185,8 @@ class OpenAICorrector(BaseCorrector):
         language: Language,
     ) -> Tuple[str, bool, float, Optional[int], Optional[int]]:
         """Query LLM to correct solely the uncertain OCR span."""
-        if not self.client:
-            logger.warning("OpenAI client not available. Falling back to MockCorrector.")
+        if not self.client and not self.fallback_client:
+            logger.warning("No LLM client available. Falling back to MockCorrector.")
             return MockCorrector().correct_span(span, language)
 
         start_t = time.perf_counter()
@@ -190,30 +203,56 @@ class OpenAICorrector(BaseCorrector):
             f"3. If the span is already correct, output it unchanged."
         )
 
-        try:
-            response = self.client.chat.completions.create(
-                model=self.config.model_name,
-                messages=[
-                    {
-                        "role": "system",
-                        "content": "You are a precise OCR span correction engine. You must output ONLY the replacement word/phrase without quotes, asterisks, markdown, or explanation.",
-                    },
-                    {"role": "user", "content": prompt},
-                ],
-                temperature=self.config.temperature,
-                max_tokens=self.config.max_tokens,
-            )
-            raw_output = response.choices[0].message.content or ""
-            corrected = raw_output.strip().strip('"').strip("'").strip("`").replace("**", "").strip()
-            latency = time.perf_counter() - start_t
-            changed = (corrected != span.original_text)
+        messages = [
+            {
+                "role": "system",
+                "content": "You are a precise OCR span correction engine. You must output ONLY the replacement word/phrase without quotes, asterisks, markdown, or explanation.",
+            },
+            {"role": "user", "content": prompt},
+        ]
 
-            prompt_toks = response.usage.prompt_tokens if response.usage else None
-            comp_toks = response.usage.completion_tokens if response.usage else None
+        response = None
+        if self.client:
+            try:
+                response = self.client.chat.completions.create(
+                    model=self.config.model_name,
+                    messages=messages,
+                    temperature=self.config.temperature,
+                    max_tokens=self.config.max_tokens,
+                )
+            except Exception as e:
+                logger.warning(f"Primary model '{self.config.model_name}' call failed for span '{span.span_id}': {e}")
 
-            return corrected, changed, round(latency, 4), prompt_toks, comp_toks
+        # Fallback to OpenRouter if primary failed or not configured
+        if response is None and self.fallback_client:
+            logger.info(f"Triggering OpenRouter fallback model '{self.fallback_model}' for span '{span.span_id}'...")
+            try:
+                response = self.fallback_client.chat.completions.create(
+                    model=self.fallback_model,
+                    messages=messages,
+                    temperature=self.config.temperature,
+                    max_tokens=self.config.max_tokens,
+                )
+            except Exception as fe:
+                logger.error(f"OpenRouter fallback also failed for span '{span.span_id}': {fe}")
 
-        except Exception as e:
-            logger.error(f"OpenAI API call failed for span '{span.span_id}': {e}")
-            latency = time.perf_counter() - start_t
-            return span.original_text, False, round(latency, 4), None, None
+        if response is None:
+            return MockCorrector().correct_span(span, language)
+
+        raw_output = response.choices[0].message.content or ""
+        if "<think>" in raw_output:
+            raw_output = re.sub(r"(?s)<think>.*?</think>", "", raw_output)
+        if "thinking process" in raw_output.lower():
+            lines = [line.strip() for line in raw_output.splitlines() if line.strip()]
+            for l in reversed(lines):
+                if not l.startswith(("1.", "2.", "3.", "-")) and "thinking" not in l.lower():
+                    raw_output = l
+                    break
+        corrected = raw_output.strip().strip('"').strip("'").strip("`").replace("**", "").strip()
+        latency = time.perf_counter() - start_t
+        changed = (corrected != span.original_text)
+
+        prompt_toks = response.usage.prompt_tokens if response.usage else None
+        comp_toks = response.usage.completion_tokens if response.usage else None
+
+        return corrected, changed, round(latency, 4), prompt_toks, comp_toks

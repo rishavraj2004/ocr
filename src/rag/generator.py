@@ -78,11 +78,32 @@ class OpenAIGenerator(BaseGenerator):
         prompt = self.prompt_template.format(context=context, question=question)
 
         t0 = time.perf_counter()
-        response = client.chat.completions.create(
-            model=self.model_name,
-            temperature=self.temperature,
-            messages=[{"role": "user", "content": prompt}],
-        )
+        response = None
+        try:
+            response = client.chat.completions.create(
+                model=self.model_name,
+                temperature=self.temperature,
+                messages=[{"role": "user", "content": prompt}],
+            )
+        except Exception as e:
+            fallback_key = os.getenv("OPENROUTER_API_KEY", None)
+            if fallback_key and self.base_url != "https://openrouter.ai/api/v1":
+                logger.warning("Primary generation failed (%s). Attempting OpenRouter fallback...", e)
+                try:
+                    import openai
+                    fb_client = openai.OpenAI(api_key=fallback_key, base_url="https://openrouter.ai/api/v1")
+                    fb_model = os.getenv("OPENROUTER_FALLBACK_MODEL", "nvidia/nemotron-3.5-lightning:free")
+                    response = fb_client.chat.completions.create(
+                        model=fb_model,
+                        temperature=self.temperature,
+                        messages=[{"role": "user", "content": prompt}],
+                    )
+                except Exception as fe:
+                    logger.error("OpenRouter fallback also failed: %s", fe)
+                    raise e from None
+            else:
+                raise
+
         latency = time.perf_counter() - t0
 
         answer = response.choices[0].message.content.strip()
@@ -226,7 +247,7 @@ def create_generator(
 ) -> BaseGenerator:
     """Factory to instantiate generator."""
     gen_type = generator_type.lower()
-    if gen_type in ["openai", "gemini", "google", "mistral"]:
+    if gen_type in ["openai", "gemini", "google", "mistral", "openrouter"]:
         base_url = None
         if gen_type in ["gemini", "google"]:
             base_url = "https://generativelanguage.googleapis.com/v1beta/openai/"
@@ -236,6 +257,10 @@ def create_generator(
             base_url = "https://api.mistral.ai/v1"
             if api_key_env == "OPENAI_API_KEY":
                 api_key_env = "MISTRAL_API_KEY"
+        elif gen_type == "openrouter":
+            base_url = "https://openrouter.ai/api/v1"
+            if api_key_env == "OPENAI_API_KEY":
+                api_key_env = "OPENROUTER_API_KEY"
 
         return OpenAIGenerator(
             model_name=model_name,
